@@ -42,6 +42,7 @@ public class SearchJPanel extends javax.swing.JPanel {
         this.doctorDirectory = doctorDirectory;
 
         displayEncounterHistory();
+        PopulateDoctorsTable();
 
     }
 

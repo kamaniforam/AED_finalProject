@@ -29,7 +29,7 @@ public class PersonDirectory {
     
     public Person addNewPerson(){
         House house = new House();
-        Person newPerson = new Person("",0, 0, house);
+        Person newPerson = new Person();
         listOfPerson.add(newPerson);
         return newPerson;
     }

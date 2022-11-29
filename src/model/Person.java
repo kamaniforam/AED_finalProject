@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package model;
+
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author foram
@@ -11,17 +14,9 @@ public class Person {
     private String nameOfPerson;
     private int ageOfPerson;
     private int idOfPerson;
+    private ImageIcon photo;
     House house;
-    
-    public Person(){
-        
-    }
-    public Person(String name, int age, int id, House house){
-        this.nameOfPerson = name;
-        this.ageOfPerson = age;
-        this.idOfPerson = id;
-        this.house = house;
-    }
+  
 
     public String getNameOfPerson() {
         return nameOfPerson;
@@ -29,14 +24,6 @@ public class Person {
 
     public void setNameOfPerson(String nameOfPerson) {
         this.nameOfPerson = nameOfPerson;
-    }
-
-    public int getIdOfPerson() {
-        return idOfPerson;
-    }
-
-    public void setIdOfPerson(int idOfPerson) {
-        this.idOfPerson = idOfPerson;
     }
 
     public int getAgeOfPerson() {
@@ -47,6 +34,22 @@ public class Person {
         this.ageOfPerson = ageOfPerson;
     }
 
+    public int getIdOfPerson() {
+        return idOfPerson;
+    }
+
+    public void setIdOfPerson(int idOfPerson) {
+        this.idOfPerson = idOfPerson;
+    }
+
+    public ImageIcon getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(ImageIcon photo) {
+        this.photo = photo;
+    }
+
     public House getHouse() {
         return house;
     }
@@ -55,9 +58,5 @@ public class Person {
         this.house = house;
     }
 
-    @Override
-    public String toString() {
-        return "Person{" + "nameOfPerson=" + nameOfPerson + ", ageOfPerson=" + ageOfPerson + ", idOfPerson=" + idOfPerson + ", house=" + house + '}';
-    }
-    
+  
 }

@@ -963,7 +963,7 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
         vitalSigns.setHeartRate(heartRate);
         House housing = new House();
        
-        Patient patient = new Patient("", 0, 0, housing, vitalSigns, "", false);
+        Patient patient = new Patient();
         boolean isStable = patient.isPatientNormal(selectPerson.getAgeOfPerson());
         
         if(isStable == false){

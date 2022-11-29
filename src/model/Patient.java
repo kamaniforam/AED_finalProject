@@ -4,6 +4,8 @@
  */
 package model;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author foram
@@ -13,20 +15,11 @@ public class Patient extends Person {
     private VitalSigns vitalSigns;
     private String patientD;
     private boolean isStable;
+    private ImageIcon photo;
 
     public Patient(){
         
     }
-    
-    public Patient(String name, int age, int id, House house, VitalSigns vitalSigns, String patientID, boolean isStable) {
-        super(name, age, id, house);
-        this.vitalSigns = vitalSigns;
-        this.patientD = patientID;
-        this.isStable = isStable;
-    }
-    
-  
-
 
     public VitalSigns getVitalSigns() {
         return vitalSigns;

@@ -4,6 +4,8 @@
  */
 package model;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author foram
@@ -12,6 +14,7 @@ public class Doctor {
     
     private String doctorName;
     private int doctorId;
+    private ImageIcon uploadPhoto;
     private Hospital hospital;
 
     public Hospital getHospital() {
@@ -36,6 +39,14 @@ public class Doctor {
 
     public void setDoctorId(int doctorId) {
         this.doctorId = doctorId;
+    }
+
+    public ImageIcon getUploadPhoto() {
+        return uploadPhoto;
+    }
+
+    public void setUploadPhoto(ImageIcon uploadPhoto) {
+        this.uploadPhoto = uploadPhoto;
     }
     
 }
