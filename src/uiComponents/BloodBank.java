@@ -4,6 +4,9 @@
  */
 package uiComponents;
 
+import java.awt.Color;
+import javax.swing.GroupLayout;
+
 /**
  *
  * @author Admin
@@ -14,9 +17,27 @@ public class BloodBank extends javax.swing.JPanel {
      * Creates new form BloodBank
      */
     public BloodBank() {
-        initComponents();
+        myInitComponents();
     }
 
+    private void myInitComponents(){
+        
+        setBackground(new Color(204, 204, 255));
+
+        GroupLayout layout = new GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .add(0, 400, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .add(0, 300, Short.MAX_VALUE)
+        );
+    }
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
