@@ -1,21 +1,25 @@
 package uiComponents;
 
+import Business.EcoSystem;
+import Business.Roles.Role;
 import java.time.LocalDateTime;
 import javax.swing.InputVerifier;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.Doctor;
-import model.DoctorDirectory;
-import model.Encounter;
-import model.EncounterHistory;
-import model.Hospital;
-import model.HospitalDirectory;
-import model.House;
-import model.Patient;
-import model.PatientDirectory;
-import model.Person;
-import model.PersonDirectory;
-import model.VitalSigns;
+import Business.model.doctor.Doctor;
+import Business.model.doctor.DoctorDirectory;
+import Business.model.encounter.Encounter;
+import Business.model.encounter.EncounterHistory;
+import Business.model.hospital.Hospital;
+import Business.model.hospital.HospitalDirectory;
+import Business.model.location.House;
+import Business.model.patient.Patient;
+import Business.model.patient.PatientDirectory;
+import Business.model.person.Person;
+import Business.model.person.PersonDirectory;
+import Business.userAccountDetails.UserAccount;
+import javax.swing.JSplitPane;
+import Business.model.vitalSigns.VitalSigns;
 import validations.VerifyNumber;
 import validations.VerifyString;
 
@@ -33,20 +37,32 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
     EncounterHistory encounterHistory;
     DoctorDirectory doctorDirectory;
     HospitalDirectory hospitalDirectory;
+    UserAccount account;
+    EcoSystem business;
 
-    public SystemAdminJPanel(PersonDirectory personDirectory, PatientDirectory patientDirectory, EncounterHistory encounterHistory, DoctorDirectory doctorDirectory, HospitalDirectory hospitalDirectory) {
+    public SystemAdminJPanel(JSplitPane jSplitPane11, UserAccount account, EcoSystem business, PersonDirectory personDirectory, PatientDirectory patientDirectory, EncounterHistory encounterHistory, DoctorDirectory doctorDirectory, HospitalDirectory hospitalDirectory) {
         initComponents();
         this.personDirectory = personDirectory;
         this.patientDirectory = patientDirectory;
         this.encounterHistory = encounterHistory;
         this.doctorDirectory = doctorDirectory;
         this.hospitalDirectory = hospitalDirectory;
+        this.account = account;
+        this.business = business;
 
         displayPatientTableDetails();
         displayPersonTableDetails();
         displayDoctorTableDetails();
         displayEncounterHistory();
         addVerifiers();
+    }
+
+    public SystemAdminJPanel(JSplitPane jSplitPane1, UserAccount account, EcoSystem business, PersonDirectory personDirectory, PatientDirectory patientDirectory, EncounterHistory encounterHistory, DoctorDirectory doctorDirectory, HospitalDirectory hospitalDirectory, Role role) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public SystemAdminJPanel(Object object, Object object0, Role role, JSplitPane jSplitPane1, UserAccount account, EcoSystem business, PersonDirectory personDirectory, PatientDirectory patientDirectory, EncounterHistory encounterHistory, DoctorDirectory doctorDirectory, HospitalDirectory hospitalDirectory) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
@@ -142,11 +158,11 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
         ));
         jScrollPane3.setViewportView(jTable1);
 
-        leftPanel.setBackground(new java.awt.Color(204, 204, 255));
+        leftPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         hospitalPanel.setBackground(new java.awt.Color(204, 204, 255));
 
-        doctorPanel1.setBackground(new java.awt.Color(204, 204, 255));
+        doctorPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         hospitalPortalLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         hospitalPortalLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -315,7 +331,7 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Hospital", hospitalPanel);
 
-        encounterPanel.setBackground(new java.awt.Color(204, 204, 255));
+        encounterPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         tblPatientHistory.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -349,9 +365,9 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Encounter", encounterPanel);
 
-        doctorPanel.setBackground(new java.awt.Color(204, 204, 255));
+        doctorPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        doctorPanel2.setBackground(new java.awt.Color(204, 204, 255));
+        doctorPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         addDocLbl1.setText("ADD DOCTOR");
 
@@ -523,7 +539,7 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Doctor", doctorPanel);
 
-        patientPanel.setBackground(new java.awt.Color(204, 204, 255));
+        patientPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         lblCommunity.setText("Community:");
 
@@ -963,7 +979,7 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
         vitalSigns.setHeartRate(heartRate);
         House housing = new House();
        
-        Patient patient = new Patient("", 0, 0, housing, vitalSigns, "", false);
+        Patient patient = new Patient(vitalSigns);
         boolean isStable = patient.isPatientNormal(selectPerson.getAgeOfPerson());
         
         if(isStable == false){

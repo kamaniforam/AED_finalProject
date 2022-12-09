@@ -4,13 +4,16 @@
  */
 package uiComponents;
 
+import Business.EcoSystem;
 import javax.swing.table.DefaultTableModel;
-import model.DoctorDirectory;
-import model.Encounter;
-import model.EncounterHistory;
-import model.HospitalDirectory;
-import model.PatientDirectory;
-import model.PersonDirectory;
+import Business.model.doctor.DoctorDirectory;
+import Business.model.encounter.Encounter;
+import Business.model.encounter.EncounterHistory;
+import Business.model.hospital.HospitalDirectory;
+import Business.model.patient.PatientDirectory;
+import Business.model.person.PersonDirectory;
+import Business.model.vitalSigns.VitalSigns;
+import Business.userAccountDetails.UserAccount;
 
 /**
  *
@@ -25,16 +28,20 @@ public class DoctorJPanel extends javax.swing.JPanel {
     EncounterHistory encounterHistory;
     PersonDirectory personDirectory;
     PatientDirectory patientDirectory;
-    HospitalDirectory hispDirectory;
-     DoctorDirectory doctorDirectory;
+    HospitalDirectory hospitalDirectory;
+    DoctorDirectory doctorDirectory;
+    EcoSystem business;
+    UserAccount account;
+    VitalSigns vitalSigns;
     public DoctorJPanel(EncounterHistory encounterHistory,  PersonDirectory personDirectory,PatientDirectory patientDirectory,
-    HospitalDirectory hispDirectory,javax.swing.JSplitPane jSplitPane1, DoctorDirectory doctorDirectory) {
+    HospitalDirectory hispDirectory,javax.swing.JSplitPane jSplitPane1, DoctorDirectory doctorDirectory, VitalSigns vitalSigns) {
         initComponents();
         this.personDirectory = personDirectory;
         this.patientDirectory = patientDirectory;
         this.encounterHistory = encounterHistory;
         this.jSplitPane1 = jSplitPane1;
         this.doctorDirectory = doctorDirectory;
+        this.vitalSigns = vitalSigns;
         displayEncounterHistory();
    
     }
@@ -58,7 +65,7 @@ public class DoctorJPanel extends javax.swing.JPanel {
         bp1 = new javax.swing.JLabel();
         heartRateTxt = new javax.swing.JTextField();
 
-        setBackground(new java.awt.Color(204, 204, 255));
+        setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -119,30 +126,26 @@ public class DoctorJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(70, 70, 70)
-                                .addComponent(bp)
-                                .addGap(47, 47, 47)
-                                .addComponent(bpTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(53, 53, 53)
-                                .addComponent(bp1)
-                                .addGap(47, 47, 47)
-                                .addComponent(heartRateTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(340, 340, 340)
-                                .addComponent(updateBtn)
-                                .addGap(67, 67, 67)
-                                .addComponent(createBtn)))
-                        .addGap(0, 371, Short.MAX_VALUE))
+                        .addGap(70, 70, 70)
+                        .addComponent(bp)
+                        .addGap(47, 47, 47)
+                        .addComponent(bpTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(53, 53, 53)
+                        .addComponent(bp1)
+                        .addGap(47, 47, 47)
+                        .addComponent(heartRateTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 885, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(336, 336, 336)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(343, 343, 343)
+                        .addComponent(updateBtn)
+                        .addGap(64, 64, 64)
+                        .addComponent(createBtn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(336, 336, 336)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(368, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane7))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,10 +155,10 @@ public class DoctorJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(updateBtn)
-                    .addComponent(createBtn))
-                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(createBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                    .addComponent(updateBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(bp1)
@@ -163,14 +166,14 @@ public class DoctorJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(bp)
                         .addComponent(bpTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(174, Short.MAX_VALUE))
+                .addContainerGap(180, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     
     private void createBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createBtnActionPerformed
         // TODO add your handling code here:
-        ViewJPanel viewPane = new ViewJPanel(personDirectory, patientDirectory, encounterHistory, jSplitPane1, hispDirectory,doctorDirectory);
+        ViewJPanel viewPane = new ViewJPanel(jSplitPane1, account, business, personDirectory, patientDirectory, encounterHistory, doctorDirectory,hospitalDirectory, vitalSigns);
         jSplitPane1.setRightComponent(viewPane);
     }//GEN-LAST:event_createBtnActionPerformed
 

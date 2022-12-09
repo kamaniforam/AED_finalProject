@@ -2,7 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package model;
+package Business.model.doctor;
+
+import Business.model.hospital.Hospital;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -12,6 +15,7 @@ public class Doctor {
     
     private String doctorName;
     private int doctorId;
+    private ImageIcon uploadPhoto;
     private Hospital hospital;
 
     public Hospital getHospital() {
@@ -36,6 +40,14 @@ public class Doctor {
 
     public void setDoctorId(int doctorId) {
         this.doctorId = doctorId;
+    }
+
+    public ImageIcon getUploadPhoto() {
+        return uploadPhoto;
+    }
+
+    public void setUploadPhoto(ImageIcon uploadPhoto) {
+        this.uploadPhoto = uploadPhoto;
     }
     
 }

@@ -2,7 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package model;
+package Business.model.patient;
+
+import javax.swing.ImageIcon;
+import Business.model.person.Person;
+import Business.model.vitalSigns.VitalSigns;
 
 /**
  *
@@ -13,20 +17,11 @@ public class Patient extends Person {
     private VitalSigns vitalSigns;
     private String patientD;
     private boolean isStable;
+    private ImageIcon photo;
 
-    public Patient(){
-        
-    }
-    
-    public Patient(String name, int age, int id, House house, VitalSigns vitalSigns, String patientID, boolean isStable) {
-        super(name, age, id, house);
+    public Patient(VitalSigns vitalSigns) {
         this.vitalSigns = vitalSigns;
-        this.patientD = patientID;
-        this.isStable = isStable;
     }
-    
-  
-
 
     public VitalSigns getVitalSigns() {
         return vitalSigns;
@@ -66,28 +61,25 @@ public class Patient extends Person {
         }
         return isPatientNormal;
     }
-    
+
     private boolean isNormal(int patAge) {
         boolean isNorm = false;
-        if(patAge <= 40){
-            if((vitalSigns.getBloodPressure() <= 130 && vitalSigns.getBloodPressure()>=90) && (vitalSigns.getHeartRate() <= 100 && vitalSigns.getHeartRate()>=90)){
-            isNorm = true;
+        if (patAge <= 40) {
+            if ((vitalSigns.getBloodPressure() <= 130 && vitalSigns.getBloodPressure() >= 90) && (vitalSigns.getHeartRate() <= 100 && vitalSigns.getHeartRate() >= 90)) {
+                isNorm = true;
+            } else {
+                isNorm = false;
             }
-            else{
-            isNorm = false;
-            }
-            
-        }
-        else if (patAge >= 41 && patAge <= 100){
-            if((vitalSigns.getBloodPressure()<= 140 && vitalSigns.getBloodPressure()>=100) && (vitalSigns.getHeartRate() <= 80 && vitalSigns.getHeartRate()>=70)){
-            isNorm=  true;
-            }
-            else{
-            isNorm = false;
+
+        } else if (patAge >= 41 && patAge <= 100) {
+            if ((vitalSigns.getBloodPressure() <= 140 && vitalSigns.getBloodPressure() >= 100) && (vitalSigns.getHeartRate() <= 80 && vitalSigns.getHeartRate() >= 70)) {
+                isNorm = true;
+            } else {
+                isNorm = false;
             }
         }
         return isNorm;
-        
+
     }
 
 }
