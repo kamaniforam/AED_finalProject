@@ -3,11 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package uiComponents;
-import model.DoctorDirectory;
-import model.PersonDirectory;
-import model.PatientDirectory;
-import model.EncounterHistory;
-import model.HospitalDirectory;
+import Business.EcoSystem;
+import Business.db40Utility.DB4OUtil;
+import Business.model.EMT.EMTDirectory;
+import Business.model.doctor.DoctorDirectory;
+import Business.model.person.PersonDirectory;
+import Business.model.patient.PatientDirectory;
+import Business.model.encounter.EncounterHistory;
+import Business.model.hospital.HospitalDirectory;
+import Business.model.vitalSigns.VitalSigns;
+import Business.userAccountDetails.UserAccount;
 /**
  *
  * @author foram
@@ -22,6 +27,11 @@ public class MainJFrame extends javax.swing.JFrame {
     EncounterHistory encounterHistory;
     DoctorDirectory doctorDirectory;
     HospitalDirectory hospitalDirectory;
+    UserAccount account;
+    EcoSystem business;  
+    VitalSigns vitalSigns;
+    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
+    EMTDirectory eMTDirectory;
     
     public MainJFrame() {
         initComponents();
@@ -31,6 +41,11 @@ public class MainJFrame extends javax.swing.JFrame {
         this.encounterHistory = new EncounterHistory();
         this.doctorDirectory = new DoctorDirectory();
         this.hospitalDirectory = new HospitalDirectory();
+        this.vitalSigns = new VitalSigns();
+        this.eMTDirectory = new EMTDirectory();
+        //this.account = new UserAccount();
+        business = dB4OUtil.retrieveSystem();
+        
     }
 
     /**
@@ -45,16 +60,32 @@ public class MainJFrame extends javax.swing.JFrame {
         jSplitPane1 = new javax.swing.JSplitPane();
         leftPanel = new javax.swing.JPanel();
         loginBtn = new javax.swing.JButton();
-        rightPanel = new javax.swing.JPanel();
+        signupBtn = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        container = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        leftPanel.setBackground(new java.awt.Color(153, 153, 255));
+        leftPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         loginBtn.setText("LOGIN");
         loginBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginBtnActionPerformed(evt);
+            }
+        });
+
+        signupBtn.setText("SIGNUP");
+        signupBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                signupBtnActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("EMT");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -64,38 +95,60 @@ public class MainJFrame extends javax.swing.JFrame {
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(leftPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(loginBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE))
+                .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(loginBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                    .addComponent(signupBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE))
+                .addContainerGap())
         );
         leftPanelLayout.setVerticalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(leftPanelLayout.createSequentialGroup()
-                .addGap(197, 197, 197)
+                .addGap(156, 156, 156)
                 .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(233, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addComponent(signupBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(124, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(leftPanel);
 
-        rightPanel.setBackground(new java.awt.Color(204, 204, 255));
+        container.setBackground(new java.awt.Color(255, 255, 255));
+        container.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                containerComponentAdded(evt);
+            }
+        });
+        container.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                containerAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
 
-        javax.swing.GroupLayout rightPanelLayout = new javax.swing.GroupLayout(rightPanel);
-        rightPanel.setLayout(rightPanelLayout);
-        rightPanelLayout.setHorizontalGroup(
-            rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 489, Short.MAX_VALUE)
+        javax.swing.GroupLayout containerLayout = new javax.swing.GroupLayout(container);
+        container.setLayout(containerLayout);
+        containerLayout.setHorizontalGroup(
+            containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
-        rightPanelLayout.setVerticalGroup(
-            rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        containerLayout.setVerticalGroup(
+            containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 464, Short.MAX_VALUE)
         );
 
-        jSplitPane1.setRightComponent(rightPanel);
+        jSplitPane1.setRightComponent(container);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,11 +163,33 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         // TODO add your handling code here:
-        LoginJPanel login = new LoginJPanel(jSplitPane1, this.personDirectory, this.patientDirectory, this.encounterHistory,
-        this.doctorDirectory, this.hospitalDirectory);
+        LoginJPanel login = new LoginJPanel(jSplitPane1, account, business, personDirectory, patientDirectory, encounterHistory,
+        doctorDirectory, hospitalDirectory, vitalSigns);
         
         jSplitPane1.setRightComponent(login);
+        
+       
     }//GEN-LAST:event_loginBtnActionPerformed
+
+    private void signupBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupBtnActionPerformed
+        // TODO add your handling code here:
+        SignUpJPanel signup = new SignUpJPanel(jSplitPane1, business);
+        jSplitPane1.setRightComponent(signup);
+    }//GEN-LAST:event_signupBtnActionPerformed
+
+    private void containerComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_containerComponentAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_containerComponentAdded
+
+    private void containerAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_containerAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_containerAncestorAdded
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        EMTJPanel emt = new EMTJPanel(personDirectory, eMTDirectory);
+        jSplitPane1.setRightComponent(emt);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,9 +228,11 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel container;
+    private javax.swing.JButton jButton1;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JPanel leftPanel;
     private javax.swing.JButton loginBtn;
-    private javax.swing.JPanel rightPanel;
+    private javax.swing.JButton signupBtn;
     // End of variables declaration//GEN-END:variables
 }

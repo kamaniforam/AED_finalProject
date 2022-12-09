@@ -4,20 +4,24 @@
  */
 package uiComponents;
 
+import Business.EcoSystem;
+import Business.Roles.Role;
 import javax.swing.JOptionPane;
-import model.DoctorDirectory;
-import model.EncounterHistory;
-import model.HospitalDirectory;
-import model.PatientDirectory;
-import model.PersonDirectory;
-import model.UserDetails;
-import validations.LoginCreds;
+import Business.model.doctor.DoctorDirectory;
+import Business.model.encounter.EncounterHistory;
+import Business.model.hospital.HospitalDirectory;
+import Business.model.patient.PatientDirectory;
+import Business.model.person.PersonDirectory;
+import Business.model.vitalSigns.VitalSigns;
+import Business.userAccountDetails.UserAccount;
+import Business.userAccountDetails.UserAccountDirectory;
 
 /**
  *
  * @author foram
  */
 public class LoginJPanel extends javax.swing.JPanel {
+
     private javax.swing.JSplitPane jSplitPane1;
 
     /**
@@ -28,17 +32,23 @@ public class LoginJPanel extends javax.swing.JPanel {
     EncounterHistory encounterHistory;
     DoctorDirectory doctorDirectory;
     HospitalDirectory hispDirectory;
-    
-    public LoginJPanel(javax.swing.JSplitPane jSplitPane1,PersonDirectory personDirectory, PatientDirectory patientDirectory, 
-            EncounterHistory encounterHistory, DoctorDirectory doctorDirectory, HospitalDirectory hospitalDirectory ) {
-       initComponents();
-       
-       this.personDirectory = personDirectory;
-       this.patientDirectory = patientDirectory;
-       this.encounterHistory = encounterHistory;
-       this.doctorDirectory = doctorDirectory;
-       this.hispDirectory =hospitalDirectory;
-       this.jSplitPane1 = jSplitPane1;
+    UserAccount account;
+    EcoSystem business;
+    VitalSigns vitalSigns;
+
+    public LoginJPanel(javax.swing.JSplitPane jSplitPane1, UserAccount account, EcoSystem business, PersonDirectory personDirectory, PatientDirectory patientDirectory,
+            EncounterHistory encounterHistory, DoctorDirectory doctorDirectory, HospitalDirectory hospitalDirectory, VitalSigns vitalSigns) {
+        initComponents();
+
+        this.personDirectory = personDirectory;
+        this.patientDirectory = patientDirectory;
+        this.encounterHistory = encounterHistory;
+        this.doctorDirectory = doctorDirectory;
+        this.hispDirectory = hospitalDirectory;
+        this.jSplitPane1 = jSplitPane1;
+        this.account = account;
+        this.business = business;
+        this.vitalSigns = vitalSigns;
     }
 
     /**
@@ -59,7 +69,12 @@ public class LoginJPanel extends javax.swing.JPanel {
         role = new javax.swing.JLabel();
         password = new javax.swing.JPasswordField();
 
-        setBackground(new java.awt.Color(204, 204, 255));
+        setBackground(new java.awt.Color(255, 255, 255));
+        addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                formComponentAdded(evt);
+            }
+        });
 
         username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,29 +114,29 @@ public class LoginJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(108, 108, 108)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(loginLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(usernameLbl)
-                                    .addComponent(role, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(passwordLbl, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addGap(43, 43, 43)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(dropdownRole, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(password)
-                                    .addComponent(username)))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(usernameLbl)
+                            .addComponent(role, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(passwordLbl, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(43, 43, 43)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(dropdownRole, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(password)
+                            .addComponent(username)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(228, 228, 228)
-                        .addComponent(loginBtn)))
-                .addContainerGap(113, Short.MAX_VALUE))
+                        .addGap(185, 185, 185)
+                        .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(139, 139, 139)
+                        .addComponent(loginLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addGap(15, 15, 15)
                 .addComponent(loginLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(usernameLbl)
                     .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -133,9 +148,9 @@ public class LoginJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(role, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dropdownRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addComponent(loginBtn)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addGap(38, 38, 38)
+                .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(67, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -145,51 +160,66 @@ public class LoginJPanel extends javax.swing.JPanel {
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         // TODO add your handling code here:
-        LoginCreds creds = new LoginCreds();
+        UserAccountDirectory ud = new UserAccountDirectory();
+        String dropdownrole = dropdownRole.getSelectedItem().toString().toUpperCase();
+        System.out.println("login role: "+dropdownrole);
         
-        String userName = username.getText();
-        String pass = password.getText();
-        String role = dropdownRole.getSelectedItem().toString();
+        boolean usacc = business.getUserAccountDirectory().authenticateUser(username.getText(), password.getText(), dropdownrole);
         
-        boolean loggedIn = creds.doLogin(userName, pass, role);
-        
-        if(loggedIn) {  
+        System.out.println("MAINxoxo: " + dropdownrole);
+
+        if (username.getText().isEmpty() || password.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Username and Password field's cannot be empty");
+            return;
+        } else if (username.getText() == null || password.getText() == null) {
+            JOptionPane.showMessageDialog(null, "Invalid UserName");
+            return;
+        }
+        if (usacc) {
+            
             JOptionPane.showMessageDialog(this, "LOGIN SUCCESSFULL");
-            if(null != UserDetails.Roles.fromString(role))switch (UserDetails.Roles.fromString(role)) {
-                case SYSTEM_ADMINISTRATOR -> {
-                    SystemAdminJPanel systemAdminPane = new SystemAdminJPanel(personDirectory, patientDirectory, encounterHistory, doctorDirectory,hispDirectory);
-                    jSplitPane1.setRightComponent(systemAdminPane);
+            if (null != Role.fromString(dropdownrole)) {
+                switch (Role.fromString(dropdownrole)) {
+                    case SYSTEM_ADMINISTRATOR -> {
+                        SystemAdminJPanel systemAdminPane = new SystemAdminJPanel(jSplitPane1, account, business, personDirectory, patientDirectory, encounterHistory, doctorDirectory, hispDirectory);
+                        jSplitPane1.setRightComponent(systemAdminPane);
                     }
-                case DOCTOR -> {
-                    DoctorJPanel doctorPane = new DoctorJPanel( encounterHistory, personDirectory, patientDirectory, hispDirectory,jSplitPane1,doctorDirectory);
-                    jSplitPane1.setRightComponent(doctorPane);
+                    case DOCTOR -> {
+                        DoctorJPanel doctorPane = new DoctorJPanel(encounterHistory, personDirectory, patientDirectory, hispDirectory, jSplitPane1, doctorDirectory, vitalSigns);
+                        jSplitPane1.setRightComponent(doctorPane);
                     }
-                case PATIENT -> {
-                    CreateJPanel createPane = new CreateJPanel(personDirectory, patientDirectory, encounterHistory, jSplitPane1,hispDirectory, doctorDirectory);
-                    jSplitPane1.setRightComponent(createPane);
+                    case PATIENT -> {
+                        CreateJPanel createPane = new CreateJPanel(jSplitPane1, account, business,personDirectory, patientDirectory, encounterHistory, doctorDirectory, hispDirectory, vitalSigns);
+                        jSplitPane1.setRightComponent(createPane);
                     }
-                case COMMUNITY_ADMINISTRATOR -> {
-                    CommunityAdminJPanel communityAdminPane = new CommunityAdminJPanel(personDirectory,patientDirectory, encounterHistory,doctorDirectory,hispDirectory,jSplitPane1);
-                    jSplitPane1.setRightComponent(communityAdminPane);
+                    case COMMUNITY_ADMINISTRATOR -> {
+                        CommunityAdminJPanel communityAdminPane = new CommunityAdminJPanel(personDirectory, patientDirectory, encounterHistory, doctorDirectory, hispDirectory, jSplitPane1);
+                        jSplitPane1.setRightComponent(communityAdminPane);
                     }
-                case HOSPITAL_ADMINISTRATOR -> {
-                    HospitalAdminJPanel hospitalAdminPane = new HospitalAdminJPanel(personDirectory, patientDirectory, encounterHistory, doctorDirectory,hispDirectory,jSplitPane1);
-                    jSplitPane1.setRightComponent(hospitalAdminPane);
+                    case HOSPITAL_ADMINISTRATOR -> {
+                        HospitalAdminJPanel hospitalAdminPane = new HospitalAdminJPanel(personDirectory, patientDirectory, encounterHistory, doctorDirectory, hispDirectory, jSplitPane1, vitalSigns);
+                        jSplitPane1.setRightComponent(hospitalAdminPane);
                     }
-                default -> {
-                    JOptionPane.showMessageDialog(this, "SELECT ROLE");
+                    default -> {
+                        JOptionPane.showMessageDialog(this, "SELECT ROLE");
+                    }
                 }
-            } 
-        } else{
+            }
+        } else {
             JOptionPane.showMessageDialog(this, "INVALID CREDENTIALS");
         }
         
-        
+        loginBtn.setEnabled(false);
+
     }//GEN-LAST:event_loginBtnActionPerformed
 
     private void dropdownRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dropdownRoleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_dropdownRoleActionPerformed
+
+    private void formComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_formComponentAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formComponentAdded
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

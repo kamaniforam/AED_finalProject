@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package model;
+package Business.model.person;
 
 import java.util.ArrayList;
+import Business.model.location.House;
 
 /**
  *
@@ -15,7 +16,7 @@ public class PersonDirectory {
     private ArrayList<Person> listOfPerson;
     
     public PersonDirectory(){
-        this.listOfPerson = new ArrayList<Person>();
+        this.listOfPerson = new ArrayList<>();
     }
 
     public ArrayList<Person> getListOfPerson() {

@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package model;
+package Business.model.encounter;
 
 import java.time.LocalDateTime;
+import Business.model.vitalSigns.VitalSigns;
 
 /**
  *
@@ -15,6 +16,7 @@ public class Encounter {
     private VitalSigns vitalSigns;
     private LocalDateTime dateOfVisit;
     private boolean isStable;
+    private String appointmentType;
     
     public Encounter(VitalSigns vitalsigns){
         this.vitalSigns = vitalSigns;
@@ -52,4 +54,12 @@ public class Encounter {
         this.isStable = isStable;
     }
 
+    public String getAppointmentType() {
+        return appointmentType;
+    }
+
+    public void setAppointmentType(String appointmentType) {
+        this.appointmentType = appointmentType;
+    }
+    
 }
