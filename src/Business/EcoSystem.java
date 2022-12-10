@@ -6,11 +6,11 @@
 package Business;
 
 
-import Business.model.doctor.DoctorDirectory;
-import Business.model.encounter.EncounterHistory;
-import Business.model.hospital.HospitalDirectory;
-import Business.model.patient.PatientDirectory;
-import Business.model.person.PersonDirectory;
+import Bussiness.model.PHC.DoctorDirectory;
+import Bussiness.model.PHC.EncounterHistory;
+import Bussiness.model.PHC.HospitalDirectory;
+import Bussiness.model.PHC.PatientDirectory;
+import Bussiness.model.PHC.PersonDirectory;
 import java.util.ArrayList;
 import Business.Roles.Role;
 import Business.WorkQueue.WorkQueue;

@@ -4,7 +4,7 @@
  */
 package Business.WorkQueue;
 
-import Business.userAccountDetails.UserAccount;
+import Bussiness.model.PHC.UserAccount;
 import java.util.Date;
 
 /**
