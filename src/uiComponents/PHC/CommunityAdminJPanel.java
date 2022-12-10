@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package uiComponents;
+package uiComponents.PHC;
 
 import javax.swing.InputVerifier;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import Business.model.doctor.DoctorDirectory;
-import Business.model.encounter.EncounterHistory;
-import Business.model.hospital.HospitalDirectory;
-import Business.model.location.House;
-import Business.model.patient.PatientDirectory;
-import Business.model.person.Person;
-import Business.model.person.PersonDirectory;
+import Bussiness.model.PHC.DoctorDirectory;
+import Bussiness.model.PHC.EncounterHistory;
+import Bussiness.model.PHC.HospitalDirectory;
+import Bussiness.model.PHC.House;
+import Bussiness.model.PHC.PatientDirectory;
+import Bussiness.model.PHC.Person;
+import Bussiness.model.PHC.PersonDirectory;
 import validations.VerifyNumber;
 import validations.VerifyString;
 
@@ -43,8 +43,6 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
         this.hospitalDirectory = hospitalDirectory;
         this.jSplitPane1 = jSplitPane1;
 
-       
-        displayHousesTableDetails();
         addVerifiers();
     }
 
@@ -57,25 +55,10 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
         leftPanel = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        housesPanel = new javax.swing.JPanel();
-        lblCommunity = new javax.swing.JLabel();
-        ddCommunity = new javax.swing.JComboBox<>();
-        lblPersonID = new javax.swing.JLabel();
-        ddCity = new javax.swing.JComboBox<>();
-        txtZipCode = new javax.swing.JTextField();
-        lblName = new javax.swing.JLabel();
-        streetNoTxt = new javax.swing.JTextField();
-        aptNoTxt = new javax.swing.JTextField();
-        lblZipCode = new javax.swing.JLabel();
-        lblCity = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        create1 = new javax.swing.JButton();
-        update1 = new javax.swing.JButton();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        tblHouses = new javax.swing.JTable();
-        clear = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPerson = new javax.swing.JTable();
@@ -99,187 +82,27 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
         btnSave = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         clearBtn = new javax.swing.JButton();
-        systemAdminLbl = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        leftPanel.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.focusedBackground"));
 
-        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
+        leftPanel.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.focusedBackground"));
 
-        housesPanel.setBackground(new java.awt.Color(255, 255, 255));
-
-        lblCommunity.setText("Community:");
-
-        ddCommunity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose a Community", "Boylston", "Mission Main", "Mission Hill" }));
-        ddCommunity.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ddCommunityActionPerformed(evt);
-            }
-        });
-
-        lblPersonID.setText("Apartment No:");
-
-        ddCity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose a City", "Boston", "Newyork", "California" }));
-        ddCity.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ddCityActionPerformed(evt);
-            }
-        });
-
-        txtZipCode.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtZipCodeActionPerformed(evt);
-            }
-        });
-
-        lblName.setText("Street No:");
-
-        streetNoTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                streetNoTxtActionPerformed(evt);
-            }
-        });
-
-        aptNoTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                aptNoTxtActionPerformed(evt);
-            }
-        });
-
-        lblZipCode.setText("ZipCode:");
-
-        lblCity.setText("City:");
-
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("HOUSES PORTAL");
-
-        create1.setText("Create");
-        create1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                create1ActionPerformed(evt);
-            }
-        });
-
-        update1.setText("Update");
-        update1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                update1ActionPerformed(evt);
-            }
-        });
-
-        tblHouses.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Apartment No", "Street No", "Zip Code", "Community", "City"
-            }
-        ));
-        tblHouses.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblHousesMouseClicked(evt);
-            }
-        });
-        jScrollPane6.setViewportView(tblHouses);
-
-        clear.setText("Clear");
-        clear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                clearActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout housesPanelLayout = new javax.swing.GroupLayout(housesPanel);
-        housesPanel.setLayout(housesPanelLayout);
-        housesPanelLayout.setHorizontalGroup(
-            housesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(housesPanelLayout.createSequentialGroup()
-                .addGroup(housesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(housesPanelLayout.createSequentialGroup()
-                        .addGap(145, 145, 145)
-                        .addGroup(housesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblZipCode)
-                            .addComponent(lblName)
-                            .addComponent(lblPersonID))
-                        .addGap(26, 26, 26)
-                        .addGroup(housesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtZipCode, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                            .addComponent(streetNoTxt)
-                            .addComponent(aptNoTxt))
-                        .addGap(107, 107, 107)
-                        .addGroup(housesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCity)
-                            .addGroup(housesPanelLayout.createSequentialGroup()
-                                .addComponent(lblCommunity)
-                                .addGap(25, 25, 25)
-                                .addGroup(housesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ddCity, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ddCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(housesPanelLayout.createSequentialGroup()
-                        .addGap(277, 277, 277)
-                        .addComponent(create1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(53, 53, 53)
-                        .addComponent(update1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(68, 68, 68)
-                        .addComponent(clear, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(housesPanelLayout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 898, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(housesPanelLayout.createSequentialGroup()
-                        .addGap(386, 386, 386)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(74, Short.MAX_VALUE))
-        );
-
-        housesPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {aptNoTxt, ddCity, ddCommunity, streetNoTxt, txtZipCode});
-
-        housesPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {lblCity, lblCommunity, lblName, lblPersonID, lblZipCode});
-
-        housesPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {clear, create1, update1});
-
-        housesPanelLayout.setVerticalGroup(
-            housesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, housesPanelLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addGroup(housesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, housesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(aptNoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblCity)
-                        .addComponent(ddCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblPersonID))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(housesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblName)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, housesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(streetNoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblCommunity)
-                        .addComponent(ddCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(housesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblZipCode)
-                    .addComponent(txtZipCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(housesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(create1)
-                    .addComponent(update1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(clear))
-                .addGap(184, 184, 184))
-        );
-
-        housesPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {lblCity, lblCommunity, lblName, lblPersonID, lblZipCode});
-
-        housesPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {clear, create1, update1});
-
-        jTabbedPane1.addTab("HOUSES", housesPanel);
+        jTabbedPane1.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.focusedBackground"));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -518,9 +341,28 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("CITY/COMMUNITY", jPanel1);
 
-        systemAdminLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        systemAdminLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        systemAdminLbl.setText("COMMUNITY ADMIN");
+        jPanel5.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.focusedBorderColor"));
+
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("HOUSES PORTAL");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(411, 411, 411)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
         leftPanel.setLayout(leftPanelLayout);
@@ -528,55 +370,56 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(leftPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1007, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, leftPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(systemAdminLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(401, 401, 401))
+                .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(leftPanelLayout.createSequentialGroup()
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1007, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         leftPanelLayout.setVerticalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(leftPanelLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(systemAdminLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(28, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(leftPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(leftPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1031, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(leftPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 706, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(leftPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-        private void addVerifiers() {
-        InputVerifier integerVerifier = new VerifyNumber();
-        txtAge.setInputVerifier(integerVerifier);
-        txtZipCode.setInputVerifier(integerVerifier);
-        
-        InputVerifier stringVerifier = new VerifyString();
-        txtName.setInputVerifier(stringVerifier);
-        txtAddress.setInputVerifier(stringVerifier);
-    }
-    
     private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
         // TODO add your handling code here:
 
@@ -587,18 +430,16 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
         ddCity3.setSelectedIndex(0);
         ddCommunity3.setSelectedIndex(0);
         ddHouseNumber2.setSelectedIndex(0);
-
     }//GEN-LAST:event_clearBtnActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
         int selectedRowIndex = tblPerson.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) tblPerson.getModel();
- 
+
         model.setValueAt(ddCity3.getSelectedItem(), selectedRowIndex, 2);
         model.setValueAt(ddCommunity3.getSelectedItem(), selectedRowIndex, 3);
         model.setValueAt(ddHouseNumber2.getSelectedItem(), selectedRowIndex, 5);
-        
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
@@ -655,12 +496,16 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameActionPerformed
 
+    private void tblPersonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPersonMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblPersonMouseEntered
+
     private void tblPersonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPersonMouseClicked
         // TODO add your handling code here:
         int selectedRowIndex = tblPerson.getSelectedRow();
 
         Person selectPerson = personDirectory.getListOfPerson().get(selectedRowIndex);
- 
+
         txtAge.setText(String.valueOf(selectPerson.getAgeOfPerson()));
         txtName.setText(selectPerson.getNameOfPerson());
         txtAddress.setText(selectPerson.getHouse().getStreetName());
@@ -670,99 +515,14 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
         ddHouseNumber2.setSelectedItem(selectPerson.getHouse().getApartmentNumber());
     }//GEN-LAST:event_tblPersonMouseClicked
 
-    private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
-        // TODO add your handling code here:
-        aptNoTxt.setText("");
-        streetNoTxt.setText("");
-        txtZipCode.setText("");
-        ddCommunity.setSelectedIndex(0);
-        ddCity.setSelectedIndex(0);
-    }//GEN-LAST:event_clearActionPerformed
-
-    private void tblHousesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHousesMouseClicked
-        // TODO add your handling code here:
-        int selectedRowIndex = tblHouses.getSelectedRow();
-
-        Person selectPerson = personDirectory.getListOfPerson().get(selectedRowIndex);
-
-        aptNoTxt.setText(String.valueOf(selectPerson.getHouse().getApartmentNumber()));
-        streetNoTxt.setText(selectPerson.getHouse().getStreetName());
-        txtZipCode.setText(String.valueOf(selectPerson.getHouse().getZipCode()));
-        ddCity.setSelectedItem(selectPerson.getHouse().getNameOfCity());
-        ddCommunity.setSelectedItem(selectPerson.getHouse().getNameOfCommunity());
-    }//GEN-LAST:event_tblHousesMouseClicked
-
-    private void update1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update1ActionPerformed
-        // TODO add your handling code here:
-        int selectedRowIndex = tblHouses.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) tblHouses.getModel();
-        model.setValueAt(aptNoTxt.getText(), selectedRowIndex, 0);
-        model.setValueAt(streetNoTxt.getText(), selectedRowIndex, 1);
-        model.setValueAt(txtZipCode.getText(), selectedRowIndex, 2);
-        model.setValueAt(ddCommunity.getSelectedItem(), selectedRowIndex, 3);   
-        
-        model.setValueAt(ddCity.getSelectedItem(), selectedRowIndex, 4);   
-       
-    }//GEN-LAST:event_update1ActionPerformed
-
-    private void create1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_create1ActionPerformed
-        // TODO add your handling code here:
-
-        //Save Patient Profile --> System Admin
-        if (streetNoTxt.getText().isEmpty() || aptNoTxt.getText().isEmpty()
-            || aptNoTxt.getText().isEmpty() || txtZipCode.getText().isEmpty() || ddCity.getSelectedIndex() == 0
-            || ddCommunity.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(null, "All fields are Mandatory");
-        } else {
-
-            Person person = personDirectory.addNewPerson();
-            House house = new House();
-            person.setIdOfPerson(getUniqueIdPerson());
-            person.setNameOfPerson(streetNoTxt.getText());
-
-            house.setNameOfCity(ddCity.getSelectedItem().toString());
-            house.setNameOfCommunity(ddCommunity.getSelectedItem().toString());
-            house.setZipCode(Integer.parseInt(txtZipCode.getText()));
-            house.setApartmentNumber(aptNoTxt.getText());
-            house.setStreetName(streetNoTxt.getText());
-            
-            person.setHouse(house);
-            JOptionPane.showMessageDialog(this, "Profile Saved");
-            
-            displayHousesTableDetails();
-        }
-
-        aptNoTxt.setText("");
-        streetNoTxt.setText("");
-        txtZipCode.setText("");
-        ddCommunity.setSelectedIndex(0);
-        ddCity.setSelectedIndex(0);
-    }//GEN-LAST:event_create1ActionPerformed
-
-    private void aptNoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aptNoTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_aptNoTxtActionPerformed
-
-    private void streetNoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_streetNoTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_streetNoTxtActionPerformed
-
-    private void txtZipCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtZipCodeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtZipCodeActionPerformed
-
-    private void ddCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ddCityActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ddCityActionPerformed
-
-    private void ddCommunityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ddCommunityActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ddCommunityActionPerformed
-
-    private void tblPersonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPersonMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tblPersonMouseEntered
-
+        private void addVerifiers() {
+        InputVerifier integerVerifier = new VerifyNumber();
+        txtAge.setInputVerifier(integerVerifier);
+        InputVerifier stringVerifier = new VerifyString();
+        txtName.setInputVerifier(stringVerifier);
+        txtAddress.setInputVerifier(stringVerifier);
+    }
+    
     private void displayPersonTableDetails(){
         DefaultTableModel tblmodel = (DefaultTableModel) tblPerson.getModel();
         tblmodel.setRowCount(0);
@@ -780,68 +540,37 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
             tblmodel.addRow(row);
         }
     }
-    
-     private void displayHousesTableDetails(){
-        DefaultTableModel tblmodel = (DefaultTableModel) tblHouses.getModel();
-        tblmodel.setRowCount(0);
-        for(Person person : personDirectory.getListOfPerson()){
-            Object[]row = new Object[10];
-        
-            row[0] = person.getHouse().getApartmentNumber();
-            row[1] = person.getHouse().getStreetName();
-            row[2] = person.getHouse().getZipCode();
-            row[3] = person.getHouse().getNameOfCommunity();
-            row[4] = person.getHouse().getNameOfCity();
-            
-            tblmodel.addRow(row);
-        }
-    }
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField aptNoTxt;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnUpdate;
-    private javax.swing.JButton clear;
     private javax.swing.JButton clearBtn;
-    private javax.swing.JButton create1;
-    private javax.swing.JComboBox<String> ddCity;
     private javax.swing.JComboBox<String> ddCity3;
-    private javax.swing.JComboBox<String> ddCommunity;
     private javax.swing.JComboBox<String> ddCommunity3;
     private javax.swing.JComboBox<String> ddHouseNumber2;
-    private javax.swing.JPanel housesPanel;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblAge;
-    private javax.swing.JLabel lblCity;
     private javax.swing.JLabel lblCity2;
-    private javax.swing.JLabel lblCommunity;
     private javax.swing.JLabel lblCommunity2;
     private javax.swing.JLabel lblHouseNumber2;
-    private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblName1;
-    private javax.swing.JLabel lblPersonID;
-    private javax.swing.JLabel lblZipCode;
     private javax.swing.JLabel lblZipCode1;
     private javax.swing.JPanel leftPanel;
-    private javax.swing.JTextField streetNoTxt;
-    private javax.swing.JLabel systemAdminLbl;
-    private javax.swing.JTable tblHouses;
     private javax.swing.JTable tblPerson;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtZipCode;
     private javax.swing.JTextField txtZipCode1;
-    private javax.swing.JButton update1;
     // End of variables declaration//GEN-END:variables
    private int getUniqueIdPerson() {
         
