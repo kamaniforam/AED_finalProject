@@ -4,21 +4,20 @@
  */
 package uiComponents.DentalPatientRole;
 
+import Business.Network;
+import Business.Organization;
+import Business.Pharmacy.Organizations.PharmacyOrganization;
+import Business.WorkQueue.MedicineWorkRequest;
+import Business.WorkQueue.WorkRequest;
+import Business.userAccountDetails.UserAccount;
 import Enterprise.Enterprise;
-import MainApplication.Network;
-
 import java.util.Date;
 import javax.swing.JOptionPane;
-
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import model.Organization.Organization;
 import model.Pharmacy.Medicine;
 import model.Pharmacy.MedicinesInventory;
-import model.Pharmacy.Organization.PharmacyOrganization;
-import model.User;
-import model.WorkQueue.MedicineWorkRequest;
-import model.WorkQueue.WorkRequest;
+
 
 /**
  *
@@ -27,7 +26,7 @@ import model.WorkQueue.WorkRequest;
 public class OrderRequestJPanel extends javax.swing.JPanel {
 
     JPanel userProcessContainer;
-    private User userAccount;
+    private UserAccount userAccount;
     private Enterprise enterprise;
     private MedicinesInventory medInv;
     private Organization org;
@@ -36,7 +35,7 @@ public class OrderRequestJPanel extends javax.swing.JPanel {
     /**
      * Creates new form PlaceRequestJPanel
      */
-    public OrderRequestJPanel(JPanel userProcessContainer, User userAccount, PharmacyOrganization organization, Enterprise enterprise, Network network) {
+    public OrderRequestJPanel(JPanel userProcessContainer, UserAccount userAccount, PharmacyOrganization organization, Enterprise enterprise, Network network) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;

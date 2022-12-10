@@ -1,4 +1,4 @@
-package model.WorkQueue;
+package Business.WorkQueue;
 
 import java.util.Date;
 

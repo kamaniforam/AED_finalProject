@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package model.WorkQueue;
+package Business.WorkQueue;
 
+import Business.userAccountDetails.UserAccount;
 import java.util.Date;
-import model.User;
 
 /**
  *
@@ -14,8 +14,8 @@ import model.User;
 public abstract class WorkRequest {
     
     private String message;
-    private User sender;
-    private User receiver;
+    private UserAccount sender;
+    private UserAccount receiver;
     private String status;
     private Date requestDate;
     private Date resolveDate;
@@ -32,19 +32,19 @@ public abstract class WorkRequest {
         this.message = message;
     }
 
-    public User getSender() {
+    public UserAccount getSender() {
         return sender;
     }
 
-    public void setSender(User sender) {
+    public void setSender(UserAccount sender) {
         this.sender = sender;
     }
 
-    public User getReceiver() {
+    public UserAccount getReceiver() {
         return receiver;
     }
 
-    public void setReceiver(User receiver) {
+    public void setReceiver(UserAccount receiver) {
         this.receiver = receiver;
     }
 
