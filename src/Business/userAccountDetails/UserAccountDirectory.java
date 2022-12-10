@@ -8,7 +8,6 @@ import Business.Employee.Employee;
 import Business.Roles.Role;
 import java.util.ArrayList;
 import java.util.HashMap;
-import javax.swing.SwingConstants;
 
 /**
  *
@@ -28,11 +27,11 @@ public class UserAccountDirectory {
 
     public boolean authenticateUser(String username, String password, String uirole) {
         for (UserAccount ua : userAccountList) {
-            System.out.println("authentication:");
-            System.out.printf("user: %s, role: %s\n",ua.toString() ,ua.getRole().toString());
+            //System.out.println("authentication:");
+            //System.out.printf("user: %s, role: %s\n",ua.toString() ,ua.getRole().toString());
       
             if (ua.getUsername().equals(username) && ua.getPassword().equals(password) && ua.getRole().equals(Role.fromString(uirole))) {
-                System.out.println("AUthList Role: " +ua.getRole());   
+                //System.out.println("AUthList Role: " +ua.getRole());   
                 return true;
             }
         }
