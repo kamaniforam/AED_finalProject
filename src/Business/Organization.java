@@ -4,11 +4,13 @@
  */
 package Business;
 
-import Business.Employee.EmployeeDirectory;
+import Bussiness.model.PHC.EmployeeDirectory;
 import Business.Roles.Role;
+
+import Bussiness.model.PHC.UserAccountDirectory;
+
 import Business.WorkQueue.WorkQueue;
-import Business.userAccountDetails.UserAccountDirectory;
-//import Business.WorkQueue.WorkQueue;
+
 import java.util.ArrayList;
 
 /**
@@ -25,8 +27,10 @@ public abstract class Organization {
     private static int counter=0;
     
     public enum Type{
+
         SystemAdmin("Sysadmin"),
         Pharmacy("Pharmacy");
+
         
         private String value;
         private Type(String value) {

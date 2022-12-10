@@ -7,7 +7,7 @@ package uiComponents.Pharmacy;
 import Business.Network;
 import Business.Organization;
 import Business.Pharmacy.Organizations.PharmacyOrganization;
-import Business.userAccountDetails.UserAccount;
+import Bussiness.model.PHC.UserAccount;
 import Enterprise.Enterprise;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;

@@ -10,7 +10,7 @@ import Business.Pharmacy.Organizations.PharmacyOrganization;
 import Business.WorkQueue.MedicineWorkRequest;
 import Business.WorkQueue.VaccineWorkRequest;
 import Business.WorkQueue.WorkRequest;
-import Business.userAccountDetails.UserAccount;
+import Bussiness.model.PHC.UserAccount;
 import Enterprise.Enterprise;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
