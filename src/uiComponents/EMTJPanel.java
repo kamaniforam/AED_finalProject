@@ -60,8 +60,6 @@ public class EMTJPanel extends javax.swing.JPanel {
         txtAge = new javax.swing.JTextField();
         medicalLbl = new javax.swing.JLabel();
         serviceCombo = new javax.swing.JComboBox<>();
-        messagebox = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         messageLbl = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblEMT = new javax.swing.JTable();
@@ -69,6 +67,7 @@ public class EMTJPanel extends javax.swing.JPanel {
         lnameTxt = new javax.swing.JTextField();
         bookBtn = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        messageBox = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -95,10 +94,6 @@ public class EMTJPanel extends javax.swing.JPanel {
         medicalLbl.setText("Medical Service:");
 
         serviceCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bandage a wound", "CPR", "First-aid", "Need an ambulance", "Others" }));
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        messagebox.setViewportView(jTextArea1);
 
         messageLbl.setText("Message:");
 
@@ -144,9 +139,6 @@ public class EMTJPanel extends javax.swing.JPanel {
                         .addGap(75, 75, 75)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(233, 233, 233)
-                        .addComponent(emtLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 733, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -174,7 +166,12 @@ public class EMTJPanel extends javax.swing.JPanel {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(messageLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                .addComponent(messagebox)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(messageBox, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(233, 233, 233)
+                        .addComponent(emtLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
@@ -187,11 +184,7 @@ public class EMTJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(8, 8, 8)
                 .addComponent(emtLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(messagebox, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtfName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -212,14 +205,17 @@ public class EMTJPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(medicalLbl)
-                            .addComponent(serviceCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(39, 39, 39)
+                            .addComponent(serviceCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(messageBox, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bookBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(172, Short.MAX_VALUE))
+                .addContainerGap(177, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {serviceCombo, txtAge, txtfName});
@@ -254,7 +250,7 @@ public class EMTJPanel extends javax.swing.JPanel {
             emt.setLname(lnameTxt.getText());
             emt.setAge(Integer.parseInt(txtAge.getText()));
             emt.setServices((String) serviceCombo.getSelectedItem());
-            emt.setMessage(messagebox.getToolTipText());
+            emt.setMessage(messageBox.getText());
             displayEMTTableDetails();
             JOptionPane.showMessageDialog(this, "Appointment Booked");
             
@@ -295,13 +291,12 @@ public class EMTJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel fnameLbl;
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lblAge;
     private javax.swing.JLabel lblName1;
     private javax.swing.JTextField lnameTxt;
     private javax.swing.JLabel medicalLbl;
+    private javax.swing.JTextField messageBox;
     private javax.swing.JLabel messageLbl;
-    private javax.swing.JScrollPane messagebox;
     private javax.swing.JComboBox<String> serviceCombo;
     private javax.swing.JTable tblEMT;
     private javax.swing.JTextField txtAge;
