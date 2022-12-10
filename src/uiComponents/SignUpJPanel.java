@@ -21,8 +21,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
      */
     private EcoSystem ecosystem;
     private javax.swing.JSplitPane jSplitPane1;
-    //private UserAccount userAccount;
-
+  
     public SignUpJPanel(javax.swing.JSplitPane jSplitPane1, EcoSystem ecosystem) {
         initComponents();
         this.jSplitPane1 = jSplitPane1;
@@ -167,9 +166,8 @@ public class SignUpJPanel extends javax.swing.JPanel {
                 }
             }
 
-            JOptionPane.showMessageDialog(this, "Customer Profile Created");
+            JOptionPane.showMessageDialog(this, "Profile Created");
 
-            //   boolean usacc = ecosystem.getUserAccountDirectory().authenticateUser(usernameTxt.getText(), passwordTxt.getText());
             System.out.println("MAIN: " + role);
 
             if (null != Role.fromString(role)) {
@@ -180,9 +178,6 @@ public class SignUpJPanel extends javax.swing.JPanel {
             } else {
                 JOptionPane.showMessageDialog(this, "INVALID CREDENTIALS");
             }
-
-//            SignupBtn.setEnabled(false);
-
         }
     }//GEN-LAST:event_SignupBtnActionPerformed
 

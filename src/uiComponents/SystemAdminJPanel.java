@@ -53,16 +53,7 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
         displayPatientTableDetails();
         displayPersonTableDetails();
         displayDoctorTableDetails();
-        displayEncounterHistory();
         addVerifiers();
-    }
-
-    public SystemAdminJPanel(JSplitPane jSplitPane1, UserAccount account, EcoSystem business, PersonDirectory personDirectory, PatientDirectory patientDirectory, EncounterHistory encounterHistory, DoctorDirectory doctorDirectory, HospitalDirectory hospitalDirectory, Role role) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public SystemAdminJPanel(Object object, Object object0, Role role, JSplitPane jSplitPane1, UserAccount account, EcoSystem business, PersonDirectory personDirectory, PatientDirectory patientDirectory, EncounterHistory encounterHistory, DoctorDirectory doctorDirectory, HospitalDirectory hospitalDirectory) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
@@ -94,9 +85,6 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
         ddCommunity1 = new javax.swing.JComboBox<>();
         hospitalDropdown1 = new javax.swing.JComboBox<>();
         clear2 = new javax.swing.JButton();
-        encounterPanel = new javax.swing.JPanel();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        tblPatientHistory = new javax.swing.JTable();
         doctorPanel = new javax.swing.JPanel();
         doctorPanel2 = new javax.swing.JPanel();
         addDocLbl1 = new javax.swing.JLabel();
@@ -160,7 +148,7 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
 
         leftPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        hospitalPanel.setBackground(new java.awt.Color(204, 204, 255));
+        hospitalPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         doctorPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -330,40 +318,6 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
         );
 
         jTabbedPane1.addTab("Hospital", hospitalPanel);
-
-        encounterPanel.setBackground(new java.awt.Color(255, 255, 255));
-
-        tblPatientHistory.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "PatientID", "BloodPressure", "Heart Rate", "Health Check", "Visit Date"
-            }
-        ));
-        jScrollPane7.setViewportView(tblPatientHistory);
-
-        javax.swing.GroupLayout encounterPanelLayout = new javax.swing.GroupLayout(encounterPanel);
-        encounterPanel.setLayout(encounterPanelLayout);
-        encounterPanelLayout.setHorizontalGroup(
-            encounterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(encounterPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 849, Short.MAX_VALUE)
-                .addGap(1, 1, 1))
-        );
-        encounterPanelLayout.setVerticalGroup(
-            encounterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(encounterPanelLayout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(391, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("Encounter", encounterPanel);
 
         doctorPanel.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -808,14 +762,13 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
         leftPanelLayout.setHorizontalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(leftPanelLayout.createSequentialGroup()
-                .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(leftPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 856, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(leftPanelLayout.createSequentialGroup()
-                        .addGap(315, 315, 315)
-                        .addComponent(systemAdminLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(315, 315, 315)
+                .addComponent(systemAdminLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, leftPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 856, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         leftPanelLayout.setVerticalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -854,49 +807,69 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addVerifiers() {
-        InputVerifier integerVerifier = new VerifyNumber();       
-        txtAge.setInputVerifier(integerVerifier);
-        txtZipCode.setInputVerifier(integerVerifier);
-        
-        InputVerifier stringVerifier = new VerifyString();
-        txtName.setInputVerifier(stringVerifier);
-        txtAddress.setInputVerifier(stringVerifier);
-    }
-    
-    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+    private void heartRateTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_heartRateTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNameActionPerformed
+    }//GEN-LAST:event_heartRateTxtActionPerformed
 
-    private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed
+    private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtAddressActionPerformed
 
-    private void txtZipCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtZipCodeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtZipCodeActionPerformed
+        txtAge.setText("");
+        txtName.setText("");
+        txtAddress.setText("");
+        txtZipCode.setText("");
+        ddHouseNumber.setSelectedIndex(0);
+        ddCommunity.setSelectedIndex(0);
+        ddCity.setSelectedIndex(0);
+    }//GEN-LAST:event_clearActionPerformed
 
-    private void ddCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ddCityActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ddCityActionPerformed
-
-    private void ddCommunityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ddCommunityActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ddCommunityActionPerformed
-
-    private void update1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update1ActionPerformed
+    private void tblPersonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPersonMouseClicked
         // TODO add your handling code here:
         int selectedRowIndex = tblPerson.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) tblPerson.getModel();
-        
-        model.setValueAt(txtName.getText(), selectedRowIndex, 0);
-        model.setValueAt(txtAge.getText(), selectedRowIndex, 1);
-        model.setValueAt(ddCity.getSelectedItem(), selectedRowIndex, 2);
-        model.setValueAt(ddCommunity.getSelectedItem(), selectedRowIndex, 3);
-        model.setValueAt(ddHouseNumber.getSelectedItem(), selectedRowIndex, 5);
-        model.setValueAt(txtAddress.getText(), selectedRowIndex, 6);
-        model.setValueAt(txtZipCode.getText(), selectedRowIndex, 7);
-    }//GEN-LAST:event_update1ActionPerformed
+
+        Person selectPerson = personDirectory.getListOfPerson().get(selectedRowIndex);
+
+        txtAge.setText(String.valueOf(selectPerson.getAgeOfPerson()));
+        txtName.setText(selectPerson.getNameOfPerson());
+        txtAddress.setText(selectPerson.getHouse().getStreetName());
+        txtZipCode.setText(String.valueOf(selectPerson.getHouse().getZipCode()));
+        ddCity.setSelectedItem(selectPerson.getHouse().getNameOfCity());
+        ddCommunity.setSelectedItem(selectPerson.getHouse().getNameOfCommunity());
+        ddHouseNumber.setSelectedItem(selectPerson.getHouse().getApartmentNumber());
+    }//GEN-LAST:event_tblPersonMouseClicked
+
+    private void btnCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = tblPerson.getSelectedRow();
+        Person selectPerson = personDirectory.getListOfPerson().get(selectedRowIndex);
+        double bloodPressure = Integer.parseInt(txtBloodPressure.getText());
+        double heartRate = Integer.parseInt(heartRateTxt.getText());
+        VitalSigns vitalSigns = new VitalSigns();
+        vitalSigns.setBloodPressure(bloodPressure);
+        vitalSigns.setHeartRate(heartRate);
+        House housing = new House();
+
+        Patient patient = new Patient(vitalSigns);
+        boolean isStable = patient.isPatientNormal(selectPerson.getAgeOfPerson());
+
+        if(isStable == false){
+            patientDirectory.addPatient(patient);
+            patient.setPatientD(String.valueOf(selectPerson.getIdOfPerson()));
+            patient.setNameOfPerson(selectPerson.getNameOfPerson());
+            patient.setAgeOfPerson(selectPerson.getAgeOfPerson());
+            patient.setHouse(selectPerson.getHouse());
+            patient.setIdOfPerson(selectPerson.getIdOfPerson());
+            patient.setVitalSigns(vitalSigns);
+            displayPatientTableDetails();
+        }
+
+        Encounter encounter = new Encounter(vitalSigns);
+        encounterHistory.addEncounter(encounter);
+        encounter.setPatientID(patient.getPatientD());
+        encounter.setDateOfVisit(LocalDateTime.now());
+        encounter.setIsStable(patient.isPatientNormal(selectPerson.getAgeOfPerson()));
+        encounter.setVitalSigns(vitalSigns);
+    }//GEN-LAST:event_btnCheckActionPerformed
 
     private void delete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete1ActionPerformed
         // TODO add your handling code here:
@@ -906,16 +879,29 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
 
         personDirectory.deletePerson(selectPerson);
         displayPersonTableDetails();
-
     }//GEN-LAST:event_delete1ActionPerformed
+
+    private void update1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update1ActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = tblPerson.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) tblPerson.getModel();
+
+        model.setValueAt(txtName.getText(), selectedRowIndex, 0);
+        model.setValueAt(txtAge.getText(), selectedRowIndex, 1);
+        model.setValueAt(ddCity.getSelectedItem(), selectedRowIndex, 2);
+        model.setValueAt(ddCommunity.getSelectedItem(), selectedRowIndex, 3);
+        model.setValueAt(ddHouseNumber.getSelectedItem(), selectedRowIndex, 5);
+        model.setValueAt(txtAddress.getText(), selectedRowIndex, 6);
+        model.setValueAt(txtZipCode.getText(), selectedRowIndex, 7);
+    }//GEN-LAST:event_update1ActionPerformed
 
     private void create1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_create1ActionPerformed
         // TODO add your handling code here:
 
         //Save Patient Profile --> System Admin
         if (txtAddress.getText().isEmpty() || txtAge.getText().isEmpty()
-                || txtZipCode.getText().isEmpty() || ddCity.getSelectedItem() == null
-                || ddCommunity.getSelectedItem() == null || ddHouseNumber.getSelectedItem() == null) {
+            || txtZipCode.getText().isEmpty() || ddCity.getSelectedItem() == null
+            || ddCommunity.getSelectedItem() == null || ddHouseNumber.getSelectedItem() == null) {
             JOptionPane.showMessageDialog(null, "All fields are Mandatory");
         } else {
 
@@ -946,150 +932,66 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
         ddHouseNumber.setSelectedIndex(0);
         ddCommunity.setSelectedIndex(0);
         ddCity.setSelectedItem(0);
-
     }//GEN-LAST:event_create1ActionPerformed
 
-    private void update2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update2ActionPerformed
+    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
         // TODO add your handling code here:
-        int selectedRowIndex = hospitalTable.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) hospitalTable.getModel();
-        //model.setValueAt(hospitalid.getText(), selectedRowIndex, 0);
-        model.setValueAt(hospitalDropdown1.getSelectedItem().toString(), selectedRowIndex, 1);
-        model.setValueAt(ddCommunity1.getSelectedItem().toString(), selectedRowIndex, 2);
-        model.setValueAt(ddCity1.getSelectedItem().toString(), selectedRowIndex, 3);
-    }//GEN-LAST:event_update2ActionPerformed
+    }//GEN-LAST:event_txtNameActionPerformed
 
-    private void delete2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete2ActionPerformed
+    private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed
         // TODO add your handling code here:
-        int selectedRowIndex = hospitalTable.getSelectedRow();
-        Hospital selectHospital = hospitalDirectory.getListOfHospital().get(selectedRowIndex);
+    }//GEN-LAST:event_txtAddressActionPerformed
 
-        hospitalDirectory.deleteDoctor(selectHospital);
-        displayHospitalTableDetails();
-    }//GEN-LAST:event_delete2ActionPerformed
-
-    private void btnCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckActionPerformed
+    private void txtZipCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtZipCodeActionPerformed
         // TODO add your handling code here:
-        int selectedRowIndex = tblPerson.getSelectedRow();
-        Person selectPerson = personDirectory.getListOfPerson().get(selectedRowIndex);
-        double bloodPressure = Integer.parseInt(txtBloodPressure.getText());
-        double heartRate = Integer.parseInt(heartRateTxt.getText());
-        VitalSigns vitalSigns = new VitalSigns();
-        vitalSigns.setBloodPressure(bloodPressure);
-        vitalSigns.setHeartRate(heartRate);
-        House housing = new House();
-       
-        Patient patient = new Patient(vitalSigns);
-        boolean isStable = patient.isPatientNormal(selectPerson.getAgeOfPerson());
-        
-        if(isStable == false){
-              patientDirectory.addPatient(patient);
-              patient.setPatientD(String.valueOf(selectPerson.getIdOfPerson()));
-              patient.setNameOfPerson(selectPerson.getNameOfPerson());
-              patient.setAgeOfPerson(selectPerson.getAgeOfPerson());
-              patient.setHouse(selectPerson.getHouse());
-              patient.setIdOfPerson(selectPerson.getIdOfPerson());
-              patient.setVitalSigns(vitalSigns);
-              displayPatientTableDetails();
-        }
-        
-        Encounter encounter = new Encounter(vitalSigns);
-        encounterHistory.addEncounter(encounter);
-        encounter.setPatientID(patient.getPatientD());
-        encounter.setDateOfVisit(LocalDateTime.now());
-        encounter.setIsStable(patient.isPatientNormal(selectPerson.getAgeOfPerson()));
-        encounter.setVitalSigns(vitalSigns);
-    }//GEN-LAST:event_btnCheckActionPerformed
+    }//GEN-LAST:event_txtZipCodeActionPerformed
 
-    private void tblPersonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPersonMouseClicked
+    private void ddCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ddCityActionPerformed
         // TODO add your handling code here:
-        int selectedRowIndex = tblPerson.getSelectedRow();
+    }//GEN-LAST:event_ddCityActionPerformed
 
-        Person selectPerson = personDirectory.getListOfPerson().get(selectedRowIndex);
-
-        txtAge.setText(String.valueOf(selectPerson.getAgeOfPerson()));
-        txtName.setText(selectPerson.getNameOfPerson());
-        txtAddress.setText(selectPerson.getHouse().getStreetName());
-        txtZipCode.setText(String.valueOf(selectPerson.getHouse().getZipCode()));
-        ddCity.setSelectedItem(selectPerson.getHouse().getNameOfCity());
-        ddCommunity.setSelectedItem(selectPerson.getHouse().getNameOfCommunity());
-        ddHouseNumber.setSelectedItem(selectPerson.getHouse().getApartmentNumber());
-    }//GEN-LAST:event_tblPersonMouseClicked
-
-    private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
+    private void ddCommunityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ddCommunityActionPerformed
         // TODO add your handling code here:
-      
-        txtAge.setText("");
-        txtName.setText("");
-        txtAddress.setText("");
-        txtZipCode.setText("");
-        ddHouseNumber.setSelectedIndex(0);
-        ddCommunity.setSelectedIndex(0);
-        ddCity.setSelectedIndex(0);
-    }//GEN-LAST:event_clearActionPerformed
+    }//GEN-LAST:event_ddCommunityActionPerformed
 
-    private void create2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_create2ActionPerformed
+    private void ddCity2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ddCity2ActionPerformed
         // TODO add your handling code here:
-        Hospital hospital = hospitalDirectory.addNewHospital();
+    }//GEN-LAST:event_ddCity2ActionPerformed
 
-        //hospital.setHospitalId(hospitalid.getText());
-        hospital.setCommunity(ddCommunity1.getSelectedItem().toString());
-        hospital.setCity(ddCity1.getSelectedItem().toString());
-        hospital.setHospitalName(hospitalDropdown1.getSelectedItem().toString());
-        
-        JOptionPane.showMessageDialog(this, "Hospital Added");
-
-        displayHospitalTableDetails();
-        
-        //hospitalid.setText("");
-        ddCommunity1.setSelectedIndex(0);
-        ddCity1.setSelectedIndex(0);
-        hospitalDropdown1.setSelectedIndex(0);
-    }//GEN-LAST:event_create2ActionPerformed
-
-    private void ddCity1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ddCity1ActionPerformed
+    private void ddCommunity2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ddCommunity2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ddCity1ActionPerformed
+    }//GEN-LAST:event_ddCommunity2ActionPerformed
 
-    private void ddCommunity1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ddCommunity1ActionPerformed
+    private void clear3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clear3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ddCommunity1ActionPerformed
 
-    private void hospitalDropdown1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hospitalDropdown1ActionPerformed
+        doctorName1.setText("");
+        ddCommunity2.setSelectedIndex(0);
+        ddCity2.setSelectedIndex(0);
+        hospitalDropdown2.setSelectedIndex(0);
+    }//GEN-LAST:event_clear3ActionPerformed
+
+    private void tblDoctor1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDoctor1MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_hospitalDropdown1ActionPerformed
 
-    private void clear2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clear2ActionPerformed
+        int selectedRowIndex = tblDoctor1.getSelectedRow();
+        Doctor selectDoctor = doctorDirectory.getListOfDoctors().get(selectedRowIndex);
+
+        doctorName1.setText(selectDoctor.getDoctorName());
+        hospitalDropdown2.setSelectedItem(selectDoctor.getHospital().getHospitalName());
+        ddCommunity2.setSelectedItem(selectDoctor.getHospital().getCommunity());
+        ddCity2.setSelectedItem(selectDoctor.getHospital().getCity());
+    }//GEN-LAST:event_tblDoctor1MouseClicked
+
+    private void updateBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtn1ActionPerformed
         // TODO add your handling code here:
-        //hospitalid.setText("");
-        ddCommunity1.setSelectedIndex(0);
-        ddCity1.setSelectedIndex(0);
-        hospitalDropdown1.setSelectedIndex(0);
-    }//GEN-LAST:event_clear2ActionPerformed
-
-    private void hospitalTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hospitalTableMouseClicked
-        // TODO add your handling code here:
-        
-        int selectedRowIndex = hospitalTable.getSelectedRow();
-        Hospital selectHospital = hospitalDirectory.getListOfHospital().get(selectedRowIndex);
-
-        //hospitalid.setText(String.valueOf(selectHospital.getHospitalId()));
-        ddCity1.setSelectedItem(selectHospital.getCity());
-        ddCommunity1.setSelectedItem(selectHospital.getCommunity());
-        hospitalDropdown1.setSelectedItem(selectHospital.getHospitalName());
-    }//GEN-LAST:event_hospitalTableMouseClicked
-
-    private void heartRateTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_heartRateTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_heartRateTxtActionPerformed
-
-    private void doctorName1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctorName1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_doctorName1ActionPerformed
-
-    private void hospitalDropdown2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hospitalDropdown2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_hospitalDropdown2ActionPerformed
+        int selectedRowIndex = tblDoctor1.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) tblDoctor1.getModel();
+        model.setValueAt(doctorName1.getText(), selectedRowIndex, 1);
+        model.setValueAt(hospitalDropdown2.getSelectedItem(), selectedRowIndex, 2);
+        model.setValueAt(ddCity2.getSelectedItem(), selectedRowIndex, 3);
+        model.setValueAt(ddCommunity2.getSelectedItem(), selectedRowIndex, 4);
+    }//GEN-LAST:event_updateBtn1ActionPerformed
 
     private void createDoctorBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createDoctorBtn1ActionPerformed
         // TODO add your handling code here:
@@ -1106,7 +1008,7 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
         } else {
             Doctor doc = doctorDirectory.addNewDoctor();
             Hospital hospital = new Hospital();
-            
+
             doc.setDoctorId(getUniqueIdDoctor());
             doc.setDoctorName(name);
             hospital.setHospitalName(hospitalname);
@@ -1123,45 +1025,94 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
         ddCommunity2.setSelectedIndex(0);
     }//GEN-LAST:event_createDoctorBtn1ActionPerformed
 
-    private void updateBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtn1ActionPerformed
+    private void hospitalDropdown2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hospitalDropdown2ActionPerformed
         // TODO add your handling code here:
-        int selectedRowIndex = tblDoctor1.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) tblDoctor1.getModel();
-        model.setValueAt(doctorName1.getText(), selectedRowIndex, 1);
-        model.setValueAt(hospitalDropdown2.getSelectedItem(), selectedRowIndex, 2);
-        model.setValueAt(ddCity2.getSelectedItem(), selectedRowIndex, 3);
-        model.setValueAt(ddCommunity2.getSelectedItem(), selectedRowIndex, 4);
-    }//GEN-LAST:event_updateBtn1ActionPerformed
+    }//GEN-LAST:event_hospitalDropdown2ActionPerformed
 
-    private void tblDoctor1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDoctor1MouseClicked
+    private void doctorName1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctorName1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_doctorName1ActionPerformed
+
+    private void clear2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clear2ActionPerformed
+        // TODO add your handling code here:
+        //hospitalid.setText("");
+        ddCommunity1.setSelectedIndex(0);
+        ddCity1.setSelectedIndex(0);
+        hospitalDropdown1.setSelectedIndex(0);
+    }//GEN-LAST:event_clear2ActionPerformed
+
+    private void hospitalDropdown1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hospitalDropdown1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hospitalDropdown1ActionPerformed
+
+    private void ddCommunity1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ddCommunity1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ddCommunity1ActionPerformed
+
+    private void ddCity1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ddCity1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ddCity1ActionPerformed
+
+    private void hospitalTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hospitalTableMouseClicked
         // TODO add your handling code here:
 
-        int selectedRowIndex = tblDoctor1.getSelectedRow();
-        Doctor selectDoctor = doctorDirectory.getListOfDoctors().get(selectedRowIndex);
+        int selectedRowIndex = hospitalTable.getSelectedRow();
+        Hospital selectHospital = hospitalDirectory.getListOfHospital().get(selectedRowIndex);
 
-        doctorName1.setText(selectDoctor.getDoctorName());
-        hospitalDropdown2.setSelectedItem(selectDoctor.getHospital().getHospitalName());
-        ddCommunity2.setSelectedItem(selectDoctor.getHospital().getCommunity());
-        ddCity2.setSelectedItem(selectDoctor.getHospital().getCity());
-    }//GEN-LAST:event_tblDoctor1MouseClicked
+        //hospitalid.setText(String.valueOf(selectHospital.getHospitalId()));
+        ddCity1.setSelectedItem(selectHospital.getCity());
+        ddCommunity1.setSelectedItem(selectHospital.getCommunity());
+        hospitalDropdown1.setSelectedItem(selectHospital.getHospitalName());
+    }//GEN-LAST:event_hospitalTableMouseClicked
 
-    private void clear3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clear3ActionPerformed
+    private void delete2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete2ActionPerformed
         // TODO add your handling code here:
-       
-        doctorName1.setText("");
-        ddCommunity2.setSelectedIndex(0);
-        ddCity2.setSelectedIndex(0);
-        hospitalDropdown2.setSelectedIndex(0);
-    }//GEN-LAST:event_clear3ActionPerformed
+        int selectedRowIndex = hospitalTable.getSelectedRow();
+        Hospital selectHospital = hospitalDirectory.getListOfHospital().get(selectedRowIndex);
 
-    private void ddCommunity2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ddCommunity2ActionPerformed
+        hospitalDirectory.deleteDoctor(selectHospital);
+        displayHospitalTableDetails();
+    }//GEN-LAST:event_delete2ActionPerformed
+
+    private void update2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ddCommunity2ActionPerformed
+        int selectedRowIndex = hospitalTable.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) hospitalTable.getModel();
+        //model.setValueAt(hospitalid.getText(), selectedRowIndex, 0);
+        model.setValueAt(hospitalDropdown1.getSelectedItem().toString(), selectedRowIndex, 1);
+        model.setValueAt(ddCommunity1.getSelectedItem().toString(), selectedRowIndex, 2);
+        model.setValueAt(ddCity1.getSelectedItem().toString(), selectedRowIndex, 3);
+    }//GEN-LAST:event_update2ActionPerformed
 
-    private void ddCity2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ddCity2ActionPerformed
+    private void create2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_create2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ddCity2ActionPerformed
+        Hospital hospital = hospitalDirectory.addNewHospital();
 
+        //hospital.setHospitalId(hospitalid.getText());
+        hospital.setCommunity(ddCommunity1.getSelectedItem().toString());
+        hospital.setCity(ddCity1.getSelectedItem().toString());
+        hospital.setHospitalName(hospitalDropdown1.getSelectedItem().toString());
+
+        JOptionPane.showMessageDialog(this, "Hospital Added");
+
+        displayHospitalTableDetails();
+
+        //hospitalid.setText("");
+        ddCommunity1.setSelectedIndex(0);
+        ddCity1.setSelectedIndex(0);
+        hospitalDropdown1.setSelectedIndex(0);
+    }//GEN-LAST:event_create2ActionPerformed
+
+    private void addVerifiers() {
+        InputVerifier integerVerifier = new VerifyNumber();       
+        txtAge.setInputVerifier(integerVerifier);
+        txtZipCode.setInputVerifier(integerVerifier);
+        
+        InputVerifier stringVerifier = new VerifyString();
+        txtName.setInputVerifier(stringVerifier);
+        txtAddress.setInputVerifier(stringVerifier);
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel HospitalnameLbl;
@@ -1189,7 +1140,6 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel doctorPanel;
     private javax.swing.JPanel doctorPanel1;
     private javax.swing.JPanel doctorPanel2;
-    private javax.swing.JPanel encounterPanel;
     private javax.swing.JLabel heartRateLbl;
     private javax.swing.JTextField heartRateTxt;
     private javax.swing.JComboBox<String> hospitalDropdown1;
@@ -1205,7 +1155,6 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
@@ -1224,7 +1173,6 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel rightPanel;
     private javax.swing.JLabel systemAdminLbl;
     private javax.swing.JTable tblDoctor1;
-    private javax.swing.JTable tblPatientHistory;
     private javax.swing.JTable tblPerson;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtAge;
@@ -1301,20 +1249,6 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
             tblmodel.addRow(row);
         }
     }
-    
-      private void displayEncounterHistory(){
-        DefaultTableModel model = (DefaultTableModel) tblPatientHistory.getModel();
-        model.setRowCount(0);
-        for(Encounter encounter: encounterHistory.getListOfEncounter()){
-            Object[]row = new Object[10];
-            row[0] = encounter.getPatientID();
-            row[1] = encounter.getVitalSigns().getBloodPressure();
-            row[2] = encounter.getVitalSigns().getHeartRate();
-            row[3] = encounter.isIsStable() ? "Healthy" : "Not Healthy";
-            row[4] = encounter.getDateOfVisit();
-            model.addRow(row);
-        }
-    }  
         
     private int getUniqueIdDoctor() {
         
