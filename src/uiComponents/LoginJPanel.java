@@ -159,15 +159,10 @@ public class LoginJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_usernameActionPerformed
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
-        // TODO add your handling code here:
-        UserAccountDirectory ud = new UserAccountDirectory();
+        // TODO add your handling code here
         String dropdownrole = dropdownRole.getSelectedItem().toString().toUpperCase();
-        System.out.println("login role: "+dropdownrole);
-        
         boolean usacc = business.getUserAccountDirectory().authenticateUser(username.getText(), password.getText(), dropdownrole);
-        
-        System.out.println("MAINxoxo: " + dropdownrole);
-
+  
         if (username.getText().isEmpty() || password.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Username and Password field's cannot be empty");
             return;
@@ -208,8 +203,6 @@ public class LoginJPanel extends javax.swing.JPanel {
         } else {
             JOptionPane.showMessageDialog(this, "INVALID CREDENTIALS");
         }
-        
-        loginBtn.setEnabled(false);
 
     }//GEN-LAST:event_loginBtnActionPerformed
 
