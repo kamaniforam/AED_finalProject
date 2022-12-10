@@ -18,6 +18,7 @@ public class DoctorAvailableSlotWR extends WorkRequest {
 
     public String getPatient() {
         return patient;
+    }
 
     public void setPatient(String patient) {
         this.patient = patient;
