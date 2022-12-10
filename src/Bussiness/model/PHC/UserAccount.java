@@ -5,6 +5,7 @@
 package Bussiness.model.PHC;
 
 import Business.Roles.Role;
+import Business.WorkQueue.WorkQueue;
 /**
  *
  * @author foram
@@ -15,10 +16,10 @@ public class UserAccount {
     private String password;
     private Employee employee;
     private Role role;
-   // private WorkQueue workQueue;
+    private WorkQueue workQueue;
 
     public UserAccount() {
-        //workQueue = new WorkQueue();
+        workQueue = new WorkQueue();
     } 
     
     public String getUsername() {
@@ -51,6 +52,14 @@ public class UserAccount {
 
     public Employee getEmployee() {
         return employee;
+    }
+    
+    public WorkQueue getWorkQueue() {
+        return workQueue;
+    }
+
+    public void setWorkQueue(WorkQueue workQueue) {
+        this.workQueue = workQueue;
     }
     
     @Override

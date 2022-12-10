@@ -6,8 +6,11 @@ package Business;
 
 import Bussiness.model.PHC.EmployeeDirectory;
 import Business.Roles.Role;
+
 import Bussiness.model.PHC.UserAccountDirectory;
-//import Business.WorkQueue.WorkQueue;
+
+import Business.WorkQueue.WorkQueue;
+
 import java.util.ArrayList;
 
 /**
@@ -17,14 +20,17 @@ import java.util.ArrayList;
 public abstract class Organization {
 
     private String name;
-    //private WorkQueue workQueue;
+    private WorkQueue workQueue;
     private EmployeeDirectory employeeDirectory;
     private UserAccountDirectory userAccountDirectory;
     private int organizationID;
     private static int counter=0;
     
     public enum Type{
-        SystemAdmin("Sysadmin");
+
+        SystemAdmin("Sysadmin"),
+        Pharmacy("Pharmacy");
+
         
         private String value;
         private Type(String value) {
@@ -67,6 +73,14 @@ public abstract class Organization {
 
     public void setName(String name) {
         this.name = name;
+    }
+    
+    public WorkQueue getWorkQueue() {
+        return workQueue;
+    }
+
+    public void setWorkQueue(WorkQueue workQueue) {
+        this.workQueue = workQueue;
     }
 
     @Override
