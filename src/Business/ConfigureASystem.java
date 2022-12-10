@@ -1,8 +1,8 @@
 package Business;
 
-import Business.Employee.Employee;
+import Bussiness.model.PHC.Employee;
 import Business.Roles.Role;
-import Business.userAccountDetails.UserAccount;
+import Bussiness.model.PHC.UserAccount;
 
 /**
  *

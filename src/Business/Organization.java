@@ -4,9 +4,9 @@
  */
 package Business;
 
-import Business.Employee.EmployeeDirectory;
+import Bussiness.model.PHC.EmployeeDirectory;
 import Business.Roles.Role;
-import Business.userAccountDetails.UserAccountDirectory;
+import Bussiness.model.PHC.UserAccountDirectory;
 //import Business.WorkQueue.WorkQueue;
 import java.util.ArrayList;
 
