@@ -6,6 +6,7 @@ package model.Organization;
 
 import java.util.ArrayList;
 import model.Organization.Organization.Type;
+import model.Pharmacy.Organization.PharmacyOrganization;
 
 /**
  *
@@ -26,11 +27,13 @@ public class OrganizationCatalog {
     
     public Organization createOrganisation(Type type){
         Organization organization = null;
-        if (type.getValue().equals(Type.Surgery.getValue()))
+        if (type.getValue().equals(Type.Pharmacy.getValue()))
         {
-            
+            organization = new PharmacyOrganization();
+            organizationList.add(organization);
         }
-       
+        
         return organization;
+    
     }
 }

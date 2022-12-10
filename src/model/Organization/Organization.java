@@ -32,8 +32,12 @@ public abstract class Organization {
     }
     
     public enum Type{
-        Surgery("Surgery Organisation"),
-        FrontDesk("Front Desk");
+        DentalCareAdmin("Dental Care Admin"),
+        FrontDesk("Front Desk"),
+        Doctor("Doctor Organisation"), 
+        Patient("Patient Organisation"),
+        Pharmacy("Pharmacy Organization"),
+        Dentist("Dentist Organization");
         
         private String value;
         
@@ -45,11 +49,13 @@ public abstract class Organization {
         }
 
     } 
-
+    
     public Organization(String name) {
         this.name = name;
         workQueue = new WorkQueue();
         organizationID = UUID.randomUUID().toString();
+        employeeCatalog = new EmployeeCatalog();
+        userCatalog = new UserCatalog();
     }
 
     public abstract ArrayList<Role> getSupportedRole();
@@ -81,6 +87,6 @@ public abstract class Organization {
 
     @Override
     public String toString() {
-        return name;
+        return "Organization name is " + name;
     }
 }
