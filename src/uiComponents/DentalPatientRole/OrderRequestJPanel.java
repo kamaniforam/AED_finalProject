@@ -170,8 +170,6 @@ public class OrderRequestJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Details entered are not valid. Kindly check again.", "Error", JOptionPane.ERROR_MESSAGE);
             
         }
-        
-        
     }//GEN-LAST:event_createRequestActionPerformed
 
     private void populateTable() {
