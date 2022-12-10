@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Business.model.encounter;
+package Bussiness.model.PHC;
 
 import java.time.LocalDateTime;
-import Business.model.vitalSigns.VitalSigns;
+import Bussiness.model.PHC.VitalSigns;
 
 /**
  *
