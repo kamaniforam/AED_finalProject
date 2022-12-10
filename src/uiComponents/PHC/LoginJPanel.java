@@ -2,19 +2,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package uiComponents;
+package uiComponents.PHC;
 
 import Business.EcoSystem;
 import Business.Roles.Role;
 import javax.swing.JOptionPane;
-import Business.model.doctor.DoctorDirectory;
-import Business.model.encounter.EncounterHistory;
-import Business.model.hospital.HospitalDirectory;
-import Business.model.patient.PatientDirectory;
-import Business.model.person.PersonDirectory;
-import Business.model.vitalSigns.VitalSigns;
-import Business.userAccountDetails.UserAccount;
-import Business.userAccountDetails.UserAccountDirectory;
+import Bussiness.model.PHC.DoctorDirectory;
+import Bussiness.model.PHC.EncounterHistory;
+import Bussiness.model.PHC.HospitalDirectory;
+import Bussiness.model.PHC.PatientDirectory;
+import Bussiness.model.PHC.PersonDirectory;
+import Bussiness.model.PHC.VitalSigns;
+import Bussiness.model.PHC.UserAccount;
+import Bussiness.model.PHC.UserAccountDirectory;
 
 /**
  *
@@ -97,7 +97,7 @@ public class LoginJPanel extends javax.swing.JPanel {
             }
         });
 
-        dropdownRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose a Role", "System administrator", "Patient", "Hospital administrator", "Community administrator", "Doctor" }));
+        dropdownRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose a Role", "System administrator", "Patient", "Hospital administrator", "Community administrator", "Doctor", "Pharmacy Admin", "Dental Admin", "PHC Admin", "Blood Bank Admin" }));
         dropdownRole.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dropdownRoleActionPerformed(evt);
@@ -176,12 +176,13 @@ public class LoginJPanel extends javax.swing.JPanel {
             if (null != Role.fromString(dropdownrole)) {
                 switch (Role.fromString(dropdownrole)) {
                     case SYSTEM_ADMINISTRATOR -> {
-                        SystemAdminJPanel systemAdminPane = new SystemAdminJPanel(jSplitPane1, account, business, personDirectory, patientDirectory, encounterHistory, doctorDirectory, hispDirectory);
-                        jSplitPane1.setRightComponent(systemAdminPane);
+                        MakeUserJPanel userPanel = new MakeUserJPanel(jSplitPane1, account, business, personDirectory, patientDirectory, encounterHistory, doctorDirectory, hispDirectory, vitalSigns);
+                        //SystemAdminJPanel systemAdminPane = new SystemAdminJPanel(jSplitPane1, account, business, personDirectory, patientDirectory, encounterHistory, doctorDirectory, hispDirectory);
+                        jSplitPane1.setRightComponent(userPanel);
                     }
                     case DOCTOR -> {
-                        DoctorJPanel doctorPane = new DoctorJPanel(encounterHistory, personDirectory, patientDirectory, hispDirectory, jSplitPane1, doctorDirectory, vitalSigns);
-                        jSplitPane1.setRightComponent(doctorPane);
+                        //DoctorJPanel doctorPane = new DoctorJPanel(encounterHistory, personDirectory, patientDirectory, hispDirectory, jSplitPane1, doctorDirectory, vitalSigns);
+                        //jSplitPane1.setRightComponent(doctorPane);
                     }
                     case PATIENT -> {
                         CreateJPanel createPane = new CreateJPanel(jSplitPane1, account, business,personDirectory, patientDirectory, encounterHistory, doctorDirectory, hispDirectory, vitalSigns);
