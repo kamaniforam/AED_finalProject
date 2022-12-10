@@ -16,14 +16,16 @@ public abstract class Enterprise extends Organization{
     private EnterpriseClassification enterpriseClassification;
     private OrganizationCatalog organizationList;
     
-    public Enterprise(String enterpriseName,EnterpriseClassification classification){
+    public Enterprise(String enterpriseName, EnterpriseClassification classification){
         super(enterpriseName);
-        this.enterpriseClassification=classification;
+        this.enterpriseClassification = classification;
         organizationList= new OrganizationCatalog();
     }
     
     public enum EnterpriseClassification{
-                Dental("Dental");
+                Dental("Dental"),
+                Pharmacy("Pharmacy");
+                
                 private String val;
                 private EnterpriseClassification(String val){
                     this.val=val;
