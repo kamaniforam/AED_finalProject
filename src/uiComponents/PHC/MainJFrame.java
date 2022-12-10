@@ -300,28 +300,28 @@ public class MainJFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "LOGIN SUCCESSFULL");
             if (null != Role.fromString(dropdownrole)) {
                 switch (Role.fromString(dropdownrole)) {
-                    case SYSTEM_ADMINISTRATOR -> {
+                    case SYSTEM_ADMINISTRATOR : {
                         MakeUserJPanel userPanel = new MakeUserJPanel(jSplitPane1, account, business, personDirectory, patientDirectory, encounterHistory, doctorDirectory, hospitalDirectory, vitalSigns);
                         //SystemAdminJPanel systemAdminPane = new SystemAdminJPanel(jSplitPane1, account, business, personDirectory, patientDirectory, encounterHistory, doctorDirectory, hispDirectory);
                         jSplitPane1.setRightComponent(userPanel);
                     }
-                    case DOCTOR -> {
+                    case DOCTOR : {
                         //DoctorJPanel doctorPane = new DoctorJPanel(encounterHistory, personDirectory, patientDirectory, hispDirectory, jSplitPane1, doctorDirectory, vitalSigns);
                         //jSplitPane1.setRightComponent(doctorPane);
                     }
-                    case PATIENT -> {
+                    case PATIENT :{
                         CreateJPanel createPane = new CreateJPanel(jSplitPane1, account, business,personDirectory, patientDirectory, encounterHistory, doctorDirectory, hospitalDirectory, vitalSigns);
                         jSplitPane1.setRightComponent(createPane);
                     }
-                    case COMMUNITY_ADMINISTRATOR -> {
+                    case COMMUNITY_ADMINISTRATOR : {
                         CommunityAdminJPanel communityAdminPane = new CommunityAdminJPanel(personDirectory, patientDirectory, encounterHistory, doctorDirectory, hospitalDirectory, jSplitPane1);
                         jSplitPane1.setRightComponent(communityAdminPane);
                     }
-                    case HOSPITAL_ADMINISTRATOR -> {
+                    case HOSPITAL_ADMINISTRATOR : {
                         HospitalAdminJPanel hospitalAdminPane = new HospitalAdminJPanel(personDirectory, patientDirectory, encounterHistory, doctorDirectory, hospitalDirectory, jSplitPane1, vitalSigns);
                         jSplitPane1.setRightComponent(hospitalAdminPane);
                     }
-                    default -> {
+                    default : {
                         JOptionPane.showMessageDialog(this, "SELECT ROLE");
                     }
                 }
