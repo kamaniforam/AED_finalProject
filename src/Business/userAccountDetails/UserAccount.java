@@ -20,7 +20,7 @@ public class UserAccount {
     private WorkQueue workQueue;
 
     public UserAccount() {
-        //workQueue = new WorkQueue();
+        workQueue = new WorkQueue();
     } 
     
     public String getUsername() {

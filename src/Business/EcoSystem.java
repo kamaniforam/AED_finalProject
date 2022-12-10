@@ -13,6 +13,7 @@ import Business.model.patient.PatientDirectory;
 import Business.model.person.PersonDirectory;
 import java.util.ArrayList;
 import Business.Roles.Role;
+import Business.WorkQueue.WorkQueue;
 
 /**
  *
@@ -26,6 +27,7 @@ public class EcoSystem extends Organization{
     private DoctorDirectory doctorDirectory;
     private EncounterHistory encounterHistory;
     private HospitalDirectory hospitalDirectory;
+    private WorkQueue workQueue;
     
     public EcoSystem(PersonDirectory personDirectory, PatientDirectory patientDirectory, EncounterHistory encounterHistory, DoctorDirectory doctorDirectory, HospitalDirectory hospitalDirectory) {
         this.personDirectory = personDirectory;
@@ -33,6 +35,15 @@ public class EcoSystem extends Organization{
         this.encounterHistory = encounterHistory;
         this.doctorDirectory = doctorDirectory;
         this.hospitalDirectory = hospitalDirectory;
+        this.workQueue = new WorkQueue();
+    }
+
+    public WorkQueue getWorkQueue() {
+        return workQueue;
+    }
+
+    public void setWorkQueue(WorkQueue workQueue) {
+        this.workQueue = workQueue;
     }
 
     public static EcoSystem getInstance(){
