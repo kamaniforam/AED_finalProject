@@ -4,19 +4,20 @@
  */
 package uiComponents.Pharmacy;
 
+import Business.Network;
+import Business.Organization;
+import Business.Pharmacy.Organizations.PharmacyOrganization;
+import Business.WorkQueue.MedicineWorkRequest;
+import Business.WorkQueue.VaccineWorkRequest;
+import Business.WorkQueue.WorkRequest;
+import Business.userAccountDetails.UserAccount;
 import Enterprise.Enterprise;
-import MainApplication.Network;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import model.Organization.Organization;
 import model.Pharmacy.MedicinesInventory;
-import model.Pharmacy.Organization.PharmacyOrganization;
 import model.Pharmacy.Vaccine;
-import model.User;
-import model.WorkQueue.MedicineWorkRequest;
-import model.WorkQueue.VaccineWorkRequest;
-import model.WorkQueue.WorkRequest;
+
 
 /**
  *
@@ -25,7 +26,7 @@ import model.WorkQueue.WorkRequest;
 public class ViewStockRequest extends javax.swing.JPanel {
 
     JPanel userProcessContainer;
-    private User userAccount;
+    private UserAccount userAccount;
     private Enterprise enterprise;
     private MedicinesInventory medInv;
     private Organization org;
@@ -34,7 +35,7 @@ public class ViewStockRequest extends javax.swing.JPanel {
     /**
      * Creates new form ViewStockRequest
      */
-    public ViewStockRequest(JPanel userProcessContainer, User userAccount, PharmacyOrganization organization, Enterprise enterprise, Network network) {
+    public ViewStockRequest(JPanel userProcessContainer, UserAccount userAccount, PharmacyOrganization organization, Enterprise enterprise, Network network) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.userAccount = userAccount;

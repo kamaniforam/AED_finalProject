@@ -4,8 +4,8 @@
  */
 package Enterprise;
 
+import Business.Roles.Role;
 import java.util.ArrayList;
-import model.Role.Role;
 
 /**
  *

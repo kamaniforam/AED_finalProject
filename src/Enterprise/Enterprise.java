@@ -4,8 +4,9 @@
  */
 package Enterprise;
 
-import model.Organization.Organization;
-import model.Organization.OrganizationCatalog;
+import Business.Organization;
+import Business.OrganizationCatalog;
+
 
 /**
  *

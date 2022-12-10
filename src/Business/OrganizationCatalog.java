@@ -2,11 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package model.Organization;
+package Business;
 
+import Business.Organization.Type;
+import Business.Pharmacy.Organizations.PharmacyOrganization;
 import java.util.ArrayList;
-import model.Organization.Organization.Type;
-import model.Pharmacy.Organization.PharmacyOrganization;
+
 
 /**
  *

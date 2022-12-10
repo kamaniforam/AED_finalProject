@@ -4,17 +4,18 @@
  */
 package uiComponents.Pharmacy;
 
+import Business.Network;
+import Business.Organization;
+import Business.Pharmacy.Organizations.PharmacyOrganization;
+import Business.userAccountDetails.UserAccount;
 import Enterprise.Enterprise;
-import MainApplication.Network;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import model.Organization.Organization;
 import model.Pharmacy.Medicine;
 import model.Pharmacy.MedicinesInventory;
 import model.Pharmacy.Vaccine;
-import model.Pharmacy.Organization.PharmacyOrganization;
-import model.User;
+
 
 /**
  *
@@ -23,7 +24,7 @@ import model.User;
 public class PharmacyAdminWorkAreaJPanel extends javax.swing.JPanel {
     
     JPanel userProcessContainer;
-    private User userAccount;
+    private UserAccount userAccount;
     private Enterprise enterprise;
     private MedicinesInventory medInv;
     private Organization org;
@@ -33,7 +34,7 @@ public class PharmacyAdminWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form PharmacyAdminWorkAreaJPanel
      */
-    public PharmacyAdminWorkAreaJPanel(JPanel userProcessContainer, User userAccount, PharmacyOrganization organization, Enterprise enterprise, Network network) {
+    public PharmacyAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount userAccount, PharmacyOrganization organization, Enterprise enterprise, Network network) {
         
         this.userProcessContainer = userProcessContainer;
         this.userAccount = userAccount;
