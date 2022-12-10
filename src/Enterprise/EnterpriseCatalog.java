@@ -30,8 +30,12 @@ public class EnterpriseCatalog {
     //Create enterprise
     public Enterprise createAndAddEnterprise(String name,Enterprise.EnterpriseClassification type){
         Enterprise enterprise=null;
-        if(type==Enterprise.EnterpriseClassification.Dental){
+        if(type == Enterprise.EnterpriseClassification.Dental){
             enterprise = new DentalEnterprise(name);
+            enterpriseList.add(enterprise);
+        }
+        else if(type == Enterprise.EnterpriseClassification.Pharmacy){
+            enterprise = new PharmacyEnterprise(name);
             enterpriseList.add(enterprise);
         }
 
