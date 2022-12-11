@@ -73,4 +73,10 @@ public class UserAccount {
         String roleStr = role != null ? role.toString() : null;
         return String.format("%s/%s/%s", username, password, roleStr);
     }
+
+    public boolean equals(UserAccount user) {
+        return this.username.equals(user.username) && 
+                this.password.equals(user.password) && 
+                this.role.equals(user.role);
+    }
 }

@@ -145,16 +145,16 @@
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="10">
-            <StringItem index="0" value="Choose a Role"/>
-            <StringItem index="1" value="System administrator"/>
-            <StringItem index="2" value="Patient"/>
-            <StringItem index="3" value="Hospital administrator"/>
-            <StringItem index="4" value="Community administrator"/>
-            <StringItem index="5" value="Doctor"/>
-            <StringItem index="6" value="Pharmacy Admin"/>
-            <StringItem index="7" value="Dental Admin"/>
-            <StringItem index="8" value="PHC Admin"/>
-            <StringItem index="9" value="Blood Bank Admin"/>
+            <StringItem index="0" value="CHOOSE A ROLE"/>
+            <StringItem index="1" value="SUPER ADMIN"/>
+            <StringItem index="2" value="SYSTEM ADMINISTRATOR"/>
+            <StringItem index="3" value="PATIENT"/>
+            <StringItem index="4" value="COMMUNITY ADMINISTRATOR"/>
+            <StringItem index="5" value="HOSPITAL ADMINISTRATOR"/>
+            <StringItem index="6" value="PHARMACY ADMIN"/>
+            <StringItem index="7" value="RECEPTIONIST"/>
+            <StringItem index="8" value="DENTAL PATIENT"/>
+            <StringItem index="9" value="DENTIST"/>
           </StringArray>
         </Property>
       </Properties>

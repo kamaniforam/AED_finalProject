@@ -6,7 +6,6 @@ package uiComponents.PHC;
 
 import Business.EcoSystem;
 import Business.Network;
-import Business.Organization;
 import Business.Pharmacy.Organizations.PharmacyOrganization;
 import Business.Roles.Role;
 import static Business.Roles.Role.DENTIST;
@@ -24,7 +23,6 @@ import Enterprise.Enterprise;
 import com.db4o.ObjectSet;
 import javax.swing.JSplitPane;
 import uiComponents.DentalHospital.Doctor.DentistWorkAreaJPanel;
-import uiComponents.DentalPatientRole.DentalPatientJPanel;
 import uiComponents.Pharmacy.PharmacyAdminWorkAreaJPanel;
 
 /**
@@ -190,8 +188,6 @@ public class LoginJPanel extends javax.swing.JPanel {
             return;
         }
         
-        System.out.println("Logging in..");
-        
         UserAccount loginUser = new UserAccount(usernameText, passwordText, role);
         ObjectSet result = DB4OUtil.getDBInstance().queryByExample(loginUser);
 
@@ -210,8 +206,8 @@ public class LoginJPanel extends javax.swing.JPanel {
                         jSplitPane1.setRightComponent(createPane);
                         break;
                     case COMMUNITY_ADMINISTRATOR:
-                        CommunityAdminJPanel communityAdminPane = new CommunityAdminJPanel(personDirectory, patientDirectory, encounterHistory, doctorDirectory, hispDirectory, jSplitPane1);
-                        jSplitPane1.setRightComponent(communityAdminPane);
+                        //CommunityAdminJPanel communityAdminPane = new CommunityAdminJPanel(personDirectory, patientDirectory, encounterHistory, doctorDirectory, hispDirectory, jSplitPane1);
+                        //jSplitPane1.setRightComponent(communityAdminPane);
                         break;
                     case HOSPITAL_ADMINISTRATOR:
                         HospitalAdminJPanel hospitalAdminPane = new HospitalAdminJPanel(personDirectory, patientDirectory, encounterHistory, doctorDirectory, hispDirectory, jSplitPane1, vitalSigns);

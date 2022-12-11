@@ -9,6 +9,7 @@ import Bussiness.model.PHC.Employee;
 import Business.Roles.Role;
 import Business.db40Utility.DB4OUtil;
 import Bussiness.model.PHC.UserAccount;
+import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 import javax.swing.JOptionPane;
 
@@ -88,7 +89,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
 
         role.setText("Role:");
 
-        dropdownRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose a Role", "System administrator", "Patient", "Hospital administrator", "Community administrator", "Doctor", "Pharmacy Admin", "Dental Admin", "PHC Admin", "Blood Bank Admin" }));
+        dropdownRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CHOOSE A ROLE", "SUPER ADMIN", "SYSTEM ADMINISTRATOR", "PATIENT", "COMMUNITY ADMINISTRATOR", "HOSPITAL ADMINISTRATOR", "PHARMACY ADMIN", "RECEPTIONIST", "DENTAL PATIENT", "DENTIST" }));
         dropdownRole.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dropdownRoleActionPerformed(evt);
@@ -186,31 +187,26 @@ public class SignUpJPanel extends javax.swing.JPanel {
         String confirmPassword = confirmPasswordTxt.getText();
         String role = dropdownRole.getSelectedItem().toString();
 
-        if (!password.equals(confirmPassword)) {
+        if(userName.isBlank() || password.isBlank()){
+            JOptionPane.showMessageDialog(this, "Username/Password cannot be blank");
+            return;
+        }else if (!password.equals(confirmPassword)) {
             JOptionPane.showMessageDialog(this, "Password doesn't match");
             return;
-        } 
-//        else {
-//            for (UserAccount account : ecosystem.getUserAccountDirectory().getUserAccountList()) {
-//                if (account.getUsername().equals(userName)) {
-//                    JOptionPane.showMessageDialog(this, "Username Already exists");
-//                    return;
-//                }
-//            }
-//
-//            JOptionPane.showMessageDialog(this, "Profile Created");
-//
-//            System.out.println("MAIN: " + role);
-//
-//            if (null != Role.fromString(role)) {
-//                ecosystem.getPersonDirectory().addNewPerson();
-//                Employee employee = ecosystem.getEmployeeDirectory().createEmployee(userName);
-//                ecosystem.getUserAccountDirectory().createUserAccount(userName, password, employee, Role.fromString(role));
-//
-//            } else {
-//                JOptionPane.showMessageDialog(this, "INVALID CREDENTIALS");
-//            }
-//        }
+        }
+
+        ObjectContainer db = DB4OUtil.getDBInstance();
+        UserAccount newUser = new UserAccount(userName, password, Role.fromString(role));
+
+        ObjectSet result = db.queryByExample(newUser);
+
+        if(!result.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "The profile already exists..");
+            return;
+        }
+
+        db.store(newUser);
+        JOptionPane.showMessageDialog(this, "Profile Created");
     }//GEN-LAST:event_SignupBtnActionPerformed
 
     private void usernameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTxtActionPerformed
