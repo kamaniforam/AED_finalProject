@@ -8,7 +8,6 @@ import Business.Bloodbank.resources.BloodRequest;
 import business.Bloodbank.directories.HospitalDirectory;
 import business.Bloodbank.resources.BBHospital;
 import business.Bloodbank.resources.BloodGroupDetails;
-import business.Bloodbank.resources.Hospital;
 import business.Bloodbank.resources.Person;
 import business.Bloodbank.resources.Role;
 import java.util.ArrayList;
