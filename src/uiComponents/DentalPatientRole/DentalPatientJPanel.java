@@ -12,6 +12,7 @@ import Business.Pharmacy.Model.MedicinesInventory;
 import Business.Pharmacy.Organizations.PharmacyOrganization;
 import Business.WorkQueue.DoctorAvailableSlotWR;
 import Business.WorkQueue.MedicineWorkRequest;
+import Business.WorkQueue.WorkQueue;
 import Business.WorkQueue.WorkRequest;
 import Bussiness.model.PHC.UserAccount;
 import Enterprise.Enterprise;
@@ -331,7 +332,8 @@ public class DentalPatientJPanel extends javax.swing.JPanel {
             med.setPatientName("User");
             med.setStatus("Pending");
 
-            ecosystem.getWorkQueue().getWorkRequestList().add(med);
+            //ecosystem.getWorkQueue().getWorkRequestList().add(med);
+            WorkQueue.getInstance().add(med);
             //pharmorg.getWorkQueue().getWorkRequestList().add(med);
 
             populateTable();
@@ -406,7 +408,7 @@ public class DentalPatientJPanel extends javax.swing.JPanel {
         DefaultTableModel dtm = (DefaultTableModel) availableSlotsJTable.getModel();
 	
         dtm.setRowCount(0);
-        for (WorkRequest wr :  ecosystem.getWorkQueue().getWorkRequestList()) {
+        for (WorkRequest wr :  WorkQueue.getInstance()) {
             Object row[] = new Object[3];
             if(wr instanceof DoctorAvailableSlotWR && "Available".equals(wr.getStatus())){
                 row[0] = ((DoctorAvailableSlotWR) wr);
@@ -423,7 +425,7 @@ public class DentalPatientJPanel extends javax.swing.JPanel {
 	
         dtm.setRowCount(0);
         // Add user check
-        for (WorkRequest wr :  ecosystem.getWorkQueue().getWorkRequestList()) {
+        for (WorkRequest wr :  WorkQueue.getInstance()) {
             Object row[] = new Object[3];
             if(wr instanceof DoctorAvailableSlotWR && "Requested".equals(wr.getStatus())){
                 row[0] = ((DoctorAvailableSlotWR) wr).getDoctor();
@@ -440,7 +442,7 @@ public class DentalPatientJPanel extends javax.swing.JPanel {
         
         model.setRowCount(0);
         
-        for (WorkRequest request : ecosystem.getWorkQueue().getWorkRequestList()){
+        for (WorkRequest request : WorkQueue.getInstance()){
             if(request instanceof MedicineWorkRequest){
                 Object[] row = new Object[4];
                 row[0] = ((MedicineWorkRequest) request);

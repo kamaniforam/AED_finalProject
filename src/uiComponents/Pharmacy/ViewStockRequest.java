@@ -13,6 +13,7 @@ import Business.Pharmacy.Model.Vaccine;
 import Business.Pharmacy.Organizations.PharmacyOrganization;
 import Business.WorkQueue.MedicineWorkRequest;
 import Business.WorkQueue.VaccineWorkRequest;
+import Business.WorkQueue.WorkQueue;
 import Business.WorkQueue.WorkRequest;
 import Bussiness.model.PHC.UserAccount;
 import Enterprise.Enterprise;
@@ -264,8 +265,8 @@ public class ViewStockRequest extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel)requestedStockTable.getModel();
         
         model.setRowCount(0);
-        if(business.getWorkQueue() != null && business.getWorkQueue().getWorkRequestList() != null ){
-            for (WorkRequest request : business. getWorkQueue().getWorkRequestList()){
+        if(WorkQueue.getInstance().size() != 0){
+            for (WorkRequest request : WorkQueue.getInstance()){
                 if(request instanceof MedicineWorkRequest){
                     Object[] row = new Object[4];
                     row[0] = ((MedicineWorkRequest) request);
@@ -281,8 +282,8 @@ public class ViewStockRequest extends javax.swing.JPanel {
         
         model1.setRowCount(0);
         
-        if(business.getWorkQueue() != null && business.getWorkQueue().getWorkRequestList() != null){
-            for (WorkRequest request : business.getWorkQueue().getWorkRequestList()){
+        if(WorkQueue.getInstance().size() != 0){
+            for (WorkRequest request : WorkQueue.getInstance()){
                 if(request instanceof VaccineWorkRequest){
                     Object[] row = new Object[4];
                     row[0] = ((VaccineWorkRequest) request);

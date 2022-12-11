@@ -13,6 +13,7 @@ import static Business.Roles.Role.DENTIST;
 import static Business.Roles.Role.HOSPITAL_ADMINISTRATOR;
 import static Business.Roles.Role.PATIENT;
 import static Business.Roles.Role.PHARMACY_ADMIN;
+import Business.WorkQueue.WorkQueue;
 import Business.WorkQueue.WorkRequest;
 import Business.db40Utility.DB4OUtil;
 import Bussiness.model.PHC.EMTDirectory;
@@ -25,6 +26,7 @@ import Bussiness.model.PHC.VitalSigns;
 import Bussiness.model.PHC.UserAccount;
 import Enterprise.Enterprise;
 import com.db4o.ObjectSet;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import uiComponents.DentalHospital.Doctor.DentistWorkAreaJPanel;
@@ -55,7 +57,8 @@ public class MainJFrame extends javax.swing.JFrame {
     PharmacyOrganization org;
     Network network;
     Enterprise enterprise;
-    WorkRequest wr;
+    //WorkRequest wr;
+   
             
     
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance(); //Richa
@@ -77,11 +80,13 @@ public class MainJFrame extends javax.swing.JFrame {
         //this.account = new UserAccount();
         this.business = dB4OUtil.retrieveSystem(); //Richa
         System.out.println("Business: "+business);
+         ArrayList<WorkRequest> wr = WorkQueue.getInstance();
+         System.out.println(wr);
+        //business.setWorkQueue(wq);
         this.org = new PharmacyOrganization();
         this.network = new Network();
         
         //this.enterprise = new Enterprise(enterprise);
-        
     }
 
     /**
@@ -375,6 +380,8 @@ public class MainJFrame extends javax.swing.JFrame {
     private void loginBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtn1ActionPerformed
         // TODO add your handling code here
         UserAccount superUser = new UserAccount("fk", "fk", Role.SYSTEM_ADMINISTRATOR);
+        
+        UserAccount superUser1 = new UserAccount("rj", "rj", Role.SUPER_ADMIN);
 
         String usernameText = username.getText();
         String passwordText = password.getText();
@@ -392,7 +399,7 @@ public class MainJFrame extends javax.swing.JFrame {
         UserAccount user = new UserAccount(usernameText, passwordText, role);
         ObjectSet result = DB4OUtil.getDBInstance().queryByExample(user);
 
-        if (user.equals(superUser) || !result.isEmpty()) {
+        if (user.equals(superUser1) || !result.isEmpty()) {
             JOptionPane.showMessageDialog(this, "LOGIN SUCCESSFULL");
 
             switch (role) {
@@ -492,4 +499,5 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField username;
     private javax.swing.JLabel usernameLbl;
     // End of variables declaration//GEN-END:variables
+
 }

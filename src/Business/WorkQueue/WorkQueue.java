@@ -12,10 +12,17 @@ import java.util.ArrayList;
  */
 public class WorkQueue {
     
-    private ArrayList<WorkRequest> workRequestList;
+    private static ArrayList<WorkRequest> workRequestList;
 
     public WorkQueue() {
         workRequestList = new ArrayList();
+    }
+    
+    public static ArrayList<WorkRequest> getInstance(){
+        if(workRequestList==null){
+            workRequestList=new ArrayList();
+        }
+        return workRequestList;
     }
 
     public ArrayList<WorkRequest> getWorkRequestList() {

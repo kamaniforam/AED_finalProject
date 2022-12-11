@@ -6,10 +6,10 @@ package uiComponents.DentalHospital.Doctor;
 
 import Business.EcoSystem;
 import Business.WorkQueue.DoctorAvailableSlotWR;
+import Business.WorkQueue.WorkQueue;
 import Business.WorkQueue.WorkRequest;
 import Utils.Config;
 import Utils.EmailUtility;
-import static java.lang.ProcessBuilder.Redirect.to;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -225,7 +225,7 @@ public class DentistWorkAreaJPanel extends javax.swing.JPanel {
         DefaultTableModel dtm = (DefaultTableModel) pendingAppointmentsTable.getModel();
 	
         dtm.setRowCount(0);
-        for (WorkRequest wr :  ecosystem.getWorkQueue().getWorkRequestList()) {
+        for (WorkRequest wr :  WorkQueue.getInstance()) {
             Object row[] = new Object[3];
             if(wr instanceof DoctorAvailableSlotWR && 
                     ("Pending".equals(wr.getStatus()) || "Requested".equals(wr.getStatus()))){
@@ -242,8 +242,8 @@ public class DentistWorkAreaJPanel extends javax.swing.JPanel {
         DefaultTableModel dtm = (DefaultTableModel) completedAppointmensTable.getModel();
 	
         dtm.setRowCount(0);
-        System.out.println("HIII " + ecosystem.getWorkQueue().getWorkRequestList().size());
-        for (WorkRequest wr :  ecosystem.getWorkQueue().getWorkRequestList()) {
+        //System.out.println("HIII " + ecosystem.getWorkQueue().getWorkRequestList().size());
+        for (WorkRequest wr :  WorkQueue.getInstance()) {
             Object row[] = new Object[3];
             System.out.println(wr.getStatus());
             if(wr instanceof DoctorAvailableSlotWR && 

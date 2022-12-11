@@ -6,6 +6,7 @@ package uiComponents.DentalHospital.FrontDesk;
 
 import Business.EcoSystem;
 import Business.WorkQueue.DoctorAvailableSlotWR;
+import Business.WorkQueue.WorkQueue;
 import Business.WorkQueue.WorkRequest;
 import Business.db40Utility.DB4OUtil;
 import com.db4o.ObjectSet;
@@ -202,20 +203,23 @@ public class FrontDeskWorkAreaJPanel extends javax.swing.JPanel {
         slot.setDoctor((String) jComboBox1.getSelectedItem());
         slot.setTimings(LocalDateTime.of(y, m,d, h, mins, 0));
         slot.setStatus("Available");
-        ecosystem.getWorkQueue().getWorkRequestList().add(slot);
         
+        //ObjectSet<WorkQueue> workQueue = DB4OUtil.getDBInstance().queryByExample(WorkQueue.class);
+        System.out.println(slot.getTimings());
+            WorkQueue.getInstance().add(slot);
+
         populateSlotTable();
     }//GEN-LAST:event_addAvailableSlotsActionPerformed
 
     private void populateSlotTable() {
         
         DefaultTableModel dtm = (DefaultTableModel) DoctorSlotJTable.getModel();
-	System.out.println(ecosystem);
+	//System.out.println(ecosystem);
         dtm.setRowCount(0);
-        ObjectSet<WorkRequest> workQueue = DB4OUtil.getDBInstance().queryByExample(WorkRequest.class);
+        //ObjectSet<WorkRequest> workQueue = DB4OUtil.getDBInstance().queryByExample(WorkRequest.class);
         
-        while(workQueue.hasNext()) {
-            WorkRequest wr = workQueue.next();
+        for(WorkRequest wr :  WorkQueue.getInstance()) {
+            WorkQueue.getInstance().size();
             Object row[] = new Object[3];
             row[0] = ((DoctorAvailableSlotWR) wr).getDoctor();
             row[1] = ((DoctorAvailableSlotWR) wr).getTimings();
