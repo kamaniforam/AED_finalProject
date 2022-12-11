@@ -6,6 +6,8 @@ package uiComponents.DentalPatientRole;
 
 import Business.Network;
 import Business.Organization;
+import Business.Pharmacy.Model.Medicine;
+import Business.Pharmacy.Model.MedicinesInventory;
 import Business.Pharmacy.Organizations.PharmacyOrganization;
 import Business.WorkQueue.MedicineWorkRequest;
 import Business.WorkQueue.WorkRequest;
@@ -15,8 +17,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import model.Pharmacy.Medicine;
-import model.Pharmacy.MedicinesInventory;
+
 
 
 /**
@@ -169,8 +170,6 @@ public class OrderRequestJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Details entered are not valid. Kindly check again.", "Error", JOptionPane.ERROR_MESSAGE);
             
         }
-        
-        
     }//GEN-LAST:event_createRequestActionPerformed
 
     private void populateTable() {

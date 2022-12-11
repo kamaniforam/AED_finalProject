@@ -5,10 +5,11 @@
 package Business.Pharmacy.Organizations;
 
 import Business.Organization;
+import Business.Pharmacy.Model.Medicine;
+import Business.Pharmacy.Model.Vaccine;
 import Business.Roles.Role;
 import java.util.ArrayList;
-import model.Pharmacy.Medicine;
-import model.Pharmacy.Vaccine;
+
 
 
 /**
