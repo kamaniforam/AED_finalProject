@@ -14,9 +14,17 @@ public class Person {
     private String nameOfPerson;
     private int ageOfPerson;
     private int idOfPerson;
+    private String BloodGroup;
     private ImageIcon photo;
     House house;
-  
+
+    public String getBloodGroup() {
+        return BloodGroup;
+    }
+
+    public void setBloodGroup(String BloodGroup) {
+        this.BloodGroup = BloodGroup;
+    }
 
     public String getNameOfPerson() {
         return nameOfPerson;

@@ -25,19 +25,14 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
               <Component id="jDesktopPane2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="179" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jDesktopPane2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="124" max="32767" attributes="0"/>
-          </Group>
+          <Component id="jDesktopPane2" alignment="0" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -48,59 +43,63 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="241" max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" pref="268" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="btnSave3" linkSize="3" min="-2" pref="116" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                              <Component id="btnSave" linkSize="3" min="-2" pref="111" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane1" alignment="0" min="-2" pref="830" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="btnUpdate" linkSize="1" min="-2" pref="94" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="btnDelete" linkSize="1" min="-2" pref="94" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="btnSearch" linkSize="1" min="-2" pref="90" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="btnSave2" linkSize="1" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="btnSave1" linkSize="1" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="jDesktopPane1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="646" max="-2" attributes="0"/>
+                                  <Component id="btnSave3" linkSize="3" min="-2" pref="116" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                  <Component id="btnSave" linkSize="3" min="-2" pref="111" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="292" max="-2" attributes="0"/>
+                                  <Component id="jLabel1" min="-2" pref="268" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                      <Component id="jDesktopPane1" max="32767" attributes="0"/>
                                   </Group>
+                                  <Component id="jScrollPane1" min="-2" pref="901" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                          <Component id="btnUpdate" linkSize="1" min="-2" pref="94" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="btnDelete" linkSize="1" min="-2" pref="94" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="btnSearch" linkSize="1" min="-2" pref="90" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="btnSave2" linkSize="1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="btnSave1" linkSize="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace pref="522" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" pref="54" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnSave3" linkSize="2" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                       <Component id="btnSave" linkSize="2" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="97" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jDesktopPane1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnUpdate" linkSize="2" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                       <Component id="btnDelete" linkSize="2" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
@@ -108,7 +107,7 @@
                       <Component id="btnSave2" linkSize="2" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                       <Component id="btnSave1" linkSize="2" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace pref="276" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -235,19 +234,25 @@
             <Component class="javax.swing.JTable" name="tblPerson">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="8" rowCount="4">
+                  <Table columnCount="9" rowCount="4">
                     <Column editable="true" title="Name" type="java.lang.Object"/>
                     <Column editable="true" title="Age" type="java.lang.Object"/>
                     <Column editable="true" title="City" type="java.lang.Object"/>
                     <Column editable="true" title="Community" type="java.lang.Object"/>
                     <Column editable="true" title="ID" type="java.lang.Object"/>
-                    <Column editable="true" title="Apartment Number" type="java.lang.Object"/>
+                    <Column editable="true" title="Appt No" type="java.lang.Object"/>
                     <Column editable="true" title="Address" type="java.lang.Object"/>
                     <Column editable="true" title="Zip Code" type="java.lang.Object"/>
+                    <Column editable="true" title="BloodGroup" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>
@@ -328,70 +333,63 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblPersonID" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblZipCode" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblAddress" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblName" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="txtPersonID" min="-2" pref="146" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                              <Component id="lblAge" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblZipCode" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblAddress" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblName" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblPersonID" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="txtAddress" min="-2" pref="146" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="txtZipCode" min="-2" pref="146" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="txtAddress" min="-2" pref="146" max="-2" attributes="0"/>
+                                      <Component id="txtZipCode" alignment="1" min="-2" pref="146" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="txtName" min="-2" pref="146" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="txtName" min="-2" pref="146" max="-2" attributes="0"/>
+                                  <Component id="txtPersonID" min="-2" pref="146" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblAge" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblCity" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblHouseNumber" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblCommunity" min="-2" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="ddCommunity" max="32767" attributes="0"/>
+                                  <Component id="ddHouseNumber" min="-2" pref="160" max="-2" attributes="0"/>
+                                  <Component id="txtAge" max="32767" attributes="0"/>
+                                  <Component id="ddCity" alignment="1" min="-2" pref="160" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="bloodgroup" min="-2" pref="138" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="ddCommunity" max="32767" attributes="0"/>
-                          <Component id="ddHouseNumber" min="-2" pref="160" max="-2" attributes="0"/>
-                          <Component id="txtAge" max="32767" attributes="0"/>
-                          <Component id="ddCity" alignment="1" min="-2" pref="160" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="75" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="photo" min="-2" pref="158" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtAge" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="lblPersonID" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtPersonID" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="lblAge" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
+                                  <Component id="txtAge" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -414,10 +412,15 @@
                                   <Component id="lblHouseNumber" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="ddHouseNumber" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="bloodgroup" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <Component id="photo" min="-2" pref="158" max="-2" attributes="0"/>
+                          <Component id="photo" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace pref="10" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -551,6 +554,13 @@
             <Component class="javax.swing.JLabel" name="lblHouseNumber">
               <Properties>
                 <Property name="text" type="java.lang.String" value="House Number:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="bloodgroup">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="BloodGroup:"/>
               </Properties>
             </Component>
           </SubComponents>

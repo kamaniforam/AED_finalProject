@@ -64,7 +64,7 @@ public class MainJFrame extends javax.swing.JFrame {
     public MainJFrame() {
         initComponents();
    
-        setSize(1680, 1050);
+        setSize(2000, 2000);
         //int MAXIMIZED_BOTH1 = MainJFrame.MAXIMIZED_BOTH;
         JFrame.setDefaultLookAndFeelDecorated(true);
         this.personDirectory = new PersonDirectory();
@@ -138,12 +138,12 @@ public class MainJFrame extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(loginBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton3, loginBtn2});
@@ -151,11 +151,11 @@ public class MainJFrame extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(170, 170, 170)
+                .addGap(201, 201, 201)
                 .addComponent(loginBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(954, Short.MAX_VALUE))
+                .addContainerGap(937, Short.MAX_VALUE))
         );
 
         jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton3, loginBtn2});
@@ -250,13 +250,14 @@ public class MainJFrame extends javax.swing.JFrame {
                             .addComponent(role, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(passwordLbl, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(43, 43, 43)
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(loginBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(dropdownRole, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(password)
-                                .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(314, Short.MAX_VALUE))
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(dropdownRole, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(password)
+                            .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(loginBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(340, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,9 +276,9 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(role, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dropdownRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
+                .addGap(32, 32, 32)
                 .addComponent(loginBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(796, Short.MAX_VALUE))
+                .addContainerGap(988, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -290,10 +291,7 @@ public class MainJFrame extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(84, Short.MAX_VALUE))
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         javax.swing.GroupLayout containerLayout = new javax.swing.GroupLayout(container);
@@ -306,8 +304,8 @@ public class MainJFrame extends javax.swing.JFrame {
         );
         containerLayout.setVerticalGroup(
             containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(containerLayout.createSequentialGroup()
-                .addGap(88, 88, 88)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -331,14 +329,6 @@ public class MainJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void containerComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_containerComponentAdded
-        // TODO add your handling code here:
-    }//GEN-LAST:event_containerComponentAdded
-
-    private void containerAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_containerAncestorAdded
-        // TODO add your handling code here:
-    }//GEN-LAST:event_containerAncestorAdded
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         username.setText("");
@@ -353,24 +343,24 @@ public class MainJFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_usernameActionPerformed
-
-    private void dropdownRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dropdownRoleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dropdownRoleActionPerformed
-
-    private void jPanel1formComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jPanel1formComponentAdded
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel1formComponentAdded
-
     private void loginBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtn2ActionPerformed
         // TODO add your handling code here:
         loginJPanel login = new loginJPanel(jSplitPane1, account, business, personDirectory, patientDirectory, encounterHistory,
         doctorDirectory, hospitalDirectory, vitalSigns, org, network, enterprise);
         jSplitPane1.setRightComponent(login);
     }//GEN-LAST:event_loginBtn2ActionPerformed
+
+    private void containerAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_containerAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_containerAncestorAdded
+
+    private void containerComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_containerComponentAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_containerComponentAdded
+
+    private void jPanel1formComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jPanel1formComponentAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel1formComponentAdded
 
     private void loginBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtn1ActionPerformed
         // TODO add your handling code here
@@ -436,6 +426,14 @@ public class MainJFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "INVALID CREDENTIALS");
         }
     }//GEN-LAST:event_loginBtn1ActionPerformed
+
+    private void dropdownRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dropdownRoleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dropdownRoleActionPerformed
+
+    private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usernameActionPerformed
 
     /**
      * @param args the command line arguments

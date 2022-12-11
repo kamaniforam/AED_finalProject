@@ -78,24 +78,24 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="loginBtn2" linkSize="4" min="-2" pref="126" max="-2" attributes="0"/>
                               <Component id="jButton3" linkSize="4" min="-2" pref="118" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="170" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="201" max="-2" attributes="0"/>
                           <Component id="loginBtn2" linkSize="5" min="-2" pref="47" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="jButton3" linkSize="5" min="-2" pref="48" max="-2" attributes="0"/>
-                          <EmptySpace pref="954" max="32767" attributes="0"/>
+                          <EmptySpace pref="937" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -160,8 +160,8 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel1" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -189,11 +189,7 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jDesktopPane1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="84" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="jDesktopPane1" alignment="1" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
@@ -214,17 +210,18 @@
                                           <Component id="passwordLbl" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="loginBtn1" min="-2" pref="104" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="dropdownRole" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="password" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="username" alignment="0" min="-2" pref="217" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="dropdownRole" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="password" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="username" alignment="0" min="-2" pref="217" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                              <Component id="loginBtn1" min="-2" pref="104" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="314" max="32767" attributes="0"/>
+                              <EmptySpace pref="340" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -248,9 +245,9 @@
                                   <Component id="role" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                   <Component id="dropdownRole" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                               <Component id="loginBtn1" min="-2" pref="47" max="-2" attributes="0"/>
-                              <EmptySpace pref="796" max="32767" attributes="0"/>
+                              <EmptySpace pref="988" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
