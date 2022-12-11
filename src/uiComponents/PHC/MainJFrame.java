@@ -13,7 +13,7 @@ import static Business.Roles.Role.DENTIST;
 import static Business.Roles.Role.HOSPITAL_ADMINISTRATOR;
 import static Business.Roles.Role.PATIENT;
 import static Business.Roles.Role.PHARMACY_ADMIN;
-import Business.WorkQueue.WorkQueue;
+import Business.WorkQueue.WorkRequest;
 import Business.db40Utility.DB4OUtil;
 import Bussiness.model.PHC.EMTDirectory;
 import Bussiness.model.PHC.DoctorDirectory;
@@ -27,10 +27,6 @@ import Enterprise.Enterprise;
 import com.db4o.ObjectSet;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import uiComponents.BloodRequestManagement.CommunityAdminPanel;
-import uiComponents.BloodRequestManagement.EnterpriseAdminPanel;
-
 import uiComponents.DentalHospital.Doctor.DentistWorkAreaJPanel;
 import uiComponents.DentalHospital.FrontDesk.FrontDeskWorkAreaJPanel;
 import uiComponents.DentalPatientRole.DentalPatientJPanel;
@@ -54,12 +50,16 @@ public class MainJFrame extends javax.swing.JFrame {
     UserAccount account;
     EcoSystem business;  
     VitalSigns vitalSigns;
-    private DB4OUtil dB4OUtil = DB4OUtil.getInstance(); //Richa
+    
     EMTDirectory eMTDirectory;
     PharmacyOrganization org;
     Network network;
     Enterprise enterprise;
-    WorkQueue wq;
+    WorkRequest wr;
+            
+    
+    private DB4OUtil dB4OUtil = DB4OUtil.getInstance(); //Richa
+       
     
     public MainJFrame() {
         initComponents();
@@ -180,10 +180,10 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
         container.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 containerAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
@@ -296,20 +296,6 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addContainerGap(84, Short.MAX_VALUE))
         );
 
-        jButton1.setText("Bloodbank");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("jButton2");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout containerLayout = new javax.swing.GroupLayout(container);
         container.setLayout(containerLayout);
         containerLayout.setHorizontalGroup(
@@ -371,54 +357,6 @@ public class MainJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_usernameActionPerformed
 
-    private void loginBtn1ActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        // TODO add your handling code here
-        String dropdownrole = dropdownRole.getSelectedItem().toString().toUpperCase();
-        boolean usacc = business.getUserAccountDirectory().authenticateUser(username.getText(), password.getText(), dropdownrole);
-
-        if (username.getText().isEmpty() || password.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Username and Password field's cannot be empty");
-            return;
-        } else if (username.getText() == null || password.getText() == null) {
-            JOptionPane.showMessageDialog(null, "Invalid UserName");
-            return;
-        }
-        if (usacc) {
-
-            JOptionPane.showMessageDialog(this, "LOGIN SUCCESSFULL");
-            if (null != Role.fromString(dropdownrole)) {
-                switch (Role.fromString(dropdownrole)) {
-                    case SYSTEM_ADMINISTRATOR : {
-                        MakeUserJPanel userPanel = new MakeUserJPanel(jSplitPane1, account, business, personDirectory, patientDirectory, encounterHistory, doctorDirectory, hospitalDirectory, vitalSigns);
-                        //SystemAdminJPanel systemAdminPane = new SystemAdminJPanel(jSplitPane1, account, business, personDirectory, patientDirectory, encounterHistory, doctorDirectory, hispDirectory);
-                        jSplitPane1.setRightComponent(userPanel);
-                    }
-                    case DOCTOR : {
-                        //DoctorJPanel doctorPane = new DoctorJPanel(encounterHistory, personDirectory, patientDirectory, hispDirectory, jSplitPane1, doctorDirectory, vitalSigns);
-                        //jSplitPane1.setRightComponent(doctorPane);
-                    }
-                    case PATIENT :{
-                        CreateJPanel createPane = new CreateJPanel(jSplitPane1, account, business,personDirectory, patientDirectory, encounterHistory, doctorDirectory, hospitalDirectory, vitalSigns);
-                        jSplitPane1.setRightComponent(createPane);
-                    }
-                    case COMMUNITY_ADMINISTRATOR : {
-                        CommunityAdminJPanel communityAdminPane = new CommunityAdminJPanel(personDirectory, patientDirectory, encounterHistory, doctorDirectory, hospitalDirectory, jSplitPane1);
-                        jSplitPane1.setRightComponent(communityAdminPane);
-                    }
-                    case HOSPITAL_ADMINISTRATOR : {
-                        HospitalAdminJPanel hospitalAdminPane = new HospitalAdminJPanel(personDirectory, patientDirectory, encounterHistory, doctorDirectory, hospitalDirectory, jSplitPane1, vitalSigns);
-                        jSplitPane1.setRightComponent(hospitalAdminPane);
-                    }
-                    default : {
-                        JOptionPane.showMessageDialog(this, "SELECT ROLE");
-                    }
-                }
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, "INVALID CREDENTIALS");
-        }
-    }                                         
-
     private void dropdownRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dropdownRoleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_dropdownRoleActionPerformed
@@ -426,19 +364,6 @@ public class MainJFrame extends javax.swing.JFrame {
     private void jPanel1formComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jPanel1formComponentAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_jPanel1formComponentAdded
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        CommunityAdminPanel cp = new CommunityAdminPanel();
-        jSplitPane1.setRightComponent(cp);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-         EnterpriseAdminPanel ep = new EnterpriseAdminPanel();
-        jSplitPane1.setRightComponent(ep);
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void loginBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtn2ActionPerformed
         // TODO add your handling code here:
@@ -449,6 +374,67 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void loginBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtn1ActionPerformed
         // TODO add your handling code here
+        UserAccount superUser = new UserAccount("fk", "fk", Role.SYSTEM_ADMINISTRATOR);
+
+        String usernameText = username.getText();
+        String passwordText = password.getText();
+        String dropdownrole = dropdownRole.getSelectedItem().toString();
+
+        if (usernameText.isEmpty() || passwordText.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Username and Password field's cannot be empty");
+            return;
+        }else if(dropdownrole == null || Role.fromString(dropdownrole) == null) {
+            JOptionPane.showMessageDialog(null, "Please select a role");
+            return;
+        }
+
+        Role role = Role.fromString(dropdownrole);
+        UserAccount user = new UserAccount(usernameText, passwordText, role);
+        ObjectSet result = DB4OUtil.getDBInstance().queryByExample(user);
+
+        if (user.equals(superUser) || !result.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "LOGIN SUCCESSFULL");
+
+            switch (role) {
+                case SYSTEM_ADMINISTRATOR:
+                SystemAdminJPanel userPanel = new SystemAdminJPanel(jSplitPane1, account, business, personDirectory, patientDirectory, encounterHistory, doctorDirectory, hospitalDirectory);
+                jSplitPane1.setRightComponent(userPanel);
+                break;
+                case PATIENT:
+                CreateJPanel createPane = new CreateJPanel(jSplitPane1, account, business,personDirectory, patientDirectory, encounterHistory, doctorDirectory, hospitalDirectory, vitalSigns);
+                jSplitPane1.setRightComponent(createPane);
+                break;
+                case BLOODBANK_COMMUNITY_ADMINISTRATOR:
+                //CommunityAdminJPanel communityAdminPane = new CommunityAdminJPanel(personDirectory, patientDirectory, encounterHistory, doctorDirectory, hospitalDirectory, jSplitPane1);
+                //jSplitPane1.setRightComponent(communityAdminPane);
+                break;
+                case HOSPITAL_ADMINISTRATOR:
+                HospitalAdminJPanel hospitalAdminPane = new HospitalAdminJPanel(personDirectory, patientDirectory, encounterHistory, doctorDirectory, hospitalDirectory, jSplitPane1, vitalSigns);
+                jSplitPane1.setRightComponent(hospitalAdminPane);
+                break;
+                case PHARMACY_ADMIN:
+                PharmacyAdminWorkAreaJPanel pharmacy = new PharmacyAdminWorkAreaJPanel(jSplitPane1, account, org, enterprise, network);
+                jSplitPane1.setRightComponent(pharmacy);
+                break;
+                case DENTIST:
+                DentistWorkAreaJPanel dentist = new DentistWorkAreaJPanel(business);
+                jSplitPane1.setRightComponent(dentist);
+                break;
+                case DENTAL_PATIENT:
+                DentalPatientJPanel dental = new DentalPatientJPanel(business, jSplitPane1, account, org, enterprise, network);
+                jSplitPane1.setRightComponent(dental);
+                break;
+                case RECEPTIONIST:
+                FrontDeskWorkAreaJPanel desk = new FrontDeskWorkAreaJPanel();
+                jSplitPane1.setRightComponent(desk);
+                case SUPER_ADMIN:
+                AddUserPanel makeUser = new AddUserPanel();
+                jSplitPane1.setRightComponent(makeUser);
+                break;
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "INVALID CREDENTIALS");
+        }
     }//GEN-LAST:event_loginBtn1ActionPerformed
 
     /**
@@ -491,8 +477,6 @@ public class MainJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel container;
     private javax.swing.JComboBox<String> dropdownRole;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
