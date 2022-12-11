@@ -15,6 +15,15 @@ public class DoctorAvailableSlotWR extends WorkRequest {
     private String doctor;
     private LocalDateTime timings;
     private String patient;
+    private String email;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getPatient() {
         return patient;
