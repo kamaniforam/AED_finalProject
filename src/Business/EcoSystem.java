@@ -115,7 +115,7 @@ public class EcoSystem extends Organization{
        encounterHistory = new EncounterHistory();
        doctorDirectory = new DoctorDirectory();
        hospitalDirectory = new HospitalDirectory();
-       
+       workQueue = new WorkQueue();
     }
 
     public boolean checkIfUserIsUnique(String userName){ 
