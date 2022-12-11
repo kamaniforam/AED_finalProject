@@ -13,7 +13,7 @@ public enum Role {
     PATIENT("PATIENT"),
     DOCTOR("DOCTOR"),
     COMMUNITY_ADMINISTRATOR("COMMUNITY_ADMINISTRATOR"),
-    PHARMACY("PHARMACY"),
+    PHARMACY_ADMIN("PHARMACY_ADMIN"),
     HOSPITAL_ADMINISTRATOR("HOSPITAL_ADMINISTRATOR");
 
     private final String value;
@@ -26,7 +26,11 @@ public enum Role {
     }
 
     public static Role fromString(String str) {
-        return Role.valueOf(str.replaceAll(" ", "_").toUpperCase());
+        try {
+            return Role.valueOf(str.replaceAll(" ", "_").toUpperCase());
+        } catch(Exception e) {
+            return null;
+        }
     }
 
     @Override
