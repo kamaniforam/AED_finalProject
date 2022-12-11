@@ -541,7 +541,7 @@ public class MakeUserJPanel extends javax.swing.JPanel {
         String confirmPassword = confirmPasswordTxt.getText();
         String role = dropdownRole.getSelectedItem().toString();
 
-        if(username.isBlank() || password.isBlank()){
+        if(userName.isBlank() || password.isBlank()){
             JOptionPane.showMessageDialog(this, "Username/Password cannot be blank");
             return;
         }else if (!password.equals(confirmPassword)) {
