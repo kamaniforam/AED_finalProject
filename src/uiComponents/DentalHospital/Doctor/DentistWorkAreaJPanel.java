@@ -7,6 +7,9 @@ package uiComponents.DentalHospital.Doctor;
 import Business.EcoSystem;
 import Business.WorkQueue.DoctorAvailableSlotWR;
 import Business.WorkQueue.WorkRequest;
+import Utils.Config;
+import Utils.EmailUtility;
+import static java.lang.ProcessBuilder.Redirect.to;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -180,6 +183,9 @@ public class DentistWorkAreaJPanel extends javax.swing.JPanel {
         if (pendingAppointmentsTable.getValueAt(selectedRow, 2) == "Requested") {
            DoctorAvailableSlotWR req = (DoctorAvailableSlotWR) pendingAppointmentsTable.getValueAt(selectedRow, 0);
            req.setStatus("Rejected");
+           String subject = "Appointment Status";
+           String body = "Hey " + ",\n Your appointment is canceled due to some reasons" ;
+           EmailUtility.sendEmail(subject, Config.emailId, Config.password, body, new String[]{req.getEmail()});
         }
         
         populateCompletedAppointmentsTable();
@@ -202,6 +208,11 @@ public class DentistWorkAreaJPanel extends javax.swing.JPanel {
         if (pendingAppointmentsTable.getValueAt(selectedRow, 2) == "Requested") {
            DoctorAvailableSlotWR req = (DoctorAvailableSlotWR) pendingAppointmentsTable.getValueAt(selectedRow, 0);
            req.setStatus("Completed");
+           
+           String subject = "Appointment Status";
+           String body = "Hey " + ",\n Your appointment is completed" ;
+           EmailUtility.sendEmail(subject, Config.emailId, Config.password, body, new String[]{req.getEmail()});
+        
         }
         
         populateCompletedAppointmentsTable();
