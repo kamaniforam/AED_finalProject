@@ -1,18 +1,18 @@
-package org.business.medical.directories;
+package business.Bloodbank.directories;
 
+import business.Bloodbank.resources.BBHospital;
 import java.util.ArrayList;
 
-import org.business.medical.resources.Hospital;
 
 public final class HospitalDirectory {
 	
-	private static ArrayList<Hospital> hospitals = new ArrayList<Hospital>();
+	private static ArrayList<BBHospital> hospitals;
 	
 	private HospitalDirectory() {
 		
 	}
 	
-	public static ArrayList<Hospital> getHospitals() {
+	public static ArrayList<BBHospital> getHospitals() {
 		
 		return hospitals;
 	}

@@ -1,12 +1,12 @@
-package org.business.medical.resources;
+package business.Bloodbank.resources;
 
 import java.util.ArrayList;
 
 public class Community {
 
-	private final Integer zipcode;
-	private final String city;
-	private final ArrayList<Hospital> hospitals = new ArrayList<Hospital>();
+	private Integer zipcode;
+	private String city;
+	private ArrayList<BBHospital> hospitals;
 	private Person communityAdmin;
 	private Person bloodReqAdmin;
 
@@ -24,7 +24,7 @@ public class Community {
 		return city;
 	}
 
-	public ArrayList<Hospital> getHospitals() {
+	public ArrayList<BBHospital> getHospitals() {
 		return hospitals;
 	}
 

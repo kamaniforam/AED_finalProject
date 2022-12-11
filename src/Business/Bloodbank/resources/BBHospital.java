@@ -1,15 +1,15 @@
-package org.business.medical.resources;
+package business.Bloodbank.resources;
 
 import java.util.ArrayList;
 
-public class Hospital {
+public class BBHospital {
 
 	private Community community;
 	private ArrayList<BloodGroupDetails> bloodGroupDetails;
 	private HospitalDetails hospitalDetails;
 	private Person hospitalAdmin;
 
-	public Hospital(Community community, ArrayList<BloodGroupDetails> bloodGroupDetails, HospitalDetails hospitalDetails) {
+	public BBHospital(Community community, ArrayList<BloodGroupDetails> bloodGroupDetails, HospitalDetails hospitalDetails) {
 		super();
 		this.community = community;
 		this.bloodGroupDetails = bloodGroupDetails;

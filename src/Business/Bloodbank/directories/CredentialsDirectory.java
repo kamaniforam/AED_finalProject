@@ -1,8 +1,8 @@
-package org.business.medical.directories;
+package business.Bloodbank.directories;
 
 import java.util.ArrayList;
 
-import org.business.medical.resources.Credentials;
+import business.Bloodbank.resources.Credentials;
 
 public final class CredentialsDirectory {
 	

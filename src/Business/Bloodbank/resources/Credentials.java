@@ -1,4 +1,4 @@
-package org.business.medical.resources;
+package business.Bloodbank.resources;
 
 public class Credentials {
 	

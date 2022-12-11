@@ -1,8 +1,8 @@
-package org.business.medical.directories;
+package business.Bloodbank.directories;
 
 import java.util.ArrayList;
 
-import org.business.medical.resources.Community;
+import business.Bloodbank.resources.Community;
 
 public final class CommunityDirectory {
 	
