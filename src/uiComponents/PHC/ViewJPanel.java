@@ -101,7 +101,7 @@ public class ViewJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         btnSave3 = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(javax.swing.UIManager.getDefaults().getColor("Button.focusedBackground"));
         setPreferredSize(new java.awt.Dimension(600, 600));
 
         tblPerson.setModel(new javax.swing.table.DefaultTableModel(
@@ -123,6 +123,7 @@ public class ViewJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tblPerson);
 
         btnUpdate.setBackground(new java.awt.Color(51, 153, 255));
+
         btnUpdate.setFont(new java.awt.Font("Helvetica Neue", 1, 12)); // NOI18N
         btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
         btnUpdate.setText("Update");
@@ -134,6 +135,7 @@ public class ViewJPanel extends javax.swing.JPanel {
         });
 
         btnDelete.setBackground(new java.awt.Color(51, 153, 255));
+
         btnDelete.setFont(new java.awt.Font("Helvetica Neue", 1, 12)); // NOI18N
         btnDelete.setForeground(new java.awt.Color(255, 255, 255));
         btnDelete.setText("Delete");
@@ -355,7 +357,6 @@ public class ViewJPanel extends javax.swing.JPanel {
         );
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("VIEW PERSON PROFILE");
 

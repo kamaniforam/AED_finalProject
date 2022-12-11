@@ -147,13 +147,15 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
         ));
         jScrollPane3.setViewportView(jTable1);
 
-        leftPanel.setBackground(new java.awt.Color(255, 255, 255));
+        leftPanel.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.focusedBackground"));
+
+        jTabbedPane1.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.focusedBackground"));
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
 
         hospitalPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        doctorPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        doctorPanel1.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.focusedBackground"));
 
         hospitalPortalLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         hospitalPortalLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -175,6 +177,7 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
         });
 
         update2.setBackground(new java.awt.Color(51, 153, 255));
+
         update2.setForeground(new java.awt.Color(255, 255, 255));
         update2.setText("Update");
         update2.addActionListener(new java.awt.event.ActionListener() {

@@ -72,6 +72,7 @@
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
+
                 </Property>
               </Properties>
 
@@ -104,7 +105,9 @@
                 <Component class="javax.swing.JButton" name="loginBtn">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+
                       <Color blue="ff" green="99" red="33" type="rgb"/>
+
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -119,7 +122,9 @@
                 <Component class="javax.swing.JButton" name="jButton3">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+
                       <Color blue="ff" green="99" red="33" type="rgb"/>
+
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -175,7 +180,7 @@
             <Container class="javax.swing.JPanel" name="jPanel1">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                  <Color blue="ff" green="cc" red="99" type="rgb"/>
                 </Property>
               </Properties>
               <Events>
@@ -202,8 +207,9 @@
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
+
                                   <EmptySpace min="-2" pref="202" max="-2" attributes="0"/>
-                                  <Component id="loginBtn1" min="-2" pref="136" max="-2" attributes="0"/>
+                     <Component id="loginBtn1" min="-2" pref="136" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace pref="316" max="32767" attributes="0"/>
@@ -228,9 +234,11 @@
                               <Component id="role" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                               <Component id="dropdownRole" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
+
                           <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
                           <Component id="loginBtn1" min="-2" pref="41" max="-2" attributes="0"/>
                           <EmptySpace pref="283" max="32767" attributes="0"/>
+
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -254,7 +262,9 @@
                 <Component class="javax.swing.JButton" name="loginBtn1">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+
                       <Color blue="ff" green="99" red="33" type="rgb"/>
+
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -268,6 +278,7 @@
                 <Component class="javax.swing.JComboBox" name="dropdownRole">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+
                       <StringArray count="9">
                         <StringItem index="0" value="CHOOSE A ROLE"/>
                         <StringItem index="1" value="SYSTEM ADMINISTRATOR"/>
@@ -278,6 +289,7 @@
                         <StringItem index="6" value="RECEPTIONIST"/>
                         <StringItem index="7" value="DENTAL PATIENT"/>
                         <StringItem index="8" value="DENTIST"/>
+
                       </StringArray>
                     </Property>
                   </Properties>
@@ -300,7 +312,9 @@
             <Container class="javax.swing.JPanel" name="jPanel2">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
+
                 </Property>
               </Properties>
 
@@ -308,7 +322,9 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
+
                           <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
+
                           <Component id="jLabel1" min="-2" pref="360" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -317,9 +333,11 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
+
                           <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                           <Component id="jLabel1" min="-2" pref="47" max="-2" attributes="0"/>
                           <EmptySpace pref="19" max="32767" attributes="0"/>
+
                       </Group>
                   </Group>
                 </DimensionLayout>

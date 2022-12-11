@@ -24,10 +24,12 @@ import Bussiness.model.PHC.VitalSigns;
 import Bussiness.model.PHC.UserAccount;
 import Enterprise.Enterprise;
 import com.db4o.ObjectSet;
+
 import javax.swing.JOptionPane;
 import uiComponents.DentalHospital.Doctor.DentistWorkAreaJPanel;
 import uiComponents.DentalHospital.FrontDesk.FrontDeskWorkAreaJPanel;
 import uiComponents.DentalPatientRole.DentalPatientJPanel;
+
 import uiComponents.Pharmacy.PharmacyAdminWorkAreaJPanel;
 
 /**
@@ -52,11 +54,12 @@ public class MainJFrame extends javax.swing.JFrame {
     PharmacyOrganization org;
     Network network;
     Enterprise enterprise;
-    
+
     
     public MainJFrame() {
         initComponents();
    
+
         this.personDirectory = new PersonDirectory();
         this.patientDirectory = new PatientDirectory();
         this.encounterHistory = new EncounterHistory();
@@ -105,6 +108,7 @@ public class MainJFrame extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         loginBtn.setBackground(new java.awt.Color(51, 153, 255));
+
         loginBtn.setForeground(new java.awt.Color(255, 255, 255));
         loginBtn.setText("LOGIN");
         loginBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -115,6 +119,7 @@ public class MainJFrame extends javax.swing.JFrame {
         });
 
         jButton3.setBackground(new java.awt.Color(51, 153, 255));
+
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("LOGOUT");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -179,6 +184,7 @@ public class MainJFrame extends javax.swing.JFrame {
         });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
         jPanel1.addContainerListener(new java.awt.event.ContainerAdapter() {
             public void componentAdded(java.awt.event.ContainerEvent evt) {
                 jPanel1formComponentAdded(evt);
@@ -196,6 +202,7 @@ public class MainJFrame extends javax.swing.JFrame {
         usernameLbl.setText("User Name:");
 
         loginBtn1.setBackground(new java.awt.Color(51, 153, 255));
+
         loginBtn1.setForeground(new java.awt.Color(255, 255, 255));
         loginBtn1.setText("LOGIN");
         loginBtn1.addActionListener(new java.awt.event.ActionListener() {
@@ -205,6 +212,7 @@ public class MainJFrame extends javax.swing.JFrame {
         });
 
         dropdownRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CHOOSE A ROLE", "SYSTEM ADMINISTRATOR", "PATIENT", "COMMUNITY ADMINISTRATOR", "HOSPITAL ADMINISTRATOR", "PHARMACY ADMIN", "RECEPTIONIST", "DENTAL PATIENT", "DENTIST" }));
+
         dropdownRole.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dropdownRoleActionPerformed(evt);
@@ -250,13 +258,13 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(role, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dropdownRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+
                 .addGap(74, 74, 74)
                 .addComponent(loginBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(283, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("HEALTHCARE MANAGEMENT SYSTEM");
 
@@ -338,13 +346,10 @@ public class MainJFrame extends javax.swing.JFrame {
         dropdownRole.setSelectedIndex(0);
 
         container.removeAll();
-        
-       
         LoginJPanel login = new LoginJPanel(jSplitPane1, account, business, personDirectory, patientDirectory, encounterHistory,
         doctorDirectory, hospitalDirectory, vitalSigns, org, network, enterprise);
 
         jSplitPane1.setRightComponent(login);
-        
 
     }//GEN-LAST:event_jButton3ActionPerformed
 

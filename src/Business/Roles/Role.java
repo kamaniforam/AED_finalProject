@@ -19,6 +19,7 @@ public enum Role {
     DENTAL_PATIENT("DENTAL_PATIENT"),
     DENTIST("DENTIST");
 
+
     private final String value;
     private Role(String value){
         this.value = value;

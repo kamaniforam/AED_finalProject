@@ -125,7 +125,7 @@ public class HospitalAdminJPanel extends javax.swing.JPanel {
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
 
-        doctorPanel.setBackground(new java.awt.Color(255, 255, 255));
+        doctorPanel.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.focusedBackground"));
 
         addDocLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         addDocLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -149,6 +149,7 @@ public class HospitalAdminJPanel extends javax.swing.JPanel {
         hospitalLbl.setText("Hospital");
 
         createDoctorBtn.setBackground(new java.awt.Color(51, 153, 255));
+
         createDoctorBtn.setForeground(new java.awt.Color(255, 255, 255));
         createDoctorBtn.setText("Create");
         createDoctorBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -158,6 +159,7 @@ public class HospitalAdminJPanel extends javax.swing.JPanel {
         });
 
         updateBtn.setBackground(new java.awt.Color(51, 153, 255));
+
         updateBtn.setForeground(new java.awt.Color(255, 255, 255));
         updateBtn.setText("Update");
         updateBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -189,6 +191,7 @@ public class HospitalAdminJPanel extends javax.swing.JPanel {
         jScrollPane5.setViewportView(tblDoctor);
 
         clear1.setBackground(new java.awt.Color(51, 153, 255));
+
         clear1.setForeground(new java.awt.Color(255, 255, 255));
         clear1.setText("Clear");
         clear1.addActionListener(new java.awt.event.ActionListener() {
@@ -219,6 +222,7 @@ public class HospitalAdminJPanel extends javax.swing.JPanel {
         uploadPhoto.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(153, 153, 153), null));
 
         displayPhoto.setBackground(new java.awt.Color(51, 153, 255));
+
         displayPhoto.setForeground(new java.awt.Color(255, 255, 255));
         displayPhoto.setText("UPLOAD PHOTO");
         displayPhoto.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));

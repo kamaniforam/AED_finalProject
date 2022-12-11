@@ -96,7 +96,7 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.focusedBackground"));
 
         jPanel4.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.focusedBackground"));
 
@@ -104,7 +104,7 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.focusedBackground"));
 
         tblPerson.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -181,7 +181,6 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
         });
 
         ddHouseNumber2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose House Number", "1", "2", "3", "4", "5", "6" }));
-
         btnSave.setBackground(new java.awt.Color(51, 153, 255));
         btnSave.setForeground(new java.awt.Color(255, 255, 255));
         btnSave.setText("Create");
@@ -190,7 +189,6 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
                 btnSaveActionPerformed(evt);
             }
         });
-
         btnUpdate.setBackground(new java.awt.Color(51, 153, 255));
         btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
         btnUpdate.setText("Update");
