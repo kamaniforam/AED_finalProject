@@ -8,10 +8,8 @@ import Business.EcoSystem;
 import Business.Network;
 import Business.Pharmacy.Organizations.PharmacyOrganization;
 import Business.Roles.Role;
-import Business.WorkQueue.WorkRequest;
 import Business.db40Utility.DB4OUtil;
 import Bussiness.model.PHC.DoctorDirectory;
-import Bussiness.model.PHC.EMTDirectory;
 import Bussiness.model.PHC.EncounterHistory;
 import Bussiness.model.PHC.HospitalDirectory;
 import Bussiness.model.PHC.PatientDirectory;
@@ -20,7 +18,6 @@ import Bussiness.model.PHC.UserAccount;
 import Bussiness.model.PHC.VitalSigns;
 import Enterprise.Enterprise;
 import com.db4o.ObjectSet;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import uiComponents.DentalHospital.Doctor.DentistWorkAreaJPanel;
 import uiComponents.DentalHospital.FrontDesk.FrontDeskWorkAreaJPanel;
@@ -229,7 +226,7 @@ public class loginJPanel extends javax.swing.JPanel {
                 CreateJPanel createPane = new CreateJPanel(jSplitPane1, account, business,personDirectory, patientDirectory, encounterHistory, doctorDirectory, hospitalDirectory, vitalSigns);
                 jSplitPane1.setRightComponent(createPane);
                 break;
-                case COMMUNITY_ADMINISTRATOR:
+                case BLOODBANK_COMMUNITY_ADMINISTRATOR:
                 //CommunityAdminJPanel communityAdminPane = new CommunityAdminJPanel(personDirectory, patientDirectory, encounterHistory, doctorDirectory, hospitalDirectory, jSplitPane1);
                 //jSplitPane1.setRightComponent(communityAdminPane);
                 break;

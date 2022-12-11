@@ -7,7 +7,7 @@ import Business.EcoSystem;
 import Business.Network;
 import Business.Pharmacy.Organizations.PharmacyOrganization;
 import Business.Roles.Role;
-import static Business.Roles.Role.COMMUNITY_ADMINISTRATOR;
+import static Business.Roles.Role.BLOODBANK_COMMUNITY_ADMINISTRATOR;
 import static Business.Roles.Role.DENTAL_PATIENT;
 import static Business.Roles.Role.DENTIST;
 import static Business.Roles.Role.HOSPITAL_ADMINISTRATOR;
@@ -64,7 +64,7 @@ public class MainJFrame extends javax.swing.JFrame {
     public MainJFrame() {
         initComponents();
    
-        this.setSize(1680, 1050);
+        setSize(1680, 1050);
         //int MAXIMIZED_BOTH1 = MainJFrame.MAXIMIZED_BOTH;
         JFrame.setDefaultLookAndFeelDecorated(true);
         this.personDirectory = new PersonDirectory();
@@ -404,7 +404,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 CreateJPanel createPane = new CreateJPanel(jSplitPane1, account, business,personDirectory, patientDirectory, encounterHistory, doctorDirectory, hospitalDirectory, vitalSigns);
                 jSplitPane1.setRightComponent(createPane);
                 break;
-                case COMMUNITY_ADMINISTRATOR:
+                case BLOODBANK_COMMUNITY_ADMINISTRATOR:
                 //CommunityAdminJPanel communityAdminPane = new CommunityAdminJPanel(personDirectory, patientDirectory, encounterHistory, doctorDirectory, hospitalDirectory, jSplitPane1);
                 //jSplitPane1.setRightComponent(communityAdminPane);
                 break;

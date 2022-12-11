@@ -4,6 +4,16 @@
  */
 package uiComponents.PHC;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author foram
@@ -13,8 +23,14 @@ public class NewsJPanel extends javax.swing.JPanel {
     /**
      * Creates new form NewsJPanel
      */
-    public NewsJPanel() {
+    
+    public String pageName = "";
+    public String content = "";
+    
+    public NewsJPanel() throws IOException {
         initComponents();
+        
+        displayNewsTableDetails();    
     }
 
     /**
@@ -71,6 +87,63 @@ public class NewsJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+	private static final String USER_AGENT = "Mozilla/5.0";
+
+	private static final String GET_URL = "https://www.healthcare.gov/glossary/childrens-health-insurance-program-chip.json";
+
+	//private static final String POST_URL = "https://www.healthcare.gov/glossary/childrens-health-insurance-program-chip.json";
+
+	private static String sendGET() throws IOException {
+            String result ="";
+            URL obj = new URL(GET_URL);
+            HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+            con.setRequestMethod("GET");
+            con.setRequestProperty("User-Agent", USER_AGENT);
+            int responseCode = con.getResponseCode();
+            System.out.println("GET Response Code :: " + responseCode);
+            if (responseCode == HttpURLConnection.HTTP_OK) { // success
+                BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                String inputLine;
+                StringBuffer response = new StringBuffer();
+
+                while ((inputLine = in.readLine()) != null) {
+                        response.append(inputLine);
+                }
+                in.close();
+
+                // print result
+                System.out.println(response.toString());
+                result = response.toString();
+            } else {
+                System.out.println("GET request did not work.");
+            }
+            return result;
+	}
+        
+    private void displayNewsTableDetails() throws IOException {
+         String response=sendGET();
+            ObjectMapper objectMapper = new ObjectMapper();
+            ObjectNode o= objectMapper.readValue(response,ObjectNode.class);
+            if(o.has("page_name") && o.has("content")){
+                pageName=String.valueOf(o.get("page_name"));
+                content = String.valueOf(o.get("content"));
+                System.out.println("Final pagename"+pageName);
+                System.out.println("Final content"+content);
+       
+            }
+        String[] columns=new String [] {
+                "Name", "Content"
+            };
+        Object[][] data=new Object[][]{
+            { pageName,content  }
+        };
+        DefaultTableModel tblmodel = (DefaultTableModel) jTable1.getModel();
+        DefaultTableModel t=new DefaultTableModel(data, columns);
+        tblmodel.setRowCount(0);
+        jTable1=new JTable(t);
+            jScrollPane1.setViewportView(jTable1);
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
