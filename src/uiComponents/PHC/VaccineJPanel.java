@@ -4,8 +4,12 @@
  */
 package uiComponents.PHC;
 
-import Bussiness.model.PHC.EMT;
+import Business.EcoSystem;
+import Business.WorkQueue.MedicineWorkRequest;
+import Business.WorkQueue.VaccineWorkRequest;
+import Business.WorkQueue.WorkRequest;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -13,11 +17,15 @@ import javax.swing.JOptionPane;
  */
 public class VaccineJPanel extends javax.swing.JPanel {
 
+    private EcoSystem business; 
     /**
      * Creates new form VaccineJPanel
      */
-    public VaccineJPanel() {
+    public VaccineJPanel(EcoSystem business) {
         initComponents();
+        
+        this.business = business;
+        populateVaccineRequestTable();
     }
 
     /**
@@ -177,16 +185,17 @@ public class VaccineJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "All fields are manadatory!");
             
         } else{
+      
+            VaccineWorkRequest vwr = new VaccineWorkRequest();
+            vwr.setPatientName(txtfName.getText());
+            vwr.setQuantity(1);
+            vwr.setStatus("Pending");
+            vwr.setVaccineName((String) vaccineServices.getSelectedItem());
+            business.getWorkQueue().getWorkRequestList().add(vwr);
             
-       
-  
-//            emt.setFname(txtfName.getText());
-//         
-//            emt.setServices((String) vaccineServices.getSelectedItem());
-//           
-//        
             JOptionPane.showMessageDialog(this, "Appointment Booked");
             
+            populateVaccineRequestTable();
         }
 
         txtfName.setText("");
@@ -194,6 +203,21 @@ public class VaccineJPanel extends javax.swing.JPanel {
        
     }//GEN-LAST:event_requestVaccineBtnActionPerformed
 
+    private void populateVaccineRequestTable() {
+        DefaultTableModel model = (DefaultTableModel)tblVaccine.getModel();
+        
+        model.setRowCount(0);
+        if(business.getWorkQueue().getWorkRequestList() != null) {
+            for (WorkRequest request : business.getWorkQueue().getWorkRequestList()){
+                if(request instanceof VaccineWorkRequest){
+                    Object[] row = new Object[4];
+                    row[0] = ((VaccineWorkRequest) request).getPatientName();
+                    row[1] = ((VaccineWorkRequest) request).getVaccineName();
+                    model.addRow(row);
+                }
+            }
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel emtLbl;

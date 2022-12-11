@@ -4,54 +4,52 @@
  */
 package uiComponents.Pharmacy;
 
+import Business.EcoSystem;
 import Business.Network;
 import Business.Organization;
 import Business.Pharmacy.Model.Medicine;
 import Business.Pharmacy.Model.MedicinesInventory;
 import Business.Pharmacy.Model.Vaccine;
 import Business.Pharmacy.Organizations.PharmacyOrganization;
+import Business.WorkQueue.WorkQueue;
 import Bussiness.model.PHC.UserAccount;
 import Enterprise.Enterprise;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-
-
 
 /**
  *
  * @author richajain
  */
 public class PharmacyAdminWorkAreaJPanel extends javax.swing.JPanel {
-    
-    private javax.swing.JSplitPane userProcessContainer;
-    private UserAccount userAccount;
-    private Enterprise enterprise;
-    private MedicinesInventory medInv;
-    private Organization org;
-    private PharmacyOrganization pharmorg;
-    private Network network;
+
+    javax.swing.JSplitPane userProcessContainer;
+    UserAccount userAccount;
+    Enterprise enterprise;
+    MedicinesInventory medInv;
+    Organization org;
+    PharmacyOrganization pharmorg;
+    Network network;
+    EcoSystem business;
+    WorkQueue wq;
 
     /**
      * Creates new form PharmacyAdminWorkAreaJPanel
      */
-    public PharmacyAdminWorkAreaJPanel(javax.swing.JSplitPane userProcessContainer, UserAccount userAccount, PharmacyOrganization organization, Enterprise enterprise, Network network) {
-        
+    public PharmacyAdminWorkAreaJPanel(javax.swing.JSplitPane userProcessContainer, UserAccount userAccount, PharmacyOrganization organization, Enterprise enterprise, Network network, EcoSystem business) {
+
+        initComponents();
         this.userProcessContainer = userProcessContainer;
         this.userAccount = userAccount;
         this.enterprise = enterprise;
         this.pharmorg = organization;
         this.network = network;
-        System.out.println(pharmorg);
-        
-        initComponents();
-       
-        
+        this.business = business;
+        this.wq = wq;
+
         populateMedTable();
         populateVacTable();
-        
-        
-        
+
     }
 
     /**
@@ -291,35 +289,36 @@ public class PharmacyAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void addMedicineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMedicineActionPerformed
         // TODO add your handling code here:
-        
-    	try {
-	        Medicine med = new Medicine();
-	        med.setMedicineName(jTextField1.getText());
-	        med.setQuantity(Integer.valueOf(jTextField2.getText()));
-	        med.setSellingPrice(Integer.valueOf(jTextField3.getText()));
-	    	
-	    	
-	        pharmorg.addMedicine(med);
-	        
-	        JOptionPane.showMessageDialog(null, "Medicine Added Successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
-	        
-	        populateMedTable();
-	   
-	        jTextField1.setText("");
-	        jTextField2.setText("");
-	        jTextField3.setText("");
-    	}
-        catch(Exception e) {
-   		 JOptionPane.showMessageDialog(null, "Details entered are not valid. Kindly check again.", "Error", JOptionPane.ERROR_MESSAGE);
-            
-   	}
-        
+
+        try {
+            Medicine med = new Medicine();
+            med.setMedicineName(jTextField1.getText());
+            med.setQuantity(Integer.valueOf(jTextField2.getText()));
+            med.setSellingPrice(Integer.valueOf(jTextField3.getText()));
+
+            pharmorg.addMedicine(med);
+
+            JOptionPane.showMessageDialog(null, "Medicine Added Successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+            populateMedTable();
+
+            jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Details entered are not valid. Kindly check again.", "Error", JOptionPane.ERROR_MESSAGE);
+
+        }
+
     }//GEN-LAST:event_addMedicineActionPerformed
 
     private void viewStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewStockActionPerformed
         // TODO add your handling code here:
-        
-        
+
+        ViewStockRequest panel = new ViewStockRequest(userProcessContainer, userAccount, pharmorg, enterprise, network, business);
+        userProcessContainer.setRightComponent(panel);
+
+
     }//GEN-LAST:event_viewStockActionPerformed
 
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
@@ -328,26 +327,25 @@ public class PharmacyAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void addVaccineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addVaccineActionPerformed
         // TODO add your handling code here:
-    	try {
-	    	Vaccine vac = new Vaccine();
-	    	vac.setVaccineName(jTextField4.getText());
-	    	vac.setQuantity(Integer.valueOf(jTextField5.getText()));
-	    	vac.setSellingPrice(Integer.valueOf(jTextField6.getText()));
-	        
-	        pharmorg.addVaccine(vac);
-	        
-	        JOptionPane.showMessageDialog(null, "Vaccine Added Successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
-	        
-	        populateVacTable();
-	        
-	        jTextField4.setText("");
-	        jTextField5.setText("");
-	        jTextField6.setText("");
-    	}
-    	catch(Exception e) {
-    		JOptionPane.showMessageDialog(null, "Details entered are not valid. Kindly check again.", "Error", JOptionPane.ERROR_MESSAGE);
-    	}
-        
+        try {
+            Vaccine vac = new Vaccine();
+            vac.setVaccineName(jTextField4.getText());
+            vac.setQuantity(Integer.valueOf(jTextField5.getText()));
+            vac.setSellingPrice(Integer.valueOf(jTextField6.getText()));
+
+            pharmorg.addVaccine(vac);
+
+            JOptionPane.showMessageDialog(null, "Vaccine Added Successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+            populateVacTable();
+
+            jTextField4.setText("");
+            jTextField5.setText("");
+            jTextField6.setText("");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Details entered are not valid. Kindly check again.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
     }//GEN-LAST:event_addVaccineActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
@@ -356,31 +354,31 @@ public class PharmacyAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void populateMedTable() {
         DefaultTableModel dtm = (DefaultTableModel) medcineListTable.getModel();
-	
-	        dtm.setRowCount(0);
-	        for (Medicine mi : pharmorg.getMedList()) {
-	            Object row[] = new Object[5];
-	            row[0] = mi.getMedicineName();
-	            row[1] = mi.getQuantity();
-	            row[2] = mi.getSellingPrice();
-	            dtm.addRow(row);
-	        }
+
+        dtm.setRowCount(0);
+        for (Medicine mi : pharmorg.getMedList()) {
+            Object row[] = new Object[5];
+            row[0] = mi.getMedicineName();
+            row[1] = mi.getQuantity();
+            row[2] = mi.getSellingPrice();
+            dtm.addRow(row);
+        }
     }
-    
-     private void populateVacTable() {
-         
-         DefaultTableModel dtm = (DefaultTableModel) vaccineStockJTable.getModel();
-	
-	        dtm.setRowCount(0);
-	        for (Vaccine mi : pharmorg.getVacList()) {
-	            Object row[] = new Object[5];
-	            row[0] = mi.getVaccineName();
-	            row[1] = mi.getQuantity();
-	            row[2] = mi.getSellingPrice();
-	            dtm.addRow(row);
-	        }
-         
-     }
+
+    private void populateVacTable() {
+
+        DefaultTableModel dtm = (DefaultTableModel) vaccineStockJTable.getModel();
+
+        dtm.setRowCount(0);
+        for (Vaccine mi : pharmorg.getVacList()) {
+            Object row[] = new Object[5];
+            row[0] = mi.getVaccineName();
+            row[1] = mi.getQuantity();
+            row[2] = mi.getSellingPrice();
+            dtm.addRow(row);
+        }
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

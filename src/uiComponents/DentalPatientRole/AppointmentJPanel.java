@@ -17,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 public class AppointmentJPanel extends javax.swing.JPanel {
 
     private EcoSystem ecosystem;
+    private javax.swing.JSplitPane jSplitPane1;
     /**
      * Creates new form AppointmentJPanel
      */
