@@ -177,14 +177,7 @@ public class VaccineJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "All fields are manadatory!");
             
         } else{
-            
-       
-  
-//            emt.setFname(txtfName.getText());
-//         
-//            emt.setServices((String) vaccineServices.getSelectedItem());
-//           
-//        
+      
             JOptionPane.showMessageDialog(this, "Appointment Booked");
             
         }
