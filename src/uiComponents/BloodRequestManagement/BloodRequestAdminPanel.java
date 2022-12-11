@@ -57,12 +57,13 @@ public class BloodRequestAdminPanel extends javax.swing.JPanel {
         table = new javax.swing.JTable();
         btnUnavailable = new javax.swing.JButton();
 
-        setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.focusedBackground"));
+        setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel1.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.hoverBorderColor"));
+        jPanel1.setBackground(new java.awt.Color(0, 153, 255));
 
-        LblBloodRequestAcknowledgement.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.hoverBorderColor"));
+        LblBloodRequestAcknowledgement.setBackground(new java.awt.Color(0, 153, 255));
         LblBloodRequestAcknowledgement.setFont(new java.awt.Font("Georgia", 1, 15)); // NOI18N
+        LblBloodRequestAcknowledgement.setForeground(new java.awt.Color(255, 255, 255));
         LblBloodRequestAcknowledgement.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LblBloodRequestAcknowledgement.setText("Blood Request Acknowledgement");
 
@@ -90,7 +91,7 @@ public class BloodRequestAdminPanel extends javax.swing.JPanel {
         ));
         jScrollPane3.setViewportView(table_1);
 
-        btnAvailable.setBackground(javax.swing.UIManager.getDefaults().getColor("Component.accentColor"));
+        btnAvailable.setBackground(new java.awt.Color(0, 153, 255));
         btnAvailable.setForeground(new java.awt.Color(255, 255, 255));
         btnAvailable.setText("Available");
         btnAvailable.addActionListener(new java.awt.event.ActionListener() {
@@ -112,6 +113,8 @@ public class BloodRequestAdminPanel extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(table);
 
+        btnUnavailable.setBackground(new java.awt.Color(0, 153, 255));
+        btnUnavailable.setForeground(new java.awt.Color(255, 255, 255));
         btnUnavailable.setText("Unavilable");
         btnUnavailable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,18 +132,14 @@ public class BloodRequestAdminPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1135, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(161, 161, 161)
-                                .addComponent(btnAvailable)
-                                .addGap(26, 26, 26)
-                                .addComponent(btnUnavailable))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1025, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(302, 302, 302)
+                .addComponent(btnAvailable)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnUnavailable)
+                .addGap(314, 314, 314))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,12 +148,12 @@ public class BloodRequestAdminPanel extends javax.swing.JPanel {
                 .addGap(38, 38, 38)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 236, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(68, 68, 68)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAvailable)
-                    .addComponent(btnUnavailable))
-                .addGap(23, 23, 23))
+                    .addComponent(btnUnavailable)
+                    .addComponent(btnAvailable))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
