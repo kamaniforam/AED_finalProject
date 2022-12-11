@@ -43,14 +43,14 @@ public class FrontDeskWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox();
+        jComboBox2 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox();
+        jComboBox3 = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jComboBox4 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox5 = new javax.swing.JComboBox();
+        jComboBox5 = new javax.swing.JComboBox<>();
 
         jLabel5.setText("jLabel5");
 
@@ -70,17 +70,17 @@ public class FrontDeskWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         jLabel1.setText("Dentist's Name");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Doc1", "Doc2", "DOC3", "Doc4" }));
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         jLabel2.setText("Date");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30" }));
 
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         jLabel3.setText("Month");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
 
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         jLabel4.setText("Timings");
@@ -99,7 +99,7 @@ public class FrontDeskWorkAreaJPanel extends javax.swing.JPanel {
         jLabel6.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         jLabel6.setText("Year");
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2023", "2024", "2025" }));
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2023", "2024", "2025" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -167,19 +167,27 @@ public class FrontDeskWorkAreaJPanel extends javax.swing.JPanel {
 
     private void addAvailableSlotsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAvailableSlotsActionPerformed
         // TODO add your handling code here:
-        int date, month, year, hour, min;
+        String date, month, year, hour, min;
         
-        
-        try{
-            
-            date = (Integer) jComboBox2.getSelectedItem();
-            month = (Integer) jComboBox3.getSelectedItem();
-            year = (Integer) jComboBox5.getSelectedItem();
+            date = (String) jComboBox2.getSelectedItem();
+            month = (String) jComboBox3.getSelectedItem();
+            year = (String) jComboBox5.getSelectedItem();
             String time = (String) jComboBox4.getSelectedItem();
-            hour = Integer.parseInt(time.split(":")[0]); 
-            min = Integer.parseInt(time.split(":")[1]); 
-                    
+            hour = time.split(":")[0]; 
+            min = time.split(":")[1]; 
+            
+             int d, m, y, s, h, mins = 0;
+        try{
+           
+            d = (Integer.parseInt(date)); 
+            m = (Integer.parseInt(month));
+            y = (Integer.parseInt(year));
+            h = Integer.parseInt(time.split(":")[0]); 
+            mins = Integer.parseInt(time.split(":")[1]); 
+             
+          //  System.out.println(date + " "+ month + " " + year + " " + time + " " + hour + " " + min);
         }catch(Exception e){
+            System.out.println(e);
             JOptionPane.showMessageDialog(null,
                        "Choose correct details.", "Error", JOptionPane.INFORMATION_MESSAGE);
 
@@ -188,7 +196,7 @@ public class FrontDeskWorkAreaJPanel extends javax.swing.JPanel {
         
         DoctorAvailableSlotWR slot = new DoctorAvailableSlotWR();
         slot.setDoctor((String) jComboBox1.getSelectedItem());
-        slot.setTimings(LocalDateTime.of(year, month,date, hour, min, 0));
+        slot.setTimings(LocalDateTime.of(y, m,d, h, mins, 0));
         slot.setStatus("Available");
         ecosystem.getWorkQueue().getWorkRequestList().add(slot);
         
@@ -215,10 +223,10 @@ public class FrontDeskWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JTable DoctorSlotJTable;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JComboBox jComboBox3;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JComboBox jComboBox5;
+    private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -6,13 +6,13 @@ package uiComponents.PHC;
 
 import Business.EcoSystem;
 import Business.Network;
-import Business.Organization;
 import Business.Pharmacy.Organizations.PharmacyOrganization;
 import Business.Roles.Role;
 import static Business.Roles.Role.DENTIST;
 import static Business.Roles.Role.PHARMACY_ADMIN;
-
+import Business.WorkQueue.WorkQueue;
 import Business.db40Utility.DB4OUtil;
+
 import javax.swing.JOptionPane;
 import Bussiness.model.PHC.DoctorDirectory;
 import Bussiness.model.PHC.EncounterHistory;
@@ -26,6 +26,7 @@ import com.db4o.ObjectSet;
 import javax.swing.JSplitPane;
 
 import uiComponents.DentalHospital.Doctor.DentistWorkAreaJPanel;
+import uiComponents.DentalHospital.FrontDesk.FrontDeskWorkAreaJPanel;
 import uiComponents.DentalPatientRole.DentalPatientJPanel;
 import uiComponents.Pharmacy.PharmacyAdminWorkAreaJPanel;
 
@@ -51,11 +52,11 @@ public class LoginJPanel extends javax.swing.JPanel {
     PharmacyOrganization org;
     Network network;
     Enterprise enterprise;
+    WorkQueue wq;
     
     public LoginJPanel(javax.swing.JSplitPane jSplitPane1, UserAccount account, EcoSystem business, PersonDirectory personDirectory, PatientDirectory patientDirectory,
             EncounterHistory encounterHistory, DoctorDirectory doctorDirectory, HospitalDirectory hospitalDirectory, VitalSigns vitalSigns,PharmacyOrganization org,
-    Network network,
-    Enterprise enterprise) {
+    Network network, Enterprise enterprise) {
         initComponents();
 
         this.personDirectory = personDirectory;
@@ -67,6 +68,7 @@ public class LoginJPanel extends javax.swing.JPanel {
         this.account = account;
         this.business = business;
         this.vitalSigns = vitalSigns;
+        this.org = org;
     }
 
     LoginJPanel(JSplitPane jSplitPane1, UserAccount account, EcoSystem business, PersonDirectory personDirectory, PatientDirectory patientDirectory, EncounterHistory encounterHistory, DoctorDirectory doctorDirectory, HospitalDirectory hospitalDirectory, VitalSigns vitalSigns) {
@@ -100,7 +102,6 @@ public class LoginJPanel extends javax.swing.JPanel {
         });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
         jPanel1.setLayout(null);
 
         loginLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 36)); // NOI18N
@@ -139,7 +140,6 @@ public class LoginJPanel extends javax.swing.JPanel {
         usernameLbl.setBounds(240, 160, 69, 17);
 
         loginBtn.setBackground(new java.awt.Color(51, 153, 255));
-
         loginBtn.setForeground(new java.awt.Color(255, 255, 255));
         loginBtn.setText("Login");
         loginBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -150,8 +150,7 @@ public class LoginJPanel extends javax.swing.JPanel {
         jPanel1.add(loginBtn);
         loginBtn.setBounds(330, 320, 150, 50);
 
-
-        dropdownRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose a Role", "System administrator", "Patient", "Hospital administrator", "Community administrator", "Doctor", "Pharmacy Admin", "Dental Admin", "PHC Admin", "Blood Bank Admin" }));
+        dropdownRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose a Role", "System administrator", "Patient", "Hospital administrator", "Community administrator", "Doctor", "Pharmacy Admin", "Dental Admin", "PHC Admin", "Blood Bank Admin", "DENTIST", "DENTAL PATIENT", "RECEPTIONIST" }));
         dropdownRole.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dropdownRoleActionPerformed(evt);
@@ -203,7 +202,7 @@ public class LoginJPanel extends javax.swing.JPanel {
         }
 
 
-        if (false) {
+        if (true) {
             
             JOptionPane.showMessageDialog(this, "LOGIN SUCCESSFULL");
             if (null != Role.fromString(dropdownrole)) {
@@ -226,17 +225,20 @@ public class LoginJPanel extends javax.swing.JPanel {
                         jSplitPane1.setRightComponent(hospitalAdminPane);
                         break;
                     case PHARMACY_ADMIN:
-                        PharmacyAdminWorkAreaJPanel pharmacy = new PharmacyAdminWorkAreaJPanel(jPanel1, account, org, enterprise, network);
+                        PharmacyAdminWorkAreaJPanel pharmacy = new PharmacyAdminWorkAreaJPanel(jSplitPane1, account, org, enterprise, network, business);
                         jSplitPane1.setRightComponent(pharmacy);        
                         break;
-
                     case DENTIST:
                         DentistWorkAreaJPanel dentist = new DentistWorkAreaJPanel(business);
                         jSplitPane1.setRightComponent(dentist);
                         break;
+                    case RECEPTIONIST:
+                        FrontDeskWorkAreaJPanel desk = new FrontDeskWorkAreaJPanel(business);
+                        jSplitPane1.setRightComponent(desk);
+                        break;
                     case DENTAL_PATIENT:
-                        //DentalPatientJPanel dental = new DentalPatientJPanel();
-                        //jSplitPane1.setRightComponent(dental);
+                        DentalPatientJPanel dental = new DentalPatientJPanel(business,jSplitPane1, account, org, enterprise, network);
+                        jSplitPane1.setRightComponent(dental);
                         break;
                     default:
                         JOptionPane.showMessageDialog(this, "SELECT ROLE");

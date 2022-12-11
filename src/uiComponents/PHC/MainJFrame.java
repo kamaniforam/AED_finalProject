@@ -13,6 +13,7 @@ import static Business.Roles.Role.DENTIST;
 import static Business.Roles.Role.HOSPITAL_ADMINISTRATOR;
 import static Business.Roles.Role.PATIENT;
 import static Business.Roles.Role.PHARMACY_ADMIN;
+import Business.WorkQueue.WorkQueue;
 import Business.db40Utility.DB4OUtil;
 import Bussiness.model.PHC.EMTDirectory;
 import Bussiness.model.PHC.DoctorDirectory;
@@ -54,7 +55,7 @@ public class MainJFrame extends javax.swing.JFrame {
     PharmacyOrganization org;
     Network network;
     Enterprise enterprise;
-
+    WorkQueue wq;
     
     public MainJFrame() {
         initComponents();
@@ -68,7 +69,7 @@ public class MainJFrame extends javax.swing.JFrame {
         this.vitalSigns = new VitalSigns();
         this.eMTDirectory = new EMTDirectory();
         //this.account = new UserAccount();
-
+        this.business = EcoSystem.getInstance();
         this.org = new PharmacyOrganization();
         this.network = new Network();
         //this.enterprise = new Enterprise(enterprise);
@@ -376,7 +377,7 @@ public class MainJFrame extends javax.swing.JFrame {
         UserAccount user = new UserAccount(usernameText, passwordText, role);
         ObjectSet result = DB4OUtil.getInstance().queryByExample(user);
         
-        if (!result.isEmpty()) {
+         if(!result.isEmpty()) {
             JOptionPane.showMessageDialog(this, "LOGIN SUCCESSFULL");
             if (null != Role.fromString(dropdownrole)) {
                 switch (Role.fromString(dropdownrole)) {
@@ -397,7 +398,7 @@ public class MainJFrame extends javax.swing.JFrame {
                         jSplitPane1.setRightComponent(hospitalAdminPane);
                         break;
                     case PHARMACY_ADMIN:
-                        PharmacyAdminWorkAreaJPanel pharmacy = new PharmacyAdminWorkAreaJPanel(jPanel1, account, org, enterprise, network);
+                        PharmacyAdminWorkAreaJPanel pharmacy = new PharmacyAdminWorkAreaJPanel(jSplitPane1, account, org, enterprise, network, business);
                         jSplitPane1.setRightComponent(pharmacy);        
                         break;
                     case DENTIST:
@@ -405,7 +406,7 @@ public class MainJFrame extends javax.swing.JFrame {
                         jSplitPane1.setRightComponent(dentist);
                         break;
                     case DENTAL_PATIENT:
-                        DentalPatientJPanel dental = new DentalPatientJPanel(business, jPanel1, account, org, enterprise, network);
+                        DentalPatientJPanel dental = new DentalPatientJPanel(business, jSplitPane1, account, org, enterprise, network);
                         jSplitPane1.setRightComponent(dental);
                         break;
                     case RECEPTIONIST:

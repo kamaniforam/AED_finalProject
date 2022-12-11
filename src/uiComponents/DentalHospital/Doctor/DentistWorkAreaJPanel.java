@@ -7,6 +7,7 @@ package uiComponents.DentalHospital.Doctor;
 import Business.EcoSystem;
 import Business.WorkQueue.DoctorAvailableSlotWR;
 import Business.WorkQueue.WorkRequest;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -16,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 public class DentistWorkAreaJPanel extends javax.swing.JPanel {
 
     private EcoSystem ecosystem;
+    private javax.swing.JSplitPane jSplitPane1;
     /**
      * Creates new form DentistWorkAreaJPanel
      */
@@ -163,11 +165,47 @@ public class DentistWorkAreaJPanel extends javax.swing.JPanel {
 
     private void rejectAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rejectAppointmentActionPerformed
         // TODO add your handling code here:
+        
+        int selectedRow = pendingAppointmentsTable.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please Select a Row");
+            return;
+        }
+        String name = pendingAppointmentsTable.getValueAt(selectedRow, 0).toString();
+        if (pendingAppointmentsTable.getValueAt(selectedRow, 2) == "Completed") {
+            JOptionPane.showMessageDialog(null, "This request is already completed");
+            return ;
+          
+        }
+        if (pendingAppointmentsTable.getValueAt(selectedRow, 2) == "Requested") {
+           DoctorAvailableSlotWR req = (DoctorAvailableSlotWR) pendingAppointmentsTable.getValueAt(selectedRow, 0);
+           req.setStatus("Rejected");
+        }
+        
+        populateCompletedAppointmentsTable();
+        populatePendingAppointmentsTable();
     }//GEN-LAST:event_rejectAppointmentActionPerformed
 
     private void viewAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAppointmentActionPerformed
         // TODO add your handling code here:
+        int selectedRow = pendingAppointmentsTable.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please Select a Row");
+            return;
+        }
+        String name = pendingAppointmentsTable.getValueAt(selectedRow, 0).toString();
+        if (pendingAppointmentsTable.getValueAt(selectedRow, 2) == "Completed") {
+            JOptionPane.showMessageDialog(null, "This request is already completed");
+            return ;
+          
+        }
+        if (pendingAppointmentsTable.getValueAt(selectedRow, 2) == "Requested") {
+           DoctorAvailableSlotWR req = (DoctorAvailableSlotWR) pendingAppointmentsTable.getValueAt(selectedRow, 0);
+           req.setStatus("Completed");
+        }
         
+        populateCompletedAppointmentsTable();
+        populatePendingAppointmentsTable();
         
     }//GEN-LAST:event_viewAppointmentActionPerformed
 
@@ -179,8 +217,8 @@ public class DentistWorkAreaJPanel extends javax.swing.JPanel {
         for (WorkRequest wr :  ecosystem.getWorkQueue().getWorkRequestList()) {
             Object row[] = new Object[3];
             if(wr instanceof DoctorAvailableSlotWR && 
-                    ("Pending".equals(wr.getStatus()) || "Rejected".equals(wr.getStatus()))){
-                row[0] = ((DoctorAvailableSlotWR) wr).getDoctor();
+                    ("Pending".equals(wr.getStatus()) || "Requested".equals(wr.getStatus()))){
+                row[0] = ((DoctorAvailableSlotWR) wr);
                 row[1] = ((DoctorAvailableSlotWR) wr).getTimings();
                 row[2] = wr.getStatus();
                 dtm.addRow(row);
@@ -193,10 +231,13 @@ public class DentistWorkAreaJPanel extends javax.swing.JPanel {
         DefaultTableModel dtm = (DefaultTableModel) completedAppointmensTable.getModel();
 	
         dtm.setRowCount(0);
+        System.out.println("HIII " + ecosystem.getWorkQueue().getWorkRequestList().size());
         for (WorkRequest wr :  ecosystem.getWorkQueue().getWorkRequestList()) {
             Object row[] = new Object[3];
-            if(wr instanceof DoctorAvailableSlotWR && "Completed".equals(wr.getStatus())){
-                row[0] = ((DoctorAvailableSlotWR) wr).getDoctor();
+            System.out.println(wr.getStatus());
+            if(wr instanceof DoctorAvailableSlotWR && 
+                    ("Completed".equals(wr.getStatus()) || "Rejected".equalsIgnoreCase(wr.getStatus()))){
+                row[0] = ((DoctorAvailableSlotWR) wr);
                 row[1] = ((DoctorAvailableSlotWR) wr).getTimings();
                 row[2] = wr.getStatus();
                 dtm.addRow(row);

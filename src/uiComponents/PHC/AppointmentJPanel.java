@@ -571,7 +571,7 @@ public class AppointmentJPanel extends javax.swing.JPanel {
     private void requestVaccineBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestVaccineBtnActionPerformed
         // TODO add your handling code here:
 
-        VaccineJPanel vaccine = new VaccineJPanel();
+        VaccineJPanel vaccine = new VaccineJPanel(business);
         jSplitPane1.setRightComponent(vaccine);
     }//GEN-LAST:event_requestVaccineBtnActionPerformed
 

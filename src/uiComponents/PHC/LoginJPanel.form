@@ -45,7 +45,6 @@
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
-
         </Property>
       </Properties>
 
@@ -123,9 +122,7 @@
         <Component class="javax.swing.JButton" name="loginBtn">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-
               <Color blue="ff" green="99" red="33" type="rgb"/>
-
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -137,16 +134,14 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-
               <AbsoluteConstraints x="330" y="320" width="150" height="50"/>
-
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JComboBox" name="dropdownRole">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="10">
+              <StringArray count="13">
                 <StringItem index="0" value="Choose a Role"/>
                 <StringItem index="1" value="System administrator"/>
                 <StringItem index="2" value="Patient"/>
@@ -157,6 +152,9 @@
                 <StringItem index="7" value="Dental Admin"/>
                 <StringItem index="8" value="PHC Admin"/>
                 <StringItem index="9" value="Blood Bank Admin"/>
+                <StringItem index="10" value="DENTIST"/>
+                <StringItem index="11" value="DENTAL PATIENT"/>
+                <StringItem index="12" value="RECEPTIONIST"/>
               </StringArray>
             </Property>
           </Properties>
