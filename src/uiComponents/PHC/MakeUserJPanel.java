@@ -104,7 +104,7 @@ public class MakeUserJPanel extends javax.swing.JPanel {
         jPanel4 = new javax.swing.JPanel();
         signupLbl = new javax.swing.JLabel();
 
-        jPanel1.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.focusedBackground"));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(600, 600));
 
         lblName.setText("Name:");
@@ -161,7 +161,7 @@ public class MakeUserJPanel extends javax.swing.JPanel {
 
         ddHouseNumber.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose House Number", "1", "2", "3", "4", "5", "6" }));
 
-        btnSave.setBackground(javax.swing.UIManager.getDefaults().getColor("Component.accentColor"));
+        btnSave.setBackground(new java.awt.Color(51, 153, 255));
         btnSave.setForeground(new java.awt.Color(255, 255, 255));
         btnSave.setText("Save Profile");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -170,7 +170,7 @@ public class MakeUserJPanel extends javax.swing.JPanel {
             }
         });
 
-        viewPerson.setBackground(javax.swing.UIManager.getDefaults().getColor("Component.accentColor"));
+        viewPerson.setBackground(new java.awt.Color(51, 153, 255));
         viewPerson.setForeground(new java.awt.Color(255, 255, 255));
         viewPerson.setText("View");
         viewPerson.addActionListener(new java.awt.event.ActionListener() {
@@ -182,7 +182,7 @@ public class MakeUserJPanel extends javax.swing.JPanel {
         uploadPhoto.setForeground(new java.awt.Color(255, 255, 255));
         uploadPhoto.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(153, 153, 153), null));
 
-        displayPhoto.setBackground(javax.swing.UIManager.getDefaults().getColor("Component.accentColor"));
+        displayPhoto.setBackground(new java.awt.Color(51, 153, 255));
         displayPhoto.setForeground(new java.awt.Color(255, 255, 255));
         displayPhoto.setText("UPLOAD PHOTO");
         displayPhoto.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
@@ -192,7 +192,7 @@ public class MakeUserJPanel extends javax.swing.JPanel {
             }
         });
 
-        jPanel2.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.hoverBorderColor"));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -203,7 +203,7 @@ public class MakeUserJPanel extends javax.swing.JPanel {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(225, 225, 225)
+                .addGap(248, 248, 248)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -331,7 +331,7 @@ public class MakeUserJPanel extends javax.swing.JPanel {
 
         role.setText("Role:");
 
-        dropdownRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose a Role", "System administrator", "Patient", "Hospital administrator", "Community administrator", "Doctor", "Pharmacy Admin", "Dental Admin", "PHC Admin", "Blood Bank Admin" }));
+        dropdownRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CHOOSE A ROLE", "SYSTEM ADMINISTRATOR", "PATIENT", "COMMUNITY ADMINISTRATOR", "HOSPITAL ADMINISTRATOR", "PHARMACY ADMIN", "RECEPTIONIST", "DENTAL PATIENT", "DENTIST" }));
         dropdownRole.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dropdownRoleActionPerformed(evt);
@@ -370,7 +370,7 @@ public class MakeUserJPanel extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(111, 111, 111)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(passwordLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -385,12 +385,12 @@ public class MakeUserJPanel extends javax.swing.JPanel {
                                     .addComponent(role, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(73, 73, 73)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(dropdownRole, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(dropdownRole, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(confirmPasswordTxt)))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(211, 211, 211)
                         .addComponent(SignupBtn)))
-                .addContainerGap(526, Short.MAX_VALUE))
+                .addGap(485, 485, 485))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -425,14 +425,14 @@ public class MakeUserJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(CreateProfile, javax.swing.GroupLayout.DEFAULT_SIZE, 966, Short.MAX_VALUE)
+                .addComponent(CreateProfile)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(CreateProfile, javax.swing.GroupLayout.DEFAULT_SIZE, 717, Short.MAX_VALUE)
+                .addComponent(CreateProfile)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents

@@ -101,7 +101,7 @@ public class ViewJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         btnSave3 = new javax.swing.JButton();
 
-        setBackground(javax.swing.UIManager.getDefaults().getColor("Button.focusedBackground"));
+        setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(600, 600));
 
         tblPerson.setModel(new javax.swing.table.DefaultTableModel(
@@ -122,7 +122,7 @@ public class ViewJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblPerson);
 
-        btnUpdate.setBackground(javax.swing.UIManager.getDefaults().getColor("Component.accentColor"));
+        btnUpdate.setBackground(new java.awt.Color(51, 153, 255));
         btnUpdate.setFont(new java.awt.Font("Helvetica Neue", 1, 12)); // NOI18N
         btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
         btnUpdate.setText("Update");
@@ -133,7 +133,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnDelete.setBackground(javax.swing.UIManager.getDefaults().getColor("Component.accentColor"));
+        btnDelete.setBackground(new java.awt.Color(51, 153, 255));
         btnDelete.setFont(new java.awt.Font("Helvetica Neue", 1, 12)); // NOI18N
         btnDelete.setForeground(new java.awt.Color(255, 255, 255));
         btnDelete.setText("Delete");
@@ -144,7 +144,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnSearch.setBackground(javax.swing.UIManager.getDefaults().getColor("Component.accentColor"));
+        btnSearch.setBackground(new java.awt.Color(51, 153, 255));
         btnSearch.setFont(new java.awt.Font("Helvetica Neue", 1, 12)); // NOI18N
         btnSearch.setForeground(new java.awt.Color(255, 255, 255));
         btnSearch.setText("SEARCH");
@@ -170,7 +170,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnSave1.setBackground(javax.swing.UIManager.getDefaults().getColor("Component.accentColor"));
+        btnSave1.setBackground(new java.awt.Color(51, 153, 255));
         btnSave1.setFont(new java.awt.Font("Helvetica Neue", 1, 12)); // NOI18N
         btnSave1.setForeground(new java.awt.Color(255, 255, 255));
         btnSave1.setText("Clear");
@@ -183,7 +183,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnSave2.setBackground(javax.swing.UIManager.getDefaults().getColor("Component.accentColor"));
+        btnSave2.setBackground(new java.awt.Color(51, 153, 255));
         btnSave2.setFont(new java.awt.Font("Helvetica Neue", 1, 12)); // NOI18N
         btnSave2.setForeground(new java.awt.Color(255, 255, 255));
         btnSave2.setText("Manage Appointment");
@@ -354,7 +354,7 @@ public class ViewJPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jPanel1.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.hoverBorderColor"));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("VIEW PERSON PROFILE");
@@ -376,7 +376,7 @@ public class ViewJPanel extends javax.swing.JPanel {
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
-        btnSave3.setBackground(javax.swing.UIManager.getDefaults().getColor("Component.accentColor"));
+        btnSave3.setBackground(new java.awt.Color(51, 153, 255));
         btnSave3.setFont(new java.awt.Font("Helvetica Neue", 1, 12)); // NOI18N
         btnSave3.setForeground(new java.awt.Color(255, 255, 255));
         btnSave3.setText("NEWS");

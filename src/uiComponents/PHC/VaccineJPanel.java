@@ -40,7 +40,7 @@ public class VaccineJPanel extends javax.swing.JPanel {
         lbl = new javax.swing.JPanel();
         emtLbl = new javax.swing.JLabel();
 
-        jPanel1.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.focusedBackground"));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         fnameLbl.setText("Name:");
 
@@ -67,7 +67,7 @@ public class VaccineJPanel extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(tblVaccine);
 
-        requestVaccineBtn.setBackground(javax.swing.UIManager.getDefaults().getColor("Component.accentColor"));
+        requestVaccineBtn.setBackground(new java.awt.Color(51, 153, 255));
         requestVaccineBtn.setForeground(new java.awt.Color(255, 255, 255));
         requestVaccineBtn.setText("Request Vaccine");
         requestVaccineBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -76,7 +76,7 @@ public class VaccineJPanel extends javax.swing.JPanel {
             }
         });
 
-        lbl.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.focusedBorderColor"));
+        lbl.setBackground(new java.awt.Color(255, 255, 255));
 
         emtLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         emtLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

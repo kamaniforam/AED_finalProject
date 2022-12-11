@@ -7,6 +7,12 @@ import Business.EcoSystem;
 import Business.Network;
 import Business.Pharmacy.Organizations.PharmacyOrganization;
 import Business.Roles.Role;
+import static Business.Roles.Role.COMMUNITY_ADMINISTRATOR;
+import static Business.Roles.Role.DENTAL_PATIENT;
+import static Business.Roles.Role.DENTIST;
+import static Business.Roles.Role.HOSPITAL_ADMINISTRATOR;
+import static Business.Roles.Role.PATIENT;
+import static Business.Roles.Role.PHARMACY_ADMIN;
 import Business.db40Utility.DB4OUtil;
 import Bussiness.model.PHC.EMTDirectory;
 import Bussiness.model.PHC.DoctorDirectory;
@@ -18,9 +24,10 @@ import Bussiness.model.PHC.VitalSigns;
 import Bussiness.model.PHC.UserAccount;
 import Enterprise.Enterprise;
 import com.db4o.ObjectSet;
-import java.awt.CardLayout;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+import uiComponents.DentalHospital.Doctor.DentistWorkAreaJPanel;
+import uiComponents.DentalHospital.FrontDesk.FrontDeskWorkAreaJPanel;
+import uiComponents.DentalPatientRole.DentalPatientJPanel;
 import uiComponents.Pharmacy.PharmacyAdminWorkAreaJPanel;
 
 /**
@@ -46,9 +53,10 @@ public class MainJFrame extends javax.swing.JFrame {
     Network network;
     Enterprise enterprise;
     
+    
     public MainJFrame() {
         initComponents();
-     
+   
         this.personDirectory = new PersonDirectory();
         this.patientDirectory = new PatientDirectory();
         this.encounterHistory = new EncounterHistory();
@@ -94,9 +102,9 @@ public class MainJFrame extends javax.swing.JFrame {
 
         leftPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel3.setBackground(new java.awt.Color(153, 204, 255));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        loginBtn.setBackground(new java.awt.Color(0, 0, 204));
+        loginBtn.setBackground(new java.awt.Color(51, 153, 255));
         loginBtn.setForeground(new java.awt.Color(255, 255, 255));
         loginBtn.setText("LOGIN");
         loginBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -106,7 +114,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(0, 0, 204));
+        jButton3.setBackground(new java.awt.Color(51, 153, 255));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("LOGOUT");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -170,7 +178,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(153, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.addContainerListener(new java.awt.event.ContainerAdapter() {
             public void componentAdded(java.awt.event.ContainerEvent evt) {
                 jPanel1formComponentAdded(evt);
@@ -187,7 +195,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         usernameLbl.setText("User Name:");
 
-        loginBtn1.setBackground(new java.awt.Color(0, 0, 204));
+        loginBtn1.setBackground(new java.awt.Color(51, 153, 255));
         loginBtn1.setForeground(new java.awt.Color(255, 255, 255));
         loginBtn1.setText("LOGIN");
         loginBtn1.addActionListener(new java.awt.event.ActionListener() {
@@ -196,7 +204,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        dropdownRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose a Role", "System administrator", "Patient", "Hospital administrator", "Community administrator", "Doctor", "Pharmacy Admin", "Dental Admin", "PHC Admin", "Blood Bank Admin" }));
+        dropdownRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CHOOSE A ROLE", "SYSTEM ADMINISTRATOR", "PATIENT", "COMMUNITY ADMINISTRATOR", "HOSPITAL ADMINISTRATOR", "PHARMACY ADMIN", "RECEPTIONIST", "DENTAL PATIENT", "DENTIST" }));
         dropdownRole.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dropdownRoleActionPerformed(evt);
@@ -223,7 +231,7 @@ public class MainJFrame extends javax.swing.JFrame {
                             .addComponent(password)
                             .addComponent(username)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(169, 169, 169)
+                        .addGap(202, 202, 202)
                         .addComponent(loginBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(316, Short.MAX_VALUE))
         );
@@ -242,12 +250,12 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(role, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dropdownRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
+                .addGap(74, 74, 74)
                 .addComponent(loginBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(315, Short.MAX_VALUE))
+                .addContainerGap(283, Short.MAX_VALUE))
         );
 
-        jPanel2.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.focusedBorderColor"));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("HEALTHCARE MANAGEMENT SYSTEM");
@@ -257,16 +265,16 @@ public class MainJFrame extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(79, 79, 79)
+                .addGap(134, 134, 134)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(16, 16, 16)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout containerLayout = new javax.swing.GroupLayout(container);
@@ -331,11 +339,11 @@ public class MainJFrame extends javax.swing.JFrame {
 
         container.removeAll();
         
+       
         LoginJPanel login = new LoginJPanel(jSplitPane1, account, business, personDirectory, patientDirectory, encounterHistory,
         doctorDirectory, hospitalDirectory, vitalSigns, org, network, enterprise);
 
         jSplitPane1.setRightComponent(login);
-        
         
 
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -369,12 +377,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 switch (Role.fromString(dropdownrole)) {
                     case SYSTEM_ADMINISTRATOR: 
                         MakeUserJPanel userPanel = new MakeUserJPanel(jSplitPane1, account, business, personDirectory, patientDirectory, encounterHistory, doctorDirectory, hospitalDirectory, vitalSigns);
-                        //SystemAdminJPanel systemAdminPane = new SystemAdminJPanel(jSplitPane1, account, business, personDirectory, patientDirectory, encounterHistory, doctorDirectory, hispDirectory);
                         jSplitPane1.setRightComponent(userPanel);
-                        break;
-                    case DOCTOR:
-                        //DoctorJPanel doctorPane = new DoctorJPanel(encounterHistory, personDirectory, patientDirectory, hispDirectory, jSplitPane1, doctorDirectory, vitalSigns);
-                        //jSplitPane1.setRightComponent(doctorPane);
                         break;
                     case PATIENT:
                         CreateJPanel createPane = new CreateJPanel(jSplitPane1, account, business,personDirectory, patientDirectory, encounterHistory, doctorDirectory, hospitalDirectory, vitalSigns);
@@ -391,6 +394,18 @@ public class MainJFrame extends javax.swing.JFrame {
                     case PHARMACY_ADMIN:
                         PharmacyAdminWorkAreaJPanel pharmacy = new PharmacyAdminWorkAreaJPanel(jPanel1, account, org, enterprise, network);
                         jSplitPane1.setRightComponent(pharmacy);        
+                        break;
+                    case DENTIST:
+                        DentistWorkAreaJPanel dentist = new DentistWorkAreaJPanel(business);
+                        jSplitPane1.setRightComponent(dentist);
+                        break;
+                    case DENTAL_PATIENT:
+                        DentalPatientJPanel dental = new DentalPatientJPanel(business, jPanel1, account, org, enterprise, network);
+                        jSplitPane1.setRightComponent(dental);
+                        break;
+                    case RECEPTIONIST:
+                        FrontDeskWorkAreaJPanel desk = new FrontDeskWorkAreaJPanel(business);
+                        jSplitPane1.setRightComponent(desk);
                         break;
                     default:
                         JOptionPane.showMessageDialog(this, "SELECT ROLE");

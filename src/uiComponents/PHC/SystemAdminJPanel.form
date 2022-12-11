@@ -56,7 +56,7 @@
         <Container class="javax.swing.JPanel" name="leftPanel">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="fb" green="f3" id="Button.default.focusedBackground" palette="3" red="ea" type="palette"/>
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
           </Properties>
           <Constraints>
@@ -91,7 +91,7 @@
             <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="fb" green="f3" id="Button.default.focusedBackground" palette="3" red="ea" type="palette"/>
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
               </Properties>
 
@@ -139,7 +139,7 @@
                     <Container class="javax.swing.JPanel" name="doctorPanel1">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="fb" green="f3" id="Button.default.focusedBackground" palette="3" red="ea" type="palette"/>
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
                       </Properties>
 
@@ -157,9 +157,9 @@
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" alignment="0" attributes="0">
                                                   <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-                                                  <Component id="create2" min="-2" pref="116" max="-2" attributes="0"/>
+                                                  <Component id="create2" linkSize="2" min="-2" pref="116" max="-2" attributes="0"/>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="update2" min="-2" pref="116" max="-2" attributes="0"/>
+                                                  <Component id="update2" linkSize="2" min="-2" pref="116" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Component id="HospitalnameLbl" min="-2" max="-2" attributes="0"/>
@@ -183,9 +183,9 @@
                                               </Group>
                                               <Group type="102" alignment="0" attributes="0">
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="delete2" min="-2" pref="116" max="-2" attributes="0"/>
+                                                  <Component id="delete2" linkSize="2" min="-2" pref="116" max="-2" attributes="0"/>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="clear2" min="-2" pref="95" max="-2" attributes="0"/>
+                                                  <Component id="clear2" linkSize="2" min="-2" pref="95" max="-2" attributes="0"/>
                                                   <EmptySpace max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
@@ -220,12 +220,12 @@
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="create2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="update2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="delete2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="clear2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="create2" linkSize="1" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                                      <Component id="update2" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="delete2" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="clear2" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="194" max="32767" attributes="0"/>
+                                  <EmptySpace pref="177" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -258,7 +258,7 @@
                         <Component class="javax.swing.JButton" name="create2">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="bf" green="75" id="Component.accentColor" palette="3" red="26" type="palette"/>
+                              <Color blue="ff" green="99" red="33" type="rgb"/>
                             </Property>
                             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -272,7 +272,7 @@
                         <Component class="javax.swing.JButton" name="update2">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="bf" green="75" id="Component.accentColor" palette="3" red="26" type="palette"/>
+                              <Color blue="ff" green="99" red="33" type="rgb"/>
                             </Property>
                             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -286,7 +286,7 @@
                         <Component class="javax.swing.JButton" name="delete2">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="bf" green="75" id="Component.accentColor" palette="3" red="26" type="palette"/>
+                              <Color blue="ff" green="99" red="33" type="rgb"/>
                             </Property>
                             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -406,7 +406,7 @@
                         <Component class="javax.swing.JButton" name="clear2">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="bf" green="75" id="Component.accentColor" palette="3" red="26" type="palette"/>
+                              <Color blue="ff" green="99" red="33" type="rgb"/>
                             </Property>
                             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -1112,7 +1112,7 @@
             <Container class="javax.swing.JPanel" name="jPanel1">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="d4" green="b0" id="Button.default.focusedBorderColor" palette="3" red="89" type="palette"/>
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
               </Properties>
 
