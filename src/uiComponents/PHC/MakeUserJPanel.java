@@ -5,7 +5,6 @@
 package uiComponents.PHC;
 
 import Business.EcoSystem;
-import Bussiness.model.PHC.Employee;
 import Business.Roles.Role;
 import Business.db40Utility.DB4OUtil;
 import Bussiness.model.PHC.DoctorDirectory;
@@ -542,7 +541,7 @@ public class MakeUserJPanel extends javax.swing.JPanel {
         String confirmPassword = confirmPasswordTxt.getText();
         String role = dropdownRole.getSelectedItem().toString();
 
-        if(userName.isBlank() || password.isBlank()){
+        if(username.isBlank() || password.isBlank()){
             JOptionPane.showMessageDialog(this, "Username/Password cannot be blank");
             return;
         }else if (!password.equals(confirmPassword)) {

@@ -13,7 +13,7 @@ import static Business.Roles.Role.DENTIST;
 import static Business.Roles.Role.HOSPITAL_ADMINISTRATOR;
 import static Business.Roles.Role.PATIENT;
 import static Business.Roles.Role.PHARMACY_ADMIN;
-import Business.WorkQueue.WorkQueue;
+import Business.WorkQueue.WorkRequest;
 import Business.db40Utility.DB4OUtil;
 import Bussiness.model.PHC.EMTDirectory;
 import Bussiness.model.PHC.DoctorDirectory;
@@ -50,12 +50,16 @@ public class MainJFrame extends javax.swing.JFrame {
     UserAccount account;
     EcoSystem business;  
     VitalSigns vitalSigns;
-    private DB4OUtil dB4OUtil = DB4OUtil.getInstance(); //Richa
+    
     EMTDirectory eMTDirectory;
     PharmacyOrganization org;
     Network network;
     Enterprise enterprise;
-    WorkQueue wq;
+    WorkRequest wr;
+            
+    
+    private DB4OUtil dB4OUtil = DB4OUtil.getInstance(); //Richa
+       
     
     public MainJFrame() {
         initComponents();
@@ -409,7 +413,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 jSplitPane1.setRightComponent(hospitalAdminPane);
                 break;
                 case PHARMACY_ADMIN:
-                PharmacyAdminWorkAreaJPanel pharmacy = new PharmacyAdminWorkAreaJPanel(jSplitPane1, account, org, enterprise, network, business);
+                PharmacyAdminWorkAreaJPanel pharmacy = new PharmacyAdminWorkAreaJPanel(jSplitPane1, account, org, enterprise, network);
                 jSplitPane1.setRightComponent(pharmacy);
                 break;
                 case DENTIST:
@@ -421,7 +425,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 jSplitPane1.setRightComponent(dental);
                 break;
                 case RECEPTIONIST:
-                FrontDeskWorkAreaJPanel desk = new FrontDeskWorkAreaJPanel(business);
+                FrontDeskWorkAreaJPanel desk = new FrontDeskWorkAreaJPanel();
                 jSplitPane1.setRightComponent(desk);
                 case SUPER_ADMIN:
                 AddUserPanel makeUser = new AddUserPanel();
