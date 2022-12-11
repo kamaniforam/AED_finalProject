@@ -9,6 +9,9 @@ import Business.Network;
 import Business.Organization;
 import Business.Pharmacy.Organizations.PharmacyOrganization;
 import Business.Roles.Role;
+import static Business.Roles.Role.DENTIST;
+import static Business.Roles.Role.PHARMACY_ADMIN;
+
 import Business.db40Utility.DB4OUtil;
 import javax.swing.JOptionPane;
 import Bussiness.model.PHC.DoctorDirectory;
@@ -21,6 +24,9 @@ import Bussiness.model.PHC.UserAccount;
 import Enterprise.Enterprise;
 import com.db4o.ObjectSet;
 import javax.swing.JSplitPane;
+
+import uiComponents.DentalHospital.Doctor.DentistWorkAreaJPanel;
+import uiComponents.DentalPatientRole.DentalPatientJPanel;
 import uiComponents.Pharmacy.PharmacyAdminWorkAreaJPanel;
 
 /**
@@ -93,7 +99,8 @@ public class LoginJPanel extends javax.swing.JPanel {
             }
         });
 
-        jPanel1.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.hoverBorderColor"));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
         jPanel1.setLayout(null);
 
         loginLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 36)); // NOI18N
@@ -131,7 +138,8 @@ public class LoginJPanel extends javax.swing.JPanel {
         jPanel1.add(usernameLbl);
         usernameLbl.setBounds(240, 160, 69, 17);
 
-        loginBtn.setBackground(javax.swing.UIManager.getDefaults().getColor("Component.accentColor"));
+        loginBtn.setBackground(new java.awt.Color(51, 153, 255));
+
         loginBtn.setForeground(new java.awt.Color(255, 255, 255));
         loginBtn.setText("Login");
         loginBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -140,7 +148,8 @@ public class LoginJPanel extends javax.swing.JPanel {
             }
         });
         jPanel1.add(loginBtn);
-        loginBtn.setBounds(330, 320, 120, 60);
+        loginBtn.setBounds(330, 320, 150, 50);
+
 
         dropdownRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose a Role", "System administrator", "Patient", "Hospital administrator", "Community administrator", "Doctor", "Pharmacy Admin", "Dental Admin", "PHC Admin", "Blood Bank Admin" }));
         dropdownRole.addActionListener(new java.awt.event.ActionListener() {
@@ -204,10 +213,6 @@ public class LoginJPanel extends javax.swing.JPanel {
                         //SystemAdminJPanel systemAdminPane = new SystemAdminJPanel(jSplitPane1, account, business, personDirectory, patientDirectory, encounterHistory, doctorDirectory, hispDirectory);
                         jSplitPane1.setRightComponent(userPanel);
                         break;
-                    case DOCTOR:
-                        //DoctorJPanel doctorPane = new DoctorJPanel(encounterHistory, personDirectory, patientDirectory, hispDirectory, jSplitPane1, doctorDirectory, vitalSigns);
-                        //jSplitPane1.setRightComponent(doctorPane);
-                        break;
                     case PATIENT:
                         CreateJPanel createPane = new CreateJPanel(jSplitPane1, account, business,personDirectory, patientDirectory, encounterHistory, doctorDirectory, hispDirectory, vitalSigns);
                         jSplitPane1.setRightComponent(createPane);
@@ -223,6 +228,15 @@ public class LoginJPanel extends javax.swing.JPanel {
                     case PHARMACY_ADMIN:
                         PharmacyAdminWorkAreaJPanel pharmacy = new PharmacyAdminWorkAreaJPanel(jPanel1, account, org, enterprise, network);
                         jSplitPane1.setRightComponent(pharmacy);        
+                        break;
+
+                    case DENTIST:
+                        DentistWorkAreaJPanel dentist = new DentistWorkAreaJPanel(business);
+                        jSplitPane1.setRightComponent(dentist);
+                        break;
+                    case DENTAL_PATIENT:
+                        //DentalPatientJPanel dental = new DentalPatientJPanel();
+                        //jSplitPane1.setRightComponent(dental);
                         break;
                     default:
                         JOptionPane.showMessageDialog(this, "SELECT ROLE");
