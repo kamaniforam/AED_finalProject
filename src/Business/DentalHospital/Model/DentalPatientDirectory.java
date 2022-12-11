@@ -4,7 +4,6 @@
  */
 package Business.DentalHospital.Model;
 
-import Business.model.doctor.Doctor;
 import java.util.ArrayList;
 
 /**
