@@ -121,11 +121,11 @@ public class HospitalAdminJPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         hospitalPortalLbl = new javax.swing.JLabel();
 
-        setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.focusedBackground"));
+        setBackground(new java.awt.Color(255, 255, 255));
 
-        jTabbedPane1.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.focusedBackground"));
+        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
 
-        doctorPanel.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.focusedBackground"));
+        doctorPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         addDocLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         addDocLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -148,7 +148,7 @@ public class HospitalAdminJPanel extends javax.swing.JPanel {
 
         hospitalLbl.setText("Hospital");
 
-        createDoctorBtn.setBackground(javax.swing.UIManager.getDefaults().getColor("Component.accentColor"));
+        createDoctorBtn.setBackground(new java.awt.Color(51, 153, 255));
         createDoctorBtn.setForeground(new java.awt.Color(255, 255, 255));
         createDoctorBtn.setText("Create");
         createDoctorBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -157,7 +157,7 @@ public class HospitalAdminJPanel extends javax.swing.JPanel {
             }
         });
 
-        updateBtn.setBackground(javax.swing.UIManager.getDefaults().getColor("Component.accentColor"));
+        updateBtn.setBackground(new java.awt.Color(51, 153, 255));
         updateBtn.setForeground(new java.awt.Color(255, 255, 255));
         updateBtn.setText("Update");
         updateBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -188,7 +188,7 @@ public class HospitalAdminJPanel extends javax.swing.JPanel {
         });
         jScrollPane5.setViewportView(tblDoctor);
 
-        clear1.setBackground(javax.swing.UIManager.getDefaults().getColor("Component.accentColor"));
+        clear1.setBackground(new java.awt.Color(51, 153, 255));
         clear1.setForeground(new java.awt.Color(255, 255, 255));
         clear1.setText("Clear");
         clear1.addActionListener(new java.awt.event.ActionListener() {
@@ -218,7 +218,7 @@ public class HospitalAdminJPanel extends javax.swing.JPanel {
         uploadPhoto.setForeground(new java.awt.Color(255, 255, 255));
         uploadPhoto.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(153, 153, 153), null));
 
-        displayPhoto.setBackground(javax.swing.UIManager.getDefaults().getColor("Component.accentColor"));
+        displayPhoto.setBackground(new java.awt.Color(51, 153, 255));
         displayPhoto.setForeground(new java.awt.Color(255, 255, 255));
         displayPhoto.setText("UPLOAD PHOTO");
         displayPhoto.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
@@ -590,7 +590,7 @@ public class HospitalAdminJPanel extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Patient", patientPanel);
 
-        jPanel1.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.hoverBorderColor"));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         hospitalPortalLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         hospitalPortalLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -601,16 +601,16 @@ public class HospitalAdminJPanel extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(348, 348, 348)
+                .addGap(287, 287, 287)
                 .addComponent(hospitalPortalLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(17, 17, 17)
                 .addComponent(hospitalPortalLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

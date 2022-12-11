@@ -70,7 +70,7 @@ public class EMTJPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         emtLbl = new javax.swing.JLabel();
 
-        setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.focusedBackground"));
+        setBackground(new java.awt.Color(255, 255, 255));
 
         fnameLbl.setText("First Name:");
 
@@ -115,7 +115,7 @@ public class EMTJPanel extends javax.swing.JPanel {
             }
         });
 
-        bookBtn.setBackground(javax.swing.UIManager.getDefaults().getColor("Component.accentColor"));
+        bookBtn.setBackground(new java.awt.Color(51, 153, 255));
         bookBtn.setForeground(new java.awt.Color(255, 255, 255));
         bookBtn.setText("Book Appoitment");
         bookBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -124,11 +124,11 @@ public class EMTJPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setBackground(javax.swing.UIManager.getDefaults().getColor("Component.accentColor"));
+        jButton1.setBackground(new java.awt.Color(51, 153, 255));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Request Blood");
 
-        jPanel1.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.focusedBorderColor"));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         emtLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         emtLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
