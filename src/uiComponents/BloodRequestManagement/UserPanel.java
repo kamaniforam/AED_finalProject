@@ -4,15 +4,26 @@
  */
 package uiComponents.BloodRequestManagement;
 
+import business.Bloodbank.resources.Person;
+import java.util.ArrayList;
+
+
+
 /**
  *
  * @author Admin
  */
 public class UserPanel extends javax.swing.JPanel {
+    private String city ;
+	private Integer zipcode ;
+	private ArrayList<Object[]> resultSet;
+	
+	private int selectedRow;
 
     /**
      * Creates new form UserPanel
      */
+    Person person;
     public UserPanel() {
         initComponents();
     }
@@ -32,35 +43,28 @@ public class UserPanel extends javax.swing.JPanel {
         jPanel10 = new javax.swing.JPanel();
         lblPersonalDetails = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
-        lblFirstname = new javax.swing.JLabel();
-        lblLastname = new javax.swing.JLabel();
-        textFieldFirstname = new javax.swing.JTextField();
-        textFieldLastname = new javax.swing.JTextField();
-        textFieldGender = new javax.swing.JTextField();
-        textFieldContact = new javax.swing.JTextField();
-        textFieldUsername = new javax.swing.JTextField();
-        textFieldPassword = new javax.swing.JTextField();
-        lblGender = new javax.swing.JLabel();
-        lblContact = new javax.swing.JLabel();
-        lblUsername = new javax.swing.JLabel();
-        lblPassword = new javax.swing.JLabel();
-        comboBox_City = new javax.swing.JComboBox<>();
-        comboBox_Zipcode = new javax.swing.JComboBox<>();
-        lblCity = new javax.swing.JLabel();
-        lblZipcode = new javax.swing.JLabel();
+        label = new javax.swing.JLabel();
+        label_1 = new javax.swing.JLabel();
+        userFirstNameTf = new javax.swing.JTextField();
+        userLastNameTf = new javax.swing.JTextField();
+        userContactTf = new javax.swing.JTextField();
+        label_4 = new javax.swing.JLabel();
+        label_3 = new javax.swing.JLabel();
+        lbl_Address = new javax.swing.JLabel();
         btnEdit = new javax.swing.JButton();
         lblError = new javax.swing.JLabel();
+        userAddressTf = new javax.swing.JTextField();
+        userPasswordTf = new javax.swing.JPasswordField();
         jPanel5 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
-        lblUnits = new javax.swing.JLabel();
+        lblUnitsPanel = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
         lblBloodGroup = new javax.swing.JLabel();
-        lbl_1Units = new javax.swing.JLabel();
-        textField_BloodGroup = new javax.swing.JTextField();
-        textFieldUnits = new javax.swing.JTextField();
+        lblUnits = new javax.swing.JLabel();
+        textField_5 = new javax.swing.JTextField();
         btnRequest = new javax.swing.JButton();
-        lbl_1Error = new javax.swing.JLabel();
+        comboBox_2 = new javax.swing.JComboBox<>();
         jPanel6 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -69,6 +73,11 @@ public class UserPanel extends javax.swing.JPanel {
         setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.focusedBackground"));
 
         jTabbedPane3.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.focusedBackground"));
+        jTabbedPane3.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jTabbedPane3StateChanged(evt);
+            }
+        });
 
         jPanel9.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.focusedBackground"));
 
@@ -98,45 +107,38 @@ public class UserPanel extends javax.swing.JPanel {
         jPanel11.setPreferredSize(new java.awt.Dimension(800, 800));
         jPanel11.setRequestFocusEnabled(false);
 
-        lblFirstname.setText("Firstname:");
+        label.setText("Firstname:");
 
-        lblLastname.setText("Lastname:");
+        label_1.setText("Lastname:");
 
-        textFieldFirstname.setText("jTextField14");
+        userFirstNameTf.setText("jTextField14");
 
-        textFieldLastname.setText("jTextField15");
+        userLastNameTf.setText("jTextField15");
 
-        textFieldGender.setText("jTextField16");
+        userContactTf.setText("jTextField17");
 
-        textFieldContact.setText("jTextField17");
+        label_4.setText("Contact:");
 
-        textFieldUsername.setText("jTextField18");
+        label_3.setText("Password:");
 
-        textFieldPassword.setText("jTextField19");
-
-        lblGender.setText("Gender:");
-
-        lblContact.setText("Contact:");
-
-        lblUsername.setText("Username:");
-
-        lblPassword.setText("Password:");
-
-        comboBox_City.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        comboBox_Zipcode.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        lblCity.setText("City:");
-
-        lblZipcode.setText("Zipcode:");
+        lbl_Address.setText("Address");
 
         btnEdit.setBackground(javax.swing.UIManager.getDefaults().getColor("Component.accentColor"));
         btnEdit.setFont(new java.awt.Font("Malgun Gothic", 0, 18)); // NOI18N
         btnEdit.setForeground(new java.awt.Color(255, 255, 255));
         btnEdit.setText("Edit");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         lblError.setForeground(new java.awt.Color(255, 51, 51));
         lblError.setText("ERROR");
+
+        userAddressTf.setText("jTextField1");
+
+        userPasswordTf.setText("jPasswordField1");
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -145,39 +147,32 @@ public class UserPanel extends javax.swing.JPanel {
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addGap(196, 196, 196)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(label_1)
+                            .addComponent(label)
+                            .addComponent(label_3))
+                        .addGap(27, 27, 27)
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel11Layout.createSequentialGroup()
-                                .addGap(196, 196, 196)
-                                .addComponent(lblGender)
-                                .addGap(43, 43, 43))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblLastname)
-                                    .addComponent(lblFirstname))
-                                .addGap(27, 27, 27)))
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(textFieldFirstname, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
-                            .addComponent(textFieldLastname)
-                            .addComponent(textFieldGender)))
+                            .addComponent(userFirstNameTf, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
+                            .addComponent(userLastNameTf)
+                            .addComponent(userPasswordTf)))
                     .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addGap(194, 194, 194)
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblPassword)
-                            .addComponent(lblUsername)
-                            .addComponent(lblContact)
-                            .addComponent(lblCity)
-                            .addComponent(lblZipcode))
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel11Layout.createSequentialGroup()
+                                .addGap(209, 209, 209)
+                                .addComponent(label_4))
+                            .addGroup(jPanel11Layout.createSequentialGroup()
+                                .addGap(160, 160, 160)
+                                .addComponent(lbl_Address, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(27, 27, 27)
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnEdit)
-                            .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(textFieldContact)
-                                .addComponent(textFieldUsername)
-                                .addComponent(textFieldPassword)
-                                .addComponent(comboBox_City, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(comboBox_Zipcode, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(userContactTf)
+                            .addGroup(jPanel11Layout.createSequentialGroup()
+                                .addComponent(btnEdit)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(userAddressTf))))
+                .addContainerGap(136, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(lblError)
@@ -186,43 +181,30 @@ public class UserPanel extends javax.swing.JPanel {
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblFirstname)
-                            .addComponent(textFieldFirstname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(textFieldLastname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblLastname))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(textFieldGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblGender))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(textFieldContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblContact))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(textFieldUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblUsername))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(textFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblPassword))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(comboBox_City, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblCity))
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(label)
+                    .addComponent(userFirstNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(comboBox_Zipcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblZipcode))
+                    .addComponent(userLastNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label_1))
+                .addGap(4, 4, 4)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(label_3)
+                    .addComponent(userPasswordTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(userContactTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label_4))
                 .addGap(18, 18, 18)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_Address)
+                    .addComponent(userAddressTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
                 .addComponent(btnEdit)
                 .addGap(38, 38, 38)
                 .addComponent(lblError)
-                .addGap(0, 416, Short.MAX_VALUE))
+                .addGap(0, 424, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
@@ -261,39 +243,36 @@ public class UserPanel extends javax.swing.JPanel {
 
         jPanel13.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.hoverBorderColor"));
 
-        lblUnits.setFont(new java.awt.Font("Georgia", 1, 15)); // NOI18N
-        lblUnits.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblUnits.setText("Units ");
+        lblUnitsPanel.setFont(new java.awt.Font("Georgia", 1, 15)); // NOI18N
+        lblUnitsPanel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblUnitsPanel.setText("Units ");
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
-                .addComponent(lblUnits, javax.swing.GroupLayout.PREFERRED_SIZE, 547, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblUnitsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 547, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblUnits, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+            .addComponent(lblUnitsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
         );
 
         jPanel14.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.focusedBackground"));
 
         lblBloodGroup.setText("Blood Group");
 
-        lbl_1Units.setText("Units");
+        lblUnits.setText("Units");
 
-        textField_BloodGroup.setText("jTextField14");
-
-        textFieldUnits.setText("jTextField15");
+        textField_5.setText("jTextField15");
 
         btnRequest.setBackground(javax.swing.UIManager.getDefaults().getColor("Component.accentColor"));
         btnRequest.setForeground(new java.awt.Color(255, 255, 255));
         btnRequest.setText("Request");
 
-        lbl_1Error.setForeground(new java.awt.Color(255, 51, 51));
-        lbl_1Error.setText("ERROR");
+        comboBox_2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
@@ -304,19 +283,18 @@ public class UserPanel extends javax.swing.JPanel {
                     .addGroup(jPanel14Layout.createSequentialGroup()
                         .addGap(171, 171, 171)
                         .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lbl_1Units)
+                            .addComponent(lblUnits)
                             .addComponent(lblBloodGroup))
-                        .addGap(18, 18, 18)
                         .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textField_BloodGroup, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textFieldUnits, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel14Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(textField_5, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
+                                .addGap(28, 28, 28)
+                                .addComponent(comboBox_2, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel14Layout.createSequentialGroup()
                         .addGap(225, 225, 225)
-                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnRequest)
-                            .addGroup(jPanel14Layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addComponent(lbl_1Error)))))
+                        .addComponent(btnRequest)))
                 .addContainerGap(152, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
@@ -325,15 +303,14 @@ public class UserPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblBloodGroup)
-                    .addComponent(textField_BloodGroup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboBox_2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_1Units)
-                    .addComponent(textFieldUnits, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblUnits)
+                    .addComponent(textField_5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addComponent(btnRequest)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                .addComponent(lbl_1Error))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
@@ -432,12 +409,65 @@ public class UserPanel extends javax.swing.JPanel {
         jTabbedPane3.getAccessibleContext().setAccessibleName("Blood Request");
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTabbedPane3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane3StateChanged
+        // TODO add your handling code here:
+        if(jTabbedPane3.getSelectedComponent().getName().equals("Book Appointment")) {
+					
+					/*
+					 * removeAllRows(table);
+					 * 
+					 * lblError.setText(""); lblError.setVisible(false);
+					 */
+				}
+				
+				if(jTabbedPane3.getSelectedComponent().getName().equals("Encounters")) {
+					
+					/* removeAllRows(table_1); */
+					populatePersonEncounters();
+                                }
+    
+    }
+
+
+    private void populatePersonEncounters() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    
+    }//GEN-LAST:event_jTabbedPane3StateChanged
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        // TODO add your handling code here:
+        if(!userFirstNameTf.getText().equals("")) {
+					
+					person.getPersonalDetails().setFirstName(userFirstNameTf.getText());
+				}
+				
+				if(!userLastNameTf.getText().equals("")) {
+					
+					person.getPersonalDetails().setLastName(userLastNameTf.getText());
+				}
+				
+				if(!userPasswordTf.getPassword().equals("")) {
+					
+					person.getCredentials().setPassword(new String(userPasswordTf.getPassword()));
+				}
+				
+				if(!userContactTf.getText().equals("")) {
+					
+					person.getPersonalDetails().setContact(userContactTf.getText());
+				}
+				
+				if(!userAddressTf.getText().equals("")) {
+					
+					person.getPersonalDetails().setAddress(userAddressTf.getText());
+				}
+
+    }//GEN-LAST:event_btnEditActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnRequest;
-    private javax.swing.JComboBox<String> comboBox_City;
-    private javax.swing.JComboBox<String> comboBox_Zipcode;
+    private javax.swing.JComboBox<String> comboBox_2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -451,27 +481,21 @@ public class UserPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel label;
+    private javax.swing.JLabel label_1;
+    private javax.swing.JLabel label_3;
+    private javax.swing.JLabel label_4;
     private javax.swing.JLabel lblBloodGroup;
-    private javax.swing.JLabel lblCity;
-    private javax.swing.JLabel lblContact;
     private javax.swing.JLabel lblError;
-    private javax.swing.JLabel lblFirstname;
-    private javax.swing.JLabel lblGender;
-    private javax.swing.JLabel lblLastname;
-    private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblPersonalDetails;
     private javax.swing.JLabel lblUnits;
-    private javax.swing.JLabel lblUsername;
-    private javax.swing.JLabel lblZipcode;
-    private javax.swing.JLabel lbl_1Error;
-    private javax.swing.JLabel lbl_1Units;
-    private javax.swing.JTextField textFieldContact;
-    private javax.swing.JTextField textFieldFirstname;
-    private javax.swing.JTextField textFieldGender;
-    private javax.swing.JTextField textFieldLastname;
-    private javax.swing.JTextField textFieldPassword;
-    private javax.swing.JTextField textFieldUnits;
-    private javax.swing.JTextField textFieldUsername;
-    private javax.swing.JTextField textField_BloodGroup;
+    private javax.swing.JLabel lblUnitsPanel;
+    private javax.swing.JLabel lbl_Address;
+    private javax.swing.JTextField textField_5;
+    private javax.swing.JTextField userAddressTf;
+    private javax.swing.JTextField userContactTf;
+    private javax.swing.JTextField userFirstNameTf;
+    private javax.swing.JTextField userLastNameTf;
+    private javax.swing.JPasswordField userPasswordTf;
     // End of variables declaration//GEN-END:variables
 }

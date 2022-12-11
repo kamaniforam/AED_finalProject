@@ -47,6 +47,9 @@
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Blood Request"/>
       </AccessibilityProperties>
+      <Events>
+        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jTabbedPane3StateChanged"/>
+      </Events>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
@@ -157,50 +160,42 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="196" max="-2" attributes="0"/>
-                                              <Component id="lblGender" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="43" pref="43" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="lblLastname" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="lblFirstname" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                                          </Group>
+                                      <EmptySpace min="-2" pref="196" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="label_1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="label" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="label_3" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
+                                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="textFieldFirstname" alignment="0" pref="204" max="32767" attributes="0"/>
-                                          <Component id="textFieldLastname" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="textFieldGender" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="userFirstNameTf" alignment="0" pref="204" max="32767" attributes="0"/>
+                                          <Component id="userLastNameTf" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="userPasswordTf" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="194" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="lblPassword" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblUsername" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblContact" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblCity" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblZipcode" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="-2" pref="209" max="-2" attributes="0"/>
+                                              <Component id="label_4" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="160" max="-2" attributes="0"/>
+                                              <Component id="lbl_Address" min="-2" pref="92" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="btnEdit" min="-2" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="textFieldContact" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="textFieldUsername" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="textFieldPassword" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="comboBox_City" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="comboBox_Zipcode" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="userContactTf" alignment="0" max="32767" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <Component id="btnEdit" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           </Group>
+                                          <Component id="userAddressTf" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="136" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -212,155 +207,78 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="lblFirstname" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="textFieldFirstname" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="textFieldLastname" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblLastname" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="textFieldGender" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblGender" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="textFieldContact" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblContact" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="textFieldUsername" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblUsername" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="textFieldPassword" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblPassword" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="comboBox_City" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="lblCity" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="label" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="userFirstNameTf" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="comboBox_Zipcode" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblZipcode" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="userLastNameTf" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="label_1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="label_3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="userPasswordTf" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="userContactTf" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="label_4" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lbl_Address" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="userAddressTf" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="99" max="32767" attributes="0"/>
                               <Component id="btnEdit" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                               <Component id="lblError" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="416" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="424" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JLabel" name="lblFirstname">
+                    <Component class="javax.swing.JLabel" name="label">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Firstname:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblLastname">
+                    <Component class="javax.swing.JLabel" name="label_1">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Lastname:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="textFieldFirstname">
+                    <Component class="javax.swing.JTextField" name="userFirstNameTf">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="jTextField14"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="textFieldLastname">
+                    <Component class="javax.swing.JTextField" name="userLastNameTf">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="jTextField15"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="textFieldGender">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="jTextField16"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="textFieldContact">
+                    <Component class="javax.swing.JTextField" name="userContactTf">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="jTextField17"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="textFieldUsername">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="jTextField18"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="textFieldPassword">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="jTextField19"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="lblGender">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Gender:"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="lblContact">
+                    <Component class="javax.swing.JLabel" name="label_4">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Contact:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblUsername">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Username:"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="lblPassword">
+                    <Component class="javax.swing.JLabel" name="label_3">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Password:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="comboBox_City">
+                    <Component class="javax.swing.JLabel" name="lbl_Address">
                       <Properties>
-                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="4">
-                            <StringItem index="0" value="Item 1"/>
-                            <StringItem index="1" value="Item 2"/>
-                            <StringItem index="2" value="Item 3"/>
-                            <StringItem index="3" value="Item 4"/>
-                          </StringArray>
-                        </Property>
-                      </Properties>
-                      <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                      </AuxValues>
-                    </Component>
-                    <Component class="javax.swing.JComboBox" name="comboBox_Zipcode">
-                      <Properties>
-                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="4">
-                            <StringItem index="0" value="Item 1"/>
-                            <StringItem index="1" value="Item 2"/>
-                            <StringItem index="2" value="Item 3"/>
-                            <StringItem index="3" value="Item 4"/>
-                          </StringArray>
-                        </Property>
-                      </Properties>
-                      <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                      </AuxValues>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="lblCity">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="City:"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="lblZipcode">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Zipcode:"/>
+                        <Property name="text" type="java.lang.String" value="Address"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JButton" name="btnEdit">
@@ -376,6 +294,9 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Edit"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblError">
                       <Properties>
@@ -383,6 +304,16 @@
                           <Color blue="33" green="33" red="ff" type="rgb"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="ERROR"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="userAddressTf">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="jTextField1"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JPasswordField" name="userPasswordTf">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="jPasswordField1"/>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -458,19 +389,19 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblUnits" min="-2" pref="547" max="-2" attributes="0"/>
+                              <Component id="lblUnitsPanel" min="-2" pref="547" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblUnits" alignment="0" pref="81" max="32767" attributes="0"/>
+                          <Component id="lblUnitsPanel" alignment="0" pref="81" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JLabel" name="lblUnits">
+                    <Component class="javax.swing.JLabel" name="lblUnitsPanel">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Georgia" size="15" style="1"/>
@@ -496,24 +427,23 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="171" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="lbl_1Units" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblUnits" min="-2" max="-2" attributes="0"/>
                                           <Component id="lblBloodGroup" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="textField_BloodGroup" min="-2" pref="204" max="-2" attributes="0"/>
-                                          <Component id="textFieldUnits" min="-2" pref="204" max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="textField_5" min="-2" pref="204" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                              <Component id="comboBox_2" min="-2" pref="194" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="225" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="btnRequest" min="-2" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                                              <Component id="lbl_1Error" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
+                                      <Component id="btnRequest" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace pref="152" max="32767" attributes="0"/>
@@ -526,17 +456,16 @@
                               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="lblBloodGroup" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="textField_BloodGroup" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="comboBox_2" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="lbl_1Units" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="textFieldUnits" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblUnits" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="textField_5" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                               <Component id="btnRequest" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="16" max="32767" attributes="0"/>
-                              <Component id="lbl_1Error" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="37" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -547,17 +476,12 @@
                         <Property name="text" type="java.lang.String" value="Blood Group"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lbl_1Units">
+                    <Component class="javax.swing.JLabel" name="lblUnits">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Units"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="textField_BloodGroup">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="jTextField14"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="textFieldUnits">
+                    <Component class="javax.swing.JTextField" name="textField_5">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="jTextField15"/>
                       </Properties>
@@ -573,13 +497,20 @@
                         <Property name="text" type="java.lang.String" value="Request"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lbl_1Error">
+                    <Component class="javax.swing.JComboBox" name="comboBox_2">
                       <Properties>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="33" green="33" red="ff" type="rgb"/>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="4">
+                            <StringItem index="0" value="Item 1"/>
+                            <StringItem index="1" value="Item 2"/>
+                            <StringItem index="2" value="Item 3"/>
+                            <StringItem index="3" value="Item 4"/>
+                          </StringArray>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="ERROR"/>
                       </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                      </AuxValues>
                     </Component>
                   </SubComponents>
                 </Container>
