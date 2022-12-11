@@ -14,6 +14,7 @@ import Bussiness.model.PHC.PersonDirectory;
 import java.util.ArrayList;
 import Business.Roles.Role;
 import Business.WorkQueue.WorkQueue;
+import Bussiness.model.PHC.UserAccountDirectory;
 
 /**
  *
@@ -28,13 +29,23 @@ public class EcoSystem extends Organization{
     private EncounterHistory encounterHistory;
     private HospitalDirectory hospitalDirectory;
     private WorkQueue workQueue;
+    private UserAccountDirectory userDirectory;
+
+    public UserAccountDirectory getUserDirectory() {
+        return userDirectory;
+    }
+
+    public void setUserDirectory(UserAccountDirectory userDirectory) {
+        this.userDirectory = userDirectory;
+    }
     
-    public EcoSystem(PersonDirectory personDirectory, PatientDirectory patientDirectory, EncounterHistory encounterHistory, DoctorDirectory doctorDirectory, HospitalDirectory hospitalDirectory) {
+    public EcoSystem(PersonDirectory personDirectory, PatientDirectory patientDirectory, EncounterHistory encounterHistory, DoctorDirectory doctorDirectory, HospitalDirectory hospitalDirectory,UserAccountDirectory userDirectory) {
         this.personDirectory = personDirectory;
         this.patientDirectory = patientDirectory;
         this.encounterHistory = encounterHistory;
         this.doctorDirectory = doctorDirectory;
         this.hospitalDirectory = hospitalDirectory;
+        this.userDirectory = userDirectory;
         this.workQueue = new WorkQueue();
     }
 
@@ -108,8 +119,8 @@ public class EcoSystem extends Organization{
         return roleList;
     }
     private EcoSystem(){
-        super(null);
-      
+       super(null);
+        
        personDirectory = new PersonDirectory();
        patientDirectory = new PatientDirectory();
        encounterHistory = new EncounterHistory();

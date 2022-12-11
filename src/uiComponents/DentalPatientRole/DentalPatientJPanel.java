@@ -31,7 +31,7 @@ public class DentalPatientJPanel extends javax.swing.JPanel {
      */
     
     private EcoSystem ecosystem;
-    JPanel userProcessContainer;
+    private javax.swing.JSplitPane userProcessContainer;
     private UserAccount userAccount;
     private Enterprise enterprise;
     private MedicinesInventory medInv;

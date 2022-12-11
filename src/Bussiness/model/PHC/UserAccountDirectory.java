@@ -17,10 +17,17 @@ public class UserAccountDirectory {
     private ArrayList<UserAccount> userAccountList;
 
     public UserAccountDirectory() {
+        System.out.println("Hey22");
         userAccountList = new ArrayList();
+        System.out.println("Heyy12");
     }
 
     public ArrayList<UserAccount> getUserAccountList() {
+//        if(userAccountList == null){
+//            System.out.println("III");
+//            return new ArrayList<UserAccount>();
+//        }
+//        System.out.println("III");
         return userAccountList;
     }
 
