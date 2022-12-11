@@ -31,7 +31,7 @@ public class PharmacyOrganization extends Organization{
     @Override
     public ArrayList<Role> getSupportedRole() {
         ArrayList<Role> roles = new ArrayList();
-        roles.add(Role.PHARMACY);
+        roles.add(Role.PHARMACY_ADMIN);
         return roles;
     }
 

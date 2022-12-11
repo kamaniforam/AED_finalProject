@@ -14,25 +14,24 @@ import java.nio.file.Paths;
 public class DB4OUtil {
 
     private static final String FILENAME = Paths.get("Databank.db4o").toAbsolutePath().toString();// path to the data store
-    private static DB4OUtil dB4OUtil;
+    private static ObjectContainer db = null;
     
-    public synchronized static DB4OUtil getInstance(){
-        if (dB4OUtil == null){
-            dB4OUtil = new DB4OUtil();
+    public synchronized static ObjectContainer getInstance(){
+        if (db == null){
+            db = createConnection();
         }
-        return dB4OUtil;
+        return db;
     }
 
-    protected synchronized static void shutdown(ObjectContainer conn) {
-        if (conn != null) {
-            conn.close();
+    public synchronized static void shutdown(ObjectContainer conn) {
+        if (db != null) {
+            db.close();
         }
     }
 
-    private ObjectContainer createConnection() {
+    private static ObjectContainer createConnection() {
         try {
-            ObjectContainer db = Db4oEmbedded.openFile(FILENAME);
-            return db;
+            return Db4oEmbedded.openFile(FILENAME);
         } catch (Exception ex) {
             System.out.print(ex.getMessage());
         }
@@ -40,17 +39,21 @@ public class DB4OUtil {
     }
 
     public synchronized void storeSystem(EcoSystem system) {
-        ObjectContainer conn = createConnection();
-        conn.store(system);
-        conn.commit();
-        conn.close();
+        if(db == null) {
+            return;
+        }
+        db.store(system);
+        db.commit();
     }
     
     public EcoSystem retrieveSystem(){
+        if(db == null) {
+            return null;
+        }
         ObjectContainer conn = createConnection();
         ObjectSet<EcoSystem> systems = conn.query(EcoSystem.class); // Change to the object you want to save
         EcoSystem system;
-        if (systems.size() == 0){
+        if (systems.isEmpty()){
             system = ConfigureASystem.configure();  // If there's no System in the record, create a new one
         }
         else{
