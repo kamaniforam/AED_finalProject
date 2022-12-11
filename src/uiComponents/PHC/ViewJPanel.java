@@ -71,7 +71,6 @@ public class ViewJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPerson = new javax.swing.JTable();
         btnUpdate = new javax.swing.JButton();
@@ -98,12 +97,12 @@ public class ViewJPanel extends javax.swing.JPanel {
         lblAge = new javax.swing.JLabel();
         txtAddress = new javax.swing.JTextField();
         lblHouseNumber = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        btnSave3 = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(javax.swing.UIManager.getDefaults().getColor("Button.focusedBackground"));
         setPreferredSize(new java.awt.Dimension(600, 600));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("VIEW PERSON PROFILE");
 
         tblPerson.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -123,7 +122,9 @@ public class ViewJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblPerson);
 
+        btnUpdate.setBackground(javax.swing.UIManager.getDefaults().getColor("Component.accentColor"));
         btnUpdate.setFont(new java.awt.Font("Helvetica Neue", 1, 12)); // NOI18N
+        btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
         btnUpdate.setText("Update");
         btnUpdate.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -132,7 +133,9 @@ public class ViewJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnDelete.setBackground(javax.swing.UIManager.getDefaults().getColor("Component.accentColor"));
         btnDelete.setFont(new java.awt.Font("Helvetica Neue", 1, 12)); // NOI18N
+        btnDelete.setForeground(new java.awt.Color(255, 255, 255));
         btnDelete.setText("Delete");
         btnDelete.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -141,7 +144,9 @@ public class ViewJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnSearch.setBackground(javax.swing.UIManager.getDefaults().getColor("Component.accentColor"));
         btnSearch.setFont(new java.awt.Font("Helvetica Neue", 1, 12)); // NOI18N
+        btnSearch.setForeground(new java.awt.Color(255, 255, 255));
         btnSearch.setText("SEARCH");
         btnSearch.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSearch.setDefaultCapable(false);
@@ -152,7 +157,9 @@ public class ViewJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnSave.setBackground(javax.swing.UIManager.getDefaults().getColor("Component.accentColor"));
         btnSave.setFont(new java.awt.Font("Helvetica Neue", 1, 12)); // NOI18N
+        btnSave.setForeground(new java.awt.Color(255, 255, 255));
         btnSave.setText("Back<<<");
         btnSave.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSave.setDefaultCapable(false);
@@ -163,7 +170,9 @@ public class ViewJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnSave1.setBackground(javax.swing.UIManager.getDefaults().getColor("Component.accentColor"));
         btnSave1.setFont(new java.awt.Font("Helvetica Neue", 1, 12)); // NOI18N
+        btnSave1.setForeground(new java.awt.Color(255, 255, 255));
         btnSave1.setText("Clear");
         btnSave1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSave1.setDefaultCapable(false);
@@ -174,7 +183,9 @@ public class ViewJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnSave2.setBackground(javax.swing.UIManager.getDefaults().getColor("Component.accentColor"));
         btnSave2.setFont(new java.awt.Font("Helvetica Neue", 1, 12)); // NOI18N
+        btnSave2.setForeground(new java.awt.Color(255, 255, 255));
         btnSave2.setText("Manage Appointment");
         btnSave2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSave2.setDefaultCapable(false);
@@ -343,14 +354,47 @@ public class ViewJPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        jPanel1.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.hoverBorderColor"));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setText("VIEW PERSON PROFILE");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(360, 360, 360))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel1)
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+
+        btnSave3.setBackground(javax.swing.UIManager.getDefaults().getColor("Component.accentColor"));
+        btnSave3.setFont(new java.awt.Font("Helvetica Neue", 1, 12)); // NOI18N
+        btnSave3.setForeground(new java.awt.Color(255, 255, 255));
+        btnSave3.setText("NEWS");
+        btnSave3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnSave3.setDefaultCapable(false);
+        btnSave3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnSave3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSave3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(385, 385, 385)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
             .addGroup(layout.createSequentialGroup()
@@ -365,7 +409,9 @@ public class ViewJPanel extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(btnSave2)
                         .addGap(18, 18, 18)
-                        .addComponent(btnSave1))
+                        .addComponent(btnSave1)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSave3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(85, 85, 85)
                         .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -373,14 +419,14 @@ public class ViewJPanel extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 951, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -392,8 +438,9 @@ public class ViewJPanel extends javax.swing.JPanel {
                         .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnSave2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnSave1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(157, Short.MAX_VALUE))
+                        .addComponent(btnSave1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSave3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -497,12 +544,19 @@ public class ViewJPanel extends javax.swing.JPanel {
         jSplitPane1.setRightComponent(appt);
     }//GEN-LAST:event_btnSave2ActionPerformed
 
+    private void btnSave3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSave3ActionPerformed
+        // TODO add your handling code here:
+        NewsJPanel news = new NewsJPanel();
+        jSplitPane1.setRightComponent(news);
+    }//GEN-LAST:event_btnSave3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnSave1;
     private javax.swing.JButton btnSave2;
+    private javax.swing.JButton btnSave3;
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox<String> ddCity;
@@ -510,6 +564,7 @@ public class ViewJPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> ddHouseNumber;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblAge;

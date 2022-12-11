@@ -7,7 +7,9 @@ package uiComponents.PHC;
 import Business.EcoSystem;
 import Bussiness.model.PHC.Employee;
 import Business.Roles.Role;
+import Business.db40Utility.DB4OUtil;
 import Bussiness.model.PHC.UserAccount;
+import com.db4o.ObjectSet;
 import javax.swing.JOptionPane;
 
 /**author
@@ -186,27 +188,29 @@ public class SignUpJPanel extends javax.swing.JPanel {
 
         if (!password.equals(confirmPassword)) {
             JOptionPane.showMessageDialog(this, "Password doesn't match");
-        } else {
-            for (UserAccount account : ecosystem.getUserAccountDirectory().getUserAccountList()) {
-                if (account.getUsername().equals(userName)) {
-                    JOptionPane.showMessageDialog(this, "Username Already exists");
-                    return;
-                }
-            }
-
-            JOptionPane.showMessageDialog(this, "Profile Created");
-
-            System.out.println("MAIN: " + role);
-
-            if (null != Role.fromString(role)) {
-                ecosystem.getPersonDirectory().addNewPerson();
-                Employee employee = ecosystem.getEmployeeDirectory().createEmployee(userName);
-                ecosystem.getUserAccountDirectory().createUserAccount(userName, password, employee, Role.fromString(role));
-
-            } else {
-                JOptionPane.showMessageDialog(this, "INVALID CREDENTIALS");
-            }
-        }
+            return;
+        } 
+//        else {
+//            for (UserAccount account : ecosystem.getUserAccountDirectory().getUserAccountList()) {
+//                if (account.getUsername().equals(userName)) {
+//                    JOptionPane.showMessageDialog(this, "Username Already exists");
+//                    return;
+//                }
+//            }
+//
+//            JOptionPane.showMessageDialog(this, "Profile Created");
+//
+//            System.out.println("MAIN: " + role);
+//
+//            if (null != Role.fromString(role)) {
+//                ecosystem.getPersonDirectory().addNewPerson();
+//                Employee employee = ecosystem.getEmployeeDirectory().createEmployee(userName);
+//                ecosystem.getUserAccountDirectory().createUserAccount(userName, password, employee, Role.fromString(role));
+//
+//            } else {
+//                JOptionPane.showMessageDialog(this, "INVALID CREDENTIALS");
+//            }
+//        }
     }//GEN-LAST:event_SignupBtnActionPerformed
 
     private void usernameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTxtActionPerformed

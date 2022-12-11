@@ -5,7 +5,11 @@
 package uiComponents.PHC;
 
 import Business.EcoSystem;
+import Business.Network;
+import Business.Organization;
+import Business.Pharmacy.Organizations.PharmacyOrganization;
 import Business.Roles.Role;
+import Business.db40Utility.DB4OUtil;
 import javax.swing.JOptionPane;
 import Bussiness.model.PHC.DoctorDirectory;
 import Bussiness.model.PHC.EncounterHistory;
@@ -14,7 +18,10 @@ import Bussiness.model.PHC.PatientDirectory;
 import Bussiness.model.PHC.PersonDirectory;
 import Bussiness.model.PHC.VitalSigns;
 import Bussiness.model.PHC.UserAccount;
-import Bussiness.model.PHC.UserAccountDirectory;
+import Enterprise.Enterprise;
+import com.db4o.ObjectSet;
+import javax.swing.JSplitPane;
+import uiComponents.Pharmacy.PharmacyAdminWorkAreaJPanel;
 
 /**
  *
@@ -35,9 +42,14 @@ public class LoginJPanel extends javax.swing.JPanel {
     UserAccount account;
     EcoSystem business;
     VitalSigns vitalSigns;
-
+    PharmacyOrganization org;
+    Network network;
+    Enterprise enterprise;
+    
     public LoginJPanel(javax.swing.JSplitPane jSplitPane1, UserAccount account, EcoSystem business, PersonDirectory personDirectory, PatientDirectory patientDirectory,
-            EncounterHistory encounterHistory, DoctorDirectory doctorDirectory, HospitalDirectory hospitalDirectory, VitalSigns vitalSigns) {
+            EncounterHistory encounterHistory, DoctorDirectory doctorDirectory, HospitalDirectory hospitalDirectory, VitalSigns vitalSigns,PharmacyOrganization org,
+    Network network,
+    Enterprise enterprise) {
         initComponents();
 
         this.personDirectory = personDirectory;
@@ -51,6 +63,10 @@ public class LoginJPanel extends javax.swing.JPanel {
         this.vitalSigns = vitalSigns;
     }
 
+    LoginJPanel(JSplitPane jSplitPane1, UserAccount account, EcoSystem business, PersonDirectory personDirectory, PatientDirectory patientDirectory, EncounterHistory encounterHistory, DoctorDirectory doctorDirectory, HospitalDirectory hospitalDirectory, VitalSigns vitalSigns) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -60,42 +76,71 @@ public class LoginJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        loginLbl = new javax.swing.JLabel();
+        role = new javax.swing.JLabel();
+        password = new javax.swing.JPasswordField();
         username = new javax.swing.JTextField();
         passwordLbl = new javax.swing.JLabel();
         usernameLbl = new javax.swing.JLabel();
-        loginLbl = new javax.swing.JLabel();
         loginBtn = new javax.swing.JButton();
         dropdownRole = new javax.swing.JComboBox<>();
-        role = new javax.swing.JLabel();
-        password = new javax.swing.JPasswordField();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.focusedBackground"));
         addContainerListener(new java.awt.event.ContainerAdapter() {
             public void componentAdded(java.awt.event.ContainerEvent evt) {
                 formComponentAdded(evt);
             }
         });
 
+        jPanel1.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.hoverBorderColor"));
+        jPanel1.setLayout(null);
+
+        loginLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 36)); // NOI18N
+        loginLbl.setForeground(new java.awt.Color(255, 255, 255));
+        loginLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        loginLbl.setText("LOGIN");
+        jPanel1.add(loginLbl);
+        loginLbl.setBounds(260, 50, 213, 50);
+
+        role.setText("Role:");
+        jPanel1.add(role);
+        role.setBounds(240, 250, 30, 25);
+
+        password.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordActionPerformed(evt);
+            }
+        });
+        jPanel1.add(password);
+        password.setBounds(340, 200, 181, 23);
+
         username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernameActionPerformed(evt);
             }
         });
+        jPanel1.add(username);
+        username.setBounds(340, 150, 181, 23);
 
         passwordLbl.setText("Password:");
+        jPanel1.add(passwordLbl);
+        passwordLbl.setBounds(240, 210, 62, 17);
 
         usernameLbl.setText("User Name:");
+        jPanel1.add(usernameLbl);
+        usernameLbl.setBounds(240, 160, 69, 17);
 
-        loginLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 36)); // NOI18N
-        loginLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        loginLbl.setText("LOGIN");
-
+        loginBtn.setBackground(javax.swing.UIManager.getDefaults().getColor("Component.accentColor"));
+        loginBtn.setForeground(new java.awt.Color(255, 255, 255));
         loginBtn.setText("Login");
         loginBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginBtnActionPerformed(evt);
             }
         });
+        jPanel1.add(loginBtn);
+        loginBtn.setBounds(330, 320, 120, 60);
 
         dropdownRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose a Role", "System administrator", "Patient", "Hospital administrator", "Community administrator", "Doctor", "Pharmacy Admin", "Dental Admin", "PHC Admin", "Blood Bank Admin" }));
         dropdownRole.addActionListener(new java.awt.event.ActionListener() {
@@ -103,54 +148,23 @@ public class LoginJPanel extends javax.swing.JPanel {
                 dropdownRoleActionPerformed(evt);
             }
         });
-
-        role.setText("Role:");
+        jPanel1.add(dropdownRole);
+        dropdownRole.setBounds(340, 250, 181, 23);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(108, 108, 108)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(usernameLbl)
-                            .addComponent(role, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(passwordLbl, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(43, 43, 43)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(dropdownRole, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(password)
-                            .addComponent(username)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(185, 185, 185)
-                        .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(139, 139, 139)
-                        .addComponent(loginLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 792, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(loginLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(usernameLbl)
-                    .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(passwordLbl)
-                    .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(role, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dropdownRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
-                .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 712, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -161,44 +175,58 @@ public class LoginJPanel extends javax.swing.JPanel {
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         // TODO add your handling code here
         String dropdownrole = dropdownRole.getSelectedItem().toString().toUpperCase();
-        boolean usacc = business.getUserAccountDirectory().authenticateUser(username.getText(), password.getText(), dropdownrole);
+//        boolean usacc = business.getUserAccountDirectory().authenticateUser(username.getText(), password.getText(), dropdownrole);
+        
+        String usernameText = username.getText();
+        String passwordText = password.getText();
+        
+        System.out.println("Logging in..");
+        
+        ObjectSet result = DB4OUtil.getInstance().queryByExample(UserAccount.class);
+        System.out.println(result.size());
+        while(result.hasNext()) {
+            System.out.println(result.next());
+        }
   
-        if (username.getText().isEmpty() || password.getText().isEmpty()) {
+        if (usernameText.isEmpty() || passwordText.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Username and Password field's cannot be empty");
             return;
-        } else if (username.getText() == null || password.getText() == null) {
-            JOptionPane.showMessageDialog(null, "Invalid UserName");
-            return;
         }
-        if (usacc) {
+
+
+        if (false) {
             
             JOptionPane.showMessageDialog(this, "LOGIN SUCCESSFULL");
             if (null != Role.fromString(dropdownrole)) {
                 switch (Role.fromString(dropdownrole)) {
-                    case SYSTEM_ADMINISTRATOR -> {
+                    case SYSTEM_ADMINISTRATOR:
                         MakeUserJPanel userPanel = new MakeUserJPanel(jSplitPane1, account, business, personDirectory, patientDirectory, encounterHistory, doctorDirectory, hispDirectory, vitalSigns);
                         //SystemAdminJPanel systemAdminPane = new SystemAdminJPanel(jSplitPane1, account, business, personDirectory, patientDirectory, encounterHistory, doctorDirectory, hispDirectory);
                         jSplitPane1.setRightComponent(userPanel);
-                    }
-                    case DOCTOR -> {
+                        break;
+                    case DOCTOR:
                         //DoctorJPanel doctorPane = new DoctorJPanel(encounterHistory, personDirectory, patientDirectory, hispDirectory, jSplitPane1, doctorDirectory, vitalSigns);
                         //jSplitPane1.setRightComponent(doctorPane);
-                    }
-                    case PATIENT -> {
+                        break;
+                    case PATIENT:
                         CreateJPanel createPane = new CreateJPanel(jSplitPane1, account, business,personDirectory, patientDirectory, encounterHistory, doctorDirectory, hispDirectory, vitalSigns);
                         jSplitPane1.setRightComponent(createPane);
-                    }
-                    case COMMUNITY_ADMINISTRATOR -> {
+                        break;
+                    case COMMUNITY_ADMINISTRATOR:
                         CommunityAdminJPanel communityAdminPane = new CommunityAdminJPanel(personDirectory, patientDirectory, encounterHistory, doctorDirectory, hispDirectory, jSplitPane1);
                         jSplitPane1.setRightComponent(communityAdminPane);
-                    }
-                    case HOSPITAL_ADMINISTRATOR -> {
+                        break;
+                    case HOSPITAL_ADMINISTRATOR:
                         HospitalAdminJPanel hospitalAdminPane = new HospitalAdminJPanel(personDirectory, patientDirectory, encounterHistory, doctorDirectory, hispDirectory, jSplitPane1, vitalSigns);
                         jSplitPane1.setRightComponent(hospitalAdminPane);
-                    }
-                    default -> {
+                        break;
+                    case PHARMACY_ADMIN:
+                        PharmacyAdminWorkAreaJPanel pharmacy = new PharmacyAdminWorkAreaJPanel(jPanel1, account, org, enterprise, network);
+                        jSplitPane1.setRightComponent(pharmacy);        
+                        break;
+                    default:
                         JOptionPane.showMessageDialog(this, "SELECT ROLE");
-                    }
+                        break;
                 }
             }
         } else {
@@ -215,9 +243,14 @@ public class LoginJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_formComponentAdded
 
+    private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> dropdownRole;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JButton loginBtn;
     private javax.swing.JLabel loginLbl;
     private javax.swing.JPasswordField password;
