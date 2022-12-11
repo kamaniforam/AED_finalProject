@@ -7,7 +7,10 @@ package uiComponents.PHC;
 import Business.EcoSystem;
 import Bussiness.model.PHC.Employee;
 import Business.Roles.Role;
+import Business.db40Utility.DB4OUtil;
 import Bussiness.model.PHC.UserAccount;
+import com.db4o.ObjectContainer;
+import com.db4o.ObjectSet;
 import javax.swing.JOptionPane;
 
 /**author
@@ -49,7 +52,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         signupLbl = new javax.swing.JLabel();
 
-        setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.focusedBackground"));
+        setBackground(new java.awt.Color(255, 255, 255));
 
         usernameLbl.setText("username:");
 
@@ -75,7 +78,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
             }
         });
 
-        SignupBtn.setBackground(javax.swing.UIManager.getDefaults().getColor("Component.accentColor"));
+        SignupBtn.setBackground(new java.awt.Color(51, 153, 255));
         SignupBtn.setForeground(new java.awt.Color(255, 255, 255));
         SignupBtn.setText("SIGNUP");
         SignupBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -86,14 +89,14 @@ public class SignUpJPanel extends javax.swing.JPanel {
 
         role.setText("Role:");
 
-        dropdownRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose a Role", "System administrator", "Patient", "Hospital administrator", "Community administrator", "Doctor", "Pharmacy Admin", "Dental Admin", "PHC Admin", "Blood Bank Admin" }));
+        dropdownRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CHOOSE A ROLE", "SUPER ADMIN", "SYSTEM ADMINISTRATOR", "PATIENT", "COMMUNITY ADMINISTRATOR", "HOSPITAL ADMINISTRATOR", "PHARMACY ADMIN", "RECEPTIONIST", "DENTAL PATIENT", "DENTIST" }));
         dropdownRole.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dropdownRoleActionPerformed(evt);
             }
         });
 
-        jPanel1.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.hoverBorderColor"));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         signupLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         signupLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -104,7 +107,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(211, 211, 211)
+                .addGap(203, 203, 203)
                 .addComponent(signupLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -124,9 +127,6 @@ public class SignUpJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(233, 233, 233)
-                        .addComponent(SignupBtn))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(111, 111, 111)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -144,7 +144,10 @@ public class SignUpJPanel extends javax.swing.JPanel {
                                 .addGap(73, 73, 73)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(confirmPasswordTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(dropdownRole, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(dropdownRole, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(218, 218, 218)
+                        .addComponent(SignupBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(71, Short.MAX_VALUE))
         );
 
@@ -170,9 +173,9 @@ public class SignUpJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(role, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dropdownRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addGap(34, 34, 34)
                 .addComponent(SignupBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -184,29 +187,26 @@ public class SignUpJPanel extends javax.swing.JPanel {
         String confirmPassword = confirmPasswordTxt.getText();
         String role = dropdownRole.getSelectedItem().toString();
 
-        if (!password.equals(confirmPassword)) {
+        if(userName.isBlank() || password.isBlank()){
+            JOptionPane.showMessageDialog(this, "Username/Password cannot be blank");
+            return;
+        }else if (!password.equals(confirmPassword)) {
             JOptionPane.showMessageDialog(this, "Password doesn't match");
-        } else {
-            for (UserAccount account : ecosystem.getUserAccountDirectory().getUserAccountList()) {
-                if (account.getUsername().equals(userName)) {
-                    JOptionPane.showMessageDialog(this, "Username Already exists");
-                    return;
-                }
-            }
-
-            JOptionPane.showMessageDialog(this, "Profile Created");
-
-            System.out.println("MAIN: " + role);
-
-            if (null != Role.fromString(role)) {
-                ecosystem.getPersonDirectory().addNewPerson();
-                Employee employee = ecosystem.getEmployeeDirectory().createEmployee(userName);
-                ecosystem.getUserAccountDirectory().createUserAccount(userName, password, employee, Role.fromString(role));
-
-            } else {
-                JOptionPane.showMessageDialog(this, "INVALID CREDENTIALS");
-            }
+            return;
         }
+
+        ObjectContainer db = DB4OUtil.getDBInstance();
+        UserAccount newUser = new UserAccount(userName, password, Role.fromString(role));
+
+        ObjectSet result = db.queryByExample(newUser);
+
+        if(!result.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "The profile already exists..");
+            return;
+        }
+
+        db.store(newUser);
+        JOptionPane.showMessageDialog(this, "Profile Created");
     }//GEN-LAST:event_SignupBtnActionPerformed
 
     private void usernameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTxtActionPerformed

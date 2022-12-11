@@ -22,6 +22,12 @@ public class UserAccount {
         workQueue = new WorkQueue();
     } 
     
+    public UserAccount(String username, String password, Role role) {
+        this.username = username;
+        this.password = password;
+        this.role = role;
+    }
+    
     public String getUsername() {
         return username;
     }
@@ -64,7 +70,13 @@ public class UserAccount {
     
     @Override
     public String toString() {
-        return username;
+        String roleStr = role != null ? role.toString() : null;
+        return String.format("%s/%s/%s", username, password, roleStr);
     }
-       
+
+    public boolean equals(UserAccount user) {
+        return this.username.equals(user.username) && 
+                this.password.equals(user.password) && 
+                this.role.equals(user.role);
+    }
 }

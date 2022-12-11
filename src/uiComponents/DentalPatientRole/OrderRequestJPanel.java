@@ -6,6 +6,8 @@ package uiComponents.DentalPatientRole;
 
 import Business.Network;
 import Business.Organization;
+import Business.Pharmacy.Model.Medicine;
+import Business.Pharmacy.Model.MedicinesInventory;
 import Business.Pharmacy.Organizations.PharmacyOrganization;
 import Business.WorkQueue.MedicineWorkRequest;
 import Business.WorkQueue.WorkRequest;
@@ -15,8 +17,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import model.Pharmacy.Medicine;
-import model.Pharmacy.MedicinesInventory;
+
 
 
 /**
@@ -88,6 +89,11 @@ public class OrderRequestJPanel extends javax.swing.JPanel {
         jLabel1.setText("Medicine Name");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         jLabel2.setText("Quantity");
@@ -169,9 +175,13 @@ public class OrderRequestJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Details entered are not valid. Kindly check again.", "Error", JOptionPane.ERROR_MESSAGE);
             
         }
-        
-        
     }//GEN-LAST:event_createRequestActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void populateTable() {
         DefaultTableModel model = (DefaultTableModel)requestedItemsTable.getModel();

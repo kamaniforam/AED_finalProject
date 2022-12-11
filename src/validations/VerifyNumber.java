@@ -32,7 +32,7 @@ public class VerifyNumber extends InputVerifier {
                 return true;
             } catch (NumberFormatException e) {
                 input.setBackground(Color.red);
-                JOptionPane.showMessageDialog(input, "Please enter integer"
+                JOptionPane.showMessageDialog(input, "Please enter Integer"
                         + " value", "Error", JOptionPane.ERROR_MESSAGE);
                 return false;
             }

@@ -5,10 +5,11 @@
 package Business.Pharmacy.Organizations;
 
 import Business.Organization;
+import Business.Pharmacy.Model.Medicine;
+import Business.Pharmacy.Model.Vaccine;
 import Business.Roles.Role;
 import java.util.ArrayList;
-import model.Pharmacy.Medicine;
-import model.Pharmacy.Vaccine;
+
 
 
 /**
@@ -22,7 +23,7 @@ public class PharmacyOrganization extends Organization{
     
     public PharmacyOrganization() {
      
-       super(Organization.Type.Pharmacy.getValue());
+        super(Organization.Type.Pharmacy.getValue());
        
         medList=new ArrayList<Medicine>();
         vacList = new ArrayList<Vaccine>();
@@ -31,7 +32,7 @@ public class PharmacyOrganization extends Organization{
     @Override
     public ArrayList<Role> getSupportedRole() {
         ArrayList<Role> roles = new ArrayList();
-        roles.add(Role.PHARMACY);
+        roles.add(Role.PHARMACY_ADMIN);
         return roles;
     }
 

@@ -4,8 +4,12 @@
  */
 package uiComponents.Pharmacy;
 
+import Business.EcoSystem;
 import Business.Network;
 import Business.Organization;
+import Business.Pharmacy.Model.Medicine;
+import Business.Pharmacy.Model.MedicinesInventory;
+import Business.Pharmacy.Model.Vaccine;
 import Business.Pharmacy.Organizations.PharmacyOrganization;
 import Business.WorkQueue.MedicineWorkRequest;
 import Business.WorkQueue.VaccineWorkRequest;
@@ -13,11 +17,7 @@ import Business.WorkQueue.WorkRequest;
 import Bussiness.model.PHC.UserAccount;
 import Enterprise.Enterprise;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import model.Pharmacy.MedicinesInventory;
-import model.Pharmacy.Vaccine;
-
 
 /**
  *
@@ -25,23 +25,32 @@ import model.Pharmacy.Vaccine;
  */
 public class ViewStockRequest extends javax.swing.JPanel {
 
-    JPanel userProcessContainer;
+    javax.swing.JSplitPane userProcessContainer;
     private UserAccount userAccount;
     private Enterprise enterprise;
     private MedicinesInventory medInv;
     private Organization org;
     private PharmacyOrganization pharmorg;
     private Network network;
+    private EcoSystem business;
+
     /**
      * Creates new form ViewStockRequest
+     * @param userProcessContainer
+     * @param userAccount
+     * @param pharmorg
+     * @param enterprise
+     * @param network
+     * @param business
      */
-    public ViewStockRequest(JPanel userProcessContainer, UserAccount userAccount, PharmacyOrganization organization, Enterprise enterprise, Network network) {
+    public ViewStockRequest(javax.swing.JSplitPane userProcessContainer, UserAccount userAccount, PharmacyOrganization pharmorg, Enterprise enterprise, Network network, EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.userAccount = userAccount;
         this.enterprise = enterprise;
-        this.pharmorg = organization;
+        this.pharmorg = pharmorg;
         this.network = network;
+        this.business = business;
         
         populateTable();
         
@@ -86,9 +95,16 @@ public class ViewStockRequest extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(requestedStockTable);
 
+        jButton1.setBackground(new java.awt.Color(51, 153, 255));
         jButton1.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         jButton1.setText("Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
+        jButton2.setBackground(new java.awt.Color(51, 153, 255));
         jButton2.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         jButton2.setText("Complete the Request");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -121,6 +137,7 @@ public class ViewStockRequest extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel2.setText("Vaccines Requests");
 
+        jButton3.setBackground(new java.awt.Color(51, 153, 255));
         jButton3.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         jButton3.setText("Complete the Request");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -133,10 +150,6 @@ public class ViewStockRequest extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addGap(262, 262, 262))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -153,8 +166,11 @@ public class ViewStockRequest extends javax.swing.JPanel {
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 668, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(275, 275, 275)
-                        .addComponent(jLabel2)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(259, 259, 259)
+                        .addComponent(jButton3)))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,21 +179,21 @@ public class ViewStockRequest extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(jButton1)
-                        .addGap(26, 26, 26))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
-                .addGap(61, 61, 61)
+                .addGap(34, 34, 34)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
                 .addComponent(jButton3)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -195,6 +211,11 @@ public class ViewStockRequest extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "This request is already completed");
             return ;
           
+        }
+        String name = requestedStockTable.getValueAt(selectedRow, 0).toString();
+        if ((Integer) requestedStockTable.getValueAt(selectedRow, 2) > availableMedicineStock(name)) {
+           JOptionPane.showMessageDialog(null, "Not enough quantity in the stock");
+           return;
         }
         if (requestedStockTable.getValueAt(selectedRow, 3) == "Pending") {
            MedicineWorkRequest req = (MedicineWorkRequest) requestedStockTable.getValueAt(selectedRow, 0);
@@ -231,20 +252,28 @@ public class ViewStockRequest extends javax.swing.JPanel {
         populateTable();
     }//GEN-LAST:event_completeVaccinationRequestActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        PharmacyAdminWorkAreaJPanel pharmacy = new PharmacyAdminWorkAreaJPanel(userProcessContainer, userAccount, pharmorg, enterprise, network, business);
+        userProcessContainer.setRightComponent(pharmacy);    
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private void populateTable() {
         
         DefaultTableModel model = (DefaultTableModel)requestedStockTable.getModel();
         
         model.setRowCount(0);
-        
-        for (WorkRequest request : pharmorg.getWorkQueue().getWorkRequestList()){
-            if(request instanceof MedicineWorkRequest){
-                Object[] row = new Object[4];
-                row[0] = ((MedicineWorkRequest) request);
-                row[1] = ((MedicineWorkRequest) request).getPatientName();
-                row[2] = ((MedicineWorkRequest) request).getQuantity();
-                row[3] =  ((MedicineWorkRequest) request).getStatus();
-                model.addRow(row);
+        if(business.getWorkQueue() != null && business.getWorkQueue().getWorkRequestList() != null ){
+            for (WorkRequest request : business. getWorkQueue().getWorkRequestList()){
+                if(request instanceof MedicineWorkRequest){
+                    Object[] row = new Object[4];
+                    row[0] = ((MedicineWorkRequest) request);
+                    row[1] = ((MedicineWorkRequest) request).getPatientName();
+                    row[2] = ((MedicineWorkRequest) request).getQuantity();
+                    row[3] =  ((MedicineWorkRequest) request).getStatus();
+                    model.addRow(row);
+                }
             }
         }
         
@@ -252,22 +281,34 @@ public class ViewStockRequest extends javax.swing.JPanel {
         
         model1.setRowCount(0);
         
-        for (WorkRequest request : pharmorg.getWorkQueue().getWorkRequestList()){
-            if(request instanceof VaccineWorkRequest){
-                Object[] row = new Object[4];
-                row[0] = ((VaccineWorkRequest) request);
-                row[1] = "Patient's Name";
-                row[2] = ((VaccineWorkRequest) request).getQuantity();
-                row[3] =  ((VaccineWorkRequest) request).getStatus();
-                model1.addRow(row);
+        if(business.getWorkQueue() != null && business.getWorkQueue().getWorkRequestList() != null){
+            for (WorkRequest request : business.getWorkQueue().getWorkRequestList()){
+                if(request instanceof VaccineWorkRequest){
+                    Object[] row = new Object[4];
+                    row[0] = ((VaccineWorkRequest) request);
+                    row[1] = "Patient's Name";
+                    row[2] = ((VaccineWorkRequest) request).getQuantity();
+                    row[3] =  ((VaccineWorkRequest) request).getStatus();
+                    model1.addRow(row);
+                }
             }
         }
     }
     
+    private int availableMedicineStock(String name){
+        int quant = 0;
+        for(Medicine med : pharmorg.getMedList()) {
+            if(med.getMedicineName().equalsIgnoreCase(name)){
+                quant = med.getQuantity();
+            }
+        }
+        return quant;
+    }
+    
     private int availableVaccineStock(String name) {
         int quant = 0;
-        for(Vaccine vc :  pharmorg.getVacList()) {
-            if(vc.getVaccineName() == name){
+        for(Vaccine vc : pharmorg.getVacList()) {
+            if(vc.getVaccineName().equalsIgnoreCase(name)){
                 quant = vc.getQuantity();
             }
         }
