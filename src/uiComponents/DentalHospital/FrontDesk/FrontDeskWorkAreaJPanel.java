@@ -7,6 +7,8 @@ package uiComponents.DentalHospital.FrontDesk;
 import Business.EcoSystem;
 import Business.WorkQueue.DoctorAvailableSlotWR;
 import Business.WorkQueue.WorkRequest;
+import Business.db40Utility.DB4OUtil;
+import com.db4o.ObjectSet;
 import java.time.LocalDateTime;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -18,13 +20,15 @@ import javax.swing.table.DefaultTableModel;
 public class FrontDeskWorkAreaJPanel extends javax.swing.JPanel {
 
     private EcoSystem ecosystem;
+    WorkRequest wr;
     /**
      * Creates new form FrontDeskWorkAreaJPanel
      */
-    public FrontDeskWorkAreaJPanel(EcoSystem ecosystem) {
+    public FrontDeskWorkAreaJPanel() {
         initComponents();
         
-        this.ecosystem = ecosystem;
+//        this.ecosystem = ecosystem;
+//        this.wr = wr;
         populateSlotTable();
     }
 
@@ -198,16 +202,17 @@ public class FrontDeskWorkAreaJPanel extends javax.swing.JPanel {
     private void populateSlotTable() {
         
         DefaultTableModel dtm = (DefaultTableModel) DoctorSlotJTable.getModel();
-	
+	System.out.println(ecosystem);
         dtm.setRowCount(0);
-        for (WorkRequest wr :  ecosystem.getWorkQueue().getWorkRequestList()) {
+        ObjectSet<WorkRequest> workQueue = DB4OUtil.getDBInstance().queryByExample(WorkRequest.class);
+        
+        while(workQueue.hasNext()) {
+            WorkRequest wr = workQueue.next();
             Object row[] = new Object[3];
-            if(wr instanceof DoctorAvailableSlotWR){
-                row[0] = ((DoctorAvailableSlotWR) wr).getDoctor();
-                row[1] = ((DoctorAvailableSlotWR) wr).getTimings();
-                row[2] = wr.getStatus();
-                dtm.addRow(row);
-            }
+            row[0] = ((DoctorAvailableSlotWR) wr).getDoctor();
+            row[1] = ((DoctorAvailableSlotWR) wr).getTimings();
+            row[2] = wr.getStatus();
+            dtm.addRow(row);
         }
     }
 

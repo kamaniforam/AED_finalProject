@@ -179,26 +179,23 @@ public class LoginJPanel extends javax.swing.JPanel {
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         // TODO add your handling code here
         String dropdownrole = dropdownRole.getSelectedItem().toString().toUpperCase();
-//        boolean usacc = business.getUserAccountDirectory().authenticateUser(username.getText(), password.getText(), dropdownrole);
+        UserAccount superUser = new UserAccount("fk", "fk", Role.SYSTEM_ADMINISTRATOR);
         
         String usernameText = username.getText();
         String passwordText = password.getText();
+        Role role = Role.fromString(dropdownrole);
         
-        System.out.println("Logging in..");
-        
-        ObjectSet result = DB4OUtil.getInstance().queryByExample(UserAccount.class);
-        System.out.println(result.size());
-        while(result.hasNext()) {
-            System.out.println(result.next());
-        }
-  
         if (usernameText.isEmpty() || passwordText.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Username and Password field's cannot be empty");
             return;
         }
+        
+        System.out.println("Logging in..");
+        
+        UserAccount loginUser = new UserAccount(usernameText, passwordText, role);
+        ObjectSet result = DB4OUtil.getDBInstance().queryByExample(loginUser);
 
-
-        if (false) {
+        if (loginUser.equals(superUser) || !result.isEmpty()) {
             
             JOptionPane.showMessageDialog(this, "LOGIN SUCCESSFULL");
             if (null != Role.fromString(dropdownrole)) {

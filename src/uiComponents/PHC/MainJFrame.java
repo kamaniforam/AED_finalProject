@@ -13,6 +13,7 @@ import static Business.Roles.Role.DENTIST;
 import static Business.Roles.Role.HOSPITAL_ADMINISTRATOR;
 import static Business.Roles.Role.PATIENT;
 import static Business.Roles.Role.PHARMACY_ADMIN;
+import Business.WorkQueue.WorkRequest;
 import Business.db40Utility.DB4OUtil;
 import Bussiness.model.PHC.EMTDirectory;
 import Bussiness.model.PHC.DoctorDirectory;
@@ -24,6 +25,7 @@ import Bussiness.model.PHC.VitalSigns;
 import Bussiness.model.PHC.UserAccount;
 import Enterprise.Enterprise;
 import com.db4o.ObjectSet;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import uiComponents.DentalHospital.Doctor.DentistWorkAreaJPanel;
 import uiComponents.DentalHospital.FrontDesk.FrontDeskWorkAreaJPanel;
@@ -52,11 +54,18 @@ public class MainJFrame extends javax.swing.JFrame {
     PharmacyOrganization org;
     Network network;
     Enterprise enterprise;
+    WorkRequest wr;
+            
     
+    private DB4OUtil dB4OUtil = DB4OUtil.getInstance(); //Richa
+       
     
     public MainJFrame() {
         initComponents();
    
+        this.setSize(1680, 1050);
+        //int MAXIMIZED_BOTH1 = MainJFrame.MAXIMIZED_BOTH;
+        JFrame.setDefaultLookAndFeelDecorated(true);
         this.personDirectory = new PersonDirectory();
         this.patientDirectory = new PatientDirectory();
         this.encounterHistory = new EncounterHistory();
@@ -65,9 +74,11 @@ public class MainJFrame extends javax.swing.JFrame {
         this.vitalSigns = new VitalSigns();
         this.eMTDirectory = new EMTDirectory();
         //this.account = new UserAccount();
-
+        this.business = dB4OUtil.retrieveSystem(); //Richa
+        System.out.println("Business: "+business);
         this.org = new PharmacyOrganization();
         this.network = new Network();
+        
         //this.enterprise = new Enterprise(enterprise);
         
     }
@@ -144,7 +155,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(308, Short.MAX_VALUE))
+                .addContainerGap(459, Short.MAX_VALUE))
         );
 
         jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton3, loginBtn});
@@ -233,7 +244,7 @@ public class MainJFrame extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(202, 202, 202)
                         .addComponent(loginBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(316, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,7 +263,7 @@ public class MainJFrame extends javax.swing.JFrame {
                     .addComponent(dropdownRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(74, 74, 74)
                 .addComponent(loginBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(283, Short.MAX_VALUE))
+                .addContainerGap(434, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -267,7 +278,7 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(134, 134, 134)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(434, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -284,8 +295,7 @@ public class MainJFrame extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(containerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         containerLayout.setVerticalGroup(
             containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -325,27 +335,18 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-
-//        container.removeAll();
-//        JPanel blankJP = new JPanel();
-//        container.add("blank", blankJP);
-//        CardLayout crdLyt = (CardLayout) container.getLayout();
-//        crdLyt.next(container);
-          //DB4OUtil.storeSystem(business);
-
         username.setText("");
         password.setText("");
         dropdownRole.setSelectedIndex(0);
 
         container.removeAll();
         
-       
+        dB4OUtil.storeSystem(business);
         LoginJPanel login = new LoginJPanel(jSplitPane1, account, business, personDirectory, patientDirectory, encounterHistory,
         doctorDirectory, hospitalDirectory, vitalSigns, org, network, enterprise);
 
         jSplitPane1.setRightComponent(login);
         
-
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
@@ -354,62 +355,60 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void loginBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtn1ActionPerformed
         // TODO add your handling code here
+        UserAccount superUser = new UserAccount("fk", "fk", Role.SYSTEM_ADMINISTRATOR);
+
         String usernameText = username.getText();
         String passwordText = password.getText();
         String dropdownrole = dropdownRole.getSelectedItem().toString();
-        Role role = null;
         
-        if(dropdownrole != null) {
-            role = Role.fromString(dropdownrole.toUpperCase());
-        }
-
         if (usernameText.isEmpty() || passwordText.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Username and Password field's cannot be empty");
             return;
+        }else if(dropdownrole == null || Role.fromString(dropdownrole) == null) {
+            JOptionPane.showMessageDialog(null, "Please select a role");
+            return;
         }
         
+        Role role = Role.fromString(dropdownrole);
         UserAccount user = new UserAccount(usernameText, passwordText, role);
-        ObjectSet result = DB4OUtil.getInstance().queryByExample(user);
+        ObjectSet result = DB4OUtil.getDBInstance().queryByExample(user);
         
-        if (!result.isEmpty()) {
+        if (user.equals(superUser) || !result.isEmpty()) {
             JOptionPane.showMessageDialog(this, "LOGIN SUCCESSFULL");
-            if (null != Role.fromString(dropdownrole)) {
-                switch (Role.fromString(dropdownrole)) {
-                    case SYSTEM_ADMINISTRATOR: 
-                        MakeUserJPanel userPanel = new MakeUserJPanel(jSplitPane1, account, business, personDirectory, patientDirectory, encounterHistory, doctorDirectory, hospitalDirectory, vitalSigns);
-                        jSplitPane1.setRightComponent(userPanel);
-                        break;
-                    case PATIENT:
-                        CreateJPanel createPane = new CreateJPanel(jSplitPane1, account, business,personDirectory, patientDirectory, encounterHistory, doctorDirectory, hospitalDirectory, vitalSigns);
-                        jSplitPane1.setRightComponent(createPane);
-                        break;
-                    case COMMUNITY_ADMINISTRATOR:
-                        CommunityAdminJPanel communityAdminPane = new CommunityAdminJPanel(personDirectory, patientDirectory, encounterHistory, doctorDirectory, hospitalDirectory, jSplitPane1);
-                        jSplitPane1.setRightComponent(communityAdminPane);
-                        break;
-                    case HOSPITAL_ADMINISTRATOR:
-                        HospitalAdminJPanel hospitalAdminPane = new HospitalAdminJPanel(personDirectory, patientDirectory, encounterHistory, doctorDirectory, hospitalDirectory, jSplitPane1, vitalSigns);
-                        jSplitPane1.setRightComponent(hospitalAdminPane);
-                        break;
-                    case PHARMACY_ADMIN:
-                        PharmacyAdminWorkAreaJPanel pharmacy = new PharmacyAdminWorkAreaJPanel(jPanel1, account, org, enterprise, network);
-                        jSplitPane1.setRightComponent(pharmacy);        
-                        break;
-                    case DENTIST:
-                        DentistWorkAreaJPanel dentist = new DentistWorkAreaJPanel(business);
-                        jSplitPane1.setRightComponent(dentist);
-                        break;
-                    case DENTAL_PATIENT:
-                        DentalPatientJPanel dental = new DentalPatientJPanel(business, jPanel1, account, org, enterprise, network);
-                        jSplitPane1.setRightComponent(dental);
-                        break;
-                    case RECEPTIONIST:
-                        FrontDeskWorkAreaJPanel desk = new FrontDeskWorkAreaJPanel(business);
-                        jSplitPane1.setRightComponent(desk);
-                        break;
-                    default:
-                        JOptionPane.showMessageDialog(this, "SELECT ROLE");
-                }
+
+            switch (role) {
+                case SYSTEM_ADMINISTRATOR: 
+                    MakeUserJPanel userPanel = new MakeUserJPanel(jSplitPane1, account, business, personDirectory, patientDirectory, encounterHistory, doctorDirectory, hospitalDirectory, vitalSigns);
+                    jSplitPane1.setRightComponent(userPanel);
+                    break;
+                case PATIENT:
+                    CreateJPanel createPane = new CreateJPanel(jSplitPane1, account, business,personDirectory, patientDirectory, encounterHistory, doctorDirectory, hospitalDirectory, vitalSigns);
+                    jSplitPane1.setRightComponent(createPane);
+                    break;
+                case COMMUNITY_ADMINISTRATOR:
+                    CommunityAdminJPanel communityAdminPane = new CommunityAdminJPanel(personDirectory, patientDirectory, encounterHistory, doctorDirectory, hospitalDirectory, jSplitPane1);
+                    jSplitPane1.setRightComponent(communityAdminPane);
+                    break;
+                case HOSPITAL_ADMINISTRATOR:
+                    HospitalAdminJPanel hospitalAdminPane = new HospitalAdminJPanel(personDirectory, patientDirectory, encounterHistory, doctorDirectory, hospitalDirectory, jSplitPane1, vitalSigns);
+                    jSplitPane1.setRightComponent(hospitalAdminPane);
+                    break;
+                case PHARMACY_ADMIN:
+                    PharmacyAdminWorkAreaJPanel pharmacy = new PharmacyAdminWorkAreaJPanel(jPanel1, account, org, enterprise, network);
+                    jSplitPane1.setRightComponent(pharmacy);        
+                    break;
+                case DENTIST:
+                    DentistWorkAreaJPanel dentist = new DentistWorkAreaJPanel(business);
+                    jSplitPane1.setRightComponent(dentist);
+                    break;
+                case DENTAL_PATIENT:
+                    DentalPatientJPanel dental = new DentalPatientJPanel(business, jPanel1, account, org, enterprise, network);
+                    jSplitPane1.setRightComponent(dental);
+                    break;
+                case RECEPTIONIST:
+                    FrontDeskWorkAreaJPanel desk = new FrontDeskWorkAreaJPanel();
+                    jSplitPane1.setRightComponent(desk);
+                    break;
             }
         } else {
             JOptionPane.showMessageDialog(this, "INVALID CREDENTIALS");

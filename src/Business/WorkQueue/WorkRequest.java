@@ -71,4 +71,18 @@ public abstract class WorkRequest {
     public void setResolveDate(Date resolveDate) {
         this.resolveDate = resolveDate;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s/%s/%s/%s/%s/%s", 
+                sender.getUsername(), 
+                receiver.getUsername(), 
+                message,
+                status,
+                requestDate.toString(),
+                resolveDate.toString()
+            );
+    }
+    
+    
 }
