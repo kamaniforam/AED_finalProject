@@ -17,6 +17,7 @@ import Bussiness.model.PHC.Person;
 import Bussiness.model.PHC.PersonDirectory;
 import Bussiness.model.PHC.VitalSigns;
 import Bussiness.model.PHC.UserAccount;
+import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 import java.awt.Image;
 import java.io.File;
@@ -541,39 +542,26 @@ public class MakeUserJPanel extends javax.swing.JPanel {
         String confirmPassword = confirmPasswordTxt.getText();
         String role = dropdownRole.getSelectedItem().toString();
 
-        if (!password.equals(confirmPassword)) {
+        if(userName.isBlank() || password.isBlank()){
+            JOptionPane.showMessageDialog(this, "Username/Password cannot be blank");
+            return;
+        }else if (!password.equals(confirmPassword)) {
             JOptionPane.showMessageDialog(this, "Password doesn't match");
-        } else {
-//            for (UserAccount account : ecosystem.getUserAccountDirectory().getUserAccountList()) {
-//                if (account.getUsername().equals(userName)) {
-//                    JOptionPane.showMessageDialog(this, "Username Already exists");
-//                    return;
-//                }
-//            }
-//
-//            JOptionPane.showMessageDialog(this, "Profile Created");
-//
-//            System.out.println("MAIN: " + role);
-//
-//            if (null != Role.fromString(role)) {
-//                ecosystem.getPersonDirectory().addNewPerson();
-//                Employee employee = ecosystem.getEmployeeDirectory().createEmployee(userName);
-//                ecosystem.getUserAccountDirectory().createUserAccount(userName, password, employee, Role.fromString(role));
-//
-//            } else {
-//                JOptionPane.showMessageDialog(this, "INVALID CREDENTIALS");
-//            }
-
-            UserAccount newUser = new UserAccount(userName, password, Role.fromString(role));
-            DB4OUtil.getInstance().store(newUser);
-            JOptionPane.showMessageDialog(this, "Profile Created");
-
-            ObjectSet result = DB4OUtil.getInstance().queryByExample(UserAccount.class);
-            System.out.println(result.size());
-            while(result.hasNext()) {
-                System.out.println(result.next());
-            }
+            return;
         }
+
+        ObjectContainer db = DB4OUtil.getDBInstance();
+        UserAccount newUser = new UserAccount(userName, password, Role.fromString(role));
+        
+        ObjectSet result = db.queryByExample(newUser);
+        
+        if(!result.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "The profile already exists..");
+            return;
+        }
+        
+        db.store(newUser);
+        JOptionPane.showMessageDialog(this, "Profile Created");
     }//GEN-LAST:event_SignupBtnActionPerformed
 
     private void dropdownRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dropdownRoleActionPerformed

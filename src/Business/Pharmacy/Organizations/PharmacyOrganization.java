@@ -23,7 +23,7 @@ public class PharmacyOrganization extends Organization{
     
     public PharmacyOrganization() {
      
-       super(Organization.Type.Pharmacy.getValue());
+        super(Organization.Type.Pharmacy.getValue());
        
         medList=new ArrayList<Medicine>();
         vacList = new ArrayList<Vaccine>();

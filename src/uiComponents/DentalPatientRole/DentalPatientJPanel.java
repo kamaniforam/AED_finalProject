@@ -31,14 +31,14 @@ public class DentalPatientJPanel extends javax.swing.JPanel {
      */
     
     private EcoSystem ecosystem;
-    JPanel userProcessContainer;
+    private javax.swing.JSplitPane userProcessContainer;
     private UserAccount userAccount;
     private Enterprise enterprise;
     private MedicinesInventory medInv;
     private Organization org;
     private PharmacyOrganization pharmorg;
     private Network network;
-    public DentalPatientJPanel(EcoSystem ecosystem,JPanel userProcessContainer, UserAccount userAccount, PharmacyOrganization organization, Enterprise enterprise, Network network) {
+    public DentalPatientJPanel(EcoSystem ecosystem,javax.swing.JSplitPane userProcessContainer, UserAccount userAccount, PharmacyOrganization organization, Enterprise enterprise, Network network) {
         initComponents();
         
         this.ecosystem = ecosystem;

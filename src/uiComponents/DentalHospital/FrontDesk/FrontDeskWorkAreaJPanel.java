@@ -7,6 +7,8 @@ package uiComponents.DentalHospital.FrontDesk;
 import Business.EcoSystem;
 import Business.WorkQueue.DoctorAvailableSlotWR;
 import Business.WorkQueue.WorkRequest;
+import Business.db40Utility.DB4OUtil;
+import com.db4o.ObjectSet;
 import java.time.LocalDateTime;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -18,13 +20,15 @@ import javax.swing.table.DefaultTableModel;
 public class FrontDeskWorkAreaJPanel extends javax.swing.JPanel {
 
     private EcoSystem ecosystem;
+    WorkRequest wr;
     /**
      * Creates new form FrontDeskWorkAreaJPanel
      */
-    public FrontDeskWorkAreaJPanel(EcoSystem ecosystem) {
+    public FrontDeskWorkAreaJPanel() {
         initComponents();
         
-        this.ecosystem = ecosystem;
+//        this.ecosystem = ecosystem;
+//        this.wr = wr;
         populateSlotTable();
     }
 
@@ -126,7 +130,7 @@ public class FrontDeskWorkAreaJPanel extends javax.swing.JPanel {
                                             .addComponent(jLabel1)
                                             .addComponent(jLabel4)))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(48, 48, 48)))
                                 .addGap(47, 47, 47)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -134,34 +138,34 @@ public class FrontDeskWorkAreaJPanel extends javax.swing.JPanel {
                                     .addComponent(jComboBox4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 661, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                        .addGap(23, 23, 23)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(74, 74, 74)
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGap(13, 13, 13)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(161, 161, 161))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(61, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -198,16 +202,17 @@ public class FrontDeskWorkAreaJPanel extends javax.swing.JPanel {
     private void populateSlotTable() {
         
         DefaultTableModel dtm = (DefaultTableModel) DoctorSlotJTable.getModel();
-	
+	System.out.println(ecosystem);
         dtm.setRowCount(0);
-        for (WorkRequest wr :  ecosystem.getWorkQueue().getWorkRequestList()) {
+        ObjectSet<WorkRequest> workQueue = DB4OUtil.getDBInstance().queryByExample(WorkRequest.class);
+        
+        while(workQueue.hasNext()) {
+            WorkRequest wr = workQueue.next();
             Object row[] = new Object[3];
-            if(wr instanceof DoctorAvailableSlotWR){
-                row[0] = ((DoctorAvailableSlotWR) wr).getDoctor();
-                row[1] = ((DoctorAvailableSlotWR) wr).getTimings();
-                row[2] = wr.getStatus();
-                dtm.addRow(row);
-            }
+            row[0] = ((DoctorAvailableSlotWR) wr).getDoctor();
+            row[1] = ((DoctorAvailableSlotWR) wr).getTimings();
+            row[2] = wr.getStatus();
+            dtm.addRow(row);
         }
     }
 

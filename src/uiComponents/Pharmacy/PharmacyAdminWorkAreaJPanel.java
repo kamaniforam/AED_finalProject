@@ -24,7 +24,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PharmacyAdminWorkAreaJPanel extends javax.swing.JPanel {
     
-    JPanel userProcessContainer;
+    private javax.swing.JSplitPane userProcessContainer;
     private UserAccount userAccount;
     private Enterprise enterprise;
     private MedicinesInventory medInv;
@@ -35,7 +35,7 @@ public class PharmacyAdminWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form PharmacyAdminWorkAreaJPanel
      */
-    public PharmacyAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount userAccount, PharmacyOrganization organization, Enterprise enterprise, Network network) {
+    public PharmacyAdminWorkAreaJPanel(javax.swing.JSplitPane userProcessContainer, UserAccount userAccount, PharmacyOrganization organization, Enterprise enterprise, Network network) {
         
         this.userProcessContainer = userProcessContainer;
         this.userAccount = userAccount;
