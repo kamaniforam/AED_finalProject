@@ -19,7 +19,10 @@ public enum Role {
     PHARMACY_ADMIN("PHARMACY_ADMIN"),
     RECEPTIONIST("RECEPTIONIST"),
     DENTAL_PATIENT("DENTAL_PATIENT"),
-    DENTIST("DENTIST");
+    DENTIST("DENTIST"),
+    
+    BLOODBANK_USER("BLOODBANK_USER");
+
 
     private final String value;
     private Role(String value){
