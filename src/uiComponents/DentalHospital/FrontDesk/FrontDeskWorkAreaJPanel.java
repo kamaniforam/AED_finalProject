@@ -24,10 +24,10 @@ public class FrontDeskWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form FrontDeskWorkAreaJPanel
      */
-    public FrontDeskWorkAreaJPanel() {
+    public FrontDeskWorkAreaJPanel(EcoSystem ecoSystem) {
         initComponents();
         
-//        this.ecosystem = ecosystem;
+       this.ecosystem = ecosystem;
 //        this.wr = wr;
         populateSlotTable();
     }

@@ -34,7 +34,7 @@ import uiComponents.Pharmacy.PharmacyAdminWorkAreaJPanel;
  *
  * @author foram
  */
-public class LoginJPanel extends javax.swing.JPanel {
+public class loginJPanel extends javax.swing.JPanel {
 
     private javax.swing.JSplitPane jSplitPane1;
 
@@ -54,7 +54,7 @@ public class LoginJPanel extends javax.swing.JPanel {
     Enterprise enterprise;
     WorkQueue wq;
     
-    public LoginJPanel(javax.swing.JSplitPane jSplitPane1, UserAccount account, EcoSystem business, PersonDirectory personDirectory, PatientDirectory patientDirectory,
+    public loginJPanel(javax.swing.JSplitPane jSplitPane1, UserAccount account, EcoSystem business, PersonDirectory personDirectory, PatientDirectory patientDirectory,
             EncounterHistory encounterHistory, DoctorDirectory doctorDirectory, HospitalDirectory hospitalDirectory, VitalSigns vitalSigns,PharmacyOrganization org,
     Network network, Enterprise enterprise) {
         initComponents();
@@ -71,7 +71,7 @@ public class LoginJPanel extends javax.swing.JPanel {
         this.org = org;
     }
 
-    LoginJPanel(JSplitPane jSplitPane1, UserAccount account, EcoSystem business, PersonDirectory personDirectory, PatientDirectory patientDirectory, EncounterHistory encounterHistory, DoctorDirectory doctorDirectory, HospitalDirectory hospitalDirectory, VitalSigns vitalSigns) {
+    loginJPanel(JSplitPane jSplitPane1, UserAccount account, EcoSystem business, PersonDirectory personDirectory, PatientDirectory patientDirectory, EncounterHistory encounterHistory, DoctorDirectory doctorDirectory, HospitalDirectory hospitalDirectory, VitalSigns vitalSigns) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -182,31 +182,29 @@ public class LoginJPanel extends javax.swing.JPanel {
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         // TODO add your handling code here
-        String dropdownrole = dropdownRole.getSelectedItem().toString().toUpperCase();
-//        boolean usacc = business.getUserAccountDirectory().authenticateUser(username.getText(), password.getText(), dropdownrole);
         
+          UserAccount superUser = new UserAccount("fk", "fk", Role.SYSTEM_ADMINISTRATOR);
+
         String usernameText = username.getText();
         String passwordText = password.getText();
-        
-        System.out.println("Logging in..");
-        
-        ObjectSet result = DB4OUtil.getInstance().queryByExample(UserAccount.class);
-        System.out.println(result.size());
-        while(result.hasNext()) {
-            System.out.println(result.next());
-        }
-  
+        String dropdownrole = dropdownRole.getSelectedItem().toString();
+
         if (usernameText.isEmpty() || passwordText.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Username and Password field's cannot be empty");
             return;
+        }else if(dropdownrole == null || Role.fromString(dropdownrole) == null) {
+            JOptionPane.showMessageDialog(null, "Please select a role");
+            return;
         }
 
-
-        if (true) {
-            
+        Role role = Role.fromString(dropdownrole);
+        UserAccount user = new UserAccount(usernameText, passwordText, role);
+        ObjectSet result = DB4OUtil.getDBInstance().queryByExample(user);
+        
+         if (user.equals(superUser) || !result.isEmpty()) {
             JOptionPane.showMessageDialog(this, "LOGIN SUCCESSFULL");
-            if (null != Role.fromString(dropdownrole)) {
-                switch (Role.fromString(dropdownrole)) {
+
+        switch (role) {
                     case SYSTEM_ADMINISTRATOR:
                         MakeUserJPanel userPanel = new MakeUserJPanel(jSplitPane1, account, business, personDirectory, patientDirectory, encounterHistory, doctorDirectory, hispDirectory, vitalSigns);
                         //SystemAdminJPanel systemAdminPane = new SystemAdminJPanel(jSplitPane1, account, business, personDirectory, patientDirectory, encounterHistory, doctorDirectory, hispDirectory);
@@ -215,10 +213,6 @@ public class LoginJPanel extends javax.swing.JPanel {
                     case PATIENT:
                         CreateJPanel createPane = new CreateJPanel(jSplitPane1, account, business,personDirectory, patientDirectory, encounterHistory, doctorDirectory, hispDirectory, vitalSigns);
                         jSplitPane1.setRightComponent(createPane);
-                        break;
-                    case COMMUNITY_ADMINISTRATOR:
-                        CommunityAdminJPanel communityAdminPane = new CommunityAdminJPanel(personDirectory, patientDirectory, encounterHistory, doctorDirectory, hispDirectory, jSplitPane1);
-                        jSplitPane1.setRightComponent(communityAdminPane);
                         break;
                     case HOSPITAL_ADMINISTRATOR:
                         HospitalAdminJPanel hospitalAdminPane = new HospitalAdminJPanel(personDirectory, patientDirectory, encounterHistory, doctorDirectory, hispDirectory, jSplitPane1, vitalSigns);
@@ -243,7 +237,6 @@ public class LoginJPanel extends javax.swing.JPanel {
                     default:
                         JOptionPane.showMessageDialog(this, "SELECT ROLE");
                         break;
-                }
             }
         } else {
             JOptionPane.showMessageDialog(this, "INVALID CREDENTIALS");

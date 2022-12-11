@@ -421,7 +421,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 jSplitPane1.setRightComponent(dental);
                 break;
                 case RECEPTIONIST:
-                FrontDeskWorkAreaJPanel desk = new FrontDeskWorkAreaJPanel();
+                FrontDeskWorkAreaJPanel desk = new FrontDeskWorkAreaJPanel(business);
                 jSplitPane1.setRightComponent(desk);
                 case SUPER_ADMIN:
                 AddUserPanel makeUser = new AddUserPanel();
