@@ -4,21 +4,33 @@
  */
 package uiComponents.BloodRequestManagement;
 
+
+import business.Bloodbank.directories.CommunityDirectory;
+import business.Bloodbank.directories.CredentialsDirectory;
+import business.Bloodbank.directories.HospitalDirectory;
 import business.Bloodbank.resources.Community;
+import business.Bloodbank.resources.Credentials;
 import business.Bloodbank.resources.Person;
+import business.Bloodbank.resources.PersonalDetails;
+import business.Bloodbank.resources.Role;
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Admin
  */
 public class EnterpriseAdminPanel extends javax.swing.JPanel {
-    private JTable table;
+    
+    private ArrayList<Person> communityAdminResultSet;
+    private ArrayList<Community> communityResultSet;
 
-	private ArrayList<Person> communityAdminResultSet;
-	private ArrayList<Community> communityResultSet;
 
 
     /**
@@ -57,7 +69,7 @@ public class EnterpriseAdminPanel extends javax.swing.JPanel {
         btnAddCommunity = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         lblCommunityRegistration = new javax.swing.JLabel();
-        lbl_Error1 = new javax.swing.JLabel();
+        lblError_1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
@@ -76,12 +88,12 @@ public class EnterpriseAdminPanel extends javax.swing.JPanel {
         commAdmnCityComboBox = new javax.swing.JComboBox<>();
         commAdmnZipcodeComboBox = new javax.swing.JComboBox<>();
         lblCity_1 = new javax.swing.JLabel();
-        lbl_1 = new javax.swing.JLabel();
+        label_1 = new javax.swing.JLabel();
         btnAdd_1 = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         lblError = new javax.swing.JLabel();
-        commAdmnPasswordTf = new javax.swing.JPasswordField();
         commAdmnGenderComboBox = new javax.swing.JComboBox<>();
+        commAdmnPasswordTf = new javax.swing.JPasswordField();
         jPanel5 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
@@ -99,8 +111,8 @@ public class EnterpriseAdminPanel extends javax.swing.JPanel {
         label_6 = new javax.swing.JLabel();
         bldReqAdmnCityComboBox = new javax.swing.JComboBox<>();
         bldReqAdmnZipcodeComboBox = new javax.swing.JComboBox<>();
-        label_8 = new javax.swing.JLabel();
         label_7 = new javax.swing.JLabel();
+        label_8 = new javax.swing.JLabel();
         button = new javax.swing.JButton();
         button_1 = new javax.swing.JButton();
         lblError_2 = new javax.swing.JLabel();
@@ -111,6 +123,7 @@ public class EnterpriseAdminPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         btnRemove_2 = new javax.swing.JButton();
+        lblPatientsEncountersDoctors = new javax.swing.JLabel();
 
         jTextField8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -165,7 +178,7 @@ public class EnterpriseAdminPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
 
         jTabbedPane3.setBackground(new java.awt.Color(255, 255, 255));
-        jTabbedPane3.setName(""); // NOI18N
+        jTabbedPane3.setName("JTabbedPane3"); // NOI18N
         jTabbedPane3.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jTabbedPane3StateChanged(evt);
@@ -173,6 +186,7 @@ public class EnterpriseAdminPanel extends javax.swing.JPanel {
         });
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setName("jTabbedPane3"); // NOI18N
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -180,6 +194,55 @@ public class EnterpriseAdminPanel extends javax.swing.JPanel {
 
         lblCity.setText("City :");
 
+        zipcodeTf.getDocument().addDocumentListener(new DocumentListener() {
+            public void changedUpdate(DocumentEvent e) {
+                warn();
+            }
+
+            public void removeUpdate(DocumentEvent e) {
+                warn();
+            }
+
+            public void insertUpdate(DocumentEvent e) {
+                warn();
+            }
+
+            public void warn() {
+
+                for (Community comm : CommunityDirectory.getCommunities()) {
+
+                    if (zipcodeTf.getText().equals(comm.getZipcode().toString())) {
+                        JOptionPane.showMessageDialog(null, "Error: Zipcode already exists, choose another one",
+                            "Error Message", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            }
+        });
+
+        cityTf.getDocument().addDocumentListener(new DocumentListener() {
+            public void changedUpdate(DocumentEvent e) {
+                warn();
+            }
+
+            public void removeUpdate(DocumentEvent e) {
+                warn();
+            }
+
+            public void insertUpdate(DocumentEvent e) {
+                warn();
+            }
+
+            public void warn() {
+
+                for (Community comm : CommunityDirectory.getCommunities()) {
+
+                    if (cityTf.getText().equals(comm.getCity())) {
+                        JOptionPane.showMessageDialog(null, "Error: Zipcode already exists, choose another one",
+                            "Error Message", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            }
+        });
         cityTf.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -214,8 +277,14 @@ public class EnterpriseAdminPanel extends javax.swing.JPanel {
         btnAddCommunity.setBackground(new java.awt.Color(255, 204, 204));
         btnAddCommunity.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         btnAddCommunity.setText("Add Community");
+        btnAddCommunity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddCommunityActionPerformed(evt);
+            }
+        });
 
         jPanel4.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel4.setName("jTabbedPane3"); // NOI18N
 
         lblCommunityRegistration.setFont(new java.awt.Font("Georgia", 1, 15)); // NOI18N
         lblCommunityRegistration.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -239,8 +308,8 @@ public class EnterpriseAdminPanel extends javax.swing.JPanel {
                     .addContainerGap()))
         );
 
-        lbl_Error1.setForeground(new java.awt.Color(255, 0, 51));
-        lbl_Error1.setText("ERROR");
+        lblError_1.setForeground(new java.awt.Color(255, 0, 51));
+        lblError_1.setText("ERROR");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -258,7 +327,7 @@ public class EnterpriseAdminPanel extends javax.swing.JPanel {
                 .addGap(254, 254, 254))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(310, 310, 310)
-                .addComponent(lbl_Error1)
+                .addComponent(lblError_1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -271,13 +340,14 @@ public class EnterpriseAdminPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnAddCommunity)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
-                .addComponent(lbl_Error1)
+                .addComponent(lblError_1)
                 .addGap(21, 21, 21))
         );
 
         jTabbedPane3.addTab("Community", jPanel2);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setName("jTabbedPane3"); // NOI18N
 
         jPanel10.setBackground(new java.awt.Color(255, 204, 204));
 
@@ -303,17 +373,45 @@ public class EnterpriseAdminPanel extends javax.swing.JPanel {
         lblLastname.setText("Lastname:");
 
         commAdmnFirstNameTf.setText("jTextField14");
-        commAdmnFirstNameTf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                commAdmnFirstNameTfActionPerformed(evt);
-            }
-        });
 
         commAdmnLastNameTf.setText("jTextField15");
 
         commAdmnContactTf.setText("jTextField17");
+        commAdmnContactTf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                commAdmnContactTfActionPerformed(evt);
+            }
+        });
 
         commAdmnUsernameTf.setText("jTextField18");
+        commAdmnUsernameTf.getDocument().addDocumentListener(new DocumentListener() {
+            public void changedUpdate(DocumentEvent e) {
+                warn();
+            }
+            public void removeUpdate(DocumentEvent e) {
+                warn();
+            }
+            public void insertUpdate(DocumentEvent e) {
+                warn();
+            }
+
+            public void warn() {
+                for (Credentials creds : CredentialsDirectory.getCredentials()) {
+
+                    if (commAdmnUsernameTf.getText().equals(creds.getUsername())) {
+
+                        JOptionPane.showMessageDialog(null,
+                            "Error: username already exists, choose a different username", "Error Message",
+                            JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            }
+        });
+        commAdmnUsernameTf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                commAdmnUsernameTfActionPerformed(evt);
+            }
+        });
 
         lblGender.setText("Gender:");
 
@@ -329,7 +427,7 @@ public class EnterpriseAdminPanel extends javax.swing.JPanel {
 
         lblCity_1.setText("City:");
 
-        lbl_1.setText("Zipcode:");
+        label_1.setText("Zipcode:");
 
         btnAdd_1.setBackground(new java.awt.Color(255, 204, 204));
         btnAdd_1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -343,13 +441,18 @@ public class EnterpriseAdminPanel extends javax.swing.JPanel {
         btnUpdate.setBackground(new java.awt.Color(255, 204, 204));
         btnUpdate.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         lblError.setForeground(new java.awt.Color(255, 51, 51));
         lblError.setText("ERROR");
 
-        commAdmnPasswordTf.setText("jPasswordField1");
-
         commAdmnGenderComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        commAdmnPasswordTf.setText("jPasswordField1");
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -365,7 +468,7 @@ public class EnterpriseAdminPanel extends javax.swing.JPanel {
                                 .addComponent(lblUsername)
                                 .addComponent(lblContact)
                                 .addComponent(lblCity_1)
-                                .addComponent(lbl_1))
+                                .addComponent(label_1))
                             .addGap(27, 27, 27)
                             .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(commAdmnContactTf, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
@@ -433,7 +536,7 @@ public class EnterpriseAdminPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(commAdmnZipcodeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_1))
+                    .addComponent(label_1))
                 .addGap(38, 38, 38)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdd_1)
@@ -475,6 +578,7 @@ public class EnterpriseAdminPanel extends javax.swing.JPanel {
         jTabbedPane3.addTab("Community Admin", jPanel1);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setName("jTabbedPane3"); // NOI18N
 
         jPanel12.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -523,9 +627,9 @@ public class EnterpriseAdminPanel extends javax.swing.JPanel {
 
         bldReqAdmnZipcodeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        label_8.setText("City:");
+        label_7.setText("City:");
 
-        label_7.setText("Zipcode:");
+        label_8.setText("Zipcode:");
 
         button.setBackground(new java.awt.Color(255, 204, 204));
         button.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -539,13 +643,18 @@ public class EnterpriseAdminPanel extends javax.swing.JPanel {
         button_1.setBackground(new java.awt.Color(255, 204, 204));
         button_1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         button_1.setText("Update");
+        button_1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_1ActionPerformed(evt);
+            }
+        });
 
         lblError_2.setForeground(new java.awt.Color(255, 51, 51));
         lblError_2.setText("ERROR");
 
         bldReqAdmnGenderComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        bldReqAdmnPasswordTf.setText("jPasswordField1");
+        bldReqAdmnPasswordTf.setText("jPasswordField2");
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
@@ -560,8 +669,8 @@ public class EnterpriseAdminPanel extends javax.swing.JPanel {
                                 .addComponent(label_6)
                                 .addComponent(label_5)
                                 .addComponent(label_4)
-                                .addComponent(label_8)
-                                .addComponent(label_7))
+                                .addComponent(label_7)
+                                .addComponent(label_8))
                             .addGap(27, 27, 27)
                             .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(bldReqAdmnContactTf, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
@@ -625,11 +734,11 @@ public class EnterpriseAdminPanel extends javax.swing.JPanel {
                             .addComponent(bldReqAdmnPasswordTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(bldReqAdmnCityComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(label_8))
+                    .addComponent(label_7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bldReqAdmnZipcodeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label_7))
+                    .addComponent(label_8))
                 .addGap(38, 38, 38)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(button)
@@ -671,6 +780,7 @@ public class EnterpriseAdminPanel extends javax.swing.JPanel {
         jTabbedPane3.addTab("Blood Request Admin", jPanel5);
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setName("jTabbedPane3"); // NOI18N
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -698,6 +808,8 @@ public class EnterpriseAdminPanel extends javax.swing.JPanel {
             }
         });
 
+        lblPatientsEncountersDoctors.setText("Successfully Removed");
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -705,8 +817,13 @@ public class EnterpriseAdminPanel extends javax.swing.JPanel {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 714, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnRemove_2)
-                .addContainerGap())
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                        .addComponent(btnRemove_2)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                        .addComponent(lblPatientsEncountersDoctors, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(303, 303, 303))))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -714,7 +831,9 @@ public class EnterpriseAdminPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnRemove_2)
-                .addGap(0, 210, Short.MAX_VALUE))
+                .addGap(59, 59, 59)
+                .addComponent(lblPatientsEncountersDoctors)
+                .addGap(0, 130, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -764,56 +883,309 @@ public class EnterpriseAdminPanel extends javax.swing.JPanel {
 
     private void btnAdd_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdd_1ActionPerformed
         // TODO add your handling code here:
+        if (!commAdmnUsernameTf.getText().equals("") && !new String(commAdmnPasswordTf.getPassword()).equals("")
+						&& !commAdmnFirstNameTf.getText().equals("")
+						&& !commAdmnGenderComboBox.getSelectedItem().equals("")
+						&& !commAdmnContactTf.getText().equals("")
+						&& !commAdmnZipcodeComboBox.getSelectedItem().equals("")
+						&& !commAdmnCityComboBox.getSelectedItem().equals("")) {
+
+					String username = commAdmnUsernameTf.getText();
+					String password = new String(commAdmnPasswordTf.getPassword());
+
+					Credentials credentials = new Credentials(username, password);
+
+					String city = (String) commAdmnCityComboBox.getSelectedItem();
+					Integer zipcode = Integer.valueOf((String) commAdmnZipcodeComboBox.getSelectedItem());
+					Community community = null;
+
+					for (Community comm : CommunityDirectory.getCommunities()) {
+
+						if (city.equals(comm.getCity()) && zipcode.equals(comm.getZipcode())) {
+
+							community = comm;
+						}
+					}
+
+					String firstName = commAdmnFirstNameTf.getText();
+					String lastName = commAdmnLastNameTf.getText();
+					String phone = commAdmnContactTf.getText();
+					String gender = (String) commAdmnGenderComboBox.getSelectedItem();
+
+					PersonalDetails details = new PersonalDetails(firstName, lastName, gender, phone, "");
+
+					Person commAdmin = new Person(details, credentials, community, Role.COMMUNITY_ADMIN);
+					community.setCommunityAdmin(commAdmin);
+
+					CredentialsDirectory.getCredentials().add(credentials);
+
+					lblError_1.setVisible(true);
+					lblError_1.setText("Successfully added admin: " + username);
+
+				} else {
+
+					lblError_1.setVisible(true);
+					lblError_1.setText("Null values not allowed");
+				}
+
+				clearTextfields();
     }//GEN-LAST:event_btnAdd_1ActionPerformed
 
     private void buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonActionPerformed
         // TODO add your handling code here:
+        if (!bldReqAdmnContactTf.getText().equals("") && !new String(bldReqAdmnPasswordTf.getPassword()).equals("")
+						&& !bldReqAdmnFirstNameTf.getText().equals("")
+						&& !bldReqAdmnGenderComboBox.getSelectedItem().equals("")
+						&& !bldReqAdmnContactTf.getText().equals("")
+						&& !bldReqAdmnZipcodeComboBox.getSelectedItem().equals("")
+						&& !bldReqAdmnCityComboBox.getSelectedItem().equals("")) {
+
+					String username = bldReqAdmnContactTf.getText();
+					String password = new String(bldReqAdmnPasswordTf.getPassword());
+
+					Credentials credentials = new Credentials(username, password);
+
+					String city = (String) bldReqAdmnCityComboBox.getSelectedItem();
+					Integer zipcode = Integer.parseInt((String) bldReqAdmnZipcodeComboBox.getSelectedItem());
+					Community community = null;
+
+					for (Community comm : CommunityDirectory.getCommunities()) {
+
+						if (city.equals(comm.getCity()) && zipcode.equals(comm.getZipcode())) {
+
+							community = comm;
+						}
+					}
+					
+					String firstName 	= bldReqAdmnFirstNameTf.getText();
+					String lastName 	= bldReqAdmnLastNameTf.getText();
+					String phone 		= bldReqAdmnContactTf.getText();
+					String gender 		= (String) bldReqAdmnGenderComboBox.getSelectedItem();
+
+					PersonalDetails details = new PersonalDetails(firstName, lastName, gender, phone, "");
+
+					Person bldReqAdmin = new Person(details, credentials, community, Role.BLOODREQUEST_ADMIN);
+					community.setBloodReqAdmin(bldReqAdmin);
+
+					CredentialsDirectory.getCredentials().add(credentials);
+
+					lblError_1.setVisible(true);
+					lblError_1.setText("Successfully added admin: " + username);
+
+				} else {
+
+					lblError_1.setVisible(true);
+					lblError_1.setText("Null values not allowed");
+				}
+
+				clearTextfields();
     }//GEN-LAST:event_buttonActionPerformed
 
     private void btnRemove_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemove_2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnRemove_2ActionPerformed
+        int selectedRow = jTable1.getSelectedRow();
 
-    private void commAdmnFirstNameTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commAdmnFirstNameTfActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_commAdmnFirstNameTfActionPerformed
+				if (selectedRow != -1) {
+
+					Community community = communityResultSet.get(selectedRow);
+					HospitalDirectory.getHospitals().remove(community.getHospitals());
+					community.setCommunityAdmin(null);
+					community.setBloodReqAdmin(null);
+					
+					
+					// Dont remove the community, however remove all data of the community
+					// since houses and people data would stay relate to communities
+					// CommunityDirectory.getCommunities().remove( selectedRow );
+					removeAllRows(jTable1);
+					populateCommunityTable();
+					// populateCommunityAdminTable(community);
+
+					lblPatientsEncountersDoctors.setVisible(true);
+					lblPatientsEncountersDoctors.setText("Patients, Encounters, Doctors & Hospitals Removed");
+				} else {
+
+					lblPatientsEncountersDoctors.setVisible(true);
+                                }				lblPatientsEncountersDoctors.setText("You need to select a row!");
+    }//GEN-LAST:event_btnRemove_2ActionPerformed
 
     private void jTabbedPane3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane3StateChanged
         // TODO add your handling code here:
-        	if (tabbedPane.getSelectedComponent().getName().equals("Community")) {
+        if (jTabbedPane3.getSelectedComponent().getName().equals("Community")) {
 
 					lblError_1.setVisible(false);
 					lblError_1.setText("");
 				}
 
-				if (tabbedPane.getSelectedComponent().getName().equals("Community Admin")) {
+				if (jTabbedPane3.getSelectedComponent().getName().equals("Community Admin")) {
 					
 					populateZipcodeCBox(commAdmnZipcodeComboBox);
 					populateCityCBox(commAdmnCityComboBox);
 					
-					lblError.setVisible(false);
-					lblError.setText("");
+					lblError_1.setVisible(false);
+					lblError_1.setText("");
 				}
 				
-				if (tabbedPane.getSelectedComponent().getName().equals("Blood Request Admin")) {
+				if (jTabbedPane3.getSelectedComponent().getName().equals("Blood Request Admin")) {
 					
 					populateZipcodeCBox(bldReqAdmnZipcodeComboBox);
 					populateCityCBox(bldReqAdmnCityComboBox);
 					
-					lblError.setVisible(false);
-					lblError.setText("");
+					lblError_1.setVisible(false);
+					lblError_1.setText("");
 				}
 
-				if (tabbedPane.getSelectedComponent().getName().equals("Communities")) {
+				if (jTabbedPane3.getSelectedComponent().getName().equals("Communities")) {
 
 					lblPatientsEncountersDoctors.setVisible(false);
 					lblPatientsEncountersDoctors.setText("");
 					
-					removeAllRows(table);
+					removeAllRows(jTable1);
 					populateCommunityTable();
-				
+				}
+                                
 
     }//GEN-LAST:event_jTabbedPane3StateChanged
+
+    private void btnAddCommunityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCommunityActionPerformed
+        // TODO add your handling code here:
+        if (!zipcodeTf.getText().equals("") && !cityTf.getText().equals("")) {
+
+					Integer zipcode = Integer.parseInt(zipcodeTf.getText());
+					String city = cityTf.getText();
+					Community community = new Community(zipcode, city);
+
+					CommunityDirectory.getCommunities().add(community);
+
+					lblError_1.setVisible(true);
+					lblError_1.setText("Added Community: " + " | " + "Zipcode:" + zipcode + " | " + "City: " + city);
+
+				} else {
+
+					lblError_1.setVisible(true);
+					lblError_1.setText("Null values not allowed");
+				}
+
+				clearTextfields();
+    }//GEN-LAST:event_btnAddCommunityActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+        if (!commAdmnUsernameTf.getText().equals("") && !new String(commAdmnPasswordTf.getPassword()).equals("")
+						&& !commAdmnFirstNameTf.getText().equals("")
+						&& !commAdmnGenderComboBox.getSelectedItem().equals("")
+						&& !commAdmnContactTf.getText().equals("")
+						&& !commAdmnZipcodeComboBox.getSelectedItem().equals("")
+						&& !commAdmnCityComboBox.getSelectedItem().equals("")) {
+					
+					String city = (String) commAdmnCityComboBox.getSelectedItem();
+					Integer zipcode = Integer.parseInt((String) commAdmnZipcodeComboBox.getSelectedItem());
+					Community community = null;
+
+					for (Community comm : CommunityDirectory.getCommunities()) {
+
+						if (city.equals(comm.getCity()) && zipcode.equals(comm.getZipcode())) {
+
+							community = comm;
+						}
+					}
+					
+					if(CredentialsDirectory.getCredentials().contains(community.getCommunityAdmin().getCredentials())) {
+						
+						CredentialsDirectory.getCredentials().remove(community.getCommunityAdmin().getCredentials());
+					}
+					
+					String username = commAdmnUsernameTf.getText();
+					String password = new String(commAdmnPasswordTf.getPassword());
+
+					Credentials credentials = new Credentials(username, password);
+					
+					String firstName = commAdmnFirstNameTf.getText();
+					String lastName = commAdmnLastNameTf.getText();
+					String phone = commAdmnContactTf.getText();
+					String gender = (String) commAdmnGenderComboBox.getSelectedItem();
+
+					PersonalDetails details = new PersonalDetails(firstName, lastName, gender, phone, "");
+
+					Person commAdmin = new Person(details, credentials, community, Role.COMMUNITY_ADMIN);
+					community.setCommunityAdmin(commAdmin);
+
+					CredentialsDirectory.getCredentials().add(credentials);
+
+					lblError_1.setVisible(true);
+					lblError_1.setText("Successfully added admin: " + username);
+
+				} else {
+
+					lblError_1.setVisible(true);
+					lblError_1.setText("Null values not allowed");
+				}
+
+				clearTextfields();
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void button_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_1ActionPerformed
+        // TODO add your handling code here:
+        
+				if (!bldReqAdmnContactTf.getText().equals("") && !new String(bldReqAdmnPasswordTf.getPassword()).equals("")
+						&& !bldReqAdmnFirstNameTf.getText().equals("")
+						&& !bldReqAdmnGenderComboBox.getSelectedItem().equals("")
+						&& !bldReqAdmnContactTf.getText().equals("")
+						&& !bldReqAdmnZipcodeComboBox.getSelectedItem().equals("")
+						&& !bldReqAdmnCityComboBox.getSelectedItem().equals("")) {
+					
+					String city = (String) bldReqAdmnCityComboBox.getSelectedItem();
+					Integer zipcode = Integer.parseInt((String) bldReqAdmnZipcodeComboBox.getSelectedItem());
+					Community community = null;
+
+					for (Community comm : CommunityDirectory.getCommunities()) {
+
+						if (city.equals(comm.getCity()) && zipcode.equals(comm.getZipcode())) {
+
+							community = comm;
+						}
+					}
+					
+					if(CredentialsDirectory.getCredentials().contains(community.getCommunityAdmin().getCredentials())) {
+						
+						CredentialsDirectory.getCredentials().remove(community.getCommunityAdmin().getCredentials());
+					}
+					
+					String username = bldReqAdmnContactTf.getText();
+					String password = new String(bldReqAdmnPasswordTf.getPassword());
+
+					Credentials credentials = new Credentials(username, password);
+					
+					String firstName = bldReqAdmnFirstNameTf.getText();
+					String lastName = bldReqAdmnLastNameTf.getText();
+					String phone = bldReqAdmnContactTf.getText();
+					String gender = (String) bldReqAdmnGenderComboBox.getSelectedItem();
+
+					PersonalDetails details = new PersonalDetails(firstName, lastName, gender, phone, "");
+
+					Person bldReqAdmin = new Person(details, credentials, community, Role.BLOODREQUEST_ADMIN);
+					community.setBloodReqAdmin(bldReqAdmin);
+
+					CredentialsDirectory.getCredentials().add(credentials);
+
+					lblError_1.setVisible(true);
+					lblError_1.setText("Successfully added admin: " + username);
+
+				} else {
+
+					lblError_1.setVisible(true);
+					lblError_1.setText("Null values not allowed");
+				}
+
+				clearTextfields();
+    }//GEN-LAST:event_button_1ActionPerformed
+
+    private void commAdmnContactTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commAdmnContactTfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_commAdmnContactTfActionPerformed
+
+    private void commAdmnUsernameTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commAdmnUsernameTfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_commAdmnUsernameTfActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -867,6 +1239,7 @@ public class EnterpriseAdminPanel extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JLabel label;
+    private javax.swing.JLabel label_1;
     private javax.swing.JLabel label_2;
     private javax.swing.JLabel label_3;
     private javax.swing.JLabel label_4;
@@ -881,31 +1254,98 @@ public class EnterpriseAdminPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblCommunityRegistration;
     private javax.swing.JLabel lblContact;
     private javax.swing.JLabel lblError;
+    private javax.swing.JLabel lblError_1;
     private javax.swing.JLabel lblError_2;
     private javax.swing.JLabel lblFirstname;
     private javax.swing.JLabel lblGender;
     private javax.swing.JLabel lblLastname;
     private javax.swing.JLabel lblPassword;
+    private javax.swing.JLabel lblPatientsEncountersDoctors;
     private javax.swing.JLabel lblUsername;
     private javax.swing.JLabel lblZipcode;
-    private javax.swing.JLabel lbl_1;
-    private javax.swing.JLabel lbl_Error1;
     private javax.swing.JTextField zipcodeTf;
     // End of variables declaration//GEN-END:variables
 
-    private void populateZipcodeCBox(JComboBox<String> commAdmnZipcodeComboBox) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    private void clearTextfields() {
+        	commAdmnFirstNameTf.setText("");
+		commAdmnLastNameTf.setText("");
+		commAdmnUsernameTf.setText("");
+		commAdmnPasswordTf.setText("");
+		commAdmnGenderComboBox.setSelectedIndex(-1);
+		commAdmnContactTf.setText("");
+		commAdmnZipcodeComboBox.setSelectedIndex(-1);
+		commAdmnCityComboBox.setSelectedIndex(-1);
+		
+		bldReqAdmnFirstNameTf.setText("");
+		bldReqAdmnLastNameTf.setText("");
+		bldReqAdmnContactTf.setText("");
+		bldReqAdmnPasswordTf.setText("");
+		bldReqAdmnGenderComboBox.setSelectedIndex(-1);
+		bldReqAdmnContactTf.setText("");
+		bldReqAdmnZipcodeComboBox.setSelectedIndex(-1);
+		bldReqAdmnCityComboBox.setSelectedIndex(-1);
+	}
 
-    private void populateCityCBox(JComboBox<String> commAdmnCityComboBox) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
-    private void removeAllRows(JTable table) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
     private void populateCommunityTable() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    	DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+		communityResultSet = new ArrayList<Community>();
+
+		for (Community community : CommunityDirectory.getCommunities()) {
+
+			Object[] obj = new Object[4];
+
+			obj[0] = community.getCity();
+			obj[1] = community.getZipcode();
+			obj[2] = community.getCommunityAdmin();
+			obj[3] = community.getBloodReqAdmin();
+
+			model.addRow(obj);
+			communityResultSet.add(community);
+		}
     }
+
+   	private void removeAllRows(JTable table) {
+
+		DefaultTableModel model = (DefaultTableModel) table.getModel();
+		int rowCount = model.getRowCount();
+		// Remove rows one by one from the end of the table
+		for (int i = rowCount - 1; i >= 0; i--) {
+			model.removeRow(i);
+		}
+	}
+
+   
+    private void populateZipcodeCBox(JComboBox<String> localComboBox) {
+
+		ArrayList<Community> communities = CommunityDirectory.getCommunities();
+		ArrayList<Integer> zipcodes = new ArrayList<Integer>();
+
+		for (Community community : communities) {
+
+			zipcodes.add(community.getZipcode());
+		}
+
+		Integer[] zipArr = zipcodes.toArray(new Integer[zipcodes.size()]);
+
+		DefaultComboBoxModel aModel = new DefaultComboBoxModel(zipArr);
+		localComboBox.setModel(aModel);
+	}
+
+	private void populateCityCBox(JComboBox<String> localComboBox) {
+
+		ArrayList<Community> communities = CommunityDirectory.getCommunities();
+		ArrayList<String> cities = new ArrayList<String>();
+
+		for (Community community : communities) {
+
+			cities.add(community.getCity());
+		}
+
+		Integer[] cityArr = cities.toArray(new Integer[cities.size()]);
+
+		DefaultComboBoxModel aModel = new DefaultComboBoxModel(cityArr);
+		localComboBox.setModel(aModel);
+        }
 }

@@ -4,8 +4,14 @@
  */
 package uiComponents.BloodRequestManagement;
 
+import Business.Bloodbank.resources.BloodRequest;
 import business.Bloodbank.resources.Person;
+import business.Bloodbank.resources.Role;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 
 
@@ -271,6 +277,11 @@ public class UserPanel extends javax.swing.JPanel {
         btnRequest.setBackground(javax.swing.UIManager.getDefaults().getColor("Component.accentColor"));
         btnRequest.setForeground(new java.awt.Color(255, 255, 255));
         btnRequest.setText("Request");
+        btnRequest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRequestActionPerformed(evt);
+            }
+        });
 
         comboBox_2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -374,7 +385,7 @@ public class UserPanel extends javax.swing.JPanel {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 229, Short.MAX_VALUE))
+                .addGap(0, 655, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -463,6 +474,30 @@ public class UserPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnEditActionPerformed
 
+    private void btnRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestActionPerformed
+        // TODO add your handling code here:
+        if (person.getRole().equals(Role.USER)) {
+
+					String firstName = person.getPersonalDetails().getFirstName();
+					String lastName = person.getPersonalDetails().getLastName();
+					String postedBy = firstName + " " + lastName;
+
+					DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+					LocalDateTime now = LocalDateTime.now();
+					
+					String postedOn		= now.toString();
+
+					String email = person.getCredentials().getUsername();
+					String city = person.getCommunity().getCity();
+					String zipcode = Integer.toString(person.getCommunity().getZipcode());
+
+					String bloodGroup = (String) comboBox_2.getSelectedItem();
+					String unitRequest = textField_5.getText();
+					
+					BloodRequestAdminPanel.bloodRequests.add(new BloodRequest(postedBy, postedOn, email, city, zipcode, bloodGroup, unitRequest));
+        }
+    }//GEN-LAST:event_btnRequestActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEdit;
@@ -498,4 +533,13 @@ public class UserPanel extends javax.swing.JPanel {
     private javax.swing.JTextField userLastNameTf;
     private javax.swing.JPasswordField userPasswordTf;
     // End of variables declaration//GEN-END:variables
+private void removeAllRows(JTable table) {
+
+		DefaultTableModel model = (DefaultTableModel) table.getModel();
+		int rowCount = model.getRowCount();
+		// Remove rows one by one from the end of the table
+		for (int i = rowCount - 1; i >= 0; i--) {
+			model.removeRow(i);
+		}
+	}
 }

@@ -18,8 +18,10 @@ import business.Bloodbank.resources.Role;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.swing.event.ChangeEvent;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -244,7 +246,7 @@ public class CommunityAdminPanel extends javax.swing.JPanel {
                 .addComponent(btnAddHospital)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblError)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(174, Short.MAX_VALUE))
         );
 
         tabpanel2.addTab("Hospital", hospitalpanel);
@@ -289,6 +291,35 @@ public class CommunityAdminPanel extends javax.swing.JPanel {
         textField_Contact.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textField_ContactActionPerformed(evt);
+            }
+        });
+
+        textField_Username.getDocument().addDocumentListener(new DocumentListener() {
+            public void changedUpdate(DocumentEvent e) {
+                warn();
+            }
+            public void removeUpdate(DocumentEvent e) {
+                warn();
+            }
+            public void insertUpdate(DocumentEvent e) {
+                warn();
+            }
+
+            public void warn() {
+                for (Credentials creds : CredentialsDirectory.getCredentials()) {
+
+                    if (textField_Username.getText().equals(creds.getUsername())) {
+
+                        JOptionPane.showMessageDialog(null,
+                            "Error: username already exists, choose a different username", "Error Message",
+                            JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            }
+        });
+        textField_Username.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textField_UsernameActionPerformed(evt);
             }
         });
 
@@ -503,7 +534,7 @@ public class CommunityAdminPanel extends javax.swing.JPanel {
                 .addComponent(btnRemove)
                 .addGap(27, 27, 27)
                 .addComponent(lblSuccessfullyRemoved)
-                .addGap(0, 203, Short.MAX_VALUE))
+                .addGap(0, 300, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -694,7 +725,6 @@ public class CommunityAdminPanel extends javax.swing.JPanel {
         }
 
 
-
     }//GEN-LAST:event_tabpanel2StateChanged
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
@@ -762,6 +792,10 @@ public class CommunityAdminPanel extends javax.swing.JPanel {
     private void textField_PasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField_PasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textField_PasswordActionPerformed
+
+    private void textField_UsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField_UsernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textField_UsernameActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
