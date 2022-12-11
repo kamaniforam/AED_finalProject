@@ -151,6 +151,8 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
 
         jTabbedPane1.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.focusedBackground"));
 
+        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
+
         hospitalPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         doctorPanel1.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.focusedBackground"));
@@ -165,7 +167,7 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
 
         cityLbl.setText("City:");
 
-        create2.setBackground(javax.swing.UIManager.getDefaults().getColor("Component.accentColor"));
+        create2.setBackground(new java.awt.Color(51, 153, 255));
         create2.setForeground(new java.awt.Color(255, 255, 255));
         create2.setText("Create");
         create2.addActionListener(new java.awt.event.ActionListener() {
@@ -174,7 +176,8 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
             }
         });
 
-        update2.setBackground(javax.swing.UIManager.getDefaults().getColor("Component.accentColor"));
+        update2.setBackground(new java.awt.Color(51, 153, 255));
+
         update2.setForeground(new java.awt.Color(255, 255, 255));
         update2.setText("Update");
         update2.addActionListener(new java.awt.event.ActionListener() {
@@ -183,7 +186,7 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
             }
         });
 
-        delete2.setBackground(javax.swing.UIManager.getDefaults().getColor("Component.accentColor"));
+        delete2.setBackground(new java.awt.Color(51, 153, 255));
         delete2.setForeground(new java.awt.Color(255, 255, 255));
         delete2.setText("Delete");
         delete2.addActionListener(new java.awt.event.ActionListener() {
@@ -231,7 +234,7 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
             }
         });
 
-        clear2.setBackground(javax.swing.UIManager.getDefaults().getColor("Component.accentColor"));
+        clear2.setBackground(new java.awt.Color(51, 153, 255));
         clear2.setForeground(new java.awt.Color(255, 255, 255));
         clear2.setText("Clear");
         clear2.addActionListener(new java.awt.event.ActionListener() {
@@ -283,6 +286,9 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
                 .addComponent(hospitalPortalLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
+
+        doctorPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {clear2, create2, delete2, update2});
+
         doctorPanel1Layout.setVerticalGroup(
             doctorPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(doctorPanel1Layout.createSequentialGroup()
@@ -302,12 +308,14 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
                     .addComponent(ddCity1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(doctorPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(create2)
+                    .addComponent(create2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(update2)
                     .addComponent(delete2)
                     .addComponent(clear2))
-                .addContainerGap(194, Short.MAX_VALUE))
+                .addContainerGap(177, Short.MAX_VALUE))
         );
+
+        doctorPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {clear2, create2, delete2, update2});
 
         javax.swing.GroupLayout hospitalPanelLayout = new javax.swing.GroupLayout(hospitalPanel);
         hospitalPanel.setLayout(hospitalPanelLayout);
@@ -764,7 +772,7 @@ public class SystemAdminJPanel extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Patient", patientPanel);
 
-        jPanel1.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.focusedBorderColor"));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         systemAdminLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         systemAdminLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
