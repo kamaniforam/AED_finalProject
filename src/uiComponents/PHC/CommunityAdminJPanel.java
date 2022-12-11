@@ -96,7 +96,7 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.focusedBackground"));
 
         jPanel4.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.focusedBackground"));
 
@@ -104,7 +104,7 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
 
         jTabbedPane1.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.focusedBackground"));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.focusedBackground"));
 
         tblPerson.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -127,7 +127,9 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblPerson);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jDesktopPane1.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.focusedBackground"));
+
+        jPanel2.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.focusedBackground"));
         jPanel2.setPreferredSize(new java.awt.Dimension(600, 600));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -180,6 +182,8 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
 
         ddHouseNumber2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose House Number", "1", "2", "3", "4", "5", "6" }));
 
+        btnSave.setBackground(javax.swing.UIManager.getDefaults().getColor("Component.accentColor"));
+        btnSave.setForeground(new java.awt.Color(255, 255, 255));
         btnSave.setText("Create");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -187,6 +191,8 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnUpdate.setBackground(javax.swing.UIManager.getDefaults().getColor("Component.accentColor"));
+        btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,6 +200,8 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
             }
         });
 
+        clearBtn.setBackground(javax.swing.UIManager.getDefaults().getColor("Component.accentColor"));
+        clearBtn.setForeground(new java.awt.Color(255, 255, 255));
         clearBtn.setText("Clear");
         clearBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -325,7 +333,7 @@ public class CommunityAdminJPanel extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 983, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(163, 163, 163)
+                        .addGap(216, 216, 216)
                         .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
