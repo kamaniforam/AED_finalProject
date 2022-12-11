@@ -6,15 +6,16 @@ package uiComponents.Pharmacy;
 
 import Business.Network;
 import Business.Organization;
+import Business.Pharmacy.Model.Medicine;
+import Business.Pharmacy.Model.MedicinesInventory;
+import Business.Pharmacy.Model.Vaccine;
 import Business.Pharmacy.Organizations.PharmacyOrganization;
 import Bussiness.model.PHC.UserAccount;
 import Enterprise.Enterprise;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import model.Pharmacy.Medicine;
-import model.Pharmacy.MedicinesInventory;
-import model.Pharmacy.Vaccine;
+
 
 
 /**
