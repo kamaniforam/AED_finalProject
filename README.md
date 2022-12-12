@@ -1,5 +1,5 @@
-Kamani Foram 
-Jain Richa
+Kamani Foram, 
+Jain Richa,
 Upadhyay Ruchi
 
 These days, healthcare management is in extremely high demand because it is so helpful in running a hospital or a doctor's 
@@ -41,9 +41,7 @@ Blood User
 # Sequence Diagram
 
 
-
-
-
+![Screenshot (209)](https://user-images.githubusercontent.com/114556755/206948324-1d9af25c-251f-419b-8279-6f969c50331e.png)
 
 # Class Diagram
 
