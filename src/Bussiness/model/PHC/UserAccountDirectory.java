@@ -17,9 +17,7 @@ public class UserAccountDirectory {
     private ArrayList<UserAccount> userAccountList;
 
     public UserAccountDirectory() {
-        System.out.println("Hey22");
         userAccountList = new ArrayList();
-        System.out.println("Heyy12");
     }
 
     public ArrayList<UserAccount> getUserAccountList() {
@@ -44,11 +42,10 @@ public class UserAccountDirectory {
         return false;
     }
 
-    public UserAccount createUserAccount(String username, String password, Employee employee, Role role) {
+    public UserAccount createUserAccount(String username, String password, Role role) {
         UserAccount userAccount = new UserAccount();
         userAccount.setUsername(username);
         userAccount.setPassword(password);
-        userAccount.setEmployee(employee);
         userAccount.setRole(role);
         userAccountList.add(userAccount);
         return userAccount;

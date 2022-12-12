@@ -51,7 +51,7 @@ public class ViewStockRequest extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.pharmorg = pharmorg;
         this.network = network;
-        this.business = business;
+        this.business = EcoSystem.getInstance();
         
         populateTable();
         
@@ -265,25 +265,24 @@ public class ViewStockRequest extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel)requestedStockTable.getModel();
         
         model.setRowCount(0);
-        if(WorkQueue.getInstance().size() != 0){
-            for (WorkRequest request : WorkQueue.getInstance()){
-                if(request instanceof MedicineWorkRequest){
-                    Object[] row = new Object[4];
-                    row[0] = ((MedicineWorkRequest) request);
-                    row[1] = ((MedicineWorkRequest) request).getPatientName();
-                    row[2] = ((MedicineWorkRequest) request).getQuantity();
-                    row[3] =  ((MedicineWorkRequest) request).getStatus();
-                    model.addRow(row);
-                }
-            }
-        }
+//        if(WorkQueue.getInstance().size() != 0){
+//            for (WorkRequest request : WorkQueue.getInstance()){
+//                if(request instanceof MedicineWorkRequest){
+//                    Object[] row = new Object[4];
+//                    row[0] = ((MedicineWorkRequest) request);
+//                    row[1] = ((MedicineWorkRequest) request).getPatientName();
+//                    row[2] = ((MedicineWorkRequest) request).getQuantity();
+//                    row[3] =  ((MedicineWorkRequest) request).getStatus();
+//                    model.addRow(row);
+//                }
+//            }
+//        }
         
         DefaultTableModel model1 = (DefaultTableModel)vaccineRequestsJTable.getModel();
         
         model1.setRowCount(0);
-        
-        if(WorkQueue.getInstance().size() != 0){
-            for (WorkRequest request : WorkQueue.getInstance()){
+
+            for (WorkRequest request : business.getWorkQueue().getWorkRequestList()){
                 if(request instanceof VaccineWorkRequest){
                     Object[] row = new Object[4];
                     row[0] = ((VaccineWorkRequest) request);
@@ -293,7 +292,7 @@ public class ViewStockRequest extends javax.swing.JPanel {
                     model1.addRow(row);
                 }
             }
-        }
+        
     }
     
     private int availableMedicineStock(String name){

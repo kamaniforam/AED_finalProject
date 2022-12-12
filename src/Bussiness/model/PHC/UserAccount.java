@@ -68,11 +68,11 @@ public class UserAccount {
         this.workQueue = workQueue;
     }
     
-    @Override
-    public String toString() {
-        String roleStr = role != null ? role.toString() : null;
-        return String.format("%s/%s/%s", username, password, roleStr);
-    }
+//    @Override
+//    public String toString() {
+//        String roleStr = role != null ? role.toString() : null;
+//        return String.format("%s/%s/%s", username, password, roleStr);
+//    }
 
     public boolean equals(UserAccount user) {
         return this.username.equals(user.username) && 

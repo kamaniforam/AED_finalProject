@@ -27,7 +27,7 @@ public class DentistWorkAreaJPanel extends javax.swing.JPanel {
     public DentistWorkAreaJPanel(EcoSystem ecosystem) {
         initComponents();
         
-        this.ecosystem = ecosystem;
+        this.ecosystem = EcoSystem.getInstance();
         
         populatePendingAppointmentsTable();
         populateCompletedAppointmentsTable();
@@ -225,7 +225,7 @@ public class DentistWorkAreaJPanel extends javax.swing.JPanel {
         DefaultTableModel dtm = (DefaultTableModel) pendingAppointmentsTable.getModel();
 	
         dtm.setRowCount(0);
-        for (WorkRequest wr :  WorkQueue.getInstance()) {
+        for (WorkRequest wr :  ecosystem.getWorkQueue().getWorkRequestList()) {
             Object row[] = new Object[3];
             if(wr instanceof DoctorAvailableSlotWR && 
                     ("Pending".equals(wr.getStatus()) || "Requested".equals(wr.getStatus()))){
@@ -243,7 +243,7 @@ public class DentistWorkAreaJPanel extends javax.swing.JPanel {
 	
         dtm.setRowCount(0);
         //System.out.println("HIII " + ecosystem.getWorkQueue().getWorkRequestList().size());
-        for (WorkRequest wr :  WorkQueue.getInstance()) {
+        for (WorkRequest wr :  ecosystem.getWorkQueue().getWorkRequestList()) {
             Object row[] = new Object[3];
             System.out.println(wr.getStatus());
             if(wr instanceof DoctorAvailableSlotWR && 

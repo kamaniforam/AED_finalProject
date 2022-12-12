@@ -21,14 +21,13 @@ import javax.swing.table.DefaultTableModel;
 public class FrontDeskWorkAreaJPanel extends javax.swing.JPanel {
 
     private EcoSystem ecosystem;
-    WorkRequest wr;
     /**
      * Creates new form FrontDeskWorkAreaJPanel
      */
-    public FrontDeskWorkAreaJPanel(EcoSystem ecoSystem) {
+    public FrontDeskWorkAreaJPanel() {
         initComponents();
         
-       this.ecosystem = ecosystem;
+       this.ecosystem = EcoSystem.getInstance();
 //        this.wr = wr;
         populateSlotTable();
     }
@@ -206,7 +205,7 @@ public class FrontDeskWorkAreaJPanel extends javax.swing.JPanel {
         
         //ObjectSet<WorkQueue> workQueue = DB4OUtil.getDBInstance().queryByExample(WorkQueue.class);
         System.out.println(slot.getTimings());
-            WorkQueue.getInstance().add(slot);
+        ecosystem.getWorkQueue().getWorkRequestList().add(slot);
 
         populateSlotTable();
     }//GEN-LAST:event_addAvailableSlotsActionPerformed
@@ -218,8 +217,7 @@ public class FrontDeskWorkAreaJPanel extends javax.swing.JPanel {
         dtm.setRowCount(0);
         //ObjectSet<WorkRequest> workQueue = DB4OUtil.getDBInstance().queryByExample(WorkRequest.class);
         
-        for(WorkRequest wr :  WorkQueue.getInstance()) {
-            WorkQueue.getInstance().size();
+        for(WorkRequest wr :  ecosystem.getWorkQueue().getWorkRequestList()) {
             Object row[] = new Object[3];
             row[0] = ((DoctorAvailableSlotWR) wr).getDoctor();
             row[1] = ((DoctorAvailableSlotWR) wr).getTimings();

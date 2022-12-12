@@ -195,17 +195,14 @@ public class SignUpJPanel extends javax.swing.JPanel {
             return;
         }
 
-        ObjectContainer db = DB4OUtil.getDBInstance();
-        UserAccount newUser = new UserAccount(userName, password, Role.fromString(role));
-
-        ObjectSet result = db.queryByExample(newUser);
-
-        if(!result.isEmpty()) {
+        if(!ecosystem.getUserAccountDirectory().checkIfUsernameIsUnique(userName)) {
             JOptionPane.showMessageDialog(this, "The profile already exists..");
             return;
         }
+        
+        UserAccount newUser = new UserAccount(userName, password, Role.fromString(role));
+        ecosystem.getUserAccountDirectory().getUserAccountList().add(newUser);
 
-        db.store(newUser);
         JOptionPane.showMessageDialog(this, "Profile Created");
     }//GEN-LAST:event_SignupBtnActionPerformed
 

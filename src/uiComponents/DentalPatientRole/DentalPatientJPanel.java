@@ -44,7 +44,7 @@ public class DentalPatientJPanel extends javax.swing.JPanel {
     public DentalPatientJPanel(EcoSystem ecosystem,javax.swing.JSplitPane userProcessContainer, UserAccount userAccount, PharmacyOrganization organization, Enterprise enterprise, Network network) {
         initComponents();
         
-        this.ecosystem = ecosystem;
+        this.ecosystem = EcoSystem.getInstance();
         this.jSplitPane1 = userProcessContainer;
         this.userAccount = userAccount;
         this.enterprise = enterprise;
@@ -90,17 +90,17 @@ public class DentalPatientJPanel extends javax.swing.JPanel {
 
         availableSlotsJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Doctor's Name", "Date/Time", "Status"
+                "#Id", "Doctor's Name", "Date/Time", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -124,15 +124,15 @@ public class DentalPatientJPanel extends javax.swing.JPanel {
 
         bookedSlotsJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Doctor's Name", "Date/Time", "Status"
+                "#Id", "Doctor's Name", "Date/Time", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -332,8 +332,8 @@ public class DentalPatientJPanel extends javax.swing.JPanel {
             med.setPatientName("User");
             med.setStatus("Pending");
 
-            //ecosystem.getWorkQueue().getWorkRequestList().add(med);
-            WorkQueue.getInstance().add(med);
+            ecosystem.getWorkQueue().getWorkRequestList().add(med);
+//            WorkQueue.getInstance().add(med);
             //pharmorg.getWorkQueue().getWorkRequestList().add(med);
 
             populateTable();
@@ -349,31 +349,18 @@ public class DentalPatientJPanel extends javax.swing.JPanel {
 
         int selectedRow = availableSlotsJTable.getSelectedRow();
         
-        System.out.println(selectedRow);
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please Select a Row");
             return;
         }
-        if (availableSlotsJTable.getValueAt(selectedRow, 2) == "Available") {
-           DoctorAvailableSlotWR req = (DoctorAvailableSlotWR) availableSlotsJTable.getValueAt(selectedRow, 0);
-            req.setPatient("Patients Name");
-            req.setStatus("Requested");
-                      
-        }
-          populateBookedAppointmentTable();
-          populateAvailableSlotsTable();
-        try{
-            //DoctorAvailableSlotWR wr = new DoctorAvailableSlotWR();
+        
+        int id = (int)availableSlotsJTable.getValueAt(selectedRow, 0);
+        DoctorAvailableSlotWR req = (DoctorAvailableSlotWR) ecosystem.getWorkQueue().getWorkRequestList().get(id-1);
+        req.setPatient(userAccount.getUsername());
+        req.setStatus("Requested");
 
-            // change to username
-           
-
-
-
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Details entered are not valid. Kindly check again.", "Error", JOptionPane.ERROR_MESSAGE);
-
-        }
+        populateBookedAppointmentTable();
+        populateAvailableSlotsTable();
     }//GEN-LAST:event_jButton1bookSlotActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -389,8 +376,8 @@ public class DentalPatientJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please Select a Row");
             return;
         }
-        if (bookedSlotsJTable.getValueAt(selectedRow, 2) == "Requested") {
-           DoctorAvailableSlotWR req = (DoctorAvailableSlotWR) availableSlotsJTable.getValueAt(selectedRow, 0);
+        if (bookedSlotsJTable.getValueAt(selectedRow, 3) == "Requested") {
+           DoctorAvailableSlotWR req = (DoctorAvailableSlotWR) availableSlotsJTable.getValueAt(selectedRow, 1);
             req.setEmail(jTextField3.getText());
             JOptionPane.showMessageDialog(null, "We will notify you for any update on this appointment");
                       
@@ -408,14 +395,18 @@ public class DentalPatientJPanel extends javax.swing.JPanel {
         DefaultTableModel dtm = (DefaultTableModel) availableSlotsJTable.getModel();
 	
         dtm.setRowCount(0);
-        for (WorkRequest wr :  WorkQueue.getInstance()) {
-            Object row[] = new Object[3];
+        int id = 1;
+        for (WorkRequest wr :  ecosystem.getWorkQueue().getWorkRequestList()) {
+            System.out.println(wr.getStatus());
+            Object row[] = new Object[4];
             if(wr instanceof DoctorAvailableSlotWR && "Available".equals(wr.getStatus())){
-                row[0] = ((DoctorAvailableSlotWR) wr);
-                row[1] = ((DoctorAvailableSlotWR) wr).getTimings();
-                row[2] = wr.getStatus();
+                row[0] = id;
+                row[1] = ((DoctorAvailableSlotWR) wr);
+                row[2] = ((DoctorAvailableSlotWR) wr).getTimings();
+                row[3] = wr.getStatus();
                 dtm.addRow(row);
             }
+            id++;
         }
     }
     
@@ -425,14 +416,17 @@ public class DentalPatientJPanel extends javax.swing.JPanel {
 	
         dtm.setRowCount(0);
         // Add user check
-        for (WorkRequest wr :  WorkQueue.getInstance()) {
-            Object row[] = new Object[3];
+        int id = 1;
+        for (WorkRequest wr :  ecosystem.getWorkQueue().getWorkRequestList()) {
+            Object row[] = new Object[4];
             if(wr instanceof DoctorAvailableSlotWR && "Requested".equals(wr.getStatus())){
-                row[0] = ((DoctorAvailableSlotWR) wr).getDoctor();
-                row[1] = ((DoctorAvailableSlotWR) wr).getTimings();
-                row[2] = wr.getStatus();
+                row[0] = id;
+                row[1] = ((DoctorAvailableSlotWR) wr).getDoctor();
+                row[2] = ((DoctorAvailableSlotWR) wr).getTimings();
+                row[3] = wr.getStatus();
                 dtm.addRow(row);
             }
+            id++;
         }
     }
     
@@ -442,7 +436,7 @@ public class DentalPatientJPanel extends javax.swing.JPanel {
         
         model.setRowCount(0);
         
-        for (WorkRequest request : WorkQueue.getInstance()){
+        for (WorkRequest request : ecosystem.getWorkQueue().getWorkRequestList()){
             if(request instanceof MedicineWorkRequest){
                 Object[] row = new Object[4];
                 row[0] = ((MedicineWorkRequest) request);

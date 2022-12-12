@@ -14,13 +14,14 @@ import Bussiness.model.PHC.PersonDirectory;
 import java.util.ArrayList;
 import Business.Roles.Role;
 import Business.WorkQueue.WorkQueue;
+import Business.db40Utility.DB4OUtil;
 import Bussiness.model.PHC.UserAccountDirectory;
 
 /**
  *
  * @author foram
  */
-public class EcoSystem extends Organization{
+public class EcoSystem{
     
     private static EcoSystem business;
     private PersonDirectory personDirectory;
@@ -30,42 +31,34 @@ public class EcoSystem extends Organization{
     private HospitalDirectory hospitalDirectory;
     private WorkQueue workQueue;
     private UserAccountDirectory userDirectory;
-
-    public UserAccountDirectory getUserDirectory() {
-        return userDirectory;
-    }
-
-    public void setUserDirectory(UserAccountDirectory userDirectory) {
-        this.userDirectory = userDirectory;
-    }
     
-    public EcoSystem(PersonDirectory personDirectory, PatientDirectory patientDirectory, EncounterHistory encounterHistory, DoctorDirectory doctorDirectory, HospitalDirectory hospitalDirectory,UserAccountDirectory userDirectory) {
+    public EcoSystem(PersonDirectory personDirectory, PatientDirectory patientDirectory, EncounterHistory encounterHistory, DoctorDirectory doctorDirectory, HospitalDirectory hospitalDirectory,UserAccountDirectory userDirectory, WorkQueue wq) {
         this.personDirectory = personDirectory;
         this.patientDirectory = patientDirectory;
         this.encounterHistory = encounterHistory;
         this.doctorDirectory = doctorDirectory;
         this.hospitalDirectory = hospitalDirectory;
         this.userDirectory = userDirectory;
-        this.workQueue = new WorkQueue();
-    }
-
-    public WorkQueue getWorkQueue() {
-        return workQueue;
-    }
-
-    public void setWorkQueue(WorkQueue workQueue) {
-        this.workQueue = workQueue;
+        this.workQueue = wq;
     }
 
     public static EcoSystem getInstance(){
         if(business==null){
-            business=new EcoSystem();
+            business=DB4OUtil.getInstance().retrieveSystem();
         }
         return business;
     }
 
     public static EcoSystem getBusiness() {
         return business;
+    }
+    
+    public UserAccountDirectory getUserAccountDirectory() {
+        return userDirectory;
+    }
+
+    public void getUserAccountDirectory(UserAccountDirectory userDirectory) {
+        this.userDirectory = userDirectory;
     }
 
     public static void setBusiness(EcoSystem business) {
@@ -112,24 +105,28 @@ public class EcoSystem extends Organization{
         this.encounterHistory = encounterHistory;
     }
     
-    @Override
+    public WorkQueue getWorkQueue() {
+        return workQueue;
+    }
+
+    public void setWorkQueue(WorkQueue workQueue) {
+        this.workQueue = workQueue;
+    }
+    
     public ArrayList<Role> getSupportedRole() {
         ArrayList<Role> roleList=new ArrayList<>();
         roleList.add(Role.SYSTEM_ADMINISTRATOR);
         return roleList;
     }
-    private EcoSystem(){
-       super(null);
+    
+    public EcoSystem(){
         
        personDirectory = new PersonDirectory();
        patientDirectory = new PatientDirectory();
        encounterHistory = new EncounterHistory();
        doctorDirectory = new DoctorDirectory();
        hospitalDirectory = new HospitalDirectory();
+       userDirectory = new UserAccountDirectory();
        workQueue = new WorkQueue();
-    }
-
-    public boolean checkIfUserIsUnique(String userName){ 
-       return false;
     }
 }
