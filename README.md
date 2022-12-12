@@ -6,24 +6,41 @@ Enterprises: Primary Healthcare System, Pharmacy, Blood Bank management, Dental 
 
 Organizations: Emergency medical treatment, BloodRequest donor, pharmacy, Dental Checkup, Regular Checkup
 
-Roles: * Super Admin 
-           - Creates Users of various roles of different organizations of differententerprises
-       *System Admin
-	   -Creates Hospital, Patient and Doctors and has the authority to perform CRUD operations on all of them
-       *Pharmacy Admin
-	 -Pharmacy Admin can view the requests for medicines and can complete them, He can add to the medical inventory and hospital inventory 
-       *Hospital Admin
-	 - Hospital Admin can create and update a doctor with hospital name, community name and city name, He can also create and update a patient.                                Hospital Admin can aslo  check vital sign details of a patient.
-      *Patient
-	 -Patient cretaes its own profile, can book a regular health checkup appointment or can cancel it. It can also book a vaccine appointment and cancel it.                 Patient can perform update,edit,delete operations on its own data 
-      *Dental Patient
-	 -Dental Patient Can book available slots for required date with the dentist and will get notified on slots availablity
-      *Receptionist
-	 -Receptionist add slots for the dentist and manages the appointment requests 
-      *Dentist
-	 -Dentist can view the appointments he has to attend and then he can approve the appointments or deny the appointments according to the checkup. 
-      *Blood User
-	-Blood user can donate blood in the hospital and can also request for blood in case of emergency services.
+Roles: 
+Super Admin: 
+Creates Users of various roles of different organizations of differententerprises  
+
+
+System Admin: 
+Creates Hospital, Patient and Doctors and has the authority to perform CRUD operations on all of them
+
+
+Pharmacy Admin: 
+Pharmacy Admin can view the requests for medicines and can complete them, He can add to the medical inventory and hospital inventory 
+
+
+Hospital Admin:  
+Hospital Admin can create and update a doctor with hospital name, community name and city name, He can also create and update a patient.                                Hospital Admin can aslo  check vital sign details of a patient.
+
+
+Patient:  
+Patient cretaes its own profile, can book a regular health checkup appointment or can cancel it. It can also book a vaccine appointment and cancel it.                 Patient can perform update,edit,delete operations on its own data 
+
+
+Dental Patient:  
+Dental Patient Can book available slots for required date with the dentist and will get notified on slots availablity
+
+
+Receptionist:  
+Receptionist add slots for the dentist and manages the appointment requests 
+
+
+Dentist:  
+Dentist can view the appointments he has to attend and then he can approve the appointments or deny the appointments according to the checkup. 
+
+
+Blood User:   
+Blood user can donate blood in the hospital and can also request for blood in case of emergency services.
 
 
 	    
