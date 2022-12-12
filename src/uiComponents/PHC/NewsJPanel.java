@@ -4,6 +4,19 @@
  */
 package uiComponents.PHC;
 
+import BloodBank.BloodUserClass;
+import BloodBank.BloodUserDirectory;
+import BloodBank.RequestBlood;
+import BloodBank.RequestBloodDirectory;
+import Business.EcoSystem;
+import Bussiness.model.PHC.DoctorDirectory;
+import Bussiness.model.PHC.EMTDirectory;
+import Bussiness.model.PHC.EncounterHistory;
+import Bussiness.model.PHC.HospitalDirectory;
+import Bussiness.model.PHC.PatientDirectory;
+import Bussiness.model.PHC.PersonDirectory;
+import Bussiness.model.PHC.UserAccount;
+import Bussiness.model.PHC.VitalSigns;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.io.BufferedReader;
@@ -27,8 +40,44 @@ public class NewsJPanel extends javax.swing.JPanel {
     public String pageName = "";
     public String content = "";
     
-    public NewsJPanel() throws IOException {
+    
+    private javax.swing.JSplitPane jSplitPane1;
+
+    /**
+     * Creates new form CreateJPanel
+     */
+    PersonDirectory personDirectory;
+    PatientDirectory patientDirectory;
+    EncounterHistory encounterHistory;
+    HospitalDirectory hospitalDirectory;
+    DoctorDirectory doctorDirectory;
+    EcoSystem business;
+    UserAccount account;
+    VitalSigns vitalSigns;
+
+    BloodUserClass blood;
+    BloodUserDirectory bloodUserDirectory;
+    RequestBlood rb;
+    RequestBloodDirectory rbd;
+
+    EMTDirectory eMTDirectory;
+    
+    public NewsJPanel(javax.swing.JSplitPane jSplitPane1, UserAccount account, EcoSystem business, PersonDirectory personDirectory, PatientDirectory patientDirectory, EncounterHistory encounterHistory, DoctorDirectory doctorDirectory, HospitalDirectory hospitalDirectory, VitalSigns vitalSigns, EMTDirectory eMTDirectory, BloodUserClass blood, BloodUserDirectory bloodUserDirectory, RequestBlood rb, RequestBloodDirectory rbd) throws Exception {
         initComponents();
+        this.personDirectory = personDirectory;
+        this.patientDirectory = patientDirectory;
+        this.encounterHistory = encounterHistory;
+        this.hospitalDirectory = hospitalDirectory;
+        this.jSplitPane1 = jSplitPane1;
+        this.doctorDirectory = doctorDirectory;
+        this.business = business;
+        this.vitalSigns = vitalSigns;
+        this.bloodUserDirectory = bloodUserDirectory;
+        this.blood = blood;
+        this.rb = rb;
+        this.rbd = rbd;
+        this.personDirectory = personDirectory;
+        this.eMTDirectory = eMTDirectory;
         
         displayNewsTableDetails();    
     }
@@ -45,7 +94,11 @@ public class NewsJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Today's News");
 
@@ -62,6 +115,14 @@ public class NewsJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jButton1.setBackground(new java.awt.Color(51, 153, 255));
+        jButton1.setText("Back<<");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -72,20 +133,32 @@ public class NewsJPanel extends javax.swing.JPanel {
                         .addGap(265, 265, 265)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
+                        .addGap(16, 16, 16)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 767, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(104, 104, 104))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
+                .addGap(46, 46, 46)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(255, Short.MAX_VALUE))
+                .addGap(39, 39, 39)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(164, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        ViewJPanel viewPane = new ViewJPanel(jSplitPane1, account, business, personDirectory, patientDirectory, encounterHistory, doctorDirectory, hospitalDirectory, vitalSigns, eMTDirectory, blood, bloodUserDirectory, rb, rbd);
+        jSplitPane1.setRightComponent(viewPane);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 	private static final String USER_AGENT = "Mozilla/5.0";
 
@@ -100,7 +173,7 @@ public class NewsJPanel extends javax.swing.JPanel {
             con.setRequestMethod("GET");
             con.setRequestProperty("User-Agent", USER_AGENT);
             int responseCode = con.getResponseCode();
-            System.out.println("GET Response Code :: " + responseCode);
+            //System.out.println("GET Response Code :: " + responseCode);
             if (responseCode == HttpURLConnection.HTTP_OK) { // success
                 BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
                 String inputLine;
@@ -112,7 +185,7 @@ public class NewsJPanel extends javax.swing.JPanel {
                 in.close();
 
                 // print result
-                System.out.println(response.toString());
+                //System.out.println(response.toString());
                 result = response.toString();
             } else {
                 System.out.println("GET request did not work.");
@@ -127,8 +200,8 @@ public class NewsJPanel extends javax.swing.JPanel {
             if(o.has("page_name") && o.has("content")){
                 pageName=String.valueOf(o.get("page_name"));
                 content = String.valueOf(o.get("content"));
-                System.out.println("Final pagename"+pageName);
-                System.out.println("Final content"+content);
+                //System.out.println("Final pagename"+pageName);
+                //System.out.println("Final content"+content);
        
             }
         String[] columns=new String [] {
@@ -146,6 +219,7 @@ public class NewsJPanel extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

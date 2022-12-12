@@ -4,8 +4,13 @@
  */
 package uiComponents.PHC;
 
+import BloodBank.BloodUserClass;
+import BloodBank.BloodUserDirectory;
+import BloodBank.RequestBlood;
+import BloodBank.RequestBloodDirectory;
 import Business.EcoSystem;
 import Bussiness.model.PHC.DoctorDirectory;
+import Bussiness.model.PHC.EMTDirectory;
 import Bussiness.model.PHC.Encounter;
 import Bussiness.model.PHC.EncounterHistory;
 import Bussiness.model.PHC.HospitalDirectory;
@@ -41,8 +46,20 @@ public class AppointmentJPanel extends javax.swing.JPanel {
     EcoSystem business;
     UserAccount account;
     VitalSigns vitalSigns;
+    
+    EMTDirectory eMTDirectory;
+    BloodUserClass blood;
+    BloodUserDirectory bloodUserDirectory;
+    RequestBlood rb;
+    RequestBloodDirectory rbd;
+            
 
-    public AppointmentJPanel(javax.swing.JSplitPane jSplitPane1, UserAccount account, EcoSystem business, PersonDirectory personDirectory, PatientDirectory patientDirectory, EncounterHistory encounterHistory, DoctorDirectory doctorDirectory, HospitalDirectory hospitalDirectory, VitalSigns vitalSigns) {
+    public AppointmentJPanel(javax.swing.JSplitPane jSplitPane1, UserAccount account, EcoSystem business, PersonDirectory personDirectory, PatientDirectory patientDirectory, EncounterHistory encounterHistory, DoctorDirectory doctorDirectory, HospitalDirectory hospitalDirectory, VitalSigns vitalSigns,
+             EMTDirectory eMTDirectory,
+    BloodUserClass blood,
+    BloodUserDirectory bloodUserDirectory,
+    RequestBlood rb,
+    RequestBloodDirectory rbd) {
         initComponents();
         this.personDirectory = personDirectory;
         this.patientDirectory = patientDirectory;
@@ -52,6 +69,11 @@ public class AppointmentJPanel extends javax.swing.JPanel {
         this.doctorDirectory = doctorDirectory;
         this.business = business;
         this.vitalSigns = vitalSigns;
+        this.eMTDirectory = eMTDirectory;
+        this.blood = blood;
+        this.bloodUserDirectory = bloodUserDirectory;
+        this.rb = rb;
+        this.rbd = rbd;
 
         displayPersonTableDetails();
         displayPatientTableDetails();
@@ -109,6 +131,7 @@ public class AppointmentJPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         backBtn = new javax.swing.JButton();
         requestVaccineBtn = new javax.swing.JButton();
+        clearBtn1 = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(600, 600));
@@ -174,7 +197,7 @@ public class AppointmentJPanel extends javax.swing.JPanel {
 
         clearBtn.setBackground(new java.awt.Color(51, 153, 255));
         clearBtn.setForeground(new java.awt.Color(255, 255, 255));
-        clearBtn.setText("Clear");
+        clearBtn.setText("CLEAR");
         clearBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clearBtnActionPerformed(evt);
@@ -276,28 +299,38 @@ public class AppointmentJPanel extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(200, 200, 200)
+                .addGap(213, 213, 213)
                 .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(90, 90, 90))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap(26, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(16, 16, 16))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
 
-        requestVaccineBtn.setBackground(javax.swing.UIManager.getDefaults().getColor("Component.accentColor"));
+        requestVaccineBtn.setBackground(new java.awt.Color(51, 153, 255));
         requestVaccineBtn.setForeground(new java.awt.Color(255, 255, 255));
         requestVaccineBtn.setText("Request Vaccine");
         requestVaccineBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 requestVaccineBtnActionPerformed(evt);
+            }
+        });
+
+        clearBtn1.setBackground(new java.awt.Color(51, 153, 255));
+        clearBtn1.setForeground(new java.awt.Color(255, 255, 255));
+        clearBtn1.setText("EMT");
+        clearBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearBtn1ActionPerformed(evt);
             }
         });
 
@@ -310,10 +343,7 @@ public class AppointmentJPanel extends javax.swing.JPanel {
                     .addComponent(jScrollPane1)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 985, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(382, 382, 382)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 985, Short.MAX_VALUE)))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -357,18 +387,23 @@ public class AppointmentJPanel extends javax.swing.JPanel {
                         .addComponent(vaccineBookBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(RegularAptBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(clearBtn)
                         .addGap(18, 18, 18)
-                        .addComponent(requestVaccineBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(61, Short.MAX_VALUE))
+                        .addComponent(requestVaccineBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(clearBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(clearBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(363, 363, 363)))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {heartRateTxt, heightTxt, txtBloodPressure, weightTxt});
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {RegularAptBtn, btnCheck, btnSearch, clearBtn, vaccineBookBtn});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {RegularAptBtn, btnCheck, vaccineBookBtn});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -413,7 +448,8 @@ public class AppointmentJPanel extends javax.swing.JPanel {
                     .addComponent(RegularAptBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(clearBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(vaccineBookBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(requestVaccineBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(requestVaccineBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(clearBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -434,20 +470,7 @@ public class AppointmentJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblPersonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPersonMouseClicked
-        // TODO add your handling code here:
-        //        int selectedRowIndex = tblPerson.getSelectedRow();
-        //
-        //        Person selectPerson = personDirectory.getListOfPerson().get(selectedRowIndex);
-        //
-        //        txtPersonID.setText(String.valueOf(selectPerson.getIdOfPerson()));
-        //        txtAge.setText(String.valueOf(selectPerson.getAgeOfPerson()));
-        //        txtName.setText(selectPerson.getNameOfPerson());
-        //        txtAddress.setText(selectPerson.getHouse().getStreetName());
-        //        txtZipCode.setText(String.valueOf(selectPerson.getHouse().getZipCode()));
-        //        ddCity.setSelectedItem(selectPerson.getHouse().getNameOfCity());
-        //        ddCommunity.setSelectedItem(selectPerson.getHouse().getNameOfCommunity());
-        //        ddHouseNumber.setSelectedItem(selectPerson.getHouse().getApartmentNumber());
-        //        photo.setIcon(selectPerson.getPhoto());
+
     }//GEN-LAST:event_tblPersonMouseClicked
 
     private void vaccineBookBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vaccineBookBtnActionPerformed
@@ -508,13 +531,13 @@ public class AppointmentJPanel extends javax.swing.JPanel {
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         // TODO add your handling code here:
-        CreateJPanel createPane = new CreateJPanel(jSplitPane1, account, business, personDirectory, patientDirectory, encounterHistory, doctorDirectory, hospitalDirectory, vitalSigns);
+        CreateJPanel createPane = new CreateJPanel(jSplitPane1, account, business, personDirectory, patientDirectory, encounterHistory, doctorDirectory, hospitalDirectory, vitalSigns, eMTDirectory, blood, bloodUserDirectory, rb, rbd);
         jSplitPane1.setRightComponent(createPane);
     }//GEN-LAST:event_backBtnActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
-        SearchJPanel searchPane = new SearchJPanel(encounterHistory, patientDirectory, personDirectory, jSplitPane1, hospitalDirectory, doctorDirectory, vitalSigns);
+        SearchJPanel searchPane = new SearchJPanel(encounterHistory, patientDirectory, personDirectory, jSplitPane1, hospitalDirectory, doctorDirectory, vitalSigns, eMTDirectory, blood, bloodUserDirectory,rb, rbd);
         jSplitPane1.setRightComponent(searchPane);
     }//GEN-LAST:event_btnSearchActionPerformed
 
@@ -575,6 +598,12 @@ public class AppointmentJPanel extends javax.swing.JPanel {
         jSplitPane1.setRightComponent(vaccine);
     }//GEN-LAST:event_requestVaccineBtnActionPerformed
 
+    private void clearBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtn1ActionPerformed
+        // TODO add your handling code here:
+        EMTJPanel emt = new EMTJPanel(personDirectory, eMTDirectory, jSplitPane1, business, bloodUserDirectory, blood, rb, rbd);
+        jSplitPane1.setRightComponent(emt);
+    }//GEN-LAST:event_clearBtn1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ApptType;
@@ -584,6 +613,7 @@ public class AppointmentJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnCheck;
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton clearBtn;
+    private javax.swing.JButton clearBtn1;
     private javax.swing.JLabel heartRateLbl;
     private javax.swing.JTextField heartRateTxt;
     private javax.swing.JLabel heightLbl;

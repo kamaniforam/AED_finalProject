@@ -141,20 +141,8 @@
         <Component class="javax.swing.JComboBox" name="dropdownRole">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="13">
-                <StringItem index="0" value="Choose a Role"/>
-                <StringItem index="1" value="System administrator"/>
-                <StringItem index="2" value="Patient"/>
-                <StringItem index="3" value="Hospital administrator"/>
-                <StringItem index="4" value="Community administrator"/>
-                <StringItem index="5" value="Doctor"/>
-                <StringItem index="6" value="Pharmacy Admin"/>
-                <StringItem index="7" value="Dental Admin"/>
-                <StringItem index="8" value="PHC Admin"/>
-                <StringItem index="9" value="Blood Bank Admin"/>
-                <StringItem index="10" value="DENTIST"/>
-                <StringItem index="11" value="DENTAL PATIENT"/>
-                <StringItem index="12" value="RECEPTIONIST"/>
+              <StringArray count="1">
+                <StringItem index="0" value="BLOODBANK_USER"/>
               </StringArray>
             </Property>
           </Properties>
@@ -166,7 +154,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="340" y="250" width="-1" height="-1"/>
+              <AbsoluteConstraints x="340" y="243" width="180" height="30"/>
             </Constraint>
           </Constraints>
         </Component>
