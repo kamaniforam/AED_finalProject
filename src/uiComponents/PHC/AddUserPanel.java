@@ -48,6 +48,8 @@ public class AddUserPanel extends javax.swing.JPanel {
         SignupBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
         usernameLbl.setText("username:");
 
         usernameTxt.addActionListener(new java.awt.event.ActionListener() {
@@ -84,6 +86,8 @@ public class AddUserPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("SIGN UP");
 

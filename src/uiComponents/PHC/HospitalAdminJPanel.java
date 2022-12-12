@@ -71,23 +71,6 @@ public class HospitalAdminJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        doctorPanel = new javax.swing.JPanel();
-        addDocLbl = new javax.swing.JLabel();
-        doctorNameLbl = new javax.swing.JLabel();
-        doctorName = new javax.swing.JTextField();
-        hospitalDropdown = new javax.swing.JComboBox<>();
-        hospitalLbl = new javax.swing.JLabel();
-        createDoctorBtn = new javax.swing.JButton();
-        updateBtn = new javax.swing.JButton();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        tblDoctor = new javax.swing.JTable();
-        clear1 = new javax.swing.JButton();
-        hospitalLbl2 = new javax.swing.JLabel();
-        ddCommunity2 = new javax.swing.JComboBox<>();
-        cityLbl1 = new javax.swing.JLabel();
-        ddCity2 = new javax.swing.JComboBox<>();
-        uploadPhoto = new javax.swing.JLabel();
-        displayPhoto = new javax.swing.JButton();
         patientPanel = new javax.swing.JPanel();
         lblCommunity = new javax.swing.JLabel();
         ddHouseNumber = new javax.swing.JComboBox<>();
@@ -122,206 +105,29 @@ public class HospitalAdminJPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
+        doctorPanel = new javax.swing.JPanel();
+        addDocLbl = new javax.swing.JLabel();
+        doctorNameLbl = new javax.swing.JLabel();
+        doctorName = new javax.swing.JTextField();
+        hospitalDropdown = new javax.swing.JComboBox<>();
+        hospitalLbl = new javax.swing.JLabel();
+        createDoctorBtn = new javax.swing.JButton();
+        updateBtn = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tblDoctor = new javax.swing.JTable();
+        clear1 = new javax.swing.JButton();
+        hospitalLbl2 = new javax.swing.JLabel();
+        ddCommunity2 = new javax.swing.JComboBox<>();
+        cityLbl1 = new javax.swing.JLabel();
+        ddCity2 = new javax.swing.JComboBox<>();
+        uploadPhoto = new javax.swing.JLabel();
+        displayPhoto = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         hospitalPortalLbl = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
-
-        doctorPanel.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.focusedBackground"));
-
-        addDocLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        addDocLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        addDocLbl.setText("ADD DOCTOR");
-
-        doctorNameLbl.setText("Doctor Name:");
-
-        doctorName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                doctorNameActionPerformed(evt);
-            }
-        });
-
-        hospitalDropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose Hospital", "Hospital A", "Hospital B", "Hospital C", "Hospital D" }));
-        hospitalDropdown.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hospitalDropdownActionPerformed(evt);
-            }
-        });
-
-        hospitalLbl.setText("Hospital");
-
-        createDoctorBtn.setBackground(new java.awt.Color(51, 153, 255));
-        createDoctorBtn.setForeground(new java.awt.Color(255, 255, 255));
-        createDoctorBtn.setText("Create");
-        createDoctorBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                createDoctorBtnActionPerformed(evt);
-            }
-        });
-
-        updateBtn.setBackground(new java.awt.Color(51, 153, 255));
-        updateBtn.setForeground(new java.awt.Color(255, 255, 255));
-        updateBtn.setText("Update");
-        updateBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateBtnActionPerformed(evt);
-            }
-        });
-
-        tblDoctor.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Doctor Id", "Doctor Name", "Hospital", "Community", "City"
-            }
-        ));
-        tblDoctor.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblDoctorMouseClicked(evt);
-            }
-        });
-        jScrollPane5.setViewportView(tblDoctor);
-
-        clear1.setBackground(new java.awt.Color(51, 153, 255));
-        clear1.setForeground(new java.awt.Color(255, 255, 255));
-        clear1.setText("Clear");
-        clear1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                clear1ActionPerformed(evt);
-            }
-        });
-
-        hospitalLbl2.setText("Community:");
-
-        ddCommunity2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose a Community", "Boylston", "MissionMain", "MissionHill" }));
-        ddCommunity2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ddCommunity2ActionPerformed(evt);
-            }
-        });
-
-        cityLbl1.setText("City:");
-
-        ddCity2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose a City", "Boston", "Newyork", "California" }));
-        ddCity2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ddCity2ActionPerformed(evt);
-            }
-        });
-
-        uploadPhoto.setForeground(new java.awt.Color(255, 255, 255));
-        uploadPhoto.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(153, 153, 153), null));
-
-        displayPhoto.setBackground(new java.awt.Color(51, 153, 255));
-        displayPhoto.setForeground(new java.awt.Color(255, 255, 255));
-        displayPhoto.setText("UPLOAD PHOTO");
-        displayPhoto.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
-        displayPhoto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                displayPhotoActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout doctorPanelLayout = new javax.swing.GroupLayout(doctorPanel);
-        doctorPanel.setLayout(doctorPanelLayout);
-        doctorPanelLayout.setHorizontalGroup(
-            doctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, doctorPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane5)
-                .addGap(97, 97, 97))
-            .addGroup(doctorPanelLayout.createSequentialGroup()
-                .addGroup(doctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(doctorPanelLayout.createSequentialGroup()
-                        .addGroup(doctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(doctorPanelLayout.createSequentialGroup()
-                                .addGap(39, 39, 39)
-                                .addGroup(doctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(doctorPanelLayout.createSequentialGroup()
-                                        .addGroup(doctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(doctorNameLbl)
-                                            .addComponent(hospitalLbl))
-                                        .addGap(89, 89, 89)
-                                        .addComponent(hospitalDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(doctorPanelLayout.createSequentialGroup()
-                                        .addGap(169, 169, 169)
-                                        .addComponent(doctorName, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(58, 58, 58))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, doctorPanelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(createDoctorBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(41, 41, 41)))
-                        .addGroup(doctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(doctorPanelLayout.createSequentialGroup()
-                                .addGroup(doctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(hospitalLbl2)
-                                    .addComponent(cityLbl1))
-                                .addGap(64, 64, 64)
-                                .addGroup(doctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(ddCommunity2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(ddCity2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(doctorPanelLayout.createSequentialGroup()
-                                .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(clear1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(77, 77, 77)
-                        .addGroup(doctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(doctorPanelLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(displayPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(uploadPhoto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(doctorPanelLayout.createSequentialGroup()
-                        .addGap(410, 410, 410)
-                        .addComponent(addDocLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(121, Short.MAX_VALUE))
-        );
-        doctorPanelLayout.setVerticalGroup(
-            doctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(doctorPanelLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(addDocLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7)
-                .addGroup(doctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(doctorPanelLayout.createSequentialGroup()
-                        .addGroup(doctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(doctorNameLbl)
-                            .addComponent(doctorName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(doctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(hospitalLbl)
-                            .addComponent(hospitalDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(doctorPanelLayout.createSequentialGroup()
-                        .addGroup(doctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(hospitalLbl2)
-                            .addComponent(ddCommunity2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(doctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cityLbl1)
-                            .addComponent(ddCity2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(doctorPanelLayout.createSequentialGroup()
-                        .addComponent(uploadPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(doctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(displayPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(createDoctorBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(clear1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(36, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("Doctor", doctorPanel);
 
         patientPanel.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.focusedBackground"));
 
@@ -482,7 +288,7 @@ public class HospitalAdminJPanel extends javax.swing.JPanel {
         patientPanelLayout.setHorizontalGroup(
             patientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(patientPanelLayout.createSequentialGroup()
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 1038, Short.MAX_VALUE)
+                .addComponent(jScrollPane6)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(patientPanelLayout.createSequentialGroup()
                 .addGroup(patientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -531,9 +337,8 @@ public class HospitalAdminJPanel extends javax.swing.JPanel {
                                 .addGroup(patientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(patientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(heartRateTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
-                                        .addComponent(txtBloodPressure))))
+                                    .addComponent(heartRateTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                                    .addComponent(txtBloodPressure)))
                             .addGroup(patientPanelLayout.createSequentialGroup()
                                 .addGap(229, 229, 229)
                                 .addComponent(create1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -618,6 +423,195 @@ public class HospitalAdminJPanel extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Patient", patientPanel);
 
+        doctorPanel.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.focusedBackground"));
+
+        addDocLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        addDocLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        addDocLbl.setText("ADD DOCTOR");
+
+        doctorNameLbl.setText("Doctor Name:");
+
+        doctorName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                doctorNameActionPerformed(evt);
+            }
+        });
+
+        hospitalDropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose Hospital", "Hospital A", "Hospital B", "Hospital C", "Hospital D" }));
+        hospitalDropdown.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hospitalDropdownActionPerformed(evt);
+            }
+        });
+
+        hospitalLbl.setText("Hospital");
+
+        createDoctorBtn.setBackground(new java.awt.Color(51, 153, 255));
+        createDoctorBtn.setForeground(new java.awt.Color(255, 255, 255));
+        createDoctorBtn.setText("Create");
+        createDoctorBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createDoctorBtnActionPerformed(evt);
+            }
+        });
+
+        updateBtn.setBackground(new java.awt.Color(51, 153, 255));
+        updateBtn.setForeground(new java.awt.Color(255, 255, 255));
+        updateBtn.setText("Update");
+        updateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateBtnActionPerformed(evt);
+            }
+        });
+
+        tblDoctor.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Doctor Id", "Doctor Name", "Hospital", "Community", "City"
+            }
+        ));
+        tblDoctor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDoctorMouseClicked(evt);
+            }
+        });
+        jScrollPane5.setViewportView(tblDoctor);
+
+        clear1.setBackground(new java.awt.Color(51, 153, 255));
+        clear1.setForeground(new java.awt.Color(255, 255, 255));
+        clear1.setText("Clear");
+        clear1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clear1ActionPerformed(evt);
+            }
+        });
+
+        hospitalLbl2.setText("Community:");
+
+        ddCommunity2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose a Community", "Boylston", "MissionMain", "MissionHill" }));
+        ddCommunity2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ddCommunity2ActionPerformed(evt);
+            }
+        });
+
+        cityLbl1.setText("City:");
+
+        ddCity2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose a City", "Boston", "Newyork", "California" }));
+        ddCity2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ddCity2ActionPerformed(evt);
+            }
+        });
+
+        uploadPhoto.setForeground(new java.awt.Color(255, 255, 255));
+        uploadPhoto.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(153, 153, 153), null));
+
+        displayPhoto.setBackground(new java.awt.Color(51, 153, 255));
+        displayPhoto.setForeground(new java.awt.Color(255, 255, 255));
+        displayPhoto.setText("UPLOAD PHOTO");
+        displayPhoto.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(153, 153, 153), new java.awt.Color(153, 153, 153)));
+        displayPhoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                displayPhotoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout doctorPanelLayout = new javax.swing.GroupLayout(doctorPanel);
+        doctorPanel.setLayout(doctorPanelLayout);
+        doctorPanelLayout.setHorizontalGroup(
+            doctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, doctorPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane5)
+                .addGap(97, 97, 97))
+            .addGroup(doctorPanelLayout.createSequentialGroup()
+                .addGroup(doctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(displayPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(doctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(doctorPanelLayout.createSequentialGroup()
+                            .addGap(410, 410, 410)
+                            .addComponent(addDocLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(doctorPanelLayout.createSequentialGroup()
+                            .addGap(39, 39, 39)
+                            .addGroup(doctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(doctorPanelLayout.createSequentialGroup()
+                                    .addGroup(doctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(doctorPanelLayout.createSequentialGroup()
+                                            .addGroup(doctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(doctorNameLbl)
+                                                .addComponent(hospitalLbl))
+                                            .addGap(89, 89, 89)
+                                            .addComponent(hospitalDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(doctorPanelLayout.createSequentialGroup()
+                                            .addGap(169, 169, 169)
+                                            .addComponent(doctorName, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGap(58, 58, 58)
+                                    .addGroup(doctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(hospitalLbl2)
+                                        .addComponent(cityLbl1))
+                                    .addGap(64, 64, 64)
+                                    .addGroup(doctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(ddCommunity2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(ddCity2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(doctorPanelLayout.createSequentialGroup()
+                                    .addGap(169, 169, 169)
+                                    .addComponent(createDoctorBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(32, 32, 32)
+                                    .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(27, 27, 27)
+                                    .addComponent(clear1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(33, 33, 33)
+                            .addComponent(uploadPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(66, Short.MAX_VALUE))
+        );
+        doctorPanelLayout.setVerticalGroup(
+            doctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(doctorPanelLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(addDocLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
+                .addGroup(doctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(doctorPanelLayout.createSequentialGroup()
+                        .addGroup(doctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(doctorNameLbl)
+                            .addComponent(doctorName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(doctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(hospitalLbl)
+                            .addComponent(hospitalDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(46, 46, 46)
+                        .addGroup(doctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(createDoctorBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(clear1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(uploadPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(doctorPanelLayout.createSequentialGroup()
+                        .addGroup(doctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(hospitalLbl2)
+                            .addComponent(ddCommunity2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(doctorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cityLbl1)
+                            .addComponent(ddCity2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(displayPhoto)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Doctor", doctorPanel);
+
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         hospitalPortalLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
@@ -629,7 +623,7 @@ public class HospitalAdminJPanel extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(292, Short.MAX_VALUE)
                 .addComponent(hospitalPortalLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(379, 379, 379))
         );
@@ -645,19 +639,18 @@ public class HospitalAdminJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane1)
-                .addContainerGap())
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 947, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 520, Short.MAX_VALUE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(118, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
