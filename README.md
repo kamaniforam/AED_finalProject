@@ -1,37 +1,40 @@
-# Kamani_foram_002732551
+Kamani Foram, Jain Richa, Upadhyay Ruchi
 
-ASSIGNMENT 2 
+These days, healthcare management is in extremely high demand because it is so helpful in running a hospital or a doctor's office.It is true that the reach of healthcare management systems is expanding globally every day. There are numerous factors that contributeto the rising demand in the healthcare sector, including healthcare management solutions. Some of these solutions include raising public knowledge of Healthcare Management programs, health regulations, and the increased demand for top-notch medical facilities in Asia. Healthcare management is crucial to competing in the market and offering patients better care in a constantly changing world. Our project aims to cater to this need of a centralised healthcare management system where a user can request for vaccines and get vaccinated,go for a primary health checkup, look and request for medicines or go for a dental checkup or even in case of emergency look for blood and donate blood all in one management system
 
-FLOW:
+Enterprises: Primary Healthcare System, Pharmacy, Blood Bank management, Dental service
 
-System Admin --> Create, Read, Update, Delete
-		 Patient, Doctor, Hospital, Encounters
+Organizations: Emergency medical treatment, BloodRequest donor, pharmacy, Dental Checkup, Regular Checkup
 
-Hospital Admin --> Create, Read, Update
-		   Hospitals, Doctors, Patients, Encounters
+Roles:   Super Admin 
+        -Creates Users of various roles of different organizations of different enterprises
+         System Admin
+	-Creates Hospital, Patient and Doctors and has the authority to perform CRUD operations on all of them
+	 Pharmacy Admin
+	-Pharmacy Admin can view the requests for medicines and can complete them, He can add to the medical inventory and hospital inventory 
+	 Hospital Admin
+	-Hospital Admin can create and update a doctor with hospital name, community name and city name, He can also create and update a patient
+	 Hospital Admin can uslo check vital sign details of a patient.
+	 Patient
+	-Patient cretaes its own profile, can book a regular health checkup appointment or can cancel it. It can also book a vaccine appointment and cancel it. Patient          can perform update,edit,delete operations on its own data 
+	 Dental Patient
+	-Dental Patient Can book available slots for required date with the dentist and will get notified on slots availablity
+	 Receptionist
+	-Receptionist add slots for the dentist and manages the appointment requests 
+	 Dentist
+	-Dentist can view the appointments he has to attend and then he can approve the appointments or deny the appointments according to the checkup. 
+	 Blood User
+	-Blood user can donate blood in the hospital and can also request for blood in case of emergency services.
 
-Community Admin --> Create, Read, Update
-	            City, Community, Houses
 
-Patient -->	Read doctors based on community
-		Read personal encounters
-		Edit personal details
-		(If person books appointment - create encounter)
-
-
-Doctor -->  Creates Encounter
-	    Read Encounters
-	    Update Encounter details
-	    Update Vital Signs
-	    Create Vital Signs
 	    
 
 # Sequence Diagram
 
-<img width="736" alt="SequenceDiagram_Assignment2" src="https://user-images.githubusercontent.com/114442442/198926947-7ddbe6b0-16ee-461d-8847-07248bfa32df.png">
+
 
 
 
 # Class Diagram
 
-<img width="736" alt="Screen Shot 2022-10-30 at 11 43 25 PM" src="https://user-images.githubusercontent.com/114442442/198927282-f86f5f7a-ce5f-4d83-8202-e296da656c79.png">
+
