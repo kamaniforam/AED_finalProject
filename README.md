@@ -1,34 +1,47 @@
-# Kamani_foram_002732551
+Kamani Foram 
+Jain Richa
+Upadhyay Ruchi
 
-ASSIGNMENT 2 
+These days, healthcare management is in extremely high demand because it is so helpful in running a hospital or a doctor's 
+office.It is true that the reach of healthcare management systems is expanding globally every day. There are numerous
+factors that contributeto the rising demand in the healthcare sector, including healthcare management solutions. Some
+of these solutions include raising public knowledge of Healthcare Management programs, health regulations, and the 
+increased demand for top-notch medical facilities in Asia. Healthcare management is crucial to competing in the
+market and offering patients better care in a constantly changing world. Our project aims to cater to this need of a
+centralised healthcare management system where a user can request for vaccines and get vaccinated,go for a primary health
+checkup, look and request for medicines or go for a dental checkup or even in case of emergency look for blood and donate 
+blood all in one management system 
 
-FLOW:
+Enterprises:
+Primary Healthcare System,
+Pharmacy,
+Blood Bank management,
+Dental service 
 
-System Admin --> Create, Read, Update, Delete
-		 Patient, Doctor, Hospital, Encounters
+Organizations: 
+Emergency medical treatment,
+BloodRequest donor,
+pharmacy, 
+Dental Checkup, 
+Regular Checkup
+ 
+Roles:
+Super Admin ,
+System Admin,
+Pharmacy Admin,
+Hospital Admin,
+Patient,
+Dental Patient,
+Receptionist,
+Dentist,
+Blood User
 
-Hospital Admin --> Create, Read, Update
-		   Hospitals, Doctors, Patients, Encounters
-
-Community Admin --> Create, Read, Update
-	            City, Community, Houses
-
-Patient -->	Read doctors based on community
-		Read personal encounters
-		Edit personal details
-		(If person books appointment - create encounter)
-
-
-Doctor -->  Creates Encounter
-	    Read Encounters
-	    Update Encounter details
-	    Update Vital Signs
-	    Create Vital Signs
 	    
 
 # Sequence Diagram
 
-<img width="736" alt="SequenceDiagram_Assignment2" src="https://user-images.githubusercontent.com/114442442/198926947-7ddbe6b0-16ee-461d-8847-07248bfa32df.png">
+
+
 
 
 
