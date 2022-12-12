@@ -4,10 +4,15 @@
  */
 package uiComponents.PHC;
 
+import BloodBank.BloodUserClass;
+import BloodBank.BloodUserDirectory;
+import BloodBank.RequestBlood;
+import BloodBank.RequestBloodDirectory;
 import Business.EcoSystem;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Bussiness.model.PHC.DoctorDirectory;
+import Bussiness.model.PHC.EMTDirectory;
 import Bussiness.model.PHC.Encounter;
 import Bussiness.model.PHC.EncounterHistory;
 import Bussiness.model.PHC.HospitalDirectory;
@@ -35,9 +40,18 @@ public class SearchJPanel extends javax.swing.JPanel {
     EcoSystem business;
     UserAccount account;
     VitalSigns vitalSigns;
+    
+    BloodUserClass blood;
+    BloodUserDirectory bloodUserDirectory;
+    RequestBlood rb;
+    RequestBloodDirectory rbd;
+
+    EMTDirectory eMTDirectory;
 
     public SearchJPanel(EncounterHistory encounterHistory, PatientDirectory patientDirectory, PersonDirectory personDirectory, 
-            javax.swing.JSplitPane jSplitPane1, HospitalDirectory hospitalDirectory, DoctorDirectory doctorDirectory, VitalSigns vitalSigns) {
+            javax.swing.JSplitPane jSplitPane1, HospitalDirectory hospitalDirectory, DoctorDirectory doctorDirectory, VitalSigns vitalSigns,EMTDirectory eMTDirectory, BloodUserClass blood, BloodUserDirectory bloodUserDirectory,
+            RequestBlood rb,
+            RequestBloodDirectory rbd) {
         initComponents();
         this.encounterHistory = encounterHistory;
         this.patientDirectory = patientDirectory;
@@ -46,6 +60,12 @@ public class SearchJPanel extends javax.swing.JPanel {
         this.hospitalDirectory = hospitalDirectory;
         this.doctorDirectory = doctorDirectory;
         this.vitalSigns = vitalSigns;
+        this.bloodUserDirectory = bloodUserDirectory;
+        this.blood = blood;
+        this.rb = rb;
+        this.rbd = rbd;
+        this.personDirectory = personDirectory;
+        this.eMTDirectory = eMTDirectory;
 
         displayEncounterHistory();
 
@@ -220,8 +240,8 @@ public class SearchJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -287,7 +307,7 @@ public class SearchJPanel extends javax.swing.JPanel {
 
     private void viewPersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPersonActionPerformed
         // TODO add your handling code here:
-        ViewJPanel viewPane = new ViewJPanel(jSplitPane1, account, business, personDirectory, patientDirectory, encounterHistory, doctorDirectory,hospitalDirectory, vitalSigns);
+        ViewJPanel viewPane = new ViewJPanel(jSplitPane1, account, business, personDirectory, patientDirectory, encounterHistory, doctorDirectory,hospitalDirectory, vitalSigns,eMTDirectory, blood, bloodUserDirectory,rb, rbd);
         jSplitPane1.setRightComponent(viewPane);
     }//GEN-LAST:event_viewPersonActionPerformed
 

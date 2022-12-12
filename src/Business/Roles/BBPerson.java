@@ -1,48 +1,53 @@
-package business.Bloodbank.resources;
+package Business.Roles;
 
-public class Person {
-	private PersonalDetails personalDetails;
-	private Credentials credentials;
-	private Community community;
-	private Role role;
-	
-	public Person(PersonalDetails personalDetails, Credentials credentials, Community community, Role role) {
+import Business.Bloodbank.resources.BBCommunity;
+import business.Bloodbank.resources.Credentials;
+import business.Bloodbank.resources.PersonalDetails;
 
-		this.community 			= community;
-		this.credentials 		= credentials;
-		this.personalDetails 	= personalDetails;
-		this.role				= role;
-	}
+public class BBPerson {
 
-	public PersonalDetails getPersonalDetails() {
-		return personalDetails;
-	}
+    private PersonalDetails personalDetails;
+    private Credentials credentials;
+    private BBCommunity community;
+    private Role roles;
 
-	public void setPersonalDetails(PersonalDetails personalDetails) {
-		this.personalDetails = personalDetails;
-	}
+    public BBPerson(PersonalDetails personalDetails, Credentials credentials, BBCommunity community, Role role) {
 
-	public Credentials getCredentials() {
-		return credentials;
-	}
+        this.community = community;
+        this.credentials = credentials;
+        this.personalDetails = personalDetails;
+        this.roles = role;
+    }
 
-	public void setCredentials(Credentials credentials) {
-		this.credentials = credentials;
-	}
+    public PersonalDetails getPersonalDetails() {
+        return personalDetails;
+    }
 
-	public Community getCommunity() {
-		return community;
-	}
+    public void setPersonalDetails(PersonalDetails personalDetails) {
+        this.personalDetails = personalDetails;
+    }
 
-	public void setCommunity(Community community) {
-		this.community = community;
-	}
+    public Credentials getCredentials() {
+        return credentials;
+    }
 
-	public Role getRole() {
-		return role;
-	}
+    public void setCredentials(Credentials credentials) {
+        this.credentials = credentials;
+    }
 
-	public void setRole(Role role) {
-		this.role = role;
-	}
+    public BBCommunity getCommunity() {
+        return community;
+    }
+
+    public void setCommunity(BBCommunity community) {
+        this.community = community;
+    }
+
+    public Role getRole() {
+        return roles;
+    }
+
+    public void setRole(Role role) {
+        this.roles = role;
+    }
 }
