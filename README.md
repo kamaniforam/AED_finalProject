@@ -46,13 +46,12 @@ Blood user can donate blood in the hospital and can also request for blood in ca
 	    
 
 # Sequence Diagram
-
-
-
 ![Screenshot (211)](https://user-images.githubusercontent.com/114556755/206954564-df7db226-f63e-471b-a133-5e68cea6b7fc.png)
 
 
 # Class Diagram
+![image](https://user-images.githubusercontent.com/114442442/206962374-96fd7e24-caaf-4b8d-9cc2-efcaca70a09c.png)
+
 
 # Flow Diagram
 
