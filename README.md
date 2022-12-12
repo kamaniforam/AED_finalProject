@@ -1,49 +1,49 @@
-Kamani Foram, Jain Richa, Upadhyay Ruchi
+# HEALTHCARE MANAGEMENT SYSTEM
 
-These days, healthcare management is in extremely high demand because it is so helpful in running a hospital or a doctor's office.It is true that the reach of healthcare management systems is expanding globally every day. There are numerous factors that contributeto the rising demand in the healthcare sector, including healthcare management solutions. Some of these solutions include raising public knowledge of Healthcare Management programs, health regulations, and the increased demand for top-notch medical facilities in Asia. Healthcare management is crucial to competing in the market and offering patients better care in a constantly changing world. Our project aims to cater to this need of a centralised healthcare management system where a user can request for vaccines and get vaccinated,go for a primary health checkup, look and request for medicines or go for a dental checkup or even in case of emergency look for blood and donate blood all in one management system
+## Team Rocket 🚀
 
-Enterprises: Primary Healthcare System, Pharmacy, Blood Bank management, Dental service
+1. Foram Kamani - 002732551
+2. Richa Jain - 002656012 
+3. Ruchi Upadhyay – 002934462
 
-Organizations: Emergency medical treatment, BloodRequest donor, pharmacy, Dental Checkup, Regular Checkup
+## Problem Statement
 
-Roles: 
-Super Admin: 
-Creates Users of various roles of different organizations of differententerprises  
+An individual's life is significantly impacted by the healthcare management system. It is true that healthcare management systems are becoming more widespread every day. The healthcare industry is influenced by a wide range of elements, including healthcare management solutions. Increasing public awareness of health legislation and healthcare management systems, as well as the need for top-notch medical facilities throughout the USA, are some of these answers. In a world that is continuously evolving, healthcare management is essential for staying competitive in the market and providing patients with improved treatment. Our proposal attempts to meet this demand for a centralized healthcare management system where a user may make vaccine requests and receive vaccinations, have routine physicals, schedule emergency medical care, look for and order medications, and go to a doctor's office.
 
+**Enterprises** 
+- Primary Healthcare System
+- Pharmacy
+- Blood Bank management
+- Dental service
 
-System Admin: 
-Creates Hospital, Patient and Doctors and has the authority to perform CRUD operations on all of them
+**Organizations** 
+- Emergency medical treatment
+- Blood Request
+- Blood donor
+- Pharmacy Warehouse
+- Dental Checkup
+- Regular Checkup
 
+## Roles
 
-Pharmacy Admin: 
-Pharmacy Admin can view the requests for medicines and can complete them, He can add to the medical inventory and hospital inventory 
+1. **Super Admin:** Creates users with various roles in different organizations of different enterprises.
 
+2. **System Admin:** Creates hospitals, patients, and doctors and has the authority to perform CRU operations on all of them.
 
-Hospital Admin:  
-Hospital Admin can create and update a doctor with hospital name, community name and city name, He can also create and update a patient.                                Hospital Admin can aslo  check vital sign details of a patient.
+3. **Pharmacy Admin:** Pharmacy Admin can view the requests for medicines and complete them. He can add to the medical inventory and hospital inventory. 
 
+4. **Hospital Admin:** Hospital Admin can create and update a doctor with the hospital name, community name, and city name. He can also create and update a patient. A patient's vital signs can also be checked by hospital administrators.
 
-Patient:  
-Patient cretaes its own profile, can book a regular health checkup appointment or can cancel it. It can also book a vaccine appointment and cancel it.                 Patient can perform update,edit,delete operations on its own data 
+5. **Patient:** The patient creates its profile, can book, and cancel regular health checkup appointment, a vaccine appointment, can book an emergency medical treatment. They can request for vaccines. A patient can perform updates, edits, and deletions on its data.
 
+6. **Dental Patient:** The dental patient can book available slots for the required date with the dentist and will be notified of the slots' availability.
 
-Dental Patient:  
-Dental Patient Can book available slots for required date with the dentist and will get notified on slots availablity
+7. **Receptionist:** Receptionists add slots for the dentist and manage the appointment requests. 
 
+8. **Dentist:** The dentist can view the appointments he must attend, and then he can approve or deny them according to the checkup. 
 
-Receptionist:  
-Receptionist add slots for the dentist and manages the appointment requests 
+9. **Blood Bank User:** Blood bank allows users to donate blood and request blood in case of emergency situations.
 
-
-Dentist:  
-Dentist can view the appointments he has to attend and then he can approve the appointments or deny the appointments according to the checkup. 
-
-
-Blood User:   
-Blood user can donate blood in the hospital and can also request for blood in case of emergency services.
-
-
-	    
 
 # Sequence Diagram
 ![Screenshot (211)](https://user-images.githubusercontent.com/114556755/206954564-df7db226-f63e-471b-a133-5e68cea6b7fc.png)
