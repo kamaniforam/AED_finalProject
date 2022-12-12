@@ -413,7 +413,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 jSplitPane1.setRightComponent(hospitalAdminPane);
                 break;
                 case PHARMACY_ADMIN:
-                PharmacyAdminWorkAreaJPanel pharmacy = new PharmacyAdminWorkAreaJPanel(jSplitPane1, account, org, enterprise, network);
+                PharmacyAdminWorkAreaJPanel pharmacy = new PharmacyAdminWorkAreaJPanel(jSplitPane1, account, org, enterprise, network, business);
                 jSplitPane1.setRightComponent(pharmacy);
                 break;
                 case DENTIST:
@@ -425,7 +425,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 jSplitPane1.setRightComponent(dental);
                 break;
                 case RECEPTIONIST:
-                FrontDeskWorkAreaJPanel desk = new FrontDeskWorkAreaJPanel();
+                FrontDeskWorkAreaJPanel desk = new FrontDeskWorkAreaJPanel(business);
                 jSplitPane1.setRightComponent(desk);
                 case SUPER_ADMIN:
                 AddUserPanel makeUser = new AddUserPanel();
