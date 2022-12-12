@@ -8,6 +8,7 @@ import Business.EcoSystem;
 import javax.swing.InputVerifier;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import validations.VerifyEmail;
 import validations.VerifyNumber;
 import validations.VerifyString;
 
@@ -274,8 +275,11 @@ public class RequestBloodJPanel extends javax.swing.JPanel {
         
         InputVerifier stringVerifier = new VerifyString();
         txtName.setInputVerifier(stringVerifier);
-        blloodGroupTxt.setInputVerifier(stringVerifier);
-        emailId.setInputVerifier(stringVerifier);
+        //blloodGroupTxt.setInputVerifier(stringVerifier);
+        
+        InputVerifier emailVerifier = new VerifyEmail();
+        emailId.setInputVerifier(emailVerifier);
+        
     }
     
     private void displayrequestTableDetails(){

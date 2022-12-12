@@ -3,11 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package uiComponents.PHC;
+import BloodBank.BloodUserClass;
+import BloodBank.BloodUserDirectory;
+import BloodBank.RequestBlood;
+import BloodBank.RequestBloodDirectory;
 import Business.EcoSystem;
 import Business.Network;
 import Business.Pharmacy.Organizations.PharmacyOrganization;
 import Business.Roles.Role;
-import static Business.Roles.Role.BLOODBANK_COMMUNITY_ADMINISTRATOR;
 import static Business.Roles.Role.DENTAL_PATIENT;
 import static Business.Roles.Role.DENTIST;
 import static Business.Roles.Role.HOSPITAL_ADMINISTRATOR;
@@ -57,6 +60,10 @@ public class MainJFrame extends javax.swing.JFrame {
     PharmacyOrganization org;
     Network network;
     Enterprise enterprise;
+    BloodUserClass blood;
+    BloodUserDirectory bloodUserDirectory;
+    RequestBlood rb;
+    RequestBloodDirectory rbd;
        
     
     public MainJFrame() {
@@ -77,6 +84,11 @@ public class MainJFrame extends javax.swing.JFrame {
         System.out.println("Business: "+this.business.toString());
         this.org = new PharmacyOrganization();
         this.network = new Network();
+        this.blood = new BloodUserClass();
+        this.bloodUserDirectory = new BloodUserDirectory();
+        this.rb = new RequestBlood();
+        this.rbd = new RequestBloodDirectory();
+                
         
     }
 
@@ -188,7 +200,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        rightPanel.setBackground(new java.awt.Color(153, 204, 255));
+        rightPanel.setBackground(new java.awt.Color(255, 255, 255));
         rightPanel.setName(""); // NOI18N
         rightPanel.setRequestFocusEnabled(false);
         rightPanel.addContainerListener(new java.awt.event.ContainerAdapter() {
@@ -207,7 +219,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         role.setText("Role:");
 
-        dropdownRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CHOOSE A ROLE", "SUPER ADMIN", "SYSTEM ADMINISTRATOR", "PATIENT", "COMMUNITY ADMINISTRATOR", "HOSPITAL ADMINISTRATOR", "PHARMACY ADMIN", "RECEPTIONIST", "DENTAL PATIENT", "DENTIST" }));
+        dropdownRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CHOOSE A ROLE", "SUPER_ADMIN", "SYSTEM_ADMINISTRATOR", "PATIENT", "HOSPITAL_ADMINISTRATOR", "PHARMACY_ADMIN", "RECEPTIONIST", "DENTAL_PATIENT", "DENTIST", "BLOODBANK_USER" }));
         dropdownRole.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dropdownRoleActionPerformed(evt);
@@ -271,7 +283,7 @@ public class MainJFrame extends javax.swing.JFrame {
                                 .addComponent(dropdownRole, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(password)
                                 .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(314, Short.MAX_VALUE))
+                .addContainerGap(392, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -297,13 +309,13 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addContainerGap(796, Short.MAX_VALUE))
         );
 
+        jDesktopPane1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {loginBtn1, loginBtn2});
+
         javax.swing.GroupLayout rightPanelLayout = new javax.swing.GroupLayout(rightPanel);
         rightPanel.setLayout(rightPanelLayout);
         rightPanelLayout.setHorizontalGroup(
             rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(rightPanelLayout.createSequentialGroup()
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jDesktopPane1)
         );
         rightPanelLayout.setVerticalGroup(
             rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -414,12 +426,8 @@ public class MainJFrame extends javax.swing.JFrame {
                 jSplitPane1.setRightComponent(userPanel);
                 break;
                 case PATIENT:
-                CreateJPanel createPane = new CreateJPanel(jSplitPane1, account, business,personDirectory, patientDirectory, encounterHistory, doctorDirectory, hospitalDirectory, vitalSigns);
+                CreateJPanel createPane = new CreateJPanel(jSplitPane1, account, business,personDirectory, patientDirectory, encounterHistory, doctorDirectory, hospitalDirectory, vitalSigns, eMTDirectory, blood, bloodUserDirectory, rb, rbd);
                 jSplitPane1.setRightComponent(createPane);
-                break;
-                case BLOODBANK_COMMUNITY_ADMINISTRATOR:
-                //CommunityAdminJPanel communityAdminPane = new CommunityAdminJPanel(personDirectory, patientDirectory, encounterHistory, doctorDirectory, hospitalDirectory, jSplitPane1);
-                //jSplitPane1.setRightComponent(communityAdminPane);
                 break;
                 case HOSPITAL_ADMINISTRATOR:
                 HospitalAdminJPanel hospitalAdminPane = new HospitalAdminJPanel(personDirectory, patientDirectory, encounterHistory, doctorDirectory, hospitalDirectory, jSplitPane1, vitalSigns);

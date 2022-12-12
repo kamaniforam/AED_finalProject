@@ -52,7 +52,7 @@
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="218" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="203" max="-2" attributes="0"/>
                       <Component id="SignupBtn" min="-2" pref="90" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -84,9 +84,9 @@
                   <Component id="role" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   <Component id="dropdownRole" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="SignupBtn" min="-2" pref="36" max="-2" attributes="0"/>
-              <EmptySpace pref="47" max="32767" attributes="0"/>
+              <EmptySpace pref="63" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -146,15 +146,15 @@
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="10">
             <StringItem index="0" value="CHOOSE A ROLE"/>
-            <StringItem index="1" value="SUPER ADMIN"/>
-            <StringItem index="2" value="SYSTEM ADMINISTRATOR"/>
+            <StringItem index="1" value="SUPER_ADMIN"/>
+            <StringItem index="2" value="SYSTEM_ADMINISTRATOR"/>
             <StringItem index="3" value="PATIENT"/>
-            <StringItem index="4" value="COMMUNITY ADMINISTRATOR"/>
-            <StringItem index="5" value="HOSPITAL ADMINISTRATOR"/>
-            <StringItem index="6" value="PHARMACY ADMIN"/>
-            <StringItem index="7" value="RECEPTIONIST"/>
-            <StringItem index="8" value="DENTAL PATIENT"/>
-            <StringItem index="9" value="DENTIST"/>
+            <StringItem index="4" value="HOSPITAL_ADMINISTRATOR"/>
+            <StringItem index="5" value="PHARMACY_ADMIN"/>
+            <StringItem index="6" value="RECEPTIONIST"/>
+            <StringItem index="7" value="DENTAL_PATIENT"/>
+            <StringItem index="8" value="DENTIST"/>
+            <StringItem index="9" value="BLOODBANK_USER"/>
           </StringArray>
         </Property>
       </Properties>

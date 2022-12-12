@@ -55,11 +55,7 @@ public class AppointmentJPanel extends javax.swing.JPanel {
             
 
     public AppointmentJPanel(javax.swing.JSplitPane jSplitPane1, UserAccount account, EcoSystem business, PersonDirectory personDirectory, PatientDirectory patientDirectory, EncounterHistory encounterHistory, DoctorDirectory doctorDirectory, HospitalDirectory hospitalDirectory, VitalSigns vitalSigns,
-             EMTDirectory eMTDirectory,
-    BloodUserClass blood,
-    BloodUserDirectory bloodUserDirectory,
-    RequestBlood rb,
-    RequestBloodDirectory rbd) {
+             EMTDirectory eMTDirectory, BloodUserClass blood, BloodUserDirectory bloodUserDirectory, RequestBlood rb,RequestBloodDirectory rbd) {
         initComponents();
         this.personDirectory = personDirectory;
         this.patientDirectory = patientDirectory;

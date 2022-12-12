@@ -89,7 +89,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
 
         role.setText("Role:");
 
-        dropdownRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CHOOSE A ROLE", "SUPER ADMIN", "SYSTEM ADMINISTRATOR", "PATIENT", "COMMUNITY ADMINISTRATOR", "HOSPITAL ADMINISTRATOR", "PHARMACY ADMIN", "RECEPTIONIST", "DENTAL PATIENT", "DENTIST" }));
+        dropdownRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CHOOSE A ROLE", "SUPER_ADMIN", "SYSTEM_ADMINISTRATOR", "PATIENT", "HOSPITAL_ADMINISTRATOR", "PHARMACY_ADMIN", "RECEPTIONIST", "DENTAL_PATIENT", "DENTIST", "BLOODBANK_USER" }));
         dropdownRole.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dropdownRoleActionPerformed(evt);
@@ -146,7 +146,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
                                     .addComponent(confirmPasswordTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(dropdownRole, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(218, 218, 218)
+                        .addGap(203, 203, 203)
                         .addComponent(SignupBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(71, Short.MAX_VALUE))
         );
@@ -173,9 +173,9 @@ public class SignUpJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(role, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dropdownRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
+                .addGap(18, 18, 18)
                 .addComponent(SignupBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
