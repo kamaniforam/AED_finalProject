@@ -21,21 +21,14 @@ public class UserAccountDirectory {
     }
 
     public ArrayList<UserAccount> getUserAccountList() {
-//        if(userAccountList == null){
-//            System.out.println("III");
-//            return new ArrayList<UserAccount>();
-//        }
-//        System.out.println("III");
+
         return userAccountList;
     }
 
     public boolean authenticateUser(String username, String password, String uirole) {
         for (UserAccount ua : userAccountList) {
-            //System.out.println("authentication:");
-            //System.out.printf("user: %s, role: %s\n",ua.toString() ,ua.getRole().toString());
       
             if (ua.getUsername().equals(username) && ua.getPassword().equals(password) && ua.getRole().equals(Role.fromString(uirole))) {
-                //System.out.println("AUthList Role: " +ua.getRole());   
                 return true;
             }
         }

@@ -122,5 +122,10 @@ public class Medicine {
     public void setSerialNumber(int serialNumber) {
         this.serialNumber = serialNumber;
     }
+    
+    @Override
+    public String toString() {
+        return this.medicineName;
+    }
 
 }

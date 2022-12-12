@@ -14,6 +14,7 @@ public class PersonDirectory {
     
     private ArrayList<Person> listOfPerson;
     
+    
     public PersonDirectory(){
         this.listOfPerson = new ArrayList<>();
     }
@@ -23,12 +24,11 @@ public class PersonDirectory {
     }
 
     public void setListOfPerson(Person person) {
-        //System.out.println(person);
+
         this.listOfPerson.add(person);
     }
     
     public Person addNewPerson(){
-        House house = new House();
         Person newPerson = new Person();
         listOfPerson.add(newPerson);
         return newPerson;

@@ -80,4 +80,9 @@ public class Vaccine {
         this.status = status;
     }
     
+    @Override
+    public String toString() {
+        return this.vaccineName;
+    }
+    
 }

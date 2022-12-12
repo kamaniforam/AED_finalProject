@@ -156,47 +156,45 @@ public class ViewStockRequest extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(259, 259, 259)
-                        .addComponent(jButton2))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
-                                .addGap(197, 197, 197)
+                                .addGap(204, 204, 204)
                                 .addComponent(jButton1))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 668, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 668, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 668, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(275, 275, 275)
+                        .addGap(258, 258, 258)
+                        .addComponent(jButton2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(277, 277, 277)
                         .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(259, 259, 259)
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 668, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(254, 254, 254)
                         .addComponent(jButton3)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1)
-                        .addGap(12, 12, 12)))
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
-                .addGap(34, 34, 34)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addGap(18, 18, 18)
                 .addComponent(jButton3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -204,13 +202,11 @@ public class ViewStockRequest extends javax.swing.JPanel {
         // TODO add your handling code here:
         
         int selectedRow = requestedStockTable.getSelectedRow();
-        System.out.println(requestedStockTable.getValueAt(selectedRow, 1));
-        System.out.println(selectedRow);
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please Select a Row");
             return;
         }
-        if (requestedStockTable.getValueAt(selectedRow, 3) == "Completed") {
+        if (requestedStockTable.getValueAt(selectedRow, 3).equals("Completed")) {
             JOptionPane.showMessageDialog(null, "This request is already completed");
             return ;
           
@@ -220,9 +216,10 @@ public class ViewStockRequest extends javax.swing.JPanel {
            JOptionPane.showMessageDialog(null, "Not enough quantity in the stock");
            return;
         }
-        if (requestedStockTable.getValueAt(selectedRow, 3) == "Pending") {
+        if (requestedStockTable.getValueAt(selectedRow, 3).equals("Pending")) {
            MedicineWorkRequest req = (MedicineWorkRequest) requestedStockTable.getValueAt(selectedRow, 0);
            req.setStatus("Completed");
+           changeMedQuantity(req);
         }
         
         populateTable();
@@ -238,7 +235,7 @@ public class ViewStockRequest extends javax.swing.JPanel {
             return;
         }
         String name = vaccineRequestsJTable.getValueAt(selectedRow, 0).toString();
-        if (vaccineRequestsJTable.getValueAt(selectedRow, 3) == "Completed") {
+        if (vaccineRequestsJTable.getValueAt(selectedRow, 3).equals("Completed")) {
             JOptionPane.showMessageDialog(null, "This request is already completed");
             return ;
           
@@ -247,9 +244,10 @@ public class ViewStockRequest extends javax.swing.JPanel {
            JOptionPane.showMessageDialog(null, "Not enough quantity in the stock");
            return;
         }
-        if (vaccineRequestsJTable.getValueAt(selectedRow, 3) == "Pending") {
+        if (vaccineRequestsJTable.getValueAt(selectedRow, 3).equals("Pending")) {
            VaccineWorkRequest req = (VaccineWorkRequest) vaccineRequestsJTable.getValueAt(selectedRow, 0);
            req.setStatus("Completed");
+           changeVacQuantity(req);
         }
         
         populateTable();
@@ -267,18 +265,16 @@ public class ViewStockRequest extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel)requestedStockTable.getModel();
         
         model.setRowCount(0);
-//        if(WorkQueue.getInstance().size() != 0){
-//            for (WorkRequest request : WorkQueue.getInstance()){
-//                if(request instanceof MedicineWorkRequest){
-//                    Object[] row = new Object[4];
-//                    row[0] = ((MedicineWorkRequest) request);
-//                    row[1] = ((MedicineWorkRequest) request).getPatientName();
-//                    row[2] = ((MedicineWorkRequest) request).getQuantity();
-//                    row[3] =  ((MedicineWorkRequest) request).getStatus();
-//                    model.addRow(row);
-//                }
-//            }
-//        }
+        for (WorkRequest request : business.getWorkQueue().getWorkRequestList()){
+            if(request instanceof MedicineWorkRequest){
+                Object[] row = new Object[4];
+                row[0] = ((MedicineWorkRequest) request);
+                row[1] = ((MedicineWorkRequest) request).getPatientName();
+                row[2] = ((MedicineWorkRequest) request).getQuantity();
+                row[3] =  ((MedicineWorkRequest) request).getStatus();
+                model.addRow(row);
+            }
+        }
         
         DefaultTableModel model1 = (DefaultTableModel)vaccineRequestsJTable.getModel();
         
@@ -288,7 +284,7 @@ public class ViewStockRequest extends javax.swing.JPanel {
                 if(request instanceof VaccineWorkRequest){
                     Object[] row = new Object[4];
                     row[0] = ((VaccineWorkRequest) request);
-                    row[1] = "Patient's Name";
+                    row[1] = ((VaccineWorkRequest) request).getPatientName();
                     row[2] = ((VaccineWorkRequest) request).getQuantity();
                     row[3] =  ((VaccineWorkRequest) request).getStatus();
                     model1.addRow(row);
@@ -301,7 +297,7 @@ public class ViewStockRequest extends javax.swing.JPanel {
         int quant = 0;
         for(Medicine med : pharmorg.getMedList()) {
             if(med.getMedicineName().equalsIgnoreCase(name)){
-                quant = med.getQuantity();
+                quant = med.getAvailQuantity();
             }
         }
         return quant;
@@ -311,10 +307,27 @@ public class ViewStockRequest extends javax.swing.JPanel {
         int quant = 0;
         for(Vaccine vc : pharmorg.getVacList()) {
             if(vc.getVaccineName().equalsIgnoreCase(name)){
-                quant = vc.getQuantity();
+                quant = vc.getAvailQuantity();
             }
         }
         return quant;
+    }
+    
+    private void changeMedQuantity(MedicineWorkRequest m) {
+        for(Medicine med : pharmorg.getMedList()) {
+            if(med.getMedicineName().equalsIgnoreCase(m.toString())){
+               med.setAvailQuantity(med.getAvailQuantity() - m.getQuantity());
+            }
+        }
+        
+    }
+    
+    private void changeVacQuantity(VaccineWorkRequest v) {
+        for(Vaccine vc : pharmorg.getVacList()) {
+            if(vc.getVaccineName().equalsIgnoreCase(v.toString())){
+               vc.setAvailQuantity(vc.getAvailQuantity() - v.getQuantity());
+            }
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

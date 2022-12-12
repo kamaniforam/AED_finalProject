@@ -5,6 +5,7 @@
 package BloodBank;
 
 import Business.EcoSystem;
+import Business.WorkQueue.BloodAvailablityWR;
 import javax.swing.InputVerifier;
 import javax.swing.JOptionPane;
 import javax.swing.JSplitPane;
@@ -153,10 +154,10 @@ public class BloodDonorJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblAge)
@@ -171,15 +172,12 @@ public class BloodDonorJPanel extends javax.swing.JPanel {
                                     .addComponent(blloodGroupTxt)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(62, 62, 62)
-                                .addComponent(viewPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(156, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(viewPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(167, 167, 167))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 545, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {blloodGroupTxt, emailId, txtAge, txtName});
@@ -189,9 +187,9 @@ public class BloodDonorJPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
+                .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblName)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -232,13 +230,21 @@ public class BloodDonorJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "All fields are Mandatory");
         } else {
 
-            BloodUserClass bc = bloodUserDirectory.addUser(blood);
+            BloodUserClass bc = new BloodUserClass();
+            bloodUserDirectory.addUser(bc);
             bc.setName(txtName.getText());
             bc.setAge(Integer.parseInt(txtAge.getText()));
             bc.setEmailId(emailId.getText());
             bc.setBloodGroup(blloodGroupTxt.getText());
             displayPersonTableDetails();
             JOptionPane.showMessageDialog(this, "All Set!");
+            
+            BloodAvailablityWR bwr = new BloodAvailablityWR();
+            bwr.setBloodGroup(bc.getBloodGroup());
+            bwr.setDonorName(txtName.getText());
+            bwr.setStatus("Available");
+            
+            business.getWorkQueue().getWorkRequestList().add(bwr);
 
         }
 

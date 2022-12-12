@@ -9,6 +9,7 @@ import Business.WorkQueue.DoctorAvailableSlotWR;
 import Business.WorkQueue.WorkQueue;
 import Business.WorkQueue.WorkRequest;
 import Business.db40Utility.DB4OUtil;
+import Bussiness.model.PHC.UserAccount;
 import com.db4o.ObjectSet;
 import java.time.LocalDateTime;
 import javax.swing.JOptionPane;
@@ -24,11 +25,12 @@ public class FrontDeskWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form FrontDeskWorkAreaJPanel
      */
-    public FrontDeskWorkAreaJPanel() {
+    public FrontDeskWorkAreaJPanel(EcoSystem ecosystem) {
         initComponents();
         
        this.ecosystem = EcoSystem.getInstance();
 //        this.wr = wr;
+        populateComboBox();
         populateSlotTable();
     }
 
@@ -75,8 +77,6 @@ public class FrontDeskWorkAreaJPanel extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         jLabel1.setText("Dentist's Name");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Doc1", "Doc2", "DOC3", "Doc4" }));
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         jLabel2.setText("Date");
@@ -191,7 +191,6 @@ public class FrontDeskWorkAreaJPanel extends javax.swing.JPanel {
             h = Integer.parseInt(time.split(":")[0]); 
             mins = Integer.parseInt(time.split(":")[1]); 
              
-          //  System.out.println(date + " "+ month + " " + year + " " + time + " " + hour + " " + min);
         }catch(Exception e){
             System.out.println(e);
             JOptionPane.showMessageDialog(null,
@@ -204,9 +203,7 @@ public class FrontDeskWorkAreaJPanel extends javax.swing.JPanel {
         slot.setDoctor((String) jComboBox1.getSelectedItem());
         slot.setTimings(LocalDateTime.of(y, m,d, h, mins, 0));
         slot.setStatus("Available");
-        
-        //ObjectSet<WorkQueue> workQueue = DB4OUtil.getDBInstance().queryByExample(WorkQueue.class);
-        System.out.println(slot.getTimings());
+
         ecosystem.getWorkQueue().getWorkRequestList().add(slot);
 
         populateSlotTable();
@@ -215,16 +212,26 @@ public class FrontDeskWorkAreaJPanel extends javax.swing.JPanel {
     private void populateSlotTable() {
         
         DefaultTableModel dtm = (DefaultTableModel) DoctorSlotJTable.getModel();
-	//System.out.println(ecosystem);
         dtm.setRowCount(0);
-        //ObjectSet<WorkRequest> workQueue = DB4OUtil.getDBInstance().queryByExample(WorkRequest.class);
         
         for(WorkRequest wr :  ecosystem.getWorkQueue().getWorkRequestList()) {
-            Object row[] = new Object[3];
-            row[0] = ((DoctorAvailableSlotWR) wr).getDoctor();
-            row[1] = ((DoctorAvailableSlotWR) wr).getTimings();
-            row[2] = wr.getStatus();
-            dtm.addRow(row);
+            if(wr instanceof DoctorAvailableSlotWR){
+                Object row[] = new Object[3];
+                row[0] = ((DoctorAvailableSlotWR) wr).getDoctor();
+                row[1] = ((DoctorAvailableSlotWR) wr).getTimings();
+                row[2] = wr.getStatus();
+                dtm.addRow(row);
+            }
+        }
+    }
+    
+    private void populateComboBox() {
+        jComboBox1.removeAllItems();
+
+        for (UserAccount ua : ecosystem.getUserAccountDirectory().getUserAccountList()) {
+            if(ua.getRole().toString().equals("DENTIST")){
+                jComboBox1.addItem(ua.getUsername());
+            }
         }
     }
 

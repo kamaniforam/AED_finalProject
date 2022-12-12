@@ -8,6 +8,7 @@ import Business.EcoSystem;
 import Business.WorkQueue.DoctorAvailableSlotWR;
 import Business.WorkQueue.WorkQueue;
 import Business.WorkQueue.WorkRequest;
+import Bussiness.model.PHC.UserAccount;
 import Utils.Config;
 import Utils.EmailUtility;
 import javax.swing.JOptionPane;
@@ -21,13 +22,15 @@ public class DentistWorkAreaJPanel extends javax.swing.JPanel {
 
     private EcoSystem ecosystem;
     private javax.swing.JSplitPane jSplitPane1;
+    private UserAccount account;
     /**
      * Creates new form DentistWorkAreaJPanel
      */
-    public DentistWorkAreaJPanel(EcoSystem ecosystem) {
+    public DentistWorkAreaJPanel(EcoSystem ecosystem, UserAccount account) {
         initComponents();
         
         this.ecosystem = EcoSystem.getInstance();
+        this.account = account;
         
         populatePendingAppointmentsTable();
         populateCompletedAppointmentsTable();
@@ -55,17 +58,17 @@ public class DentistWorkAreaJPanel extends javax.swing.JPanel {
 
         pendingAppointmentsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Patient's Name", "Date/Time", "Status"
+                "Id", "Patient's Name", "Date/Time", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -82,7 +85,7 @@ public class DentistWorkAreaJPanel extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Patient's Name", "Disease", "Date/Time", "Prescription"
+                "Id", "Patient's Name", "Date/Time", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -110,7 +113,7 @@ public class DentistWorkAreaJPanel extends javax.swing.JPanel {
 
         viewAppointment.setBackground(new java.awt.Color(51, 153, 255));
         viewAppointment.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        viewAppointment.setText("View Appointment");
+        viewAppointment.setText("Confirm Appointment");
         viewAppointment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewAppointmentActionPerformed(evt);
@@ -119,30 +122,32 @@ public class DentistWorkAreaJPanel extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Completed Appointments");
+        jLabel2.setText("Confirmed Appointments");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(169, 169, 169)
-                        .addComponent(viewAppointment)
-                        .addGap(47, 47, 47)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 659, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1))))
-                .addContainerGap(29, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(159, 159, 159)
+                        .addComponent(viewAppointment)
+                        .addGap(45, 45, 45)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton1, viewAppointment});
@@ -150,19 +155,19 @@ public class DentistWorkAreaJPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(viewAppointment, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(viewAppointment, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -170,22 +175,29 @@ public class DentistWorkAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         
         int selectedRow = pendingAppointmentsTable.getSelectedRow();
+        
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please Select a Row");
             return;
         }
-        String name = pendingAppointmentsTable.getValueAt(selectedRow, 0).toString();
-        if (pendingAppointmentsTable.getValueAt(selectedRow, 2) == "Completed") {
+        //String name = pendingAppointmentsTable.getValueAt(selectedRow, 0).toString();
+        if (pendingAppointmentsTable.getValueAt(selectedRow, 3).equals("Completed")) {
             JOptionPane.showMessageDialog(null, "This request is already completed");
             return ;
           
         }
-        if (pendingAppointmentsTable.getValueAt(selectedRow, 2) == "Requested") {
-           DoctorAvailableSlotWR req = (DoctorAvailableSlotWR) pendingAppointmentsTable.getValueAt(selectedRow, 0);
+        if (pendingAppointmentsTable.getValueAt(selectedRow, 3).equals("Requested")) {
+           int id = (int)pendingAppointmentsTable.getValueAt(selectedRow, 0) - 1;
+
+           WorkRequest req = ecosystem.getWorkQueue().getWorkRequestList().get(id);
+
            req.setStatus("Rejected");
-           String subject = "Appointment Status";
-           String body = "Hey " + ",\n Your appointment is canceled due to some reasons" ;
-           EmailUtility.sendEmail(subject, Config.emailId, Config.password, body, new String[]{req.getEmail()});
+           
+           if(req.getEmail() != null && !req.getEmail().isEmpty()){
+            String subject = "Appointment Status";
+            String body = "Hey " + ",\n Your appointment is canceled due to some reasons" ;
+            EmailUtility.sendEmail(subject, Config.emailId, Config.password, body, new String[]{req.getEmail()});
+            }
         }
         
         populateCompletedAppointmentsTable();
@@ -200,19 +212,21 @@ public class DentistWorkAreaJPanel extends javax.swing.JPanel {
             return;
         }
         String name = pendingAppointmentsTable.getValueAt(selectedRow, 0).toString();
-        if (pendingAppointmentsTable.getValueAt(selectedRow, 2) == "Completed") {
-            JOptionPane.showMessageDialog(null, "This request is already completed");
+        if (pendingAppointmentsTable.getValueAt(selectedRow, 3).equals("Confirmed")) {
+            JOptionPane.showMessageDialog(null, "This request is already confirmed");
             return ;
           
         }
-        if (pendingAppointmentsTable.getValueAt(selectedRow, 2) == "Requested") {
-           DoctorAvailableSlotWR req = (DoctorAvailableSlotWR) pendingAppointmentsTable.getValueAt(selectedRow, 0);
-           req.setStatus("Completed");
+        if (pendingAppointmentsTable.getValueAt(selectedRow, 3).equals( "Requested")) {
+           int index = (int) pendingAppointmentsTable.getValueAt(selectedRow, 0) - 1;
+           WorkRequest req = ecosystem.getWorkQueue().getWorkRequestList().get(index);
+           req.setStatus("Confirmed");
            
-           String subject = "Appointment Status";
-           String body = "Hey " + ",\n Your appointment is completed" ;
-           EmailUtility.sendEmail(subject, Config.emailId, Config.password, body, new String[]{req.getEmail()});
-        
+           if(req.getEmail() != null && !req.getEmail().isEmpty()){
+            String subject = "Appointment Status";
+            String body = "Hey " + ",\n Your appointment is confirmed" ;
+            EmailUtility.sendEmail(subject, Config.emailId, Config.password, body, new String[]{req.getEmail()});
+           }
         }
         
         populateCompletedAppointmentsTable();
@@ -225,15 +239,19 @@ public class DentistWorkAreaJPanel extends javax.swing.JPanel {
         DefaultTableModel dtm = (DefaultTableModel) pendingAppointmentsTable.getModel();
 	
         dtm.setRowCount(0);
+        int id = 1;
         for (WorkRequest wr :  ecosystem.getWorkQueue().getWorkRequestList()) {
-            Object row[] = new Object[3];
-            if(wr instanceof DoctorAvailableSlotWR && 
-                    ("Pending".equals(wr.getStatus()) || "Requested".equals(wr.getStatus()))){
-                row[0] = ((DoctorAvailableSlotWR) wr);
-                row[1] = ((DoctorAvailableSlotWR) wr).getTimings();
-                row[2] = wr.getStatus();
+            Object row[] = new Object[4];
+            if(wr instanceof DoctorAvailableSlotWR && ((DoctorAvailableSlotWR) wr).getDoctor().equals(account.getUsername()) &&
+                    ("Pending".equals(wr.getStatus()) || "Requested".equals(wr.getStatus()))
+               ){
+                row[0] = id;
+                row[1] = ((DoctorAvailableSlotWR) wr).getPatient();
+                row[2] = ((DoctorAvailableSlotWR) wr).getTimings();
+                row[3] = wr.getStatus();
                 dtm.addRow(row);
             }
+            id++;
         }
     }
     
@@ -242,17 +260,19 @@ public class DentistWorkAreaJPanel extends javax.swing.JPanel {
         DefaultTableModel dtm = (DefaultTableModel) completedAppointmensTable.getModel();
 	
         dtm.setRowCount(0);
-        //System.out.println("HIII " + ecosystem.getWorkQueue().getWorkRequestList().size());
+        int id = 1;
         for (WorkRequest wr :  ecosystem.getWorkQueue().getWorkRequestList()) {
-            Object row[] = new Object[3];
-            System.out.println(wr.getStatus());
-            if(wr instanceof DoctorAvailableSlotWR && 
-                    ("Completed".equals(wr.getStatus()) || "Rejected".equalsIgnoreCase(wr.getStatus()))){
-                row[0] = ((DoctorAvailableSlotWR) wr);
-                row[1] = ((DoctorAvailableSlotWR) wr).getTimings();
-                row[2] = wr.getStatus();
+            Object row[] = new Object[4];
+            if(wr instanceof DoctorAvailableSlotWR && ((DoctorAvailableSlotWR) wr).getDoctor().equals(account.getUsername()) &&
+                    ("Confirmed".equals(wr.getStatus()))){
+                row[0] = id;
+                row[1] = ((DoctorAvailableSlotWR) wr).getPatient();
+                row[2] = ((DoctorAvailableSlotWR) wr).getTimings();
+                row[3] = wr.getStatus();
                 dtm.addRow(row);
             }
+            
+            id++;
         }
         
     }

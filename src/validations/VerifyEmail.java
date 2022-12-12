@@ -20,7 +20,8 @@ public class VerifyEmail extends InputVerifier{
     public boolean verify(JComponent input) {
    
         String text = ((JTextField) input).getText();
-        String pattern = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\\\.[A-Z]{2,6}$";
+        String pattern = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@" 
+        + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
         if (text.length() > 0) {
             if (text.toLowerCase().startsWith(" ") || text.length() == 0
                     || text.matches(pattern) != true) {

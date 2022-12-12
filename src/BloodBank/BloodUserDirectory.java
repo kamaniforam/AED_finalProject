@@ -26,13 +26,9 @@ public class BloodUserDirectory {
         this.userList = medicineList;
     }
 
-     public BloodUserClass addUser(BloodUserClass bc) {
+     public void addUser(BloodUserClass bc) {
         userList.add(bc);
-        return bc;
-    }
-
-    public void deleteUser(BloodUserClass med) {
-     userList.remove(med);
+        
     }
     
 }

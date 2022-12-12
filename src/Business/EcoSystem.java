@@ -6,6 +6,7 @@
 package Business;
 
 
+import Business.Pharmacy.Organizations.PharmacyOrganization;
 import Bussiness.model.PHC.DoctorDirectory;
 import Bussiness.model.PHC.EncounterHistory;
 import Bussiness.model.PHC.HospitalDirectory;
@@ -31,14 +32,16 @@ public class EcoSystem{
     private HospitalDirectory hospitalDirectory;
     private WorkQueue workQueue;
     private UserAccountDirectory userDirectory;
+    private PharmacyOrganization phOrg;
     
-    public EcoSystem(PersonDirectory personDirectory, PatientDirectory patientDirectory, EncounterHistory encounterHistory, DoctorDirectory doctorDirectory, HospitalDirectory hospitalDirectory,UserAccountDirectory userDirectory, WorkQueue wq) {
+    public EcoSystem(PersonDirectory personDirectory, PatientDirectory patientDirectory, EncounterHistory encounterHistory, DoctorDirectory doctorDirectory, HospitalDirectory hospitalDirectory,UserAccountDirectory userDirectory, WorkQueue wq, PharmacyOrganization phOrg) {
         this.personDirectory = personDirectory;
         this.patientDirectory = patientDirectory;
         this.encounterHistory = encounterHistory;
         this.doctorDirectory = doctorDirectory;
         this.hospitalDirectory = hospitalDirectory;
         this.userDirectory = userDirectory;
+        this.phOrg = phOrg;
         this.workQueue = wq;
     }
 
@@ -128,5 +131,14 @@ public class EcoSystem{
        hospitalDirectory = new HospitalDirectory();
        userDirectory = new UserAccountDirectory();
        workQueue = new WorkQueue();
+       phOrg = new PharmacyOrganization();
+    }
+
+    public PharmacyOrganization getPhOrg() {
+        return phOrg;
+    }
+
+    public void setPhOrg(PharmacyOrganization phOrg) {
+        this.phOrg = phOrg;
     }
 }

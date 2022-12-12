@@ -346,7 +346,7 @@ public class ViewJPanel extends javax.swing.JPanel {
                     .addComponent(ddHouseNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtAge)
                     .addComponent(ddCity, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(photo, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(68, 68, 68))
         );
@@ -417,27 +417,26 @@ public class ViewJPanel extends javax.swing.JPanel {
                     .addGroup(jDesktopPane2Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jDesktopPane2Layout.createSequentialGroup()
-                                    .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btnSave2)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(btnSave1))
-                                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane2Layout.createSequentialGroup()
-                                .addComponent(btnSave3, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26)
-                                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                                .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnSave2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnSave1))
+                            .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jDesktopPane2Layout.createSequentialGroup()
-                        .addGap(291, 291, 291)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap()
+                        .addComponent(btnSave3, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(169, 169, 169)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(147, 147, 147)
+                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1))
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(143, Short.MAX_VALUE))
         );
 
         jDesktopPane2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnDelete, btnSave1, btnSave2, btnSearch, btnUpdate});
@@ -448,13 +447,12 @@ public class ViewJPanel extends javax.swing.JPanel {
             jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane2Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSave3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
@@ -464,7 +462,7 @@ public class ViewJPanel extends javax.swing.JPanel {
                     .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSave2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSave1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
 
         jDesktopPane2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnDelete, btnSave, btnSave1, btnSave2, btnSave3, btnSearch, btnUpdate});
@@ -479,43 +477,75 @@ public class ViewJPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jDesktopPane2))
+            .addComponent(jDesktopPane2, javax.swing.GroupLayout.Alignment.TRAILING)
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+    private void btnSave1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSave1ActionPerformed
         // TODO add your handling code here:
-        int selectedRowIndex = tblPerson.getSelectedRow();
-        Person selectPerson = personDirectory.getListOfPerson().get(selectedRowIndex);
-        
-        personDirectory.deletePerson(selectPerson);
-        displayPersonTableDetails(); 
-    }//GEN-LAST:event_btnDeleteActionPerformed
-
-    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNameActionPerformed
+        txtPersonID.setText("");
+        txtAge.setText("");
+        txtName.setText("");
+        txtAddress.setText("");
+        txtZipCode.setText("");
+        ddHouseNumber.setSelectedIndex(0);
+        ddCity.setSelectedIndex(0);
+        ddCommunity.setSelectedIndex(0);
+        photo.setIcon(null);
+    }//GEN-LAST:event_btnSave1ActionPerformed
 
     private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAddressActionPerformed
 
+    private void ddHouseNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ddHouseNumberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ddHouseNumberActionPerformed
+
     private void ddCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ddCityActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ddCityActionPerformed
+
+    private void txtZipCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtZipCodeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtZipCodeActionPerformed
 
     private void txtPersonIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPersonIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPersonIDActionPerformed
 
+    private void ddCommunityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ddCommunityActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ddCommunityActionPerformed
+
+    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameActionPerformed
+
+    private void btnSave3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSave3ActionPerformed
+        // TODO add your handling code here:
+        NewsJPanel ne = null;
+        try {
+            ne = new NewsJPanel(jSplitPane1, account, business, personDirectory, patientDirectory, encounterHistory, doctorDirectory, hospitalDirectory, vitalSigns, eMTDirectory, blood, bloodUserDirectory,rb, rbd);
+        } catch (Exception ex) {
+            Logger.getLogger(ViewJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            ne = new NewsJPanel(jSplitPane1, account, business, personDirectory, patientDirectory, encounterHistory, doctorDirectory, hospitalDirectory, vitalSigns, eMTDirectory, blood, bloodUserDirectory,rb, rbd);
+        } catch (IOException ex) {
+            Logger.getLogger(ViewJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(ViewJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        jSplitPane1.setRightComponent(ne);
+    }//GEN-LAST:event_btnSave3ActionPerformed
+
     private void tblPersonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPersonMouseClicked
         // TODO add your handling code here:
         int selectedRowIndex = tblPerson.getSelectedRow();
-        
+
         Person selectPerson = personDirectory.getListOfPerson().get(selectedRowIndex);
-        
+
         txtPersonID.setText(String.valueOf(selectPerson.getIdOfPerson()));
         txtAge.setText(String.valueOf(selectPerson.getAgeOfPerson()));
         txtName.setText(selectPerson.getNameOfPerson());
@@ -526,6 +556,15 @@ public class ViewJPanel extends javax.swing.JPanel {
         ddHouseNumber.setSelectedItem(selectPerson.getHouse().getApartmentNumber());
         photo.setIcon(selectPerson.getPhoto());
     }//GEN-LAST:event_tblPersonMouseClicked
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = tblPerson.getSelectedRow();
+        Person selectPerson = personDirectory.getListOfPerson().get(selectedRowIndex);
+
+        personDirectory.deletePerson(selectPerson);
+        displayPersonTableDetails();
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
@@ -542,9 +581,11 @@ public class ViewJPanel extends javax.swing.JPanel {
         model.setValueAt(txtZipCode.getText(), selectedRowIndex, 7);
     }//GEN-LAST:event_btnUpdateActionPerformed
 
-    private void txtZipCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtZipCodeActionPerformed
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtZipCodeActionPerformed
+        CreateJPanel createPane = new CreateJPanel(jSplitPane1, account, business, personDirectory, patientDirectory, encounterHistory, doctorDirectory,hospitalDirectory, vitalSigns, eMTDirectory, blood, bloodUserDirectory,rb, rbd);
+        jSplitPane1.setRightComponent(createPane);
+    }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
@@ -552,56 +593,11 @@ public class ViewJPanel extends javax.swing.JPanel {
         jSplitPane1.setRightComponent(searchPane);
     }//GEN-LAST:event_btnSearchActionPerformed
 
-    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // TODO add your handling code here:
-        CreateJPanel createPane = new CreateJPanel(jSplitPane1, account, business, personDirectory, patientDirectory, encounterHistory, doctorDirectory,hospitalDirectory, vitalSigns, eMTDirectory, blood, bloodUserDirectory,rb, rbd);
-        jSplitPane1.setRightComponent(createPane);
-    }//GEN-LAST:event_btnSaveActionPerformed
-
-    private void ddHouseNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ddHouseNumberActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ddHouseNumberActionPerformed
-
-    private void ddCommunityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ddCommunityActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ddCommunityActionPerformed
-
-    private void btnSave1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSave1ActionPerformed
-        // TODO add your handling code here:
-        txtPersonID.setText("");
-        txtAge.setText("");
-        txtName.setText("");
-        txtAddress.setText("");
-        txtZipCode.setText("");
-        ddHouseNumber.setSelectedIndex(0);
-        ddCity.setSelectedIndex(0);
-        ddCommunity.setSelectedIndex(0);
-        photo.setIcon(null);
-    }//GEN-LAST:event_btnSave1ActionPerformed
-
     private void btnSave2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSave2ActionPerformed
         // TODO add your handling code here:
         AppointmentJPanel appt = new AppointmentJPanel(jSplitPane1, account, business, personDirectory, patientDirectory, encounterHistory, doctorDirectory, hospitalDirectory, vitalSigns, eMTDirectory, blood, bloodUserDirectory,rb, rbd);
         jSplitPane1.setRightComponent(appt);
     }//GEN-LAST:event_btnSave2ActionPerformed
-
-    private void btnSave3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSave3ActionPerformed
-        // TODO add your handling code here:
-      NewsJPanel ne = null;
-      try {
-          ne = new NewsJPanel(jSplitPane1, account, business, personDirectory, patientDirectory, encounterHistory, doctorDirectory, hospitalDirectory, vitalSigns, eMTDirectory, blood, bloodUserDirectory,rb, rbd);
-      } catch (Exception ex) {
-          Logger.getLogger(ViewJPanel.class.getName()).log(Level.SEVERE, null, ex);
-      }
-        try {
-            ne = new NewsJPanel(jSplitPane1, account, business, personDirectory, patientDirectory, encounterHistory, doctorDirectory, hospitalDirectory, vitalSigns, eMTDirectory, blood, bloodUserDirectory,rb, rbd);
-        } catch (IOException ex) {
-            Logger.getLogger(ViewJPanel.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (Exception ex) {
-            Logger.getLogger(ViewJPanel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-      jSplitPane1.setRightComponent(ne);
-    }//GEN-LAST:event_btnSave3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

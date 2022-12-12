@@ -15,7 +15,7 @@ import java.nio.file.Paths;
  */
 public class DB4OUtil {
 
-    private static final String FILENAME = Paths.get("Databank-v3.db4o").toAbsolutePath().toString();// path to the data store
+    private static final String FILENAME = Paths.get("Databank-test.db4o").toAbsolutePath().toString();// path to the data store
     private static ObjectContainer db = createConnection();
     private static DB4OUtil dB4OUtil;
 
@@ -73,14 +73,11 @@ public class DB4OUtil {
             getDBInstance();
         }
         ObjectSet<EcoSystem> systems = db.query(EcoSystem.class); // Change to the object you want to save
-        System.out.println("Systems size: "+systems.size());
         EcoSystem system;
         if (systems.isEmpty()){
-            System.out.println("new system");
             system = ConfigureASystem.configure();  // If there's no System in the record, create a new one
         }
         else{
-            System.out.println("existing system");
             system = systems.get(systems.size() - 1);
         }
 

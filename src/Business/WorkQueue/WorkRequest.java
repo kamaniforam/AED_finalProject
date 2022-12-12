@@ -19,6 +19,7 @@ public abstract class WorkRequest {
     private String status;
     private Date requestDate;
     private Date resolveDate;
+    private String emailId;
     
     public WorkRequest(){
         requestDate = new Date();
@@ -70,6 +71,14 @@ public abstract class WorkRequest {
 
     public void setResolveDate(Date resolveDate) {
         this.resolveDate = resolveDate;
+    }
+    
+    public String getEmail() {
+        return emailId;
+    }
+
+    public void setEmail(String email) {
+        this.emailId = email;
     }
 
     @Override

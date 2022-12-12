@@ -4,10 +4,21 @@
  */
 package uiComponents.PHC;
 
+import BloodBank.BloodUserClass;
+import BloodBank.BloodUserDirectory;
+import BloodBank.RequestBlood;
+import BloodBank.RequestBloodDirectory;
 import Business.EcoSystem;
-import Business.WorkQueue.MedicineWorkRequest;
 import Business.WorkQueue.VaccineWorkRequest;
 import Business.WorkQueue.WorkRequest;
+import Bussiness.model.PHC.DoctorDirectory;
+import Bussiness.model.PHC.EMTDirectory;
+import Bussiness.model.PHC.EncounterHistory;
+import Bussiness.model.PHC.HospitalDirectory;
+import Bussiness.model.PHC.PatientDirectory;
+import Bussiness.model.PHC.PersonDirectory;
+import Bussiness.model.PHC.UserAccount;
+import Bussiness.model.PHC.VitalSigns;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -16,15 +27,53 @@ import javax.swing.table.DefaultTableModel;
  * @author foram
  */
 public class VaccineJPanel extends javax.swing.JPanel {
-
+    private javax.swing.JSplitPane jSplitPane1;
     private EcoSystem business; 
+    EncounterHistory encounterHistory;
+    PatientDirectory patientDirectory;
+    PersonDirectory personDirectory;
+    HospitalDirectory hospitalDirectory;
+    DoctorDirectory doctorDirectory;
+    UserAccount account;
+    VitalSigns vitalSigns;
+    
+    BloodUserClass blood;
+    BloodUserDirectory bloodUserDirectory;
+    RequestBlood rb;
+    RequestBloodDirectory rbd;
+
+    EMTDirectory eMTDirectory;
     /**
      * Creates new form VaccineJPanel
+     * @param rbd
+     * @param rb
+     * @param hospitalDirectory
+     * @param doctorDirectory
+     * @param vitalSigns
+     * @param eMTDirectory
+     * @param blood
+     * @param bloodUserDirectory
      */
-    public VaccineJPanel(EcoSystem business) {
+    public VaccineJPanel(javax.swing.JSplitPane jSplitPane1,  UserAccount account, EncounterHistory encounterHistory, PatientDirectory patientDirectory, PersonDirectory personDirectory, 
+             HospitalDirectory hospitalDirectory, DoctorDirectory doctorDirectory, VitalSigns vitalSigns,EMTDirectory eMTDirectory, BloodUserClass blood, BloodUserDirectory bloodUserDirectory,
+            RequestBlood rb,
+            RequestBloodDirectory rbd) {
         initComponents();
-        
-        this.business = business;
+        this.encounterHistory = encounterHistory;
+        this.patientDirectory = patientDirectory;
+        this.personDirectory = personDirectory;
+        this.jSplitPane1 = jSplitPane1;
+        this.hospitalDirectory = hospitalDirectory;
+        this.doctorDirectory = doctorDirectory;
+        this.vitalSigns = vitalSigns;
+        this.bloodUserDirectory = bloodUserDirectory;
+        this.blood = blood;
+        this.rb = rb;
+        this.rbd = rbd;
+        this.personDirectory = personDirectory;
+        this.eMTDirectory = eMTDirectory;
+        this.business = EcoSystem.getInstance();
+
         populateVaccineRequestTable();
     }
 
@@ -47,6 +96,7 @@ public class VaccineJPanel extends javax.swing.JPanel {
         requestVaccineBtn = new javax.swing.JButton();
         lbl = new javax.swing.JPanel();
         emtLbl = new javax.swing.JLabel();
+        viewPerson = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -60,7 +110,7 @@ public class VaccineJPanel extends javax.swing.JPanel {
 
         vaccineLbl.setText("Vaccine:");
 
-        vaccineServices.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "FLU", "COVID-19", "INFLUNEZA", "VERICELLA", "HPV", "TDAP" }));
+        vaccineServices.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "FLU", "COVID-19", "INFLUENZA", "VERICELLA", "HPV", "TDAP" }));
 
         tblVaccine.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -94,42 +144,52 @@ public class VaccineJPanel extends javax.swing.JPanel {
         lbl.setLayout(lblLayout);
         lblLayout.setHorizontalGroup(
             lblLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(lblLayout.createSequentialGroup()
-                .addGap(262, 262, 262)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lblLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(emtLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(83, 83, 83))
         );
         lblLayout.setVerticalGroup(
             lblLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(lblLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lblLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(emtLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap())
         );
+
+        viewPerson.setBackground(new java.awt.Color(51, 153, 255));
+        viewPerson.setText("Back<<");
+        viewPerson.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewPersonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
-                .addComponent(fnameLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtfName, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(172, 172, 172)
-                .addComponent(vaccineLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(vaccineServices, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(353, 353, 353))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(321, 321, 321)
-                .addComponent(requestVaccineBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 733, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 733, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(60, 60, 60)
+                        .addComponent(viewPerson))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(141, Short.MAX_VALUE)
+                        .addComponent(fnameLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtfName, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(56, 56, 56)
+                        .addComponent(vaccineLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(vaccineServices, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(87, 87, 87)
+                        .addComponent(requestVaccineBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(142, 142, 142))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtfName, vaccineServices});
@@ -137,39 +197,32 @@ public class VaccineJPanel extends javax.swing.JPanel {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(lbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(viewPerson)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtfName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fnameLbl)
                     .addComponent(vaccineServices, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(vaccineLbl))
-                .addGap(41, 41, 41)
-                .addComponent(requestVaccineBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                    .addComponent(vaccineLbl)
+                    .addComponent(requestVaccineBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(55, 55, 55)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(227, Short.MAX_VALUE))
+                .addContainerGap(351, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1016, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 633, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -203,6 +256,12 @@ public class VaccineJPanel extends javax.swing.JPanel {
        
     }//GEN-LAST:event_requestVaccineBtnActionPerformed
 
+    private void viewPersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPersonActionPerformed
+        // TODO add your handling code here:
+        ViewJPanel viewPane = new ViewJPanel(jSplitPane1, account, business, personDirectory, patientDirectory, encounterHistory, doctorDirectory,hospitalDirectory, vitalSigns,eMTDirectory, blood, bloodUserDirectory,rb, rbd);
+        jSplitPane1.setRightComponent(viewPane);
+    }//GEN-LAST:event_viewPersonActionPerformed
+
     private void populateVaccineRequestTable() {
         DefaultTableModel model = (DefaultTableModel)tblVaccine.getModel();
         
@@ -230,5 +289,6 @@ public class VaccineJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtfName;
     private javax.swing.JLabel vaccineLbl;
     private javax.swing.JComboBox<String> vaccineServices;
+    private javax.swing.JButton viewPerson;
     // End of variables declaration//GEN-END:variables
 }

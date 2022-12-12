@@ -12,14 +12,17 @@ import Business.Pharmacy.Model.MedicinesInventory;
 import Business.Pharmacy.Organizations.PharmacyOrganization;
 import Business.WorkQueue.DoctorAvailableSlotWR;
 import Business.WorkQueue.MedicineWorkRequest;
-import Business.WorkQueue.WorkQueue;
 import Business.WorkQueue.WorkRequest;
 import Bussiness.model.PHC.UserAccount;
 import Enterprise.Enterprise;
+import Utils.Config;
+import static Utils.Config.emailId;
+import Utils.EmailUtility;
 import java.util.Date;
+import javax.swing.InputVerifier;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import validations.VerifyEmail;
 
 /**
  *
@@ -56,6 +59,8 @@ public class DentalPatientJPanel extends javax.swing.JPanel {
         
         populateAvailableSlotsTable();
         populateBookedAppointmentTable();
+        
+        addVerifiers();
     }
 
     /**
@@ -327,7 +332,7 @@ public class DentalPatientJPanel extends javax.swing.JPanel {
             med.setQuantity(Integer.parseInt(jTextField1.getText()));
             med.setRequestDate(new Date());
             med.setSender(userAccount);
-            med.setPatientName("User");
+            med.setPatientName(userAccount.getUsername());
             med.setStatus("Pending");
 
             ecosystem.getWorkQueue().getWorkRequestList().add(med);
@@ -369,20 +374,27 @@ public class DentalPatientJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         
         int selectedRow = bookedSlotsJTable.getSelectedRow();
+        String subject = "Appointment Status";
+        String body = "Hey, \nYou just got notified from Team ROCKET!";
         
+        String emailAdd = jTextField3.getText();
+        
+        if(emailAdd.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Please enter valid email."
+                , "Error", JOptionPane.ERROR_MESSAGE);
+        }
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please Select a Row");
-            return;
+        JOptionPane.showMessageDialog(null, "Please Select a Row");
+        return;
         }
-        if (bookedSlotsJTable.getValueAt(selectedRow, 3) == "Requested") {
-           DoctorAvailableSlotWR req = (DoctorAvailableSlotWR) availableSlotsJTable.getValueAt(selectedRow, 1);
+        else {
+            int id = (int)bookedSlotsJTable.getValueAt(selectedRow, 0);
+            DoctorAvailableSlotWR req = (DoctorAvailableSlotWR) ecosystem.getWorkQueue().getWorkRequestList().get(id-1);
             req.setEmail(jTextField3.getText());
-            JOptionPane.showMessageDialog(null, "We will notify you for any update on this appointment");
-                      
+            JOptionPane.showMessageDialog(null, "Email sent");
+            EmailUtility.sendEmail(subject, Config.emailId, Config.password, body, new String[]{emailAdd});
         }
-
-        
-        
+      
     }//GEN-LAST:event_notifyBookSlotActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
@@ -395,7 +407,6 @@ public class DentalPatientJPanel extends javax.swing.JPanel {
         dtm.setRowCount(0);
         int id = 1;
         for (WorkRequest wr :  ecosystem.getWorkQueue().getWorkRequestList()) {
-            System.out.println(wr.getStatus());
             Object row[] = new Object[4];
             if(wr instanceof DoctorAvailableSlotWR && "Available".equals(wr.getStatus())){
                 row[0] = id;
@@ -433,15 +444,17 @@ public class DentalPatientJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel)requestedItemsTable.getModel();
         
         model.setRowCount(0);
-        
+
         for (WorkRequest request : ecosystem.getWorkQueue().getWorkRequestList()){
             if(request instanceof MedicineWorkRequest){
-                Object[] row = new Object[4];
-                row[0] = ((MedicineWorkRequest) request);
-                row[1] = ((MedicineWorkRequest) request).getQuantity();
-                row[2] = ((MedicineWorkRequest) request).getRequestDate();
-                row[3] =  ((MedicineWorkRequest) request).getStatus();
-                model.addRow(row);
+                if(((MedicineWorkRequest) request).getPatientName().equals(userAccount.getUsername())){
+                    Object[] row = new Object[4];
+                    row[0] = ((MedicineWorkRequest) request);
+                    row[1] = ((MedicineWorkRequest) request).getQuantity();
+                    row[2] = ((MedicineWorkRequest) request).getRequestDate();
+                    row[3] =  ((MedicineWorkRequest) request).getStatus();
+                    model.addRow(row);
+                }
             }
         }
     }
@@ -452,6 +465,13 @@ public class DentalPatientJPanel extends javax.swing.JPanel {
         for (Medicine name : pharmorg.getMedList()) {
                 jComboBox1.addItem(name.getMedicineName());
             }
+    }
+    
+    private void addVerifiers() {
+        
+        InputVerifier emailVerifier = new VerifyEmail();
+        jTextField3.setInputVerifier(emailVerifier);
+        
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

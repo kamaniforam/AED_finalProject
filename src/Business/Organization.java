@@ -46,7 +46,6 @@ public abstract class Organization {
         //workQueue = new WorkQueue();
         employeeDirectory = new EmployeeDirectory();
         userAccountDirectory = new UserAccountDirectory();
-        System.out.println("ggg");
         organizationID = counter;
         ++counter;
     }
