@@ -6,6 +6,7 @@ package uiComponents.DentalHospital.FrontDesk;
 
 import Business.EcoSystem;
 import Business.WorkQueue.DoctorAvailableSlotWR;
+import Business.WorkQueue.WorkQueue;
 import Business.WorkQueue.WorkRequest;
 import Business.db40Utility.DB4OUtil;
 import com.db4o.ObjectSet;
@@ -20,14 +21,13 @@ import javax.swing.table.DefaultTableModel;
 public class FrontDeskWorkAreaJPanel extends javax.swing.JPanel {
 
     private EcoSystem ecosystem;
-    WorkRequest wr;
     /**
      * Creates new form FrontDeskWorkAreaJPanel
      */
-    public FrontDeskWorkAreaJPanel(EcoSystem ecoSystem) {
+    public FrontDeskWorkAreaJPanel() {
         initComponents();
         
-       this.ecosystem = ecosystem;
+       this.ecosystem = EcoSystem.getInstance();
 //        this.wr = wr;
         populateSlotTable();
     }
@@ -57,6 +57,8 @@ public class FrontDeskWorkAreaJPanel extends javax.swing.JPanel {
         jComboBox5 = new javax.swing.JComboBox<>();
 
         jLabel5.setText("jLabel5");
+
+        setBackground(new java.awt.Color(255, 255, 255));
 
         DoctorSlotJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -140,7 +142,7 @@ public class FrontDeskWorkAreaJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,7 +167,7 @@ public class FrontDeskWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -202,20 +204,22 @@ public class FrontDeskWorkAreaJPanel extends javax.swing.JPanel {
         slot.setDoctor((String) jComboBox1.getSelectedItem());
         slot.setTimings(LocalDateTime.of(y, m,d, h, mins, 0));
         slot.setStatus("Available");
-        ecosystem.getWorkQueue().getWorkRequestList().add(slot);
         
+        //ObjectSet<WorkQueue> workQueue = DB4OUtil.getDBInstance().queryByExample(WorkQueue.class);
+        System.out.println(slot.getTimings());
+        ecosystem.getWorkQueue().getWorkRequestList().add(slot);
+
         populateSlotTable();
     }//GEN-LAST:event_addAvailableSlotsActionPerformed
 
     private void populateSlotTable() {
         
         DefaultTableModel dtm = (DefaultTableModel) DoctorSlotJTable.getModel();
-	System.out.println(ecosystem);
+	//System.out.println(ecosystem);
         dtm.setRowCount(0);
-        ObjectSet<WorkRequest> workQueue = DB4OUtil.getDBInstance().queryByExample(WorkRequest.class);
+        //ObjectSet<WorkRequest> workQueue = DB4OUtil.getDBInstance().queryByExample(WorkRequest.class);
         
-        while(workQueue.hasNext()) {
-            WorkRequest wr = workQueue.next();
+        for(WorkRequest wr :  ecosystem.getWorkQueue().getWorkRequestList()) {
             Object row[] = new Object[3];
             row[0] = ((DoctorAvailableSlotWR) wr).getDoctor();
             row[1] = ((DoctorAvailableSlotWR) wr).getTimings();

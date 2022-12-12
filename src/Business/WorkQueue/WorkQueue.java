@@ -17,8 +17,18 @@ public class WorkQueue {
     public WorkQueue() {
         workRequestList = new ArrayList();
     }
+    
+    public ArrayList<WorkRequest> getInstance(){
+        if(workRequestList==null){
+            workRequestList=new ArrayList<WorkRequest>();
+        }
+        return workRequestList;
+    }
 
     public ArrayList<WorkRequest> getWorkRequestList() {
+        if(workRequestList==null){
+            workRequestList=new ArrayList<WorkRequest>();
+        }
         return workRequestList;
     }
     

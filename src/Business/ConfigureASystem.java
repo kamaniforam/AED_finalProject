@@ -12,10 +12,10 @@ public class ConfigureASystem {
     
     public static EcoSystem configure(){
         
-        EcoSystem system = EcoSystem.getInstance();
-        Employee employee = system.getEmployeeDirectory().createEmployee("RRH");      
-        UserAccount ua = system.getUserAccountDirectory().createUserAccount("fk", "fk", employee, Role.SYSTEM_ADMINISTRATOR);       
-        UserAccount ua1 = system.getUserAccountDirectory().createUserAccount("fk", "fk", employee, Role.PHARMACY_ADMIN);       
+        EcoSystem system = new EcoSystem();
+        system.getUserAccountDirectory().createUserAccount("fk", "fk", Role.SYSTEM_ADMINISTRATOR);       
+        system.getUserAccountDirectory().createUserAccount("rj", "rj", Role.SUPER_ADMIN);
+        system.getUserAccountDirectory().createUserAccount("fk", "fk", Role.PHARMACY_ADMIN);       
         
         return system;
     }

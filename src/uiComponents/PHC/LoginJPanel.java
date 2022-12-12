@@ -243,7 +243,7 @@ public class loginJPanel extends javax.swing.JPanel {
                     jSplitPane1.setRightComponent(dentist);
                     break;
                 case RECEPTIONIST:
-                    FrontDeskWorkAreaJPanel desk = new FrontDeskWorkAreaJPanel(business);
+                    FrontDeskWorkAreaJPanel desk = new FrontDeskWorkAreaJPanel();
                     jSplitPane1.setRightComponent(desk);
                     break;
                 case DENTAL_PATIENT:

@@ -13,6 +13,7 @@ import Business.Pharmacy.Model.Vaccine;
 import Business.Pharmacy.Organizations.PharmacyOrganization;
 import Business.WorkQueue.MedicineWorkRequest;
 import Business.WorkQueue.VaccineWorkRequest;
+import Business.WorkQueue.WorkQueue;
 import Business.WorkQueue.WorkRequest;
 import Bussiness.model.PHC.UserAccount;
 import Enterprise.Enterprise;
@@ -50,7 +51,7 @@ public class ViewStockRequest extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.pharmorg = pharmorg;
         this.network = network;
-        this.business = business;
+        this.business = EcoSystem.getInstance();
         
         populateTable();
         
@@ -76,6 +77,8 @@ public class ViewStockRequest extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(255, 255, 255));
 
         requestedStockTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -170,7 +173,7 @@ public class ViewStockRequest extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(259, 259, 259)
                         .addComponent(jButton3)))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,7 +196,7 @@ public class ViewStockRequest extends javax.swing.JPanel {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(jButton3)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -264,24 +267,23 @@ public class ViewStockRequest extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel)requestedStockTable.getModel();
         
         model.setRowCount(0);
-        if(business.getWorkQueue() != null && business.getWorkQueue().getWorkRequestList() != null ){
-            for (WorkRequest request : business. getWorkQueue().getWorkRequestList()){
-                if(request instanceof MedicineWorkRequest){
-                    Object[] row = new Object[4];
-                    row[0] = ((MedicineWorkRequest) request);
-                    row[1] = ((MedicineWorkRequest) request).getPatientName();
-                    row[2] = ((MedicineWorkRequest) request).getQuantity();
-                    row[3] =  ((MedicineWorkRequest) request).getStatus();
-                    model.addRow(row);
-                }
-            }
-        }
+//        if(WorkQueue.getInstance().size() != 0){
+//            for (WorkRequest request : WorkQueue.getInstance()){
+//                if(request instanceof MedicineWorkRequest){
+//                    Object[] row = new Object[4];
+//                    row[0] = ((MedicineWorkRequest) request);
+//                    row[1] = ((MedicineWorkRequest) request).getPatientName();
+//                    row[2] = ((MedicineWorkRequest) request).getQuantity();
+//                    row[3] =  ((MedicineWorkRequest) request).getStatus();
+//                    model.addRow(row);
+//                }
+//            }
+//        }
         
         DefaultTableModel model1 = (DefaultTableModel)vaccineRequestsJTable.getModel();
         
         model1.setRowCount(0);
-        
-        if(business.getWorkQueue() != null && business.getWorkQueue().getWorkRequestList() != null){
+
             for (WorkRequest request : business.getWorkQueue().getWorkRequestList()){
                 if(request instanceof VaccineWorkRequest){
                     Object[] row = new Object[4];
@@ -292,7 +294,7 @@ public class ViewStockRequest extends javax.swing.JPanel {
                     model1.addRow(row);
                 }
             }
-        }
+        
     }
     
     private int availableMedicineStock(String name){

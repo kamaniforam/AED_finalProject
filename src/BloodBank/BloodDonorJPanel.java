@@ -9,6 +9,7 @@ import javax.swing.InputVerifier;
 import javax.swing.JOptionPane;
 import javax.swing.JSplitPane;
 import javax.swing.table.DefaultTableModel;
+import validations.VerifyEmail;
 import validations.VerifyNumber;
 import validations.VerifyString;
 
@@ -42,7 +43,7 @@ public class BloodDonorJPanel extends javax.swing.JPanel {
         this.rbd = rbd;
         
         addVerifiers();
-        displayPersonTableDetails();
+       // displayPersonTableDetails();
     }
 
     /**
@@ -287,7 +288,9 @@ public class BloodDonorJPanel extends javax.swing.JPanel {
         
         InputVerifier stringVerifier = new VerifyString();
         txtName.setInputVerifier(stringVerifier);
-        emailId.setInputVerifier(stringVerifier);
+        
+        InputVerifier emailVerifier = new VerifyEmail();
+        emailId.setInputVerifier(emailVerifier);
     }
     
         private void displayPersonTableDetails(){

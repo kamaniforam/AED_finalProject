@@ -6,10 +6,10 @@ package uiComponents.DentalHospital.Doctor;
 
 import Business.EcoSystem;
 import Business.WorkQueue.DoctorAvailableSlotWR;
+import Business.WorkQueue.WorkQueue;
 import Business.WorkQueue.WorkRequest;
 import Utils.Config;
 import Utils.EmailUtility;
-import static java.lang.ProcessBuilder.Redirect.to;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -27,7 +27,7 @@ public class DentistWorkAreaJPanel extends javax.swing.JPanel {
     public DentistWorkAreaJPanel(EcoSystem ecosystem) {
         initComponents();
         
-        this.ecosystem = ecosystem;
+        this.ecosystem = EcoSystem.getInstance();
         
         populatePendingAppointmentsTable();
         populateCompletedAppointmentsTable();
@@ -50,6 +50,8 @@ public class DentistWorkAreaJPanel extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         viewAppointment = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(255, 255, 255));
 
         pendingAppointmentsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -123,10 +125,6 @@ public class DentistWorkAreaJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(240, 240, 240))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -135,14 +133,16 @@ public class DentistWorkAreaJPanel extends javax.swing.JPanel {
                         .addGap(47, 47, 47)
                         .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(245, 245, 245)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 659, Short.MAX_VALUE)
                             .addComponent(jScrollPane1))))
                 .addContainerGap(29, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton1, viewAppointment});
@@ -242,7 +242,7 @@ public class DentistWorkAreaJPanel extends javax.swing.JPanel {
         DefaultTableModel dtm = (DefaultTableModel) completedAppointmensTable.getModel();
 	
         dtm.setRowCount(0);
-        System.out.println("HIII " + ecosystem.getWorkQueue().getWorkRequestList().size());
+        //System.out.println("HIII " + ecosystem.getWorkQueue().getWorkRequestList().size());
         for (WorkRequest wr :  ecosystem.getWorkQueue().getWorkRequestList()) {
             Object row[] = new Object[3];
             System.out.println(wr.getStatus());

@@ -4,6 +4,7 @@
  */
 package uiComponents.PHC;
 
+import Business.EcoSystem;
 import Business.Roles.Role;
 import Business.db40Utility.DB4OUtil;
 import Bussiness.model.PHC.UserAccount;
@@ -20,8 +21,10 @@ public class AddUserPanel extends javax.swing.JPanel {
     /**
      * Creates new form AddUserPanel
      */
+    private final EcoSystem ecosystem;
     public AddUserPanel() {
         initComponents();
+        this.ecosystem = EcoSystem.getInstance();
     }
 
     /**
@@ -44,6 +47,8 @@ public class AddUserPanel extends javax.swing.JPanel {
         dropdownRole = new javax.swing.JComboBox<>();
         SignupBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         usernameLbl.setText("username:");
 
@@ -81,6 +86,8 @@ public class AddUserPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("SIGN UP");
 
@@ -139,7 +146,7 @@ public class AddUserPanel extends javax.swing.JPanel {
                     .addComponent(dropdownRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
                 .addComponent(SignupBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(326, Short.MAX_VALUE))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -155,12 +162,11 @@ public class AddUserPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 676, Short.MAX_VALUE)
+            .addGap(0, 447, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createSequentialGroup()
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -188,17 +194,14 @@ public class AddUserPanel extends javax.swing.JPanel {
             return;
         }
 
-        ObjectContainer db = DB4OUtil.getDBInstance();
-        UserAccount newUser = new UserAccount(userName, password, Role.fromString(role));
-
-        ObjectSet result = db.queryByExample(newUser);
-
-        if(!result.isEmpty()) {
+        if(!ecosystem.getUserAccountDirectory().checkIfUsernameIsUnique(userName)) {
             JOptionPane.showMessageDialog(this, "The profile already exists..");
             return;
         }
+        
+        UserAccount newUser = new UserAccount(userName, password, Role.fromString(role));
+        ecosystem.getUserAccountDirectory().getUserAccountList().add(newUser);
 
-        db.store(newUser);
         JOptionPane.showMessageDialog(this, "Profile Created");
     }//GEN-LAST:event_SignupBtnActionPerformed
 

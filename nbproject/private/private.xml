@@ -3,16 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/foram/Desktop/AED_foram_finalProject/AED_finalProject/src/uiComponents/PHC/CreateJPanel.java</file>
-            <file>file:/Users/foram/Desktop/AED_foram_finalProject/AED_finalProject/src/uiComponents/PHC/ViewJPanel.java</file>
-            <file>file:/Users/foram/Desktop/AED_foram_finalProject/AED_finalProject/src/uiComponents/PHC/loginJPanel.java</file>
-            <file>file:/Users/foram/Desktop/AED_foram_finalProject/AED_finalProject/src/uiComponents/PHC/MakeUserJPanel.java</file>
-            <file>file:/Users/foram/Desktop/AED_foram_finalProject/AED_finalProject/src/uiComponents/PHC/NewsJPanel.java</file>
-            <file>file:/Users/foram/Desktop/AED_foram_finalProject/AED_finalProject/src/Bussiness/model/PHC/Person.java</file>
-            <file>file:/Users/foram/Desktop/AED_foram_finalProject/AED_finalProject/src/Utils/EmailUtility.java</file>
-            <file>file:/Users/foram/Desktop/AED_foram_finalProject/AED_finalProject/src/uiComponents/PHC/AddUserPanel.java</file>
-            <file>file:/Users/foram/Desktop/AED_foram_finalProject/AED_finalProject/src/uiComponents/PHC/MainJFrame.java</file>
-            <file>file:/Users/foram/Desktop/AED_foram_finalProject/AED_finalProject/src/uiComponents/BloodRequestManagement/BloodRequestAdminPanel.java</file>
+            <file>file:/Users/richajain/Documents/GitHub/Final/src/uiComponents/DentalHospital/FrontDesk/FrontDeskWorkAreaJPanel.java</file>
+            <file>file:/Users/richajain/Documents/GitHub/Final/src/Business/db40Utility/DB4OUtil.java</file>
+            <file>file:/Users/richajain/Documents/GitHub/Final/src/uiComponents/Pharmacy/ViewStockRequest.java</file>
+            <file>file:/Users/richajain/Documents/GitHub/Final/src/uiComponents/PHC/SignUpJPanel.java</file>
+            <file>file:/Users/richajain/Documents/GitHub/Final/src/uiComponents/PHC/CreateJPanel.java</file>
+            <file>file:/Users/richajain/Documents/GitHub/Final/src/Business/Roles/BBPerson.java</file>
+            <file>file:/Users/richajain/Documents/GitHub/Final/src/uiComponents/PHC/AppointmentJPanel.java</file>
+            <file>file:/Users/richajain/Documents/GitHub/Final/src/uiComponents/Pharmacy/PharmacyAdminWorkAreaJPanel.java</file>
+            <file>file:/Users/richajain/Documents/GitHub/Final/src/uiComponents/PHC/EMTJPanel.java</file>
+            <file>file:/Users/richajain/Documents/GitHub/Final/src/uiComponents/PHC/MainJFrame.java</file>
+            <file>file:/Users/richajain/Documents/GitHub/Final/src/uiComponents/DentalHospital/Doctor/DentistWorkAreaJPanel.java</file>
+            <file>file:/Users/richajain/Documents/GitHub/Final/src/uiComponents/PHC/AddUserPanel.java</file>
         </group>
     </open-files>
 </project-private>
